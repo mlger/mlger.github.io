@@ -225,6 +225,87 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2021/12/25/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="mlg">
+      <meta itemprop="description" content="且将新火试新茶，诗酒趁年华">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021/12/25/%E5%8D%A1%E7%89%B9%E5%85%B0%E6%95%B0/" class="post-title-link" itemprop="url">卡特兰数</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2021-12-25 22:11:28 / 修改时间：22:22:26" itemprop="dateCreated datePublished" datetime="2021-12-25T22:11:28+08:00">2021-12-25</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%95%B0%E5%AD%A6/" itemprop="url" rel="index"><span itemprop="name">数学</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <hr>
+<h1 id="卡特兰数"><a href="#卡特兰数" class="headerlink" title="卡特兰数"></a>卡特兰数</h1><h3 id="Introduction"><a href="#Introduction" class="headerlink" title=" Introduction "></a><font face="comic sans ms"> Introduction </font ></h3><p>上周数学课上出现这么一道题：</p>
+<p> $4$个$0$和$4$个$1$构成一个长为$8$的$01$序列，求满足$“$所有前缀序列的$0$个数不小于$1$个数$”$的合法序列数.</p>
+<h3 id="solution"><a href="#solution" class="headerlink" title="solution"></a><font face="comic sans ms">solution</font></h3><p>我们把这道题放到二维平面上看看.</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/3ni4oszq.png" alt="Aaron Swartz"></p>
+<p>倘若没有$0$个数不大于$1$个数的限制，不难看出答案就是$C_{8}^{4}$.但如果加上这个条件，这个模型就发生了一些变化.再看看这幅图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/qsawrxrz.png" alt="Aaron Swartz"></p>
+<p>我们可以发现，所有合法的序列，一定不会跨过这条蓝色的边界,且一定在蓝线下方.换言之，所有不合法的序列都经过了这条蓝色的线.</p>
+<p>由此想到使用排除法，除去所有不合法序列.继续看看下面这幅图：</p>
+<p><img src="https://cdn.luogu.com.cn/upload/image_hosting/zictul0j.png" alt="Aaron Swartz"></p>
+<p>由于不合法的序列一定经过蓝线，而由对称性，从蓝线出发的点，到点$(4,4)$的路径与到点$(3,5)$的路径是一一对应的，而且从$(0,0)$出发的点到$(4,4)$的所有路径不一定都经过蓝线，但是到$(3,5)$的路径却一定经过蓝线+.于是我们可以把不合法的路径转化为$“$从$(0,0)$出发到$（3，5）$的所有路径数$”$</p>
+<p>于是，本题答案即$C_{8}^{4}-C_{8}^{3}=14$</p>
+<p>故一般的，对于$n$个$0$与$n$个$1$构成的满足上述条件的$len=2n$的序列，我们可求得合法序列数为$C_{2n}^{n}-C_{2n}^{n-1}=\frac{(2n)!}{n!\cdot n!}-\frac{(2n)!}{(n-1)!\cdot(n+1)!}=\frac{(2n)!}{n!\cdot n!}-\frac{n}{n+1}\cdot\frac{(2n)!}{n!\cdot n!}=\frac{C_{n}^{2n}}{n+1}$</p>
+<p>这个组合数又叫卡特兰数.</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
 
@@ -293,9 +374,21 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">日志</span>
         </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
 </div>
