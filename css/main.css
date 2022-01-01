@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #ff59b3;
+  background: #9a2fff;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2570,4 +2570,11 @@ mjx-container + br {
   .pagination {
     margin: 8px 0 0;
   }
+}
+body {
+  background: url("cdn.luogu.com.cn/upload/image_hosting/tb8lyrxv.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
 }
