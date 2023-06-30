@@ -212,7 +212,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-06-30 14:56:46 / 修改时间：14:56:25" itemprop="dateCreated datePublished" datetime="2023-06-30T14:56:46+08:00">2023-06-30</time>
+              <time title="创建时间：2023-06-30 14:56:46 / 修改时间：16:10:50" itemprop="dateCreated datePublished" datetime="2023-06-30T14:56:46+08:00">2023-06-30</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,34 +245,21 @@
 <li>prompt 需简单易懂无歧义</li>
 <li>prompt 最好使用英文</li>
 </ul>
-<h6 id="tricks"><a href="#tricks" class="headerlink" title="tricks"></a>tricks</h6><ol>
-<li><strong>To do or Not To do</strong></li>
-</ol>
+<h6 id="tricks"><a href="#tricks" class="headerlink" title="tricks"></a>tricks</h6><p>1.<strong>To do or Not To do</strong></p>
 <p>​    通过添加提示词，减少多轮询问带来的低效率和低信息密度，如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Instead of just saying what not to do, say what to do instead. 与其告知模型不能干什么，不妨告诉模型能干什么。</span><br></pre></td></tr></table></figure>
-<ol>
-<li><p><strong>增加示例</strong></p>
-</li>
-<li><p><strong>使用引导词，引导特定内容输出</strong></p>
-</li>
-<li><p><strong>添加 role </strong></p>
-</li>
-<li><strong>指令与待处理文本区分</strong></li>
-</ol>
-<p>​    一般通过 ”“” 将指令与文本分开，如：</p>
+<p>2.<strong>增加示例</strong></p>
+<p>3.<strong>使用引导词，引导特定内容输出</strong></p>
+<p>4.<strong>添加 role </strong></p>
+<p>5.<strong>指令与待处理文本区分</strong></p>
+<p>​    一般通过 <script type="math/tex">"""</script> 将指令与文本分开，如：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Please summarize the following sentences to make them easier to understand.</span><br><span class="line"></span><br><span class="line">Text: &quot;&quot;&quot;</span><br><span class="line">OpenAI is an American artificial intelligence (AI) research laboratory consisting of the non-profit OpenAI Incorporated (OpenAI Inc.) and its for-profit subsidiary corporation OpenAI Limited Partnership (OpenAI LP). OpenAI conducts AI research with the declared intention of promoting and developing a friendly AI. OpenAI systems run on the fifth most powerful supercomputer in the world.[5][6][7] The organization was founded in San Francisco in 2015 by Sam Altman, Reid Hoffman, Jessica Livingston, Elon Musk, Ilya Sutskever, Peter Thiel and others,[8][1][9] who collectively pledged US$1 billion. Musk resigned from the board in 2018 but remained a donor. Microsoft provided OpenAI LP with a $1 billion investment in 2019 and a second multi-year investment in January 2023, reported to be $10 billion.[10]</span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>格式词阐释需要输出的格式</strong></li>
-</ol>
+<p>6.<strong>格式词阐释需要输出的格式</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">Summarize the main points of the following speech</span><br><span class="line">Use the following format:</span><br><span class="line">Topic 1: &lt;topic_name_1&gt;</span><br><span class="line">- &lt;point_1&gt;</span><br><span class="line">..</span><br><span class="line">Topic 2: &lt;topic_name_2&gt;</span><br><span class="line">- &lt;point_1&gt;</span><br><span class="line">..</span><br><span class="line">Topic 10: ..</span><br><span class="line"></span><br><span class="line">Text: &quot;&quot;&quot;</span><br><span class="line">Thank you so much, Fred, for that lovely introduction. And thanks to the Atlantic Council for hosting me today.</span><br><span class="line"></span><br><span class="line">The course of the global economy over the past two years has been shaped by COVID-19 and our efforts to fight the pandemic. It’s now evident, though, that the war between Russia and Ukraine has redrawn the contours of the world economic outlook. Vladimir Putin’s unprovoked attack on Ukraine and its people is taking a devastating human toll, with lives tragically lost, families internally displaced or becoming refugees, and communities and cities destroyed.</span><br><span class="line">...</span><br><span class="line"></span><br><span class="line">&quot;&quot;&quot;</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>Zero-Shot Chain of Thought</strong></li>
-</ol>
+<p>7.<strong>Zero-Shot Chain of Thought</strong></p>
 <p>​    通过引导 AI 逐步思考，增强思考链路间的逻辑链接，使答案更加准确。问题结尾添加： <script type="math/tex">Let's \ think\ step\ by\ step.</script></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Let&#x27;s work this out in a step by step way to be sure we have the right answer.</span><br></pre></td></tr></table></figure>
-<ol>
-<li><strong>Few-Shot Chain of Thought</strong></li>
-</ol>
+<p>8.<strong>Few-Shot Chain of Thought</strong></p>
 <p>​    通过举例提供思维链，无论所提供例子是否合乎正确逻辑，对 AI 的判断都是有帮助的。</p>
 <p>笔记摘自：</p>
 <ul>
