@@ -187,6 +187,111 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/" class="post-title-link" itemprop="url">Codeforces Round 879 (Div. 2)</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-07-01 21:00:00 / 修改时间：21:39:27" itemprop="dateCreated datePublished" datetime="2023-07-01T21:00:00+08:00">2023-07-01</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>传送门：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1834">Codeforces Round 879 (Div. 2)</a></p>
+<p>难度适中，但菜鸡依旧。</p>
+<h6 id="B-Maximum-Strength"><a href="#B-Maximum-Strength" class="headerlink" title="B. Maximum Strength"></a>B. Maximum Strength</h6><p><strong>题意：</strong></p>
+<p>​    <script type="math/tex">[l,r]</script> 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 <script type="math/tex">0</script> 对齐。</p>
+<p><strong>题解：</strong></p>
+<p>​    设 <script type="math/tex">l</script> 和 <script type="math/tex">r</script> 位数分别为 <script type="math/tex">n</script> 和 <script type="math/tex">m</script> ，取的数字为 <script type="math/tex">x<y</script> ，分情况讨论。</p>
+<ul>
+<li>若 <script type="math/tex">n<m</script> ，则最优情况为 <script type="math/tex">x</script> 取 $m-1$ 个 <script type="math/tex">9</script> , <script type="math/tex">y</script> 保留 <script type="math/tex">r</script> 的最高位，剩余位为 <script type="math/tex">0</script></li>
+<li>若 <script type="math/tex">n=m</script> ，则除去相同前缀，然后 <script type="math/tex">y</script> 保留最高位，剩余位为 <script type="math/tex">0</script> ， <script type="math/tex">x</script> 保留最高位，剩余位为 <script type="math/tex">9</script> 即可。</li>
+</ul>
+<p><strong>code：</strong>  </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    n = s1.length();</span><br><span class="line">    m = s2.length();</span><br><span class="line">    if (n &lt; m) &#123;</span><br><span class="line">        cout &lt;&lt; (s2[0] - &#x27;0&#x27;) + (m - 1) * 9 &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (s1[i] == s2[i]) continue;</span><br><span class="line">            cout &lt;&lt; s2[i] - s1[i] + (n - i - 1) * 9 &lt;&lt; endl;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; 0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="C-Game-with-Reversing"><a href="#C-Game-with-Reversing" class="headerlink" title="C. Game with Reversing"></a>C. Game with Reversing</h6><p><strong>题意：</strong></p>
+<p>​    给定两等长串 <script type="math/tex">S</script> 和 <script type="math/tex">T</script> ， Alice 和 Bob 轮流操作。Alice 每次可以替换一个字符，Bob 每次可以翻转一个串， 当两串相同时，停止操作。Alice 希望操作次数尽量少， Bob 希望操作次数尽量多， 求两个人都采取最优策略的情况下，实际游戏操作次数。</p>
+<p><strong>题解：</strong></p>
+<p>​    解释起来比较啰嗦，这里简述。    </p>
+<p>​    实际上 Bob 每轮操作都是相同的，因此可以假设 Bob 只翻转一个字符串 <script type="math/tex">T</script> 。</p>
+<p>​    对 Alice 来说，则可以有两种选择，将 <script type="math/tex">S</script> 变为 <script type="math/tex">T</script> 或 <script type="math/tex">rev(T)</script> 。二者最小步数都容易 <script type="math/tex">O(n)</script> 求出。 最后根据实际的奇偶性补齐 Bob 的操作数即可。</p>
+<p><strong>code：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    int ans1 = 0, ans2 = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (s1[i] != s2[i]) ++ans1;</span><br><span class="line">        if (s1[i] != s2[n - i - 1]) ++ans2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (ans1 &amp; 1) ans1 = ans1 * 2 - 1;</span><br><span class="line">    else ans1 = ans1 * 2;</span><br><span class="line">    if (ans2 &amp; 1) ans2 = ans2 * 2;</span><br><span class="line">    else if (ans2 == 0) ans2 = 2;</span><br><span class="line">    else ans2 = ans2 * 2 - 1;</span><br><span class="line">    cout &lt;&lt; min(ans1, ans2) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="D-Survey-in-Class"><a href="#D-Survey-in-Class" class="headerlink" title="D. Survey in Class"></a>D. Survey in Class</h6><p><strong>题意：</strong></p>
+<p>​    给定若干条线段，求最大分数差值。</p>
+<p><strong>题解：</strong></p>
+<p>​    对于线段 <script type="math/tex">[l_1, r_1]</script> 和线段 <script type="math/tex">[l_2,r_2]</script> ，设 <script type="math/tex">r_1<r_2</script> ，则分三种情况讨论：</p>
+<ul>
+<li><script type="math/tex">r_1<l_2</script> ，则最大差值可以分别来源于两线段整段，即 <script type="math/tex">max(r_1-l_1+1, r_2-l_2+1)</script> ；</li>
+<li><script type="math/tex">l_1\leq l_2\leq r_1 \leq r_2</script>，则最大差值来源于二者分别对交集取补，即 <script type="math/tex">max(r_2-r_1, l_2-l_1)</script> ；</li>
+<li><script type="math/tex">l_2\leq l_1 \leq r_1 \leq r_2</script> ，包含关系，最大差值来源于长线段对短线段取补，即 <script type="math/tex">(r_2-l_2+1)-(r_1-l_1+1)</script> 。</li>
+</ul>
+<p>​    将每条线段按右端点排序，枚举线段 <script type="math/tex">[l_2,r_2]</script> ， 目标是找出对应的 <script type="math/tex">[l_1, r_1]</script> ， 三种情况分别需要求：</p>
+<ul>
+<li>右端点小于 <script type="math/tex">l_2</script> 的直线中，<script type="math/tex">r-l+1</script> 的最大值</li>
+<li>相交直线中， <script type="math/tex">r</script> 的最小值以及 <script type="math/tex">l</script> 的最小值</li>
+<li>左端点大于等于 <script type="math/tex">l_2</script> 的直线中， <script type="math/tex">r-l+1</script> 的最小值</li>
+</ul>
+<p>​    四个值四棵动态开点线段树维护即可。</p>
+<p><strong>code：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x7fffffff</span><br><span class="line">int cnt = 0;</span><br><span class="line">const int N = 4e5 + 5;</span><br><span class="line">int dat[N &lt;&lt; 5], lc[N &lt;&lt; 5], rc[N &lt;&lt; 5];</span><br><span class="line"></span><br><span class="line">void update(int &amp;p, int l, int r, int k, int val) &#123;</span><br><span class="line">    if (!p) p = ++cnt, dat[p] = inf;</span><br><span class="line">    if (l == r) return (void) (dat[p] = min(dat[p], val));</span><br><span class="line">    int mid = l + r &gt;&gt; 1;</span><br><span class="line">    if (k &lt;= mid) update(lc[p], l, mid, k, val);</span><br><span class="line">    else update(rc[p], mid + 1, r, k, val);</span><br><span class="line">    dat[p] = inf;</span><br><span class="line">    if (lc[p]) dat[p] = min(dat[p], dat[lc[p]]);</span><br><span class="line">    if (rc[p]) dat[p] = min(dat[p], dat[rc[p]]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline int query(int p, int l, int r, int u, int v) &#123;</span><br><span class="line">    if (!p) return inf;</span><br><span class="line">    if (u &lt;= l &amp;&amp; r &lt;= v) return dat[p];</span><br><span class="line">    int mid = l + r &gt;&gt; 1, res = inf;</span><br><span class="line">    if (u &lt;= mid) res = min(res, query(lc[p], l, mid, u, v));</span><br><span class="line">    if (v &gt; mid) res = min(res, query(rc[p], mid + 1, r, u, v));</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(pair&lt;int, int&gt; A, pair&lt;int, int&gt; B) &#123;</span><br><span class="line">    return A.second == B.second ? A.first &lt; B.first : A.second &lt; B.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solve() &#123;</span><br><span class="line">#define mp(x, y) make_pair(x, y)</span><br><span class="line">    int t1 = 0, t2 = 0, t3 = 0, t4 = 0;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;pair&lt;int, int&gt; &gt; Stu(n);</span><br><span class="line">    for (int i = 0, l, r; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        Stu[i] = mp(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(Stu.begin(), Stu.end(), cmp);</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (auto stu: Stu) &#123;</span><br><span class="line">        int l = stu.first, r = stu.second;</span><br><span class="line">        int rem;</span><br><span class="line">        rem = -query(t1, 0, m, 0, l - 1);</span><br><span class="line">        if (rem != -inf) ans = max(ans, max(rem &lt;&lt; 1, (r - l + 1) &lt;&lt; 1));</span><br><span class="line">        update(t1, 0, m, r, l - r - 1);</span><br><span class="line"></span><br><span class="line">        rem = query(t2, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (r - rem) &lt;&lt; 1);</span><br><span class="line">        update(t2, 0, m, r, r);</span><br><span class="line"></span><br><span class="line">        rem = query(t3, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (l - rem) &lt;&lt; 1);</span><br><span class="line">        update(t3, 0, m, r, l);</span><br><span class="line"></span><br><span class="line">        rem = query(t4, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, ((r - l + 1) - rem) &lt;&lt; 1);</span><br><span class="line">        update(t4, 0, m, l, r - l + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/01/%E6%95%B0%E7%90%86%E6%80%9D%E7%BB%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -212,7 +317,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2023-07-01 11:26:30 / 修改时间：11:45:11" itemprop="dateCreated datePublished" datetime="2023-07-01T11:26:30+08:00">2023-07-01</time>
+              <time title="创建时间：2023-07-01 11:26:30 / 修改时间：21:42:10" itemprop="dateCreated datePublished" datetime="2023-07-01T11:26:30+08:00">2023-07-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -241,6 +346,9 @@
 <h6 id="三、“按照次序引导我的思想，以便以最简单最容易认识的对象开始，一点一点上升到对复杂的对象的认识，即便是那些彼此间没有自然的先后次序的对象，我也要给它们设定一个次序”。"><a href="#三、“按照次序引导我的思想，以便以最简单最容易认识的对象开始，一点一点上升到对复杂的对象的认识，即便是那些彼此间没有自然的先后次序的对象，我也要给它们设定一个次序”。" class="headerlink" title="三、“按照次序引导我的思想，以便以最简单最容易认识的对象开始，一点一点上升到对复杂的对象的认识，即便是那些彼此间没有自然的先后次序的对象，我也要给它们设定一个次序”。"></a>三、“按照次序引导我的思想，以便以最简单最容易认识的对象开始，一点一点上升到对复杂的对象的认识，即便是那些彼此间没有自然的先后次序的对象，我也要给它们设定一个次序”。</h6><p>​    从易到难，从简单到复杂地进行分析、解决，而不至于迷乱。</p>
 <h6 id="四、“把一切情形尽量完全地列举出来，尽量普遍地加以审视，使我确信毫无遗漏。”"><a href="#四、“把一切情形尽量完全地列举出来，尽量普遍地加以审视，使我确信毫无遗漏。”" class="headerlink" title="四、“把一切情形尽量完全地列举出来，尽量普遍地加以审视，使我确信毫无遗漏。”"></a>四、“把一切情形尽量完全地列举出来，尽量普遍地加以审视，使我确信毫无遗漏。”</h6><p>​    如其所言，思维缜密，考虑周全，确保推理覆盖到所有情况。</p>
 <p>摘自： 笛卡尔 《方法论》</p>
+<p>​    </p>
+<p>​    </p>
+<p><code>人生没有目的，只有过程，所谓的终极目的是虚无的。——人的情况和树相同。它愈想开向高处和明亮处，它的根愈要向下，向泥土，向黑暗处，向深处，向恶——千万不要忘记。我们飞翔得越高，我们在那些不能飞翔的人眼中的形象越是渺小。</code></p>
 
       
     </div>
@@ -673,7 +781,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -713,7 +821,8 @@
   </span>
   <span class="author" itemprop="copyrightHolder">Lg</span>
 </div>
-  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
   </div>
 
         
