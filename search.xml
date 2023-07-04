@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>README</title>
+      <link href="/2023/07/04/README/"/>
+      <url>/2023/07/04/README/</url>
+      
+        <content type="html"><![CDATA[<p>本站采用 hexo 架构，部署在 github pages 上，采用 github 作为图床。建议在能够流畅访问 github 的网络环境下浏览。</p><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202307042122433.png" alt=""></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Educational Codeforces Round 150 (Div. 2)</title>
       <link href="/2023/07/03/Educational%20Codeforces%20Round%20150%20(Div.%202)/"/>
       <url>/2023/07/03/Educational%20Codeforces%20Round%20150%20(Div.%202)/</url>
