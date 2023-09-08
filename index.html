@@ -247,6 +247,187 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/08/%E8%AE%A1%E7%BB%8401/" class="post-title-link" itemprop="url">计组01-计算机系统概述</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2023-09-08 16:42:00 / 修改时间：16:43:19" itemprop="dateCreated datePublished" datetime="2023-09-08T16:42:00+08:00">2023-09-08</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">计组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h4><ul>
+<li>何为计算机：计算机是指“<strong>通用电子计算机</strong>”<ul>
+<li>通用：不是专用设备</li>
+<li>电子：采用电子元器件</li>
+<li>数字：信息采用数字化形式表示</li>
+</ul>
+</li>
+<li>计算机系统：硬件和软件</li>
+<li>何为计算机“<strong>组织</strong>”：操作单元及其互联连接<ul>
+<li>对编程人员不可见</li>
+<li>包括：控制信号，存储技术等</li>
+</ul>
+</li>
+<li>何为计算机”<strong>结构</strong>“：直接影响逻辑程序执行的属性<ul>
+<li>对编程人员可见</li>
+<li>包括：指令集，表示数据类型的位数等</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png" alt=""></p>
+<ul>
+<li><p><strong>指令集体系结构</strong>： <strong>ISA</strong> ，有时称为<strong>指令系统</strong>。 ISA 是一种规约，规定如何使用硬件。</p>
+<ul>
+<li>可执行指令的集合，包含指令格式、操作种类及操作数的规定</li>
+<li>指令可以接受的操作数类型</li>
+<li>操作数所能存放的寄存器组的结构，包括每个寄存器的名称、编号、长度和用途</li>
+<li>操作数所能存放的<strong>存储空间的大小和编址方式</strong></li>
+<li>操作数在存储空间存放时按照<strong>大端还是小端方式存放</strong></li>
+<li>指令获取操作数的方式，即<strong>寻址方式</strong></li>
+<li>指令执行过程的控制方式，包括<strong>程序计数器（PC）、条件码定义</strong>等</li>
+</ul>
+</li>
+<li><p>ISA 与组成之间的关系：计算机组成必须能够<strong>实现 ISA 规定的功能</strong>，如提供 GPR 、标志、运算电路等，<strong>一种 ISA 可以有不同的计算机组成</strong>。</p>
+</li>
+</ul>
+<h4 id="1-2-计算机简史"><a href="#1-2-计算机简史" class="headerlink" title="1.2 计算机简史"></a>1.2 计算机简史</h4><h5 id="1-2-1-第一代：真空管"><a href="#1-2-1-第一代：真空管" class="headerlink" title="1.2.1 第一代：真空管"></a>1.2.1 第一代：真空管</h5><ul>
+<li>ENIAC ：第一台<strong>通用</strong>计算机，十进制，手动编程</li>
+<li>ABC ：第一台<strong>电子</strong>计算机，不可编程</li>
+<li>EDVAC ：冯·诺伊曼架构（普林斯顿架构）<ul>
+<li>三个基本原则：<ul>
+<li>二进制</li>
+<li>存储程序</li>
+<li>5个组成部分<ul>
+<li>主存储器：地址和存储内容</li>
+<li>算术逻辑单元 / 处理单元：执行信息处理</li>
+<li>程序控制单元 / 控制单元：指挥信息处理</li>
+<li>输入设备</li>
+<li>输出设备</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-2-2-第二代：晶体管"><a href="#1-2-2-第二代：晶体管" class="headerlink" title="1.2.2 第二代：晶体管"></a>1.2.2 第二代：晶体管</h5><ul>
+<li>体积更小、更便宜、发热更少</li>
+<li>使用高级语言编程，并为计算机提供了系统软件</li>
+</ul>
+<h5 id="1-2-3-第三代：中小规模集成电路"><a href="#1-2-3-第三代：中小规模集成电路" class="headerlink" title="1.2.3 第三代：中小规模集成电路"></a>1.2.3 第三代：中小规模集成电路</h5><h5 id="1-2-4-第四代：（超）大规模集成电路"><a href="#1-2-4-第四代：（超）大规模集成电路" class="headerlink" title="1.2.4 第四代：（超）大规模集成电路"></a>1.2.4 第四代：（超）大规模集成电路</h5><ul>
+<li><p>思想：</p>
+<ul>
+<li>将整个电路安装在很小的硅片上，而不是用分立元件搭成的等价电路</li>
+<li>晶体管可以通过金属化相互连接，形成电路</li>
+</ul>
+</li>
+<li><ul>
+<li></li>
+</ul>
+</li>
+</ul>
+<h4 id="1-3-计算机发展"><a href="#1-3-计算机发展" class="headerlink" title="1.3 计算机发展"></a>1.3 计算机发展</h4><h5 id="1-3-1-摩尔定律"><a href="#1-3-1-摩尔定律" class="headerlink" title="1.3.1 摩尔定律"></a>1.3.1 摩尔定律</h5><ul>
+<li>价格不变时，单芯片上所能包含的晶体管数量每年翻一番 (1965-1969) / 1970年起减慢为每18个月翻一番</li>
+<li>影响：<ul>
+<li>更小尺寸带来更多<strong>灵活性</strong>与<strong>可能性</strong></li>
+<li>成本下降</li>
+<li><strong>减小电能损耗与冷却要求</strong></li>
+<li><strong>芯片间连接更少</strong>，更可靠</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-4-计算机性能"><a href="#1-4-计算机性能" class="headerlink" title="1.4 计算机性能"></a>1.4 计算机性能</h4><h5 id="1-4-1-CPU-性能"><a href="#1-4-1-CPU-性能" class="headerlink" title="1.4.1 CPU 性能"></a>1.4.1 CPU 性能</h5><ul>
+<li>计算机设计主要目标：提升 CPU 性能</li>
+<li>系统时钟<ul>
+<li>时钟频率： 1s 内执行基本操作的次数</li>
+<li>始终周期：执行每次最基本操作的时间</li>
+</ul>
+</li>
+<li>指令执行： <script type="math/tex">CPI_i</script> 表示第 <script type="math/tex">i</script> 种指令需要周期数， <script type="math/tex">I_i</script> 表示第 <script type="math/tex">i</script> 类指令条数，则有</li>
+</ul>
+<script type="math/tex; mode=display">
+CPI=\frac{\sum_{i=1}^n(CPI_i \times I_i)}{I_c},I_c=\sum_{i=1}^n I_i</script><p>​    执行一个程序的处理时间表示为</p>
+<script type="math/tex; mode=display">
+T=I_c\times CPI \times t</script><ul>
+<li>每秒百万条指令（ MIPS ）：</li>
+</ul>
+<script type="math/tex; mode=display">
+MIPS = \frac{I_c}{T\times 10^6}=\frac{f}{CPI\times 10^6}</script><ul>
+<li>每秒百万条浮点操作（ MFLOPS ）：</li>
+</ul>
+<script type="math/tex; mode=display">
+MFLOPS=\frac{N_{floating-point\ op}}{T\times 10^6}</script><h5 id="1-4-2-性能设计的基本原则"><a href="#1-4-2-性能设计的基本原则" class="headerlink" title="1.4.2 性能设计的基本原则"></a>1.4.2 性能设计的基本原则</h5><ul>
+<li><strong>大概率事件优先原则</strong>：对于大概率事件，赋予优先的处理权与资源使用权。</li>
+</ul>
+<script type="math/tex; mode=display">
+系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}</script><ul>
+<li><strong>Amdahl</strong> 定律：<ul>
+<li>部件系统加速比受限于其在系统中所占重要性比例。</li>
+<li>性能增加的递减规则：改进越，系统获得效果越小</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}=\frac{1}{(1-局部占比)+
+\frac{局部占比}{提升的性能}}</script>
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -261,7 +442,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01/" class="post-title-link" itemprop="url">计算机网络01</a>
+            <a href="/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01/" class="post-title-link" itemprop="url">计算机网络01-概述</a>
         </h2>
 
         <div class="post-meta">
@@ -278,7 +459,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-08 12:44:36" itemprop="dateModified" datetime="2023-09-08T12:44:36+08:00">2023-09-08</time>
+                <time title="修改时间：2023-09-08 16:42:54" itemprop="dateModified" datetime="2023-09-08T16:42:54+08:00">2023-09-08</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -301,15 +482,170 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h4 id="第1章-概述"><a href="#第1章-概述" class="headerlink" title="第1章 概述"></a>第1章 概述</h4><h4 id="1-1-计算机网络在信息时代的作用"><a href="#1-1-计算机网络在信息时代的作用" class="headerlink" title="1.1 计算机网络在信息时代的作用"></a>1.1 计算机网络在信息时代的作用</h4><ul>
+<li><p>21世纪<strong>数字化</strong>、<strong>网络化</strong>、<strong>信息化</strong>，形成<strong>以网络为核心的信息时代</strong>。</p>
+</li>
+<li><p>三大类网络：电信网络、有线电视网络、计算机网络</p>
+</li>
+<li><p>互联网两个基本特点：<strong>连通性</strong>和<strong>共享</strong></p>
+<ul>
+<li><p>连通性：不论多远，都可便捷地交换各种信息</p>
+</li>
+<li><p>资源共享：信息共享、软件共享、硬件共享</p>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-2-互联网概述"><a href="#1-2-互联网概述" class="headerlink" title="1.2 互联网概述"></a>1.2 互联网概述</h4><h5 id="1-2-1互联网概述"><a href="#1-2-1互联网概述" class="headerlink" title="1.2.1互联网概述"></a>1.2.1互联网概述</h5><ul>
+<li><strong>计算机网络</strong>由若干<strong>节点( node )</strong>和连接这些节点的<strong>链路( link )</strong>组成。<ul>
+<li>节点：计算机、集线器、交换机、路由器等</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>网络把许多计算机连接在一起，<strong>互连网</strong>把许多网络通过路由器连在一起。与网络相连接的计算机称为<strong>主机</strong>。</li>
+</ul>
+<h5 id="1-2-2-互联网发展的三个阶段"><a href="#1-2-2-互联网发展的三个阶段" class="headerlink" title="1.2.2 互联网发展的三个阶段"></a>1.2.2 互联网发展的三个阶段</h5><ol>
+<li><p>由 ARPANET 向互连网发展。 20 世纪 70 年代， APRA 开始研究多种网络互连的技术，称为互联网的雏形。 1983 年 TCP/IP 成为 ARPANET 上的标准协议，互联网诞生。 1990 年 ARPANET 关闭。</p>
+<ul>
+<li><strong>internet （互连网）</strong>：指多个网络连接而成的网络</li>
+<li><strong>Internet （互联网）</strong>：专有名词</li>
+</ul>
+</li>
+<li><p>第二阶段特点是建成了<strong>三级结构的互联网</strong>。分为<strong>主干网</strong>、<strong>地区网</strong>和<strong>校园网（企业网）</strong>。</p>
+</li>
+<li><p>第三阶段特点是形成了<strong>多层次 ISP 结构的互联网</strong>。 ISP 译为<strong>互联网服务提供商</strong>。</p>
+</li>
+</ol>
+<h5 id="1-2-3-计算机网络的分类"><a href="#1-2-3-计算机网络的分类" class="headerlink" title="1.2.3 计算机网络的分类"></a>1.2.3 计算机网络的分类</h5><ol>
+<li><p><strong>LAN</strong> （<strong>局域网</strong>）</p>
+<ul>
+<li><p>特点</p>
+<ul>
+<li>作用范围小</li>
+<li>多用户访问</li>
+<li>高速度</li>
+<li>错误率可控</li>
+</ul>
+</li>
+<li><p>设备</p>
+<ul>
+<li><strong>Hub</strong> （集线器）：多端口中继器</li>
+<li><strong>Bridge</strong> （网桥）：</li>
+<li><strong>Switch</strong> （交换机）：</li>
+<li><strong>Router</strong> （路由器）：分组交换，转发收到的分组</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>WAN</strong> （<strong>广域网</strong>）</p>
+<ul>
+<li><p>特点</p>
+<ul>
+<li>作用范围大</li>
+<li>通过链路传输</li>
+<li>速度相对较低</li>
+<li>错误率较难控制</li>
+</ul>
+</li>
+<li><p>设备</p>
+<ul>
+<li><strong>Router</strong> （路由器）：</li>
+<li><strong>Modem CSU/DSU TA/NT1</strong> </li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="1-3-互联网的组成"><a href="#1-3-互联网的组成" class="headerlink" title="1.3 互联网的组成"></a>1.3 互联网的组成</h4><ul>
+<li><p>互联网的组成：</p>
+<ul>
+<li><p>（1）<strong>边缘部分</strong>：由所有连接在互联网上的主机组成，是<strong>用户直接使用</strong>的部分。主机又称为<strong>端系统（end system）</strong></p>
+</li>
+<li><p>（2）<strong>核心部分</strong>：由大量网络和连接这些网络的路由器组成。这部分是<strong>为边缘部分提供服务的</strong>。</p>
+</li>
+</ul>
+</li>
+<li><p>端系统间通信方式：客户-服务器模式 and 对等连接方式</p>
+<ul>
+<li><strong>客户(client)</strong>-<strong>服务器(sever)</strong>模式（C/S模式）<ul>
+<li>客户是服务请求方，服务器是服务提供方</li>
+</ul>
+</li>
+<li>对等连接方式（P2P）<ul>
+<li>并不区分服务请求方与服务提供方</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>电路交换</strong>主要特点：<ul>
+<li><strong>建立连接</strong> → <strong>通话</strong> → <strong>释放资源</strong></li>
+<li>在通话的全部时间内，通话的两个用户始终占用端到端的通信资源</li>
+<li>传输效率较低</li>
+</ul>
+</li>
+<li><strong>分组交换</strong>主要特点：<ul>
+<li>采取<strong>存储转发</strong>技术</li>
+<li>发送的整块数据成为<strong>报文</strong>(message)</li>
+<li>发送之前，先将报文划分成一个个更小的等长数据段，加上必要控制信息组成的<strong>首部</strong>(header)或<strong>包头</strong>，构成一个<strong>分组</strong>(packet)或<strong>包</strong>。</li>
+<li>主机进行信息处理，路由器用来转发分组，即进行分组交换。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-5-计算机网络的类别"><a href="#1-5-计算机网络的类别" class="headerlink" title="1.5 计算机网络的类别"></a>1.5 计算机网络的类别</h4><ul>
+<li><p>按照网络的作用范围分类：</p>
+<ul>
+<li><strong>广域网 WAN </strong>：</li>
+<li><strong>域域网 MAN </strong>：作用范围一般是一个城市。可以为一个或几个单位所有，也可以是一种公用设施，用来将多个局域网进行互连。</li>
+<li><strong>局域网 LAN </strong>：</li>
+<li><strong>个人区域网 PAN</strong>：把属于个人的设备用无线技术连接起来</li>
+</ul>
+</li>
+<li><p>按网络使用分类：</p>
+<ul>
+<li><strong>公用网</strong>(public network)</li>
+<li><strong>专用网</strong>(private network)</li>
+</ul>
+</li>
+<li><strong>用来把用户接入到互联网的网络</strong>：<ul>
+<li><strong>接入网 AN</strong>：又称<strong>本地接入网</strong>或<strong>居民接入网</strong>。</li>
+</ul>
+</li>
+</ul>
+<h4 id="1-6-计算机网络的性能"><a href="#1-6-计算机网络的性能" class="headerlink" title="1.6 计算机网络的性能"></a>1.6 计算机网络的性能</h4><h5 id="1-6-1-性能指标"><a href="#1-6-1-性能指标" class="headerlink" title="1.6.1    性能指标"></a>1.6.1    性能指标</h5><ul>
+<li><strong>速率</strong>：数据传送速率，也成为<strong>数据率</strong>或<strong>比特率</strong>。提到网络速率，往往指<strong>额定速率</strong>，而非运行速率。单位 bps 。</li>
+<li><strong>带宽</strong>：<ul>
+<li><strong>信号具有的频带宽度</strong>，单位是<strong>赫兹</strong>，表示<strong>某信道允许通过的信号频带范围</strong>。</li>
+<li>网络中某通道传输数据的效率，即<strong>最高数据率</strong>，单位是 bps 。</li>
+</ul>
+</li>
+<li><strong>吞吐量</strong>：表示单位时间内通过某个网络的实际数据量</li>
+<li><strong>时延</strong>：数据从网络一端传送到另一端的时间，组成：<ul>
+<li><strong>发送时延</strong>：主机或路由器发送数据帧所需时间</li>
+<li><strong>处理时延</strong>：</li>
+<li><strong>排队时延</strong>：数据帧进入路由器后需排队等待处理，等待的时间成为排队时延</li>
+<li><strong>传播时延</strong>：信道中传播的时间</li>
+</ul>
+</li>
+</ul>
+<script type="math/tex; mode=display">
+传播时延=\frac{信道长度(m)}{电磁波在信道上传播速率(m/s)}</script><ul>
+<li><strong>时延带宽积</strong>： 传播时延与带宽乘积</li>
+<li><strong>往返时间 RTT </strong>：数据在信道中往返一次所需时间</li>
+<li><strong>利用率</strong>：</li>
+</ul>
+<script type="math/tex; mode=display">
+D=\frac{D_0}{1-U}</script><h4 id="1-7-计算机网络体系结构"><a href="#1-7-计算机网络体系结构" class="headerlink" title="1.7 计算机网络体系结构"></a>1.7 计算机网络体系结构</h4><h5 id="1-7-1-OSI-七层协议"><a href="#1-7-1-OSI-七层协议" class="headerlink" title="1.7.1 OSI 七层协议"></a>1.7.1 OSI 七层协议</h5><ul>
+<li><strong>物理层</strong>：管理通信设备和网络媒体之间的互联互通，<strong>规范</strong>链接的电气和功能<strong>规格</strong>。</li>
+<li><strong>数据链路层</strong>：<strong>通过物理链接提供数据传输链路</strong>。</li>
+<li><strong>网络层</strong>： 在两终端之间进行<strong>路径选择</strong>。</li>
+<li><strong>传输层</strong>：负责网络中<strong>端到端的网络通信</strong>，为虚拟电路的建立、维护、终止，传输故障检测及恢复，以及信息流的控制提供机制。</li>
+<li><strong>会话层</strong>：<strong>创建</strong>、<strong>管理</strong>和<strong>维护</strong>会话。同步表示层实体间的会话并<strong>管理其间的数据交换</strong>。提供高效的<strong>数据传输</strong>、<strong>服务类别</strong>以及会话、演示及应用层的<strong>异常报告功能</strong>。</li>
+<li><strong>演示层</strong>：保证不同系统的信息交换，涉及<strong>数据编码</strong>、<strong>格式转换</strong>、<strong>数据加密</strong>。将多种数据格式转化成通信中采用的标准表示形式。</li>
+<li><strong>应用层</strong>：OSI 协议最高层，离用户最近，<strong>为用户应用程序提供网络服务</strong>，不为其它层提供服务。</li>
+</ul>
+<p><strong>So boring！</strong></p>
+
       
     </div>
 
@@ -1086,133 +1422,11 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}</script><p><strong>code：</strong><
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2023/06/29/%E5%BD%93%E6%88%91%E5%BC%80%E5%A7%8B%E7%9C%9F%E6%AD%A3%E7%88%B1%E8%87%AA%E5%B7%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/29/%E5%BD%93%E6%88%91%E5%BC%80%E5%A7%8B%E7%9C%9F%E6%AD%A3%E7%88%B1%E8%87%AA%E5%B7%B1/" class="post-title-link" itemprop="url">当我开始真正爱自己</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2023-06-29 10:50:37 / 修改时间：14:39:41" itemprop="dateCreated datePublished" datetime="2023-06-29T10:50:37+08:00">2023-06-29</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%97%E6%AD%8C/" itemprop="url" rel="index"><span itemprop="name">诗歌</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><em>作者：卓别林</em></p>
-<p>当我真正开始爱自己，</p>
-<p>我才认识到，所有的痛苦和情感的折磨，</p>
-<p>都只是提醒我：活着，不要违背自己的本心。</p>
-<p>今天我明白了，这叫做“真实”。</p>
-<p>​    </p>
-<p>当我真正开始爱自己，</p>
-<p>我才懂得，把自己的愿望强加于人，</p>
-<p>是多么的无礼，就算我知道，时机并不成熟，</p>
-<p>那人也还没有做好准备，</p>
-<p>就算那个人就是我自己。</p>
-<p>今天我明白了，这叫做“尊重”。</p>
-<p>​    </p>
-<p>当我开始爱自己，</p>
-<p>我不再渴求不同的人生，</p>
-<p>我知道任何发生在我身边的事情，</p>
-<p>都是对我成长的邀请。</p>
-<p>如今，我称之为“成熟”。</p>
-<p>​    </p>
-<p>当我开始真正爱自己，</p>
-<p>我才明白，我其实一直都在正确的时间，</p>
-<p>正确的地方，发生的一切都恰如其分。</p>
-<p>由此我得以平静。</p>
-<p>今天我明白了，这叫做“自信”。</p>
-<p>​    </p>
-<p>当我真正开始爱自己，</p>
-<p>我不再牺牲自己的自由时间，</p>
-<p>不再去勾画什么宏伟的明天。</p>
-<p>今天我只做有趣和快乐的事，</p>
-<p>做自己热爱，让心欢喜的事，</p>
-<p>用我的方式、我的韵律。</p>
-<p>今天我明白了，这叫做“单纯”。</p>
-<p>​    </p>
-<p>当我开始真正爱自己，</p>
-<p>我开始远离一切不健康的东西。</p>
-<p>不论是饮食和人物，还是事情和环境，</p>
-<p>我远离一切让我远离本真的东西。</p>
-<p>从前我把这叫做“追求健康的自私自利”，</p>
-<p>但今天我明白了，这是“自爱”。</p>
-<p>​    </p>
-<p>当我开始真正爱自己，</p>
-<p>我不再总想着要永远正确，不犯错误。</p>
-<p>我今天明白了，这叫做“谦逊“。</p>
-<p>​    </p>
-<p>当我开始真正爱自己，</p>
-<p>我不再继续沉溺于过去，</p>
-<p>也不再为明天而忧虑，</p>
-<p>现在我只活在一切正在发生的当下，</p>
-<p>今天，我活在此时此地，</p>
-<p>如此日复一日。这就叫“完美”。</p>
-<p>​    </p>
-<p>当我开始真正爱自己，</p>
-<p>我明白，我的思虑让我变得贫乏和病态，</p>
-<p>但当我唤起了心灵的力量，</p>
-<p>理智就变成了一个重要的伙伴，</p>
-<p>这种组合我称之为，“心的智慧”。</p>
-<p>我们无须再害怕自己和他人的分歧，</p>
-<p>矛盾和问题，因为即使星星有时也会碰在一起，形成新的世界，今天我明白，这就是“生命”。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
+  </nav>
 
 
 
@@ -1279,14 +1493,14 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}</script><p><strong>code：</strong><
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">10</span>
+          <span class="site-state-item-count">11</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
