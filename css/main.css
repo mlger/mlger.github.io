@@ -1169,7 +1169,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #8b3c6c;
+  background: #6f1c4a;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -2555,7 +2555,7 @@ mjx-container + br {
   padding: 0;
 }
 body {
-  background: url("https://box.nju.edu.cn/f/66b1fc26fe784af78b1a/?dl=1");
+  background: url("https://raw.githubusercontent.com/mlger/Pict/main/202307042122433.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;

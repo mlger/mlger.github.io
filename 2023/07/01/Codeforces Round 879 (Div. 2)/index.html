@@ -22,15 +22,15 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="传送门：Codeforces Round 879 (Div. 2) 难度适中，但菜鸡依旧。 B. Maximum Strength题意： ​    [l,r] 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 0 对齐。 题解： ​    设 l 和 r 位数分别为 n 和 m ，取的数字为 x">
+  <meta name="description" content="传送门：Codeforces Round 879 (Div. 2) 难度适中，但菜鸡依旧。 B. Maximum Strength 题意： ​ \([l,r]\) 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 \(0\) 对齐。 题解： ​ 设 \(l\) 和 \(r\) 位数分别为 \(n\) 和 \(m\) ，取的数字为 \(x&lt;y\)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Round 879 (Div. 2)">
 <meta property="og:url" content="https://example.com/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="传送门：Codeforces Round 879 (Div. 2) 难度适中，但菜鸡依旧。 B. Maximum Strength题意： ​    [l,r] 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 0 对齐。 题解： ​    设 l 和 r 位数分别为 n 和 m ，取的数字为 x">
+<meta property="og:description" content="传送门：Codeforces Round 879 (Div. 2) 难度适中，但菜鸡依旧。 B. Maximum Strength 题意： ​ \([l,r]\) 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 \(0\) 对齐。 题解： ​ 设 \(l\) 和 \(r\) 位数分别为 \(n\) 和 \(m\) ，取的数字为 \(x&lt;y\)">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-01T13:00:00.000Z">
-<meta property="article:modified_time" content="2023-09-20T06:13:36.974Z">
+<meta property="article:modified_time" content="2023-12-09T13:09:43.300Z">
 <meta property="article:author" content="Lg">
 <meta name="twitter:card" content="summary">
 
@@ -220,7 +220,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-09-20 14:13:36" itemprop="dateModified" datetime="2023-09-20T14:13:36+08:00">2023-09-20</time>
+                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -245,47 +245,51 @@
       
         <p>传送门：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1834">Codeforces Round 879 (Div. 2)</a></p>
 <p>难度适中，但菜鸡依旧。</p>
-<h6 id="B-Maximum-Strength"><a href="#B-Maximum-Strength" class="headerlink" title="B. Maximum Strength"></a>B. Maximum Strength</h6><p><strong>题意：</strong></p>
-<p>​    <script type="math/tex">[l,r]</script> 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 <script type="math/tex">0</script> 对齐。</p>
+<h6 id="b.-maximum-strength">B. Maximum Strength</h6>
+<p><strong>题意：</strong></p>
+<p>​ <span class="math inline">\([l,r]\)</span> 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 <span class="math inline">\(0\)</span> 对齐。</p>
 <p><strong>题解：</strong></p>
-<p>​    设 <script type="math/tex">l</script> 和 <script type="math/tex">r</script> 位数分别为 <script type="math/tex">n</script> 和 <script type="math/tex">m</script> ，取的数字为 <script type="math/tex">x<y</script> ，分情况讨论。</p>
+<p>​ 设 <span class="math inline">\(l\)</span> 和 <span class="math inline">\(r\)</span> 位数分别为 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(m\)</span> ，取的数字为 <span class="math inline">\(x&lt;y\)</span> ，分情况讨论。</p>
 <ul>
-<li>若 <script type="math/tex">n<m</script> ，则最优情况为 <script type="math/tex">x</script> 取 $m-1$ 个 <script type="math/tex">9</script> , <script type="math/tex">y</script> 保留 <script type="math/tex">r</script> 的最高位，剩余位为 <script type="math/tex">0</script></li>
-<li>若 <script type="math/tex">n=m</script> ，则除去相同前缀，然后 <script type="math/tex">y</script> 保留最高位，剩余位为 <script type="math/tex">0</script> ， <script type="math/tex">x</script> 保留最高位，剩余位为 <script type="math/tex">9</script> 即可。</li>
+<li>若 <span class="math inline">\(n&lt;m\)</span> ，则最优情况为 <span class="math inline">\(x\)</span> 取 <span class="math inline">\(m-1\)</span> 个 <span class="math inline">\(9\)</span> , <span class="math inline">\(y\)</span> 保留 <span class="math inline">\(r\)</span> 的最高位，剩余位为 <span class="math inline">\(0\)</span></li>
+<li>若 <span class="math inline">\(n=m\)</span> ，则除去相同前缀，然后 <span class="math inline">\(y\)</span> 保留最高位，剩余位为 <span class="math inline">\(0\)</span> ， <span class="math inline">\(x\)</span> 保留最高位，剩余位为 <span class="math inline">\(9\)</span> 即可。</li>
 </ul>
-<p><strong>code：</strong>  </p>
+<p><strong>code：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    n = s1.length();</span><br><span class="line">    m = s2.length();</span><br><span class="line">    if (n &lt; m) &#123;</span><br><span class="line">        cout &lt;&lt; (s2[0] - &#x27;0&#x27;) + (m - 1) * 9 &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (s1[i] == s2[i]) continue;</span><br><span class="line">            cout &lt;&lt; s2[i] - s1[i] + (n - i - 1) * 9 &lt;&lt; endl;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; 0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="C-Game-with-Reversing"><a href="#C-Game-with-Reversing" class="headerlink" title="C. Game with Reversing"></a>C. Game with Reversing</h6><p><strong>题意：</strong></p>
-<p>​    给定两等长串 <script type="math/tex">S</script> 和 <script type="math/tex">T</script> ， Alice 和 Bob 轮流操作。Alice 每次可以替换一个字符，Bob 每次可以翻转一个串， 当两串相同时，停止操作。Alice 希望操作次数尽量少， Bob 希望操作次数尽量多， 求两个人都采取最优策略的情况下，实际游戏操作次数。</p>
+<h6 id="c.-game-with-reversing">C. Game with Reversing</h6>
+<p><strong>题意：</strong></p>
+<p>​ 给定两等长串 <span class="math inline">\(S\)</span> 和 <span class="math inline">\(T\)</span> ， Alice 和 Bob 轮流操作。Alice 每次可以替换一个字符，Bob 每次可以翻转一个串， 当两串相同时，停止操作。Alice 希望操作次数尽量少， Bob 希望操作次数尽量多， 求两个人都采取最优策略的情况下，实际游戏操作次数。</p>
 <p><strong>题解：</strong></p>
-<p>​    解释起来比较啰嗦，这里简述。    </p>
-<p>​    实际上 Bob 每轮操作都是相同的，因此可以假设 Bob 只翻转一个字符串 <script type="math/tex">T</script> 。</p>
-<p>​    对 Alice 来说，则可以有两种选择，将 <script type="math/tex">S</script> 变为 <script type="math/tex">T</script> 或 <script type="math/tex">rev(T)</script> 。二者最小步数都容易 <script type="math/tex">O(n)</script> 求出。 最后根据实际的奇偶性补齐 Bob 的操作数即可。</p>
+<p>​ 解释起来比较啰嗦，这里简述。</p>
+<p>​ 实际上 Bob 每轮操作都是相同的，因此可以假设 Bob 只翻转一个字符串 <span class="math inline">\(T\)</span> 。</p>
+<p>​ 对 Alice 来说，则可以有两种选择，将 <span class="math inline">\(S\)</span> 变为 <span class="math inline">\(T\)</span> 或 <span class="math inline">\(rev(T)\)</span> 。二者最小步数都容易 <span class="math inline">\(O(n)\)</span> 求出。 最后根据实际的奇偶性补齐 Bob 的操作数即可。</p>
 <p><strong>code：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    int ans1 = 0, ans2 = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (s1[i] != s2[i]) ++ans1;</span><br><span class="line">        if (s1[i] != s2[n - i - 1]) ++ans2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (ans1 &amp; 1) ans1 = ans1 * 2 - 1;</span><br><span class="line">    else ans1 = ans1 * 2;</span><br><span class="line">    if (ans2 &amp; 1) ans2 = ans2 * 2;</span><br><span class="line">    else if (ans2 == 0) ans2 = 2;</span><br><span class="line">    else ans2 = ans2 * 2 - 1;</span><br><span class="line">    cout &lt;&lt; min(ans1, ans2) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="D-Survey-in-Class"><a href="#D-Survey-in-Class" class="headerlink" title="D. Survey in Class"></a>D. Survey in Class</h6><p><strong>题意：</strong></p>
-<p>​    <script type="math/tex">n</script> 位学生，<script type="math/tex">m</script> 个知识点。第 <script type="math/tex">i</script> 个学生学习了 <script type="math/tex">[l_i, r_i]</script> 个知识点。</p>
-<p>​    上课老师提问，每个问题至多提问一次。初始同学分数均为 <script type="math/tex">0</script> ，答对加一分，答错减一分，分数可为负。求最大分差。 </p>
+<h6 id="d.-survey-in-class">D. Survey in Class</h6>
+<p><strong>题意：</strong></p>
+<p>​ <span class="math inline">\(n\)</span> 位学生，<span class="math inline">\(m\)</span> 个知识点。第 <span class="math inline">\(i\)</span> 个学生学习了 <span class="math inline">\([l_i, r_i]\)</span> 个知识点。</p>
+<p>​ 上课老师提问，每个问题至多提问一次。初始同学分数均为 <span class="math inline">\(0\)</span> ，答对加一分，答错减一分，分数可为负。求最大分差。</p>
 <p><strong>题解：</strong></p>
-<p>​    对于线段 <script type="math/tex">[l_1, r_1]</script> 和线段 <script type="math/tex">[l_2,r_2]</script> ，设 <script type="math/tex">r_1<r_2</script> ，则分三种情况讨论：</p>
+<p>​ 对于线段 $ [l_1, r_1] $ 和线段 $ [l_2,r_2] $ ，设 $ r_1&lt;r_2 $ ，则分三种情况讨论：</p>
 <ul>
-<li><script type="math/tex">r_1<l_2</script> ，则最大差值可以分别来源于两线段整段，即 <script type="math/tex">max(r_1-l_1+1, r_2-l_2+1)</script> ；</li>
-<li><script type="math/tex">l_1\leq l_2\leq r_1 \leq r_2</script>，则最大差值来源于二者分别对交集取补，即 <script type="math/tex">max(r_2-r_1, l_2-l_1)</script> ；</li>
-<li><script type="math/tex">l_2\leq l_1 \leq r_1 \leq r_2</script> ，包含关系，最大差值来源于长线段对短线段取补，即 <script type="math/tex">(r_2-l_2+1)-(r_1-l_1+1)</script> 。</li>
+<li>$ r_1&lt;l_2 $ ，则最大差值可以分别来源于两线段整段，即 $ max(r_1-l_1+1, r_2-l_2+1) $ ；</li>
+<li><span class="math inline">\(l_1\leq l_2\leq r_1 \leq r_2\)</span>，则最大差值来源于二者分别对交集取补，即 $ max(r_2-r_1, l_2-l_1) $ ；</li>
+<li>$ l_2l_1 r_1 r_2 $ ，包含关系，最大差值来源于长线段对短线段取补，即 $ (r_2-l_2+1)-(r_1-l_1+1) $ 。</li>
 </ul>
-<p>​    将每条线段按右端点排序，枚举线段 <script type="math/tex">[l_2,r_2]</script> ， 目标是找出对应的 <script type="math/tex">[l_1, r_1]</script> ， 三种情况分别需要求：</p>
+<p>​ 将每条线段按右端点排序，枚举线段 <span class="math inline">\([l_2,r_2]\)</span> ， 目标是找出对应的 <span class="math inline">\([l_1, r_1]\)</span> ， 三种情况分别需要求：</p>
 <ul>
-<li>右端点小于 <script type="math/tex">l_2</script> 的直线中，<script type="math/tex">r-l+1</script> 的最大值</li>
-<li>相交直线中， <script type="math/tex">r</script> 的最小值以及 <script type="math/tex">l</script> 的最小值</li>
-<li>左端点大于等于 <script type="math/tex">l_2</script> 的直线中， <script type="math/tex">r-l+1</script> 的最小值</li>
+<li>右端点小于 <span class="math inline">\(l_2\)</span> 的直线中，<span class="math inline">\(r-l+1\)</span> 的最大值</li>
+<li>相交直线中， <span class="math inline">\(r\)</span> 的最小值以及 <span class="math inline">\(l\)</span> 的最小值</li>
+<li>左端点大于等于 <span class="math inline">\(l_2\)</span> 的直线中， <span class="math inline">\(r-l+1\)</span> 的最小值</li>
 </ul>
-<p>​    四个值四棵动态开点线段树维护即可。</p>
+<p>​ 四个值四棵动态开点线段树维护即可。</p>
 <p><strong>code：</strong></p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x7fffffff</span><br><span class="line">int cnt = 0;</span><br><span class="line">const int N = 4e5 + 5;</span><br><span class="line">int dat[N &lt;&lt; 5], lc[N &lt;&lt; 5], rc[N &lt;&lt; 5];</span><br><span class="line"></span><br><span class="line">void update(int &amp;p, int l, int r, int k, int val) &#123;</span><br><span class="line">    if (!p) p = ++cnt, dat[p] = inf;</span><br><span class="line">    if (l == r) return (void) (dat[p] = min(dat[p], val));</span><br><span class="line">    int mid = l + r &gt;&gt; 1;</span><br><span class="line">    if (k &lt;= mid) update(lc[p], l, mid, k, val);</span><br><span class="line">    else update(rc[p], mid + 1, r, k, val);</span><br><span class="line">    dat[p] = inf;</span><br><span class="line">    if (lc[p]) dat[p] = min(dat[p], dat[lc[p]]);</span><br><span class="line">    if (rc[p]) dat[p] = min(dat[p], dat[rc[p]]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline int query(int p, int l, int r, int u, int v) &#123;</span><br><span class="line">    if (!p) return inf;</span><br><span class="line">    if (u &lt;= l &amp;&amp; r &lt;= v) return dat[p];</span><br><span class="line">    int mid = l + r &gt;&gt; 1, res = inf;</span><br><span class="line">    if (u &lt;= mid) res = min(res, query(lc[p], l, mid, u, v));</span><br><span class="line">    if (v &gt; mid) res = min(res, query(rc[p], mid + 1, r, u, v));</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(pair&lt;int, int&gt; A, pair&lt;int, int&gt; B) &#123;</span><br><span class="line">    return A.second == B.second ? A.first &lt; B.first : A.second &lt; B.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solve() &#123;</span><br><span class="line">#define mp(x, y) make_pair(x, y)</span><br><span class="line">    int t1 = 0, t2 = 0, t3 = 0, t4 = 0;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;pair&lt;int, int&gt; &gt; Stu(n);</span><br><span class="line">    for (int i = 0, l, r; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        Stu[i] = mp(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(Stu.begin(), Stu.end(), cmp);</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (auto stu: Stu) &#123;</span><br><span class="line">        int l = stu.first, r = stu.second;</span><br><span class="line">        int rem;</span><br><span class="line">        rem = -query(t1, 0, m, 0, l - 1);</span><br><span class="line">        if (rem != -inf) ans = max(ans, max(rem &lt;&lt; 1, (r - l + 1) &lt;&lt; 1));</span><br><span class="line">        update(t1, 0, m, r, l - r - 1);</span><br><span class="line"></span><br><span class="line">        rem = query(t2, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (r - rem) &lt;&lt; 1);</span><br><span class="line">        update(t2, 0, m, r, r);</span><br><span class="line"></span><br><span class="line">        rem = query(t3, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (l - rem) &lt;&lt; 1);</span><br><span class="line">        update(t3, 0, m, r, l);</span><br><span class="line"></span><br><span class="line">        rem = query(t4, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, ((r - l + 1) - rem) &lt;&lt; 1);</span><br><span class="line">        update(t4, 0, m, l, r - l + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="E-MEX-of-LCM"><a href="#E-MEX-of-LCM" class="headerlink" title="E. MEX of LCM"></a>E. MEX of LCM</h5><p><strong>题意：</strong></p>
-<p>​    题如其名。给定 <script type="math/tex">n</script> 个数，则对应的有 <script type="math/tex">C_n^2</script> 个连续子序列。求所有子序列数值 <script type="math/tex">lcm</script> 的 <script type="math/tex">Mex</script> 。</p>
+<h5 id="e.-mex-of-lcm">E. MEX of LCM</h5>
+<p><strong>题意：</strong></p>
+<p>​ 题如其名。给定 <span class="math inline">\(n\)</span> 个数，则对应的有 <span class="math inline">\(C_n^2\)</span> 个连续子序列。求所有子序列数值 <span class="math inline">\(lcm\)</span> 的 <span class="math inline">\(Mex\)</span> 。</p>
 <p><strong>题解：</strong></p>
-<p>​    同样是利用好值域。 对于区间 <script type="math/tex">[l,r]</script> ，固定住右端点 <script type="math/tex">r</script> ，则至多还剩下 <script type="math/tex">r</script> 个左端点，对应 <script type="math/tex">r</script> 个区间。这 <script type="math/tex">r</script> 个区间有多少 <script type="math/tex">lcm</script> 值？从 <script type="math/tex">l=r</script> 开始，每次向左添加一个数， <script type="math/tex">lcm</script> 要么不变， 要么至少翻一倍，因此 <script type="math/tex">lcm</script> 值的数目是 <script type="math/tex">log</script> 级别的。因此整个序列所有 <script type="math/tex">lcm</script> 值的数目不超过 <script type="math/tex">nlogn</script> ，迭代求出然后求 <script type="math/tex">Mex</script> 即可。复杂度 <script type="math/tex">O(nlogn)</script></p>
+<p>​ 同样是利用好值域。 对于区间 <span class="math inline">\([l,r]\)</span> ，固定住右端点 <span class="math inline">\(r\)</span> ，则至多还剩下 <span class="math inline">\(r\)</span> 个左端点，对应 <span class="math inline">\(r\)</span> 个区间。这 <span class="math inline">\(r\)</span> 个区间有多少 <span class="math inline">\(lcm\)</span> 值？从 <span class="math inline">\(l=r\)</span> 开始，每次向左添加一个数， <span class="math inline">\(lcm\)</span> 要么不变， 要么至少翻一倍，因此 <span class="math inline">\(lcm\)</span> 值的数目是 <span class="math inline">\(log\)</span> 级别的。因此整个序列所有 <span class="math inline">\(lcm\)</span> 值的数目不超过 <span class="math inline">\(nlogn\)</span> ，迭代求出然后求 <span class="math inline">\(Mex\)</span> 即可。复杂度 <span class="math inline">\(O(nlogn)\)</span></p>
 <p><strong>code：</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">long</span> <span class="type">long</span> <span class="title">lcm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> x, <span class="type">long</span> <span class="type">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x / __gcd(x, y) * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> inf = <span class="number">1ll</span> * n * n + <span class="number">2</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">num</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; num[i];</span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; s;	<span class="comment">//以r-1为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; rem; <span class="comment">//以r为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; ans;	<span class="comment">//所有lcm序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: num) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> p = <span class="built_in">lcm</span>(y, x);</span><br><span class="line">            <span class="keyword">if</span> (p &lt;= inf) rem.<span class="built_in">insert</span>(p);</span><br><span class="line">        &#125;</span><br><span class="line">        rem.<span class="built_in">insert</span>(x);</span><br><span class="line">        s.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: rem) s.<span class="built_in">insert</span>(y);</span><br><span class="line">        rem.<span class="built_in">clear</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) ans.<span class="built_in">insert</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> now = <span class="number">1</span>;</span><br><span class="line">    ans.<span class="built_in">insert</span>(inf);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: ans) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x != now) &#123;</span><br><span class="line">            cout &lt;&lt; now &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ++now;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -368,7 +372,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#B-Maximum-Strength"><span class="nav-number">1.</span> <span class="nav-text">B. Maximum Strength</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#C-Game-with-Reversing"><span class="nav-number">2.</span> <span class="nav-text">C. Game with Reversing</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#D-Survey-in-Class"><span class="nav-number">3.</span> <span class="nav-text">D. Survey in Class</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#E-MEX-of-LCM"><span class="nav-number"></span> <span class="nav-text">E. MEX of LCM</span></a></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-6"><a class="nav-link" href="#b.-maximum-strength"><span class="nav-number">1.</span> <span class="nav-text">B. Maximum Strength</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#c.-game-with-reversing"><span class="nav-number">2.</span> <span class="nav-text">C. Game with Reversing</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#d.-survey-in-class"><span class="nav-number">3.</span> <span class="nav-text">D. Survey in Class</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#e.-mex-of-lcm"><span class="nav-number"></span> <span class="nav-text">E. MEX of LCM</span></a></div>
       </div>
       <!--/noindex-->
 
@@ -504,44 +508,52 @@
 
 <script>
   if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
     window.MathJax = {
-      loader: {
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
       }
     };
     (function () {
       var script = document.createElement('script');
-      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
       script.defer = true;
       document.head.appendChild(script);
     })();
