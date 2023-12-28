@@ -643,7 +643,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-16 20:49:14" itemprop="dateModified" datetime="2023-12-16T20:49:14+08:00">2023-12-16</time>
+                <time title="修改时间：2023-12-28 19:17:40" itemprop="dateModified" datetime="2023-12-28T19:17:40+08:00">2023-12-28</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -666,15 +666,238 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/11/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C05-%E8%BF%90%E8%BE%93%E5%B1%82/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h3 id="运输层概述">5.1 运输层概述</h3>
+<h5 id="基础知识补充">5.1.1 基础知识补充</h5>
+<p>​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个<strong>进程</strong>与另一台主机一个的<strong>进程</strong>。</p>
+<p>​ 因此，运输层有一个比较重要的功能——<strong>复用 (multiplexing) </strong>和<strong>分用 (demultiplexing)</strong>。复用是指发送端不同应用程序可以使用哦个同一个运输层传输协议。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121160059831.png" alt="image-20231121160059831" /><figcaption aria-hidden="true">image-20231121160059831</figcaption>
+</figure>
+<p>​ 由图观之，网络层为主机之间提供逻辑通信，而运输层为进程之间提供逻辑通信。</p>
+<h5 id="运输层的端口">5.1.2 运输层的端口</h5>
+<p>​ 单个计算机用的是进程标识符，但由于计算机操作系统种类很多，因此使用该种进程标识符来表示进程并不合适。</p>
+<p>​ 此外，由于进程创建撤销均是动态的，通信一方几乎无法识别对方机器上的进程，因而将特定进程指名为终点是不可行的。</p>
+<p>​ 解决方案是运输层采用<strong>协议端口号 (protocol port number)</strong>，或简称为<strong>端口 (port)</strong>。这种抽象的协议端口是<strong>软件端口</strong>。端口号只具有<strong>本地意义</strong>，只是为了标志<strong>本计算机</strong>应用层中的各个进程在运输层交互时的层间接口。不同计算机相同端口号是<strong>没有关联</strong>的。</p>
+<p>​ 运输层端口号分为两大类：</p>
+<ul>
+<li><strong>服务器端使用的端口号</strong>：又分为两种
+<ul>
+<li>熟知端口号：又称<strong>系统端口号</strong>。</li>
+<li>系统端口号：又称<strong>短暂端口号</strong>，通信结束就回收可给其它进程使用。</li>
+</ul></li>
+</ul>
+<h5 id="运输层两个协议">5.1.3 运输层两个协议</h5>
+<p>​ <strong>用户数据报协议 UDP (User Datagram Protocol)</strong>：传输前无需建立连接，不提供可靠交付，且较为简单。</p>
+<p>​ <strong>传输控制协议 TCP (Transmission Control Protocol)</strong>：提供<strong>面向连接</strong>的服务，但不提供广播或多播服务，较为复杂。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162255202.png" alt="image-20231121162255202" /><figcaption aria-hidden="true">image-20231121162255202</figcaption>
+</figure>
+<p>​ 接下来将详细阐述两个协议的内容及要点。</p>
+<h4 id="用户数据报协议-udp">5.2 用户数据报协议 UDP</h4>
+<p>​ UDP 有主要特点如：</p>
+<ul>
+<li>UDP 是无连接的。</li>
+<li>UDP 使用尽最大努力的交付。</li>
+<li>UDP 是面向报文的。直接将来自应用程序的报文添加首部后即交付 IP 层，因此报文大小的缺点需由应用程序负责。</li>
+<li>UDP 无拥塞控制。</li>
+<li>UDP 支持<strong>一对一</strong>、<strong>一对多</strong>、<strong>多对一</strong>和<strong>多对多</strong>交互通信。</li>
+<li>UDP 首部开销小，止 8 字节。</li>
+</ul>
+<p>​ 首部格式如图：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162325100.png" alt="image-20231121162325100" /><figcaption aria-hidden="true">image-20231121162325100</figcaption>
+</figure>
+<p>​ 若接收方发现收到端口号不正确，则丢弃并由网际控制报文协议 ICMP 发送”端口不可达“差错报文。</p>
+<p>​ ”伪首部“的出现是为了计算检验和，在实际传输中并不存在。检验和为 UDP 数据报每一个 16 位字之和的反码，到接收端再与每一 16 位字相加，最终结果为全 1 即无差错。</p>
+<h4 id="传输控制协议-tcp-概述">5.3 传输控制协议 TCP 概述</h4>
+<h5 id="tcp-协议主要特点">5.3.1 TCP 协议主要特点</h5>
+<ol type="1">
+<li><strong>面向连接</strong>，使用前建立连接，使用后释放连接。</li>
+<li>只能是<strong>点对点</strong>的通信。</li>
+<li>提供<strong>可靠交付</strong>，无差错，不丢失，不重复，且按序到达。</li>
+<li>提供<strong>全双工通信</strong>。</li>
+<li>面向<strong>字节流</strong>。流是指<strong>流入到进程或从进程流出的字节序列</strong>。</li>
+</ol>
+<h5 id="tcp-的连接">5.3.2 TCP 的连接</h5>
+<p>​ TCP 连接的端点叫<strong>套接字 (socket)</strong> 或<strong>插口</strong>，我们由： <span class="math display">\[
+socket = (IP:port)\\
+TCP\ link::=\{socket1,socket_2\}=\{(IP_1:port_1),(IP_2:port_2)\}
+\]</span></p>
+<h4 id="可靠传输工作原理">5.4 可靠传输工作原理</h4>
+<p>​ 理想传输条件两大特点：</p>
+<ul>
+<li>传输信道不产生差错。</li>
+<li>不论发送端以多快速度发送数据，接收端总来得及处理收到数据。</li>
+</ul>
+<h5 id="停止等待协议">5.4.1 停止等待协议</h5>
+<p>​ 假定 A 与 B 之间进行通讯。</p>
+<h6 id="无差错情况">5.4.1.1 无差错情况</h6>
+<p>​ 无差错时，A 发予 B 一个分组，B 接受后对 A 发送该分组的确认，A 收到确认后继续发送下一分组，如此往复。</p>
+<h6 id="出现差错">5.4.1.2 出现差错</h6>
+<p>​ B 接受到分组时除了差错并丢弃，或是分组在传输中丢失，B 都不会发送任何消息。A 过了一段时间没收到确认，就执行<strong>超时重传</strong>。为实现超时重传，每发送一个分组设置一个<strong>超时计时器</strong>。若计时器到期前收到确认，则撤销计时器。</p>
+<ul>
+<li>A 发送完分组必须保存副本以备重传。</li>
+<li>分组与确认分组必须<strong>编号</strong>。</li>
+<li>重传时间应稍大于平均往返时间，提升效率节省资源。</li>
+</ul>
+<h6 id="确认丢失与确认迟到">5.4.1.3 确认丢失与确认迟到</h6>
+<p>​ 倘如 B 接收到分组 <span class="math inline">\(M_1\)</span>，但发回 A 的确认丢失，A 执行重传，B 又收到了相同的分组，此时应作两个动作：</p>
+<ul>
+<li><strong>丢弃重复分组。</strong></li>
+<li><strong>向 A 发送确认。</strong></li>
+</ul>
+<p>​ 这种可靠传输协议通常称<strong>自动重传请求 ARQ (Automatic Repeat reQuest)</strong>。</p>
+<p>​ 重传协议的优点是简单，但缺点是信道利用率低。 <span class="math display">\[
+U = \frac{T_D}{T_D+RTT+T_A}
+\]</span> <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184735026.png" alt="image-20231121184735026" /></p>
+<p>​ 为了提高传输效率，我们采用<strong>流水线传输</strong>。为此引出下面一堆芝士。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184822027.png" alt="image-20231121184822027" /><figcaption aria-hidden="true">image-20231121184822027</figcaption>
+</figure>
+<h5 id="连续-arq-协议">5.4.2 连续 ARQ 协议</h5>
+<p>​ 核心概念是<strong>窗口</strong>，窗口大小设定为 size。</p>
+<p>每次，发送端将窗口内连续的分组全部发送出去，接收端采用<strong>雷击确认</strong>方式，对按序到达的最后一个分组发送确认。发送端每收到一个确认，就进行调整把滑动窗口前移。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184940413.png" alt="image-20231121184940413" /><figcaption aria-hidden="true">image-20231121184940413</figcaption>
+</figure>
+<h4 id="tcp-报文段首部格式">5.5 TCP 报文段首部格式</h4>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121185758124.png" alt="image-20231121185758124" /><figcaption aria-hidden="true">image-20231121185758124</figcaption>
+</figure>
+<ul>
+<li><strong>确认号</strong>：期望收到下一个报文段的第一个数据字节的序号。</li>
+</ul>
+<blockquote>
+<p>若确认号 = N，则表明：到序号 N-1 为止所有的数据都已经收到。</p>
+</blockquote>
+<ul>
+<li><strong>紧急 URG (URGent)</strong>：置为 1 时，紧急指针字段有效，应尽快传送。</li>
+<li><strong>确认 ACK (ACKnowledgment)</strong>：置为 1 时确认号才有效。TCP 规定建立连接后所有报文段 ACK 都必须置为 1。</li>
+<li><strong>同步 SYN (SYNchronization)</strong>：置为 1 表示是一个连接请求或连接接受报文。</li>
+<li><strong>窗口</strong>：接收方让发送方设置其发送窗口的依据。窗口字段指出了现在允许对方发送的数据量。窗口值经常动态变化着。</li>
+<li><strong>紧急指针</strong>：指出紧急数据字节数。</li>
+<li>选项
+<ul>
+<li>TCP 最初只规定一种选项，<strong>最大报文长度 MSS (Maximum Segment Size)</strong>，指的是每一个 TCP 报文段<strong>数据字段最大长度</strong>，默认值为 536 字节。</li>
+<li>后续增加<strong>窗口扩大</strong>选项，TCP 首部窗口是 16 位，窗口扩大选项占 3 字节，其中一个字节表示移位值 S，位数从 16 增大到 (16 + S)，且 S 最大值为 14。无需扩大时，可以发送 S = 0 的选项。</li>
+<li><strong>时间戳</strong>，一是用于计算往返时间 RTT，二是处理 TCP 序号溢出的情况。</li>
+</ul></li>
+</ul>
+<h4 id="tcp-可靠传输的实现">5.6 TCP 可靠传输的实现</h4>
+<h5 id="补充">5.6.1 补充</h5>
+<p>​ TCP 滑动窗口也有可能后缩，但 TCP 标准<strong>墙裂不推荐这么做</strong>。重传机制已如上讲述。</p>
+<p>​ 发送缓存暂时存放：</p>
+<ul>
+<li>发送程序传送给发送方 TCP 准备发送的数据；</li>
+<li>TCP 已发送但未收到确认的数据。</li>
+</ul>
+<p>​ 接收缓存暂时存放：</p>
+<ul>
+<li>按序到达但尚未被接收程序读取的数据；</li>
+<li>未按序到达的数据。</li>
+</ul>
+<p>​ 对于未按序到达的数据，TCP 标注并无明确规定如何处理。一般是待缺失的数据流收到后，再按序交付上层。</p>
+<h5 id="超时重传时间的选择">5.6.2 超时重传时间的选择</h5>
+<p>​ 采用自适应算法。<strong>RTT：往返时间。RTO：超时重传时间</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192544945.png" alt="image-20231121192544945" /><figcaption aria-hidden="true">image-20231121192544945</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192652649.png" alt="image-20231121192652649" /><figcaption aria-hidden="true">image-20231121192652649</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192657432.png" alt="image-20231121192657432" /><figcaption aria-hidden="true">image-20231121192657432</figcaption>
+</figure>
+<p>​ <strong>Karn 算法及修正</strong>：计算加权 RTTS 时，不考虑重传段。每重传一次，将 RTO 加倍。</p>
+<h4 id="tcp-流量控制">5.7 TCP 流量控制</h4>
+<p>​ 流量控制就是<strong>让发送方发送速率不要太快，让接收方来得及接收</strong>。</p>
+<p>​ 发送方的窗口不能超过接收方给出的接收窗口的数值。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121194421960.png" alt="image-20231121194421960" /><figcaption aria-hidden="true">image-20231121194421960</figcaption>
+</figure>
+<p>​ 若 B 向 A 发送零窗口后， 又有了存储空间，继续发送 rwnd = 400 的报文段，却于传输途中丢失，A 一直等待 B 的通知，而 B 也一直等待 A 的报文段，若没有其它措施，死锁局面将一直持续下去。为此，TCP 为每个连接设有一个<strong>持续计时器 (persistence timer)</strong>。只要一方收到对方零窗口通知则启动计时器，时间到期则发送零窗口<strong>探测报文段（仅携带 1 字节数据）</strong>。若窗口值确实为 0，就重置，否则死锁局面被打破。</p>
+<p>​ TCP 的实现广泛使用 Nagle 算法：若进程把数据逐字节发送到 TCP 缓存，则发送方把第一个数据字节先发送出去，把后面到达的全部缓存。当收到第一个数据字符确认后，再把缓存中所有数据组装成一个报文发送出去，对随后到达的数据缓存。仅当收到前一个段的确认后才发送下一个段。当到达数据已经到达发送窗口大小一般或最大报文长度，就立即发送。 这种算法可以有效提高网络吞吐量。</p>
+<p>​ <strong>窗口糊涂综合征：</strong>TCP 接收方缓存已满，而交互式应用进程每次只从接收缓存中读取 1 字节。接收方发回确认，将窗口置位 1 字节。如此下去，效率很低。为解决此问题，可以让接收方等待一段时间，待缓存能容纳一个最长报文段或有一半闲余空间，发出确认报文，并通知当前窗口大小。</p>
+<h4 id="tcp-拥塞控制">5.8 TCP 拥塞控制</h4>
+<h5 id="拥塞控制一般原理">5.8.1 拥塞控制一般原理</h5>
+<p><span class="math display">\[
+\sum对资源需求&gt;可用资源
+\]</span></p>
+<p>​ 拥塞控制即<strong>防止过多数据注入到网络中，可以使网络中路由器或链路不至过载</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121202516053.png" alt="image-20231121202516053" /><figcaption aria-hidden="true">image-20231121202516053</figcaption>
+</figure>
+<p>​ 拥塞控制分为<strong>开环控制</strong>与<strong>闭环控制</strong>两种。开环控制是再设计网络时事先将有关发生拥塞的因素考虑到，但系统运行后就不做改变了。</p>
+<p>​ 闭环控制基于环路反馈，有如下措施：</p>
+<ul>
+<li>检测网络系统以定位拥塞。</li>
+<li>将拥塞信息传送到可采取行动的地方。</li>
+<li>调整网络系统运行以解决问题。</li>
+</ul>
+<h5 id="拥塞控制方法">5.8.2 拥塞控制方法</h5>
+<p>​ <strong>慢开始</strong>、<strong>拥塞避免</strong>、<strong>快重传</strong>、<strong>快恢复</strong>四种算法。</p>
+<ul>
+<li>慢开始：发送方维护一个<strong>拥塞窗口 cwnd (congestion winodw)</strong> 变量，发送时<strong>发送窗口等于拥塞窗口</strong>。以超时为依据判断网络拥塞，自小到大采用倍增增大拥塞窗口。</li>
+</ul>
+<p><span class="math display">\[
+\Delta cwnd =min(N,SMSS)
+\]</span></p>
+<p>​ 用报文段个数作为窗口大小单位，每经过一个传输轮次，cwnd 加倍。</p>
+<ul>
+<li>拥塞避免算法：每经过一个 RTT 就让 cwnd 加 1，呈线性缓慢增长。</li>
+</ul>
+<p>​ 实际操作中，慢开始和拥塞避免是配合使用的。设定一个 ssthresh 值，cwnd 小于该值，用慢启动；cwnd 大于该值，用拥塞避免；等于二者均可。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121203427954.png" alt="image-20231121203427954" /><figcaption aria-hidden="true">image-20231121203427954</figcaption>
+</figure>
+<p>​ 超时则门限值置为当前 cwnd 的一半。当 B 端收到无序帧时，仍然发送对最前端已确认帧的确认，当 A 端收到一连三个确认帧，即可视为发生了数据丢失。</p>
+<p>​ <strong>快恢复算法</strong>：发送端得知丢失个别报文段，便不进行慢启动，二是置拥塞窗口 sstresh = cwnd = cwnd / 2，并执行拥塞避免算法。</p>
+<p>​ 拥塞避免阶段窗口线性增大，称为<strong>加法增大 AI (Additive Increase)</strong>。出现拥塞将门限值调整为原来一半，称为<strong>乘法减小 MD (Multiplicative Decrease)</strong>。二者结合即 AIMD 算法。</p>
+<p>​ 同时发送窗口不得超过接收端窗口上限 rwnd。故有： <span class="math display">\[
+发送窗口上限 = min[rwnd,cwnd]
+\]</span></p>
+<h5 id="主动队列管理-aqm">5.8.3 主动队列管理 AQM</h5>
+<p>​ 路由器队列管理通常按照<strong>先进先出 FIFO</strong> 规则处理到来数据，当队列满时丢弃后续到达所有分组，称为<strong>尾部丢弃策略</strong>。但这种做法会导致短时间内大量连接同时进入满开始阶段，称为<strong>全局同步 (global syncronization)</strong>。</p>
+<p>​ 为避免这种情况。出现了<strong>主动队列管理 AQM (Active Queue Management)</strong>，当队列长度达到某个警惕值时丢弃到达分组。曾流行的实现方法是<strong>随即早期检测 RED (Random Early Detection)</strong>，描述如下：</p>
+<ul>
+<li>若平均队列长小于最小门限，则将新分组加入队列。</li>
+<li>若超过最大门限，则丢弃新分组。</li>
+<li>若介于二者之间，则按某一丢弃概率 p 将新分组丢弃。</li>
+</ul>
+<h4 id="tcp-运输连接管理">5.9 TCP 运输连接管理</h4>
+<p>​ 主动发起连接的进程称为<strong>客户 (client)</strong>，被动等待连接的进程称为<strong>服务器 (sever)</strong>。</p>
+<h5 id="tcp-连接的建立">5.9.1 TCP 连接的建立</h5>
+<p>​ 三次握手协议：（来自亲爱的 ChatGPT）</p>
+<ul>
+<li><strong>第一步 - 客户端发送连接请求：</strong>
+<ul>
+<li>客户端首先向服务器发送一个TCP报文，标志位中设置了SYN（同步）标志，并选择一个初始序列号（Initial Sequence Number）。</li>
+<li>这个报文包含了客户端的一些连接参数，如MSS（Maximum Segment Size），表示客户端能够接受的最大报文段大小。</li>
+</ul></li>
+<li><strong>第二步 - 服务器确认请求并发送自己的连接请求：</strong>
+<ul>
+<li>服务器接收到客户端的SYN报文后，会回复一个确认报文，其中设置了SYN和ACK（确认）标志。</li>
+<li>服务器也会选择一个自己的初始序列号，并在确认中包含自己的一些连接参数，如MSS。</li>
+</ul></li>
+<li><strong>第三步 - 客户端确认服务器的连接请求：</strong>
+<ul>
+<li>客户端接收到服务器的确认后，会向服务器发送一个确认报文，其中设置了ACK标志。</li>
+<li>这个确认报文不包含SYN标志，因为连接已经建立。</li>
+<li>服务器收到这个确认后，连接建立完成。</li>
+</ul></li>
+</ul>
+<h5 id="tcp-连接释放">5.9.2 TCP 连接释放</h5>
+<ol type="1">
+<li>A 的进程线向其 TCP 发出连接释放报文段，并停止发送数据，主动关闭 TCP 连接。FIN 报文消耗一个序号，即使不携带数据。</li>
+<li>B 收到报文段后立即发出确认，确认好 ack = u + 1，从 A 到 B 的连接即释放了，但从 B 到 A 的连接仍未释放，TCP 处于<strong>半关闭</strong>状态。</li>
+<li>若 B 依据没有要向 A 发送数据，则发出释放报文，假定序号为 w。A 收到后，必须发出确认，ack = w + 1，序号为 seq = u + 1，经过<strong>等待计时器</strong>设置的时间 2MSL 后， A 进入 CLOSED 状态。，MSL 是<strong>最长报文段寿命</strong>。</li>
+</ol>
+<p>​ 此外，TCP 设有一个<strong>保活计时器</strong>，每个一段时间发送探测字段，若一连几个都收不到回应，则关闭连接。</p>
+<h5 id="tcp-有限状态机">5.9.3 TCP 有限状态机</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231122081330855.png" alt="image-20231122081330855" /><figcaption aria-hidden="true">image-20231122081330855</figcaption>
+</figure>
+
       
     </div>
 
@@ -724,7 +947,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-16 20:49:28" itemprop="dateModified" datetime="2023-12-16T20:49:28+08:00">2023-12-16</time>
+                <time title="修改时间：2023-12-27 20:23:45" itemprop="dateModified" datetime="2023-12-27T20:23:45+08:00">2023-12-27</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -747,15 +970,420 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2023/11/20/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C04-%E7%BD%91%E7%BB%9C%E5%B1%82/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
+          <h4 id="网络层提供的两种服务">4.1 网络层提供的两种服务</h4>
+<p>​ 电信网采用<strong>面向连接</strong>的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立<strong>虚电路</strong>进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。</p>
+<p>​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：<strong>网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务</strong>。<strong>网络层不提供服务质量的承诺</strong>，可靠传输由网络主机中的运输层保障。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png" alt="image-20231118144200510" /><figcaption aria-hidden="true">image-20231118144200510</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png" alt="image-20231118163954841" /><figcaption aria-hidden="true">image-20231118163954841</figcaption>
+</figure>
+<h4 id="网际协议-ip">4.2 网际协议 IP</h4>
+<p>​ 与 IP 协议配套的三个协议：</p>
+<ul>
+<li><strong>地址解析协议 ARP (Address Resolution Protocol)</strong></li>
+<li><strong>网际控制报文协议 ICMP (Internet Control Message Protocol)</strong></li>
+<li><strong>网际组管理协议 IGMP (Internet Group Management Protocol)</strong></li>
+</ul>
+<p>​ 三协议关系如下：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118164422575.png" alt="image-20231118164422575" /><figcaption aria-hidden="true">image-20231118164422575</figcaption>
+</figure>
+<p>​ TCP/IP 协议中的网络层常常被称为<strong>网际层</strong>或 <strong>IP 层</strong>。</p>
+<h5 id="虚拟互联网络">4.2.1 虚拟互联网络</h5>
+<p>​ <strong>没有一种单一的网络能够适应所有用户的需求</strong>。将网络连接起来需要一些不同的中间设备，一般有如下四种：</p>
+<ul>
+<li>物理层：<strong>转发器 (repeater)</strong></li>
+<li>数据链路层：<strong>网桥</strong>或<strong>桥接器 (bridge)</strong></li>
+<li>网络层：<strong>路由器</strong></li>
+<li>网络层以上：<strong>网关 (gateway)</strong></li>
+</ul>
+<p>​ 由于历史原因，许多 TCP/IP 的文献曾把网络层使用的路由器称为网关。</p>
+<p>​ 参与互连的计算机网络都是用相同的网际协议 IP，因此可以看作一个大的虚拟互连网络。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118170200174.png" alt="image-20231118170200174" /><figcaption aria-hidden="true">image-20231118170200174</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181737412.png" alt="image-20231118181737412" /><figcaption aria-hidden="true">image-20231118181737412</figcaption>
+</figure>
+<h5 id="分类的-ip-地址">4.2.2 分类的 IP 地址</h5>
+<p><span class="math display">\[
+IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
+\]</span></p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181859665.png" alt="image-20231118181859665" /><figcaption aria-hidden="true">image-20231118181859665</figcaption>
+</figure>
+<p>​ 其中 D 类地址用于<strong>多播</strong>。</p>
+<p>​ <strong>点分十进制表示法</strong>：32 位 IPv4 地址，八位一段点分隔，每段十进制表示。</p>
+<p>​ 常用的三种类别 IP 地址</p>
+<ul>
+<li>A 类地址：
+<ul>
+<li>网络号占一个字节，第一位固定为 0，共 126 (<span class="math inline">\(2^7-2\)</span>) 个可分配，全 0 表示 "this"，意为“本网络”， 127 (01111111) 保留作为本地软件<strong>环回测试</strong>本主机进程之间通信之用。</li>
+<li>主机号占三个字节，因此一个 A 类网络号最大主机数为 <span class="math inline">\(2^{24}-2\)</span> 。全 0 表示本主机连接到的单个网络地址，全 1 表示该网络上的所有主机。</li>
+</ul></li>
+<li>B 类地址：
+<ul>
+<li>网络号占两个字节，前两位固定为 10，共 <span class="math inline">\(2^{14}-1\)</span> 个可分配，128.0.0.0不指派。最大主机数 65534，扣除全 0 和全 1。</li>
+</ul></li>
+<li>C类地址：
+<ul>
+<li>网络号占三个字节，前三位固定 110，192.0.0.0 不指派，因此 <span class="math inline">\(2^{21}-1\)</span> 个网络号。每个 C 类地址最大主机数 254。</li>
+</ul></li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118183641070.png" alt="image-20231118183641070" /><figcaption aria-hidden="true">image-20231118183641070</figcaption>
+</figure>
+<p>​ 两个路由器相连，在连线两端的接口处可分配也可不分配 IP 地址。节省资源则不分配，常称为 <strong>无编号网络</strong>或<strong>无名网络</strong>。</p>
+<h5 id="ip-地址与硬件地址">4.2.3 IP 地址与硬件地址</h5>
+<p>​ <strong>物理地址是数据链路层和物理层使用的地址，</strong>而 <strong>IP 地址是网络层和以上各层使用的地址，是一种逻辑地址。</strong></p>
+<p>​ 在通讯过程，数据从高层下到低层，层层封装，然后才到链路上传输。设备在收到 MAC 帧时，根据首部硬件地址决定收下或丢弃。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118184141275.png" alt="image-20231118184141275" /><figcaption aria-hidden="true">image-20231118184141275</figcaption>
+</figure>
+<p>​ <strong>IP 层抽象的互联网上只能看到 IP 数据报</strong>。</p>
+<p>​ <strong>虽然 IP 数据报有源地址，但路由器只根据目的站 IP 地址的网络号进行路由选择</strong>。</p>
+<h5 id="地址解析协议-arp">4.2.4 地址解析协议 ARP</h5>
+<p>​ 知道 IP 地址，找出其相应的硬件地址。ARP 在主机 ARP 高速缓存 (<strong>APR cache</strong>) 中存放一个有<strong>本局域网</strong>上的各主机和路由器 IP 到硬件地址的映射表，并且映射表经常动态更新。</p>
+<p>​ 当 A 向 B 发送 IP 数据报时，先在其 ARP cache 中查找，若查不到，则 ARP 进程广播 ARP 请求分组，除 B 外的主机不响应，B 则响应并向 A 发送 ARP 响应分组（单播），且 B 也将 A 的物理地址写入 cache 中。</p>
+<p>​ ARP 解决的是<strong>同一个局域网</strong>上的映射问题。</p>
+<h5 id="ip-数据报的格式">4.2.5 IP 数据报的格式</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118200817531.png" alt="image-20231118200817531" /><figcaption aria-hidden="true">image-20231118200817531</figcaption>
+</figure>
+<ul>
+<li><strong>版本</strong>：4 位，指版本号，实际使用的只有 IPv4 和 IPv6。</li>
+<li><strong>首部长度</strong>：4 位，单位是 32 位字（即 4 字节）</li>
+<li><strong>区分服务</strong>：8 位，一般情况不使用</li>
+<li><strong>总长度</strong>：首部和数据之和的长度，16 位，因此数据报最大长度为 65535 字节。数据链路层中还有<strong>最大传送单元 MTU (Maximum Transfer Unit)</strong>。</li>
+<li><strong>标识</strong>：16 位，每产生一个数据报，计数器 +1，并赋值给标识。</li>
+<li><strong>标志</strong>：3 位，但目前只有两位有意义
+<ul>
+<li>低位 <strong>MF</strong>。 MF = 1 表示后面“<strong>还有分片</strong>”的数据表， MF = 0 则表示当前已是最后一片。</li>
+<li>中间为 <strong>DF</strong>。当前仅当 DF = 0 时允许分片。</li>
+</ul></li>
+<li><strong>片偏移</strong>：13 位，顾名思义，该片从何处开始。</li>
+<li><strong>生存时间</strong>：8 位，没经过一个路由， TTL 减去 1，减为 0 时，就丢弃数据报。</li>
+<li><strong>协议</strong>：8 位，指出使用的协议</li>
+<li><strong>首部检验和</strong>：16 位，，只检验数据报首部，但不包括数据部分。发送方，检验和置位剩余 16 位字的反码之和。接收方将检验和在内的所有 16 位字相加，若首部未变化，其和必为 0。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202056828.png" alt="image-20231118202056828" /><figcaption aria-hidden="true">image-20231118202056828</figcaption>
+</figure>
+<ul>
+<li><strong>源地址</strong>：32 位</li>
+<li><strong>目的地址</strong>：32 位</li>
+</ul>
+<h5 id="ip-层转发分组的流程">4.2.6 IP 层转发分组的流程</h5>
+<p>​ 路由表信息： <span class="math display">\[
+(目的网络地址, 下一跳地址)
+\]</span> <img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202909343.png" alt="image-20231118202909343" /></p>
+<p>​ 存在<strong>特定主机路由</strong>，对特定的主机指明一个路由，以便管理人员控制网络和测试网络。</p>
+<p>​ 存在<strong>默认路由</strong>，减小路由表所占的空间和搜索路由表所用的时间。</p>
+<blockquote>
+<p>默认路由（Default Route）是网络中的一种路由设置，用于指定当路由表中没有匹配的路由项时，数据包应该被发送到的下一个跃点或下一跳。默认路由通常用于简化路由表，特别是在大型网络中。</p>
+</blockquote>
+<blockquote>
+<p>在IPv4网络中，默认路由通常使用0.0.0.0/0表示，这表示所有目标地址。当路由表中没有与目标地址匹配的具体路由项时，数据包将被发送到默认路由指定的下一个跃点。这有助于简化路由表，特别是在较大的网络中，减少路由表的大小和复杂性。</p>
+</blockquote>
+<blockquote>
+<p>在IPv6网络中，类似的概念是使用::/0来表示所有IPv6地址。当没有与目标IPv6地址匹配的具体路由项时，数据包将被发送到默认路由指定的下一个跃点。</p>
+</blockquote>
+<p>​</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118203422006.png" alt="image-20231118203422006" /><figcaption aria-hidden="true">image-20231118203422006</figcaption>
+</figure>
+<p>​ <strong>分组转发算法的流程</strong>：</p>
+<ol type="1">
+<li>从数据报首部提取目的主机 IP 地址 D，得出网络地址 N。</li>
+<li>若 N 就是与此路由连接的某个网络，则 <strong>直接交付</strong>；否则执行 3。</li>
+<li>若路由表有目的地址为 D 的特定主机路由，则交给其指明的下一跳；否则 4。</li>
+<li>若路由表中有到达 N 的路由，则交给其指明的下一跳，否则 5。</li>
+<li>默认路由，否则 6。</li>
+<li>报错</li>
+</ol>
+<h4 id="划分子网与构造超网">4.3 划分子网与构造超网</h4>
+<h5 id="划分子网">4.3.1 划分子网</h5>
+<p>​ IP 地址设计不合理之处：</p>
+<ul>
+<li>IP 地址空间利用率有时很低，一个网络号所连接的主机可能并不多。</li>
+<li>每个物理网络分配一个网络号会使得路由表太大而使网络性能变坏。</li>
+<li>两级 IP 不够灵活，有时需要开辟一个新的网络，此时只能申请一个新的网络号。</li>
+</ul>
+<p>​ 划分子网的方法： <span class="math display">\[
+IP地址:=\{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;\}
+\]</span> ​ 从 IP 数据报首部<strong>无法看出</strong>源主机或目的主机所连接的网络是否进行了子网划分，<strong>子网掩码</strong>正是用于解决这个问题的。</p>
+<p>​ 子网掩码一般由一串连续的 1 和一串连续的 0 构成，且 1 的长度等于网络号与子网号位数之和，因此与 IP 地址进行<strong>与</strong>操作即可得出子网地址。 如果一个网络不划分子网，则使用默认子网掩码，显然，</p>
+<p>​ A 类地址默认掩码为 255.0.0.0，或 0xFF000000。</p>
+<p>​ B 类地址默认掩码为 255.255.0.0，或 0xFFFF0000。</p>
+<p>​ C 类地址默认掩码为 255.255.255.0，或 0xFFFFFF00。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119102550234.png" alt="image-20231119102550234" /><figcaption aria-hidden="true">image-20231119102550234</figcaption>
+</figure>
+<h5 id="使用子网时的分组转发算法">4.3.2 使用子网时的分组转发算法</h5>
+<p>​ 路由表包含：<strong>目的网络地址、子网掩码</strong>和<strong>下一跳地址</strong>。</p>
+<ol type="1">
+<li>从收到的数据报提取 IP 地址 D。</li>
+<li>各网络子网掩码与 D 相与，看看是否匹配，若匹配则直接交付，否则 3。</li>
+<li>若路由表中有目的地址为 D 的特定主机路由，则交付之，否则 4。</li>
+<li>对路由表每一行子网掩码与 D 相与，结果为 N，若 N 与该行目的网络的地址匹配，则交付给下一跳，否则 5。</li>
+<li>默认路由，否则 6。</li>
+<li>报错。</li>
+</ol>
+<h5 id="无分类编址-cidr-超网">4.3.3 无分类编址 CIDR （超网）</h5>
+<p><span class="math display">\[
+IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
+\]</span></p>
+<p>​ 网络前缀相同的连续 IP 地址组成一个 ”CIDR 地址块”。</p>
+<p>​ CIDR 使用斜线激发，即 IP 地址后加上斜线 “/”，后写上前缀位数。</p>
+<p>​ CIDR 还使用 32 位的地址掩码，其中前一串 1 就代表前缀。</p>
+<p>​ 路由表中用 CIDR 地址块来查找目的网络，称为<strong>路由聚合</strong>或<strong>构造超网</strong>。</p>
+<p>​ 在查找下一跳时，可能有多个 CIDR 地址块都能够与目的地址匹配，此时则根据<strong>最长前缀匹配</strong>原则确定下一跳。</p>
+<p>​ 由于要进行最长前缀匹配，故最方便的方法即是在构造路由表时采用<strong>二叉线索</strong>，即 01-Trie，然后查询时即可迅速进行前缀匹配。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119105513490.png" alt="image-20231119105513490" /><figcaption aria-hidden="true">image-20231119105513490</figcaption>
+</figure>
+<p>​ 为了提高效率，还可采用各式<strong>压缩技术</strong>。</p>
+<h4 id="网际控制报文协议-icmp">4.4 网际控制报文协议 ICMP</h4>
+<p>​ ICMP 报文分为 <strong>ICMP 差错报告报文</strong>和 <strong>ICMP 询问报文</strong>。</p>
+<p>​ ICMP 报文前 4 个字节是统一的格式，三个字段：类型、代码和检验和。接着 4 个字节与 ICMP 类型有关。最后面是数据字段，长度取决于 ICMP 类型。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150429359.png" alt="image-20231119150429359" /><figcaption aria-hidden="true">image-20231119150429359</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150446519.png" alt="image-20231119150446519" /><figcaption aria-hidden="true">image-20231119150446519</figcaption>
+</figure>
+<p>​ <strong>改变路由（重定向）：</strong> 路由器把改变路由报文发送给主机，让主机知道下次该将数据报发送给另外的路由器（可通过更好的路由）。</p>
+<p>​ 不应发送 ICMP 差错报告的情况：</p>
+<ul>
+<li>对 ICMP 差错报文，不再发送 ICMP 差错报文</li>
+<li>对第一个分片的数据报片的所有后续数据报片，都不发送 ICMP 报文。</li>
+<li>对具有多播地址的数据报，都不发送。</li>
+<li>对具有特殊地址（如 127.0.0.0 或 0.0.0.0）的数据报，不发送 ICMP 报文。</li>
+</ul>
+<p>​ ICMP 的一个重要应用就是<strong>分组网间探测 PING (Packet InterNet Groper)</strong>，是应用层直接使用网络层 ICMP 的一个例子。</p>
+<p>​ 另一个重要应用是 traceroute (UNIX) / tracert (windows)，用于跟踪一个分组源点到终点的路径。下介绍其原理：</p>
+<p>​ 主要采用数据报中的生存时间 TTL，先发送 TTL 为 1，收到<strong>时间超过</strong>差错报文则 TTL + 1 重新发送，否则收到<strong>终点不可达</strong>报文，且长度即 TTL。</p>
+<h4 id="互联网的路由选择协议">4.5 互联网的路由选择协议</h4>
+<h5 id="几个基本概念">4.5.1 几个基本概念</h5>
+<h6 id="理想路由算法">4.5.1.1 理想路由算法</h6>
+<p>​ <strong>理想路由算法</strong>几个特点：</p>
+<ul>
+<li>必须是正确的和完整的。</li>
+<li>计算上应简单。</li>
+<li>应能适应通信量和网络拓扑的变化（稳健性）。</li>
+<li>应具有稳定性，通信量和网络拓扑相对稳定的情况下，应该收敛于一个可接受的解。</li>
+<li>算法应该是最佳的。</li>
+</ul>
+<h6 id="分层次的路由选择">4.5.1.2 分层次的路由选择</h6>
+<p>​ 互联网采用<strong>分层次的路由选择</strong>，原因：</p>
+<ul>
+<li>互联网规模非常大。</li>
+<li>许多单位不愿外界了解自己内部网络的细节。</li>
+</ul>
+<p>​ 为此，把互联网划分为许多小的<strong>自治系统 AS (autonomous system)</strong>。一个 AS 对其他的 AS 表现出的是<strong>一个单一的和一致的路由选择策略</strong>。</p>
+<p>​ 故此，路由选择协议可以划分为两类：<strong>内部网关协议 IGP (Interior Gateway Protocol)</strong> 和<strong>外部网关协议 EGP (External Gateway Protocol)</strong>。常用的 IGP 有 RIP 和 OSPF 协议，常用的 EGP 有 BGP-4。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119160651490.png" alt="image-20231119160651490" /><figcaption aria-hidden="true">image-20231119160651490</figcaption>
+</figure>
+<p>​ 此外，路由选择协议还可依照路由表更新方分为<strong>静态路由协议</strong>和<strong>动态路由协议</strong>，常见的动态路由协议有 RIP、OSPF、BGP 等。</p>
+<h5 id="rip">4.5.2 RIP</h5>
+<p>​ RIP 是一种<strong>基于距离向量的路由选择协议</strong>，最大优点是简单。其中的“距离”是指“<strong>跳数</strong>” (hop count)。但 RIP 一条路径最多只能包含 15 个路由器，因此 RIP 只适用于小型互联网。</p>
+<h6 id="rip-特点">4.5.2.1 RIP 特点</h6>
+<p>​ RIP 特点：</p>
+<ul>
+<li>仅和相邻路由器交换信息。</li>
+<li>路由器交换的信息是当前本路由器的路由表。</li>
+<li>按照固定的时间间隔交换路由信息，如 30 秒。</li>
+</ul>
+<p>路由表信息为： <span class="math display">\[
+(路由表,距离,下一跳)
+\]</span></p>
+<p>​ 下介绍路由更新算法：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161304200.png" alt="image-20231119161304200" /><figcaption aria-hidden="true">image-20231119161304200</figcaption>
+</figure>
+<p>​ 其实就是 Bellman-Fold 算法，不断遍历，能松弛即松弛。</p>
+<p>​ 对于解释 3，书中的解释是无论距离是增大减小亦或不变，都要更新为最新的信息。</p>
+<h6 id="rip-报文格式">4.5.2.2 RIP 报文格式</h6>
+<p>​ RIP 报文格式：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161732197.png" alt="image-20231119161732197" /><figcaption aria-hidden="true">image-20231119161732197</figcaption>
+</figure>
+<ul>
+<li><p>首部 4 字节，命令字段指出报文意义。</p></li>
+<li><p>路由部分由若干路由信息组成，每个路由信息 20 字节。</p>
+<ul>
+<li><strong>地址标识符</strong> 标志所用地址协议。 <strong>路由标记</strong>填入自治系统号 ASN。</li>
+<li>网络地址、子网掩码、下一跳路由地址、距离。</li>
+</ul>
+<p>一个 RIP 报文最多 25 个路由，故而最大长度 <span class="math inline">\(4+20\times 25=504\)</span> 字节。</p></li>
+</ul>
+<p>RIP 存在的问题：<strong>当网络出现故障，需要经过比较长的时间才能将此信息传送到所有的路由器</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119163624180.png" alt="image-20231119163624180" /><figcaption aria-hidden="true">image-20231119163624180</figcaption>
+</figure>
+<p>​ RIP 特点总结：<strong>实现简单开销小，距离有限，坏消息传播慢</strong>。</p>
+<h5 id="内部网关协议-ospf">4.5.3 内部网关协议 OSPF</h5>
+<p>​ <strong>OSPF 开放最短路径优先</strong> 使用了 Dijkstra 提出的<strong>最短路径算法 SPF</strong>。OSPF 三个要点如下：</p>
+<ul>
+<li>洪泛法：向本自治系统<strong>所有</strong>路由器发送信息。</li>
+<li>发送的信息是与本路由器相邻所有路由器的链路状态。</li>
+<li>当且仅当链路发生变化，才使用洪泛。</li>
+</ul>
+<p>​ 由此，每个路由器都能够得到本网完整的网络拓扑，采用 djikstra 算法即可得出最短路径从而构造路由表。</p>
+<p>​ 而且 OSPF 将一个自治系统再划分为若干个小的范围，称为<strong>区域 (area)</strong>。连接不同区域的路由器叫<strong>区域边界路由器</strong>。主干区域的路由器称<strong>主干路由器</strong>。OSPF 不用 UDP 而是<strong>直接用 IP 数据报传送</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119170556159.png" alt="image-20231119170556159" /><figcaption aria-hidden="true">image-20231119170556159</figcaption>
+</figure>
+<p>​ OSPF 其它特点：</p>
+<ul>
+<li>允许管理员指派不同代价，代价占 16 位，十分灵活。</li>
+<li>若一个目的网络有多条相同代价路径，则可以分配通信量，达到<strong>负载平衡 (load balancing)</strong>。</li>
+<li>支持可变长子网划分与 CIDR。</li>
+<li>链路可能经常变变化，每条链路带上一个序号，序号越大链路越新。</li>
+</ul>
+<p>​ OSPF 五种分组类型：</p>
+<ul>
+<li><p><strong>类型1 问候 (hello) </strong>分组，用于发现维持邻站可达性。</p></li>
+<li><p><strong>类型2 数据库描述 (Database Description) </strong>分组，向邻站给出自己库中所有链路状态项目的摘要。</p></li>
+<li><p><strong>类型3 链路状态请求 (Link State Request)</strong> 顾名思义</p></li>
+<li><p><strong>类型4 链路状态更新 (Link State Update)</strong> 洪泛</p></li>
+<li><p><strong>类型5 链路状态确认 (Link State Acknowledgement)</strong> 对更新分组的确认</p></li>
+</ul>
+<h5 id="外部网关协议-bgp">4.5.4 外部网关协议 BGP</h5>
+<p>​ <strong>边界网关协议 BGP</strong>。不同自治系统之间使用 BGP 的缘由：</p>
+<ul>
+<li>互联网<strong>规模太大</strong>，使得自治系统 AS 之间路由选择非常困难。</li>
+<li>自治系统 AS 之间的路由选择必须考虑有关策略。</li>
+</ul>
+<p>​ BGP 的目的寻找一条能够到达目的且网络条件比较好的路由而非最佳路由，采用<strong>路径向量 (path vector) 路由选择协议</strong>。每个自治系统至少选定一 <strong>BGP 发言人</strong>，往往选定<strong>边界路由器</strong>。发言人之间采用 BGP 协议。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main//newPath/image-20231120080108690.png" alt="image-20231120080108690" /><figcaption aria-hidden="true">image-20231120080108690</figcaption>
+</figure>
+<p>​ 在 RFC 4271 中规定了 BGP-4 的四种报文：</p>
+<ul>
+<li>OPEN 报文，用来与相邻 BGP 发言人建立关系，使其初始化。</li>
+<li>UPDATE 报文，通告某一路由信息，以及列出要撤销的多路由。</li>
+<li>KEEPALIVE 报文，周期性证实邻站连通信。</li>
+<li>NOTIFICATION 报文，发送检测到的差错。</li>
+</ul>
+<p>​ BGP 报文格式：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120080845868.png" alt="image-20231120080845868" /><figcaption aria-hidden="true">image-20231120080845868</figcaption>
+</figure>
+<p>​ 标记 (marker) 段 16 字节长，用于鉴别，不需鉴别是置全 1。</p>
+<p>​ 长度字段指出包括首部在内整个 BGP 报文<strong>字节</strong>为单位的长度，最小 19，最大 4096。（查了下，是根据 TCP 协议的滑动窗口决定的 <a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/428983149?bd_page_type=0&amp;pu=&amp;init=middle">这里</a>)</p>
+<p>​ UPDATE 和 OPEN 报文的格式暂时不赘述。</p>
+<h5 id="路由器的构成">4.5.5 路由器的构成</h5>
+<p>​ 路由器结构划分为两大部分：<strong>路由选择部分</strong>和<strong>分组转发部分</strong>。</p>
+<p>​ 路由选择部分也称为<strong>控制部分</strong>，核心构建为选择处理机，任务是根据协议构造出路由表，同时不断更新维护路由表。</p>
+<p>​ 分组转发部分有三部分组成：<strong>交换结构</strong>、一组<strong>输入端口</strong>和一组<strong>输出端口</strong>。</p>
+<p>​ 交换结构 (switching fabric) 又称<strong>交换组织</strong>，作用是根据转发表处理分组，把输入的分组从魔偶个端口输出出去。</p>
+<p>​ 为了使交换功能分散化，往往把复制到转发表放在每个输入端口中，称为<strong>"影子副本"</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083022304.png" alt="image-20231120083022304" /><figcaption aria-hidden="true">image-20231120083022304</figcaption>
+</figure>
+<p>​ 最早使用的路由器是普通的计算机，采用 CPU 作为路由选择处理机，利用中断机制启动处理。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083350315.png" alt="image-20231120083350315" /><figcaption aria-hidden="true">image-20231120083350315</figcaption>
+</figure>
+<h4 id="ipv6">4.6 IPv6</h4>
+<p>​ 变化：</p>
+<ul>
+<li><strong>允许协议继续扩充</strong>。</li>
+<li>灵活的首部格式</li>
+<li>扩展的地址层次结构</li>
+</ul>
+<p>​ IPv6 数据报有 <strong>基本首部</strong>和<strong>有效载荷</strong>两部分组成，有效载荷也成为<strong>净载荷</strong>。有效载荷允许零个或多个<strong>扩展首部</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083649979.png" alt="image-20231120083649979" /><figcaption aria-hidden="true">image-20231120083649979</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083714488.png" alt="image-20231120083714488" /><figcaption aria-hidden="true">image-20231120083714488</figcaption>
+</figure>
+<ul>
+<li><strong>通信量类：</strong> 8 位，区分不同 IPv6 数据报类别或优先级。</li>
+<li>流标号 (traffic class)：20 位。</li>
+<li>有效载荷长度：除基本首部外的字节数。</li>
+</ul>
+<p>​ 扩展首部在传输中不进行处理，交给两端计算机处理，大大提高路由器处理效率。</p>
+<p>​ IPv6 增加了任播 (anycast) 地址，终点是一组计算机，但数据报只交付其中一个，通常是最接近一个。</p>
+<p>​ IPv6 采用<strong>冒号十六进制记法</strong>，如 <span class="math display">\[
+68E6:8C64:FFFF:FFFF:0:1180:960A:FFFF
+\]</span></p>
+<ul>
+<li>允许省略前导 0。</li>
+<li>可以将一串连续的 0 用一对冒号取代。</li>
+<li>仅允许一次零压缩。</li>
+<li>仍可采用 CDR 斜线表示法。</li>
+</ul>
+<p>​ 地址分类：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120084419498.png" alt="image-20231120084419498" /><figcaption aria-hidden="true">image-20231120084419498</figcaption>
+</figure>
+<h5 id="ipv4-向-ipv6-过渡">4.6.3 IPv4 向 IPv6 过渡</h5>
+<p>​ 策略一：<strong>双协议栈</strong>。装有双协议栈的主机或路由器既能与 IPv4 主机通信，又能与 IPv6 主机通信。根据域名系统 DNS 返回的地址类型确定主机使用的地址类型。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120103834796.png" alt="image-20231120103834796" /><figcaption aria-hidden="true">image-20231120103834796</figcaption>
+</figure>
+<p>​ 策略二：<strong>隧道技术</strong>。IPv6 数据报进入 IPv4 网络时，把 IPv6 数据报封装成 IPv4 数据报。要使得双协议栈主机知道 IPv4 数据报内封装的时 IPv6 数据报，则需要将 IPv4 首部的协议字段值设置为 41。</p>
+<h5 id="icmpv6">4.6.4 ICMPv6</h5>
+<p>​ IPv6 也不保证数据可靠交付，因此采用 ICMP 来反馈差错。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120104137961.png" alt="image-20231120104137961" /><figcaption aria-hidden="true">image-20231120104137961</figcaption>
+</figure>
+<h4 id="ip-多播">4.7 IP 多播</h4>
+<p>​ 与单播相比，一对多的网络通信中，多播可大大节约网络资源。</p>
+<p>​ 多播组的标识符是 IP 地址中的 D 类地址，范围是 224.0.0.0 到 239.255.255.255。多播地址只能用于目的地址而不能用于源地址。一个 D 类地址表示一个多播组。</p>
+<h5 id="网际组管理协-igmp-和-多播路由选择协议">4.7.3 网际组管理协 IGMP 和 多播路由选择协议</h5>
+<p>​ IGMP 协议是让连接在本地局域网上的多播路由器知道本局域网上<strong>是否</strong>有主机参加或退出了某个多播组。</p>
+<p>​ 多播路由选择协议：多播转发必须动态适应多播组成员的变化，在转发数据报时，不能仅仅根据数据报中的目的地址，而是考虑从什么地方来到什么地方去。</p>
+<p>​ IGMP 属于整个网际协议 IP 的一个组成部分，</p>
+<p>​</p>
+<p>==多播不想写了，今晚再来吧。==</p>
+<h4 id="虚拟专用网-vpn-和网络地址转换-nat">4.8 虚拟专用网 VPN 和网络地址转换 NAT</h4>
+<h5 id="vpn">4.8.1 VPN</h5>
+<p>​ RFC 1918 指明了一些<strong>专用地址</strong>，只用于机构内部通信，互联网中所有路由器对目的地址为专用地址的数据报一律不予转发。</p>
+<p>​ VPN 的作用是对内部数据报进行加密，然后在公网上传输，使得效果跟内网通信一样。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142854286.png" /></p>
+<h5 id="nat">4.8.2 NAT</h5>
+<p>​ 已经分配到本地 IP 地址，又想进行全球通信，则可使用 NAT。NAT 将每台计算机映射到 NAT 路由器的一个端口（每个端口具有一个全球 IP 地址），由此便可进行互联网通讯，此时目的主机只能知道 NAT 路由器端口的地址而不知发送端的地址。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142901992.png" alt="image-20231120142901992" /><figcaption aria-hidden="true">image-20231120142901992</figcaption>
+</figure>
+<h4 id="mlps">4.9 MLPS</h4>
+<p>​ MLPS 作为一种 IP 增强技术，广泛应用在互联网中。特点如下：</p>
+<ul>
+<li>支持面向连接的服务质量。</li>
+<li>支持流量工程，平衡网络负载。</li>
+<li>有效地支持 VPN。</li>
+</ul>
+<h5 id="工作原理">4.9.1 工作原理</h5>
+<p>​ 在 MPLS 域入口处打上固定长的 MPLS 标记，然后对打上标记的 IP 数据报用硬件转发，只经过第二层，称为<strong>标记交换</strong>。</p>
+<p>​ MPLS 域是指该域中有许多彼此相邻路由器，且均为支持 MPLS 技术的<strong>标记路由器 LSR</strong>。一个标记仅在两个 LSR 间才有意义。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120143602027.png" alt="image-20231120143602027" /><figcaption aria-hidden="true">image-20231120143602027</figcaption>
+</figure>
+<p>​ 如入接口 0 收到一个标记为 3 的 IP 数据报，路由器就知道应从出接口 1 转发且打上标记 1。</p>
+<h5 id="转发等价类-fec">4.9.2 转发等价类 FEC</h5>
+<p>​ IP 数据报的集合，对路由器来说具有相同的性质，如下一跳，相同服务类别，同样丢弃优先级等。</p>
+<p>​ 例子：</p>
+<ul>
+<li>目的 IP 与某一特定 IP 地址前缀匹配的 IP 数据报</li>
+<li>所有源地址与目的地址相同的数据报</li>
+<li>具有某种服务质量需求的数据报</li>
+</ul>
+<h5 id="mpls-首部的格式">4.9.3 MPLS 首部的格式</h5>
+<p>​</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144102987.png" alt="image-20231120144102987" /><figcaption aria-hidden="true">image-20231120144102987</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144109443.png" alt="image-20231120144109443" /><figcaption aria-hidden="true">image-20231120144109443</figcaption>
+</figure>
+
       
     </div>
 
@@ -805,7 +1433,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-27 16:49:49" itemprop="dateModified" datetime="2023-12-27T16:49:49+08:00">2023-12-27</time>
+                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -858,7 +1486,7 @@
 <figure>
 <img src="https://raw.githubusercontent.com/mlger/Pict/main/202310261446007.png" alt="image-20231026144652892" /><figcaption aria-hidden="true">image-20231026144652892</figcaption>
 </figure>
-<p>​ 传输差错可分为两大类，一类是基本的比特差错，里另一类是更复杂些的<strong>帧丢失</strong>、<strong>帧重复</strong>或<strong>帧失序</strong>。因此出现比特差错与出现传输差错并不等价。为实现可靠传输，在 CRC 检错的基础上，增加了<strong>帧编号</strong>、<strong>确认</strong>和<strong>重传机制</strong>。现在互联网采用区别对待方法，对于通信质量良好的传输线路，不使用确认和重传机制，即不要求数据链路层向上提供可靠传输；对于通信质量较差的链路，则采用确认重传机制，数据链路层向上提供可靠传输。</p>
+<p>​ 传输差错可分为两大类，一类是基本的比特差错，里另一类是更复杂些的<strong>帧丢失</strong>、<strong>帧重复</strong>或<strong>帧失序</strong>。因此出现比特差错与出现传输差错并不等价。为实现可靠传输，在 CRC 检错的基础上，增加了<strong>帧编号</strong>、<strong>确认</strong>和<strong>重传机制</strong>。现在互联网采用区别对待方法，对于通信质量良好的传输线路，不适用确认和重传机制，即要求数据链路层向上提供可靠传输；对于通信质量较差的链路，则采用确认重传机制，数据链路层向上提供可靠传输。</p>
 <h4 id="点对点协议-ppp">3.2 点对点协议 PPP</h4>
 <p>​ 通信质量较差的年代，采用可靠传输协议是一种好办法，因此当时比较流行能实现可靠传输协议的<strong>高级数据链路控制 HDLC (High-level Data Link Control)</strong>。目前对于点对点的链路，则广泛采用简单得多的 <strong>点对点协议 PPP (Point-to-Point Protocol)</strong> 。</p>
 <h5 id="ppp-协议的特点">3.2.1 PPP 协议的特点</h5>
