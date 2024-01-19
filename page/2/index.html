@@ -187,6 +187,241 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/10/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02-%E7%89%A9%E7%90%86%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/10/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02-%E7%89%A9%E7%90%86%E5%B1%82/" class="post-title-link" itemprop="url">谢希仁计算机网络02-物理层</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-10-22 10:21:00" itemprop="dateCreated datePublished" datetime="2023-10-22T10:21:00+08:00">2023-10-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">计网</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="物理层的基本概念">2.1 物理层的基本概念</h4>
+<p>​ 用于物理层的协议也称为<strong>规程(procedure)</strong>。</p>
+<p>​ 可将物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即：</p>
+<p>​ (1) <strong>机械特性</strong>：指明接口所用接线器的形状尺寸、引脚数目排列等。</p>
+<p>​ (2) <strong>电气特性</strong>：指明接口电缆各条线电压范围。</p>
+<p>​ (3) <strong>功能特性</strong>：指明某条线某电平的电压的意义。</p>
+<p>​ (4) <strong>过程特性</strong>：指明不同功能的各种可能事件的出现顺序。</p>
+<p>​ 数据在计算机内部采用<strong>并行传输</strong>，但在通信线路上一般采用<strong>串行传输</strong>，因此物理层还要完成传输方式的转换。</p>
+<h4 id="数据通信的基础知识">2.2 数据通信的基础知识</h4>
+<h5 id="数据通信系统的模型">2.2.1 数据通信系统的模型</h5>
+<p>​ 数据通信系统可划分为三大部分：<strong>源系统</strong>（或<strong>发送端、发送方</strong>）、<strong>传输系统</strong>（或<strong>传输网络</strong>）和<strong>目的系统</strong>（或<strong>接收端、接收方</strong>）</p>
+<p>​ 源系统一般包含两部分：</p>
+<ul>
+<li><strong>源点(source)</strong>：产生要传输的数据。又称<strong>源站</strong>或<strong>信源</strong>。</li>
+<li><strong>发送器</strong>：将源点产生数据进行编码，之后才能进行传输。如<strong>调制器</strong>。</li>
+</ul>
+<p>​ 目的系统一般包含两部分：</p>
+<ul>
+<li><strong>接收器</strong>：接受传输信号，并转化为目标设备能处理的信息。如<strong>解调器</strong>。</li>
+<li><strong>终点(destination)</strong>：接受比特流</li>
+</ul>
+<p>​ 现在很多计算机使用内置的调制解调器，用户在计算机外看不见调制解调器。</p>
+<p>​</p>
+<p>通信的目的是传送<strong>消息(message)</strong>。<strong>数据(data)</strong>是运送消息的实体。<strong>信号(signal)</strong>是数据的电气或电磁表现。信号可分为两大类：</p>
+<p>​ (1) <strong>模拟信号</strong>，或<strong>连续信号</strong>：如用户家中的调制解调器到电话端局之间的用户线上的信号。</p>
+<p>​ (2) <strong>数字信号</strong>，或<strong>离散信号</strong>：如用户家中计算机到调制解调器之间，或电话网中继线上传送的信号。使用时间域（或称时域）的波形表示数字信号时，取不同离散数值的基本波形称为<strong>码元</strong>。</p>
+<h5 id="有关信道channel的几个基本概念">2.2.2 有关<strong>信道(channel)</strong>的几个基本概念</h5>
+<p>​ 从通信双方的交互方式来看，有三种基本通信方式：</p>
+<p>​ (1) <strong>单向通信</strong>：也称<strong>单工通信</strong>。如无线电广播，或有线电广播及电视广播。</p>
+<p>​ (2) <strong>双向交替通信</strong>：也称<strong>半双工通信</strong>，双方均可发送，但不可同时发送。</p>
+<p>​ (3) <strong>双向同时通信</strong>：也称<strong>全双工通信</strong>。</p>
+<p>​ 单向通信仅需一条信道，而双向交替通信和双向同时通信均需两条。全双工通信效率最高。</p>
+<p>​</p>
+<p>​ 来自信源的信号称为<strong>基带信号</strong>，往往含有较多低频成分甚至直流成分，而许多信道并不能传输这种低频或直流分量，因此必须对基带信号进行<strong>调制(coding)</strong>。使用<strong>载波(carrier)</strong>进行调制，把基带信号频率搬移到较高频段，并转化为模拟信号，便可更好在模拟信道中传输。载波调制后信号称<strong>带通信号</strong>，调制称为<strong>载波调制</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211254285.jpg" alt="0d28fb91042f8ce7aa2ce716249dd2d" /><figcaption aria-hidden="true">0d28fb91042f8ce7aa2ce716249dd2d</figcaption>
+</figure>
+<h5 id="信道极限容量">2.2.3 信道极限容量</h5>
+<p>​ 限制码元在信道上传输速率的因素：</p>
+<p>​ (1) 信道可通过频率范围</p>
+<p>​ 信道能通过频率范围有限，高频分量往往无法通过信道。高频分量传输时受衰减，接收端受到信号便失去了码元间的清晰界限，此现象称<strong>码间串扰</strong>。</p>
+<p>​ 奈氏准则告诉我们：<strong>任何信道中，码元传输速率有上限，超过该上限，则会出现严重码间串扰问题，使接收端对码元的判决称为不可能。</strong></p>
+<p>​ (2) 信噪比</p>
+<p>​ 信噪比是信号的平均功率与噪声的平均功率比值，记作 <strong>S/N</strong>，度量单位为<strong>分贝</strong>。</p>
+<p>​ 香农公式指出，信道的<strong>极限传输速率 C </strong>为 <span class="math display">\[
+C = W\log_2(1+S/N)\ \ \ (bit/s)
+\]</span> ​ 其中 <span class="math inline">\(W\)</span> 为信道带宽， <span class="math inline">\(S\)</span> 和 <span class="math inline">\(N\)</span> 分别表示信号与噪声的平均功率。</p>
+<p>​ 香农公式表面，信噪比越大，极限传输速率越高。对于频带宽度已确定的信道，信噪比也无法继续提高，码元传输速率也达上界，欲提升传输速率，可通过编码的方法<strong>让每一个码元携带更多比特信息量</strong>。</p>
+<h4 id="物理层下面的传输媒体">2.3 物理层下面的传输媒体</h4>
+<p>​ <strong>传输媒体</strong>分为<strong>导引型传输媒体</strong>和<strong>非导引型传输媒体</strong>两大类。</p>
+<h5 id="导引型传输媒体">2.3.1 导引型传输媒体</h5>
+<h6 id="双绞线">1. <strong>双绞线</strong></h6>
+<p>​ 两根互相绝缘铜导线绞合，以减少对相邻导线的电磁干扰。使用最多地方为电话系统。</p>
+<p>​ 模拟运输和数字运输均可使用双绞线，通信距离为几到十几公里。</p>
+<p>​ 为提升抗电磁干扰能力，可在外面加上一层用金属丝编织成的屏蔽层，称为<strong>屏蔽双绞线</strong>，简称 <strong>STP(Shielded Twisted Pair)</strong>。<strong>无屏蔽双绞线</strong>简称 <strong>UTP(Unshielded Twisted Pair)</strong> 。</p>
+<p>​ “商用建筑物电信布线标准”—— <strong>EIA/TIA-568-A</strong> ——规定了 5 个种类的 UTP 标准，最常用的是 5 类线。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211404631.png" alt="image-20231021140449514" /></p>
+<h6 id="同轴电缆">2. <strong>同轴电缆</strong></h6>
+<p>​ 由内导体铜质芯线、绝缘层、网状编织外导体屏蔽层以及保护塑料外层组成。具有良好抗干扰特性，被广泛用于传输较高速率的数据。</p>
+<p>​ 目前主要用在有线电视网的居民小区中。</p>
+<h6 id="光缆">3. <strong>光缆</strong></h6>
+<p>​ <strong>光纤</strong>在发送端有光源，可采用发光二极管或半导体激光器。接收端用光电二极管做成光检测器，可还原出电脉冲。原理是利用光的全反射。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211409293.png" alt="image-20231021140938197" /><figcaption aria-hidden="true">image-20231021140938197</figcaption>
+</figure>
+<p>​ 现代工艺可制造出超低损耗光纤，即做到传输数公里而没什么衰耗。这是光纤通信飞速发展的最关键因素。</p>
+<p>​ 可以存在多条不同角度入射光线在同一光纤中传输，称为<strong>多模光纤</strong>。但光脉冲传输时会展宽，因此多模光纤<strong>仅适用于近距离传输</strong>。</p>
+<p>​ 光纤优点：</p>
+<p>​ (1) 通信容量大。</p>
+<p>​ (2) 传输损耗小，中继距离长，对远距离传输经济。</p>
+<p>​ (3) 抗雷和电磁干扰性能好，在大电流脉冲干扰下尤为重要。</p>
+<p>​ (4) 无串音干扰，保密性好。</p>
+<p>​ (5) 体积小，重量轻。</p>
+<h6 id="架空明线">4. <strong>架空明线</strong></h6>
+<p>​ 在电线杆上架设互相绝缘的明线（铜线或铁线）。许多国家都已经停止铺设，目前我国一些农村与边远地区仍使用。</p>
+<h5 id="非导引型传输媒体">2.3.2 非导引型传输媒体</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211418400.png" alt="image-20231021141801277" /><figcaption aria-hidden="true">image-20231021141801277</figcaption>
+</figure>
+<p>​ 无线传输可使用频段很广，紫外线和更高的波段目前还不能用于通信。</p>
+<p>​ 短波通信（即高频通信）主要靠电离层反射，但电离层不稳定产生的衰落现象和反射产生的多径效应，使得短波通信质量较差。因此短波无线电台一般采用低速传输。</p>
+<h6 id="微波通信">2.3.2.1 微波通信</h6>
+<p>​ <strong>无线电微波通信</strong>在数据通信中具有重要地位，频率范围为 <span class="math inline">\(300\ MHz\sim 300\ GHz\)</span> （波长 <span class="math inline">\(1\ m\sim1\ mm\)</span>），主要用 <span class="math inline">\(2\sim40\ GHz\)</span> 范围。微波在空间主要是直线传播，会穿过电离层进入宇宙空间，因此不像短波可以反射到地面很远地方。微波通信主要分为<strong>地面微波接力通信</strong>和<strong>卫星通信</strong>两种方式。</p>
+<p>​ 由于地球是个曲面，微波直线传输距离受到限制，因此需要在两个通讯点间建立若干中继站，进行<strong>接力</strong>。微波接力通信可传输电话、电报、图像、数据等信息，特点是：</p>
+<p>​ (1) 频率高，频段范围宽，通信信道容量大。</p>
+<p>​ (2) 受到干扰小，质量高。</p>
+<p>​ (3) 建设投资少，见效快，易于跨越山区、江河。</p>
+<p>​ 但也有如下缺点：</p>
+<p>​ (1) 相邻站必须直视，不可有障碍物。有时一个天线发出信号也会分成几条略有差别路径，造成失真。</p>
+<p>​ (2) 有时会受到恶劣天气影响。</p>
+<p>​ (3) 隐蔽性和保密性差</p>
+<p>​ (4) 大量中继站使用和维护需要耗费大量人力物力。</p>
+<h6 id="卫星通信">2.3.2.2 卫星通信</h6>
+<p>​ 利用位于约 <span class="math inline">\(3\)</span> 万 <span class="math inline">\(6\)</span> 千公里高空的同步卫星作为中继器。主要优缺点与地面微波通信差不多。但<strong>具有较大传播时延</strong>。费用较高。</p>
+<p>​ 由于在同步卫星轨道架设卫星数量有限，因此在卫星上使用不同频段来进行通信，保证大的通信容量资源。</p>
+<p>​ 红外通信、激光通信也用于非导引型媒体。可用于近距离笔记本电脑相互传送数据。</p>
+<h4 id="信道复用技术">2.4 信道复用技术</h4>
+<h5 id="频分复用时分复用与统计时分复用">2.4.1 频分复用、时分复用与统计时分复用</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211436769.png" alt="image-20231021143631664" /><figcaption aria-hidden="true">image-20231021143631664</figcaption>
+</figure>
+<p>​ <strong>频分复用 FDM (Frequency Division Multiplexing)</strong> 的所有用户<strong>在同样时间占用不同带宽资源</strong>。</p>
+<p>​ <strong>时分复用 TDM (Time Division Multiplexing)</strong> 则是将时间划分为一段段等长的 TDM 帧，所有用户<strong>在不同时间占用同样的频带宽度</strong>。</p>
+<p>​ <strong>复用器(multiplexer)</strong> 和<strong>分用器(demultiplexer)</strong> 成对使用。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211439720.png" alt="image-20231021143935600" /><figcaption aria-hidden="true">image-20231021143935600</figcaption>
+</figure>
+<p>​ <strong>统计时分复用 STDM (Statistic TDM)</strong> 是一种改进的时分复用，能明显提高信道利用率。使用<strong>集中器(concentrator)</strong> 进行复用。集中器也称<strong>智能复用器</strong>。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211444418.png" alt="image-20231021144401327" /></p>
+<h5 id="波分复用">2.4.2 波分复用</h5>
+<p>​ <strong>波分复用 WDM (Wavelength Division Multiplexing)</strong> 就是<strong>光的频分复用</strong>。一根光纤复用几十路或更多路光载波信号，使用<strong>密集波分复用 DWDM (Dense WDM)</strong> 这一名词。</p>
+<p>​ <strong>掺铒光纤放大器 EDFA (Erbium Doped Fiber Amplifier)</strong> 不需要进行光电转化直接对光信号进行放大。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211448096.png" alt="image-20231021144822976" /><figcaption aria-hidden="true">image-20231021144822976</figcaption>
+</figure>
+<h5 id="码分复用">2.4.3 码分复用</h5>
+<p>​ <strong>码分复用 CDM (Code Division Multiplexing)</strong> 是另一种共享信道方法，也称<strong>码分多址 CDMA (Code Division Multiple Access)</strong> 。每个用户可以在同一时间用同样频带进行通信。<strong>各用户间不会造成干扰，具有很强抗干扰能力，频谱类似于白噪声，不易被敌人发现</strong>。</p>
+<p>​ CDMA 中，每一个比特时间再划分为 <span class="math inline">\(m\)</span> 个短的间隔，称为<strong>码片 (chip)</strong>。通常 <span class="math inline">\(m\)</span> 取 <span class="math inline">\(64\)</span> 或 <span class="math inline">\(128\)</span>。一个站如果发送比特 <span class="math inline">\(1\)</span> ，则表示发送该码片，发送 <span class="math inline">\(0\)</span> 则表示该码片的反码。如此每发送 <span class="math inline">\(b\)</span> 个比特，实际信息则<strong>扩频</strong>为 <span class="math inline">\(mb\)</span> 个比特。该种扩频方式属于<strong>直接序列扩频 DDSS (Direct Sequence Spread Spectrum)</strong>。另一种扩频方式为 <strong>调频扩频 FHSS (Frequency Hopping Spread Spectrum)</strong>。</p>
+<p>​ CDMA 要求每一个站分配的码片向量各不相同且<strong>相互正交</strong>。实际系统采用<strong>伪随机码序列</strong>。</p>
+<p>​ 任何一个码片与自身内积为 <span class="math inline">\(1\)</span>，与其反码内积为 <span class="math inline">\(-1\)</span> 。</p>
+<p>​ 结合<strong>全球定位系统 GPS</strong>，所有的站可以同步发送码片序列。若 X 站接受 S 站发送的数据，则需预先知道 S 站特有的码片序列，然后将接受到的信号与 S 站的码片序列作内积，即可解码。</p>
+<h4 id="数字传输系统">2.5 数字传输系统</h4>
+<p>​ 早期数字传输系统缺点：</p>
+<p>​ (1) <strong>速率标准不统一。</strong></p>
+<p>​ (2) <strong>不是同步传输。</strong></p>
+<p>​ 为解决上述问题，美国于 1988 年首先推出一个数字传输标准，叫<strong>同步光纤网 SONET (Synchronous Optical Network)</strong>。</p>
+<p>​ ITU-T 以 SONET 为基础，制定国际标准<strong>同步数字系列 SDH (Synchronous Digital Hierarchy)</strong>。 SDH/SONET 标准的制定及各国的统一运用，实现了数字传输体制上的世界性标准。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211642004.png" alt="image-20231021164224886" /><figcaption aria-hidden="true">image-20231021164224886</figcaption>
+</figure>
+<h4 id="宽带接入技术">2.6 宽带接入技术</h4>
+<h5 id="adsl-技术">2.6.1 ADSL 技术</h5>
+<p>​ <strong>非对称数字用户线 ADSL (Asymmetric Digital Subscriber Line)</strong> 技术是用数字技术<strong>对现有的模拟电话用户线进行改造</strong>，使它能够承载宽带数字业务。 下行带宽（从 ISP 到用户）远远大于上行带宽（从用户到 ISP ）。传输距离取决于数据率与线径。</p>
+<p>​ ADSL 在用户线两端各安装一个 ADSL 调制解调器，我国目前采用的实现方法是 <strong>离散多音调 DMT (Discrete Multi-Tone) 调制技术</strong>。 ADSL 并不能保证固定的数据率。 其最大优点是不需要重新布线。</p>
+<p>​ 基于 ADSL 的接入网三大组成部分：<strong>数字用户线接入复用器 DSLAM (DSL Access Multiplexer)</strong>，用户线和用户家中一些设施。 ADSL 调制解调器必须成对使用，把端局和用户家中的 ADSL 调制解调器分别记为 ATU-C（C 代表<strong>端局 (Central Office)</strong>）和 ATU-R （R代表<strong>远端 (Remote)</strong>）。用户电话通过<strong>分离器 (Splitter)</strong> 与 ATU-R 连在一起。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220934571.png" alt="image-20231022093405458" /><figcaption aria-hidden="true">image-20231022093405458</figcaption>
+</figure>
+<p>​ ADSL 技术也在发展，第二代 ADSL 改进的地方主要为：</p>
+<p>​ (1) 通过提高调制效率得到更高的数据率。</p>
+<p>​ (2) 采用<strong>无缝速率自适应技术 SRA (Seamless Rate Adaptation)</strong>，自适应调整速率。</p>
+<p>​ (3) 改善线路质量测评和故障定位功能。</p>
+<p>​ ADSL 技术并不适用于企业，原因在于企业通常需要使用上行信道发送大量数据给用户。为满足企业需要，ADSL 技术有几种变型，记为 xDSL。</p>
+<h5 id="光纤同轴混合网">2.6.2 光纤同轴混合网</h5>
+<p>​ <strong>光纤同轴混合网 （HFC 网，HFC 是 Hybrid Fiber Coax 缩写）</strong>是基于有线电视网基础上开发的一种居民宽带接入网，主要特点如下：</p>
+<p>​ 把原有有线电视网同轴电缆主干部分该换为光纤，从头端连接到<strong>光纤节点 (fiber node)</strong>。光纤节点光信号转化为电信号，通过同轴电缆传输到每个家庭。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220944400.png" alt="image-20231022094401301" /><figcaption aria-hidden="true">image-20231022094401301</figcaption>
+</figure>
+<p>​ 模拟电视机要能够接受数字电视信号，需要一个<strong>机顶盒 (set-top box)</strong>连接在同轴电缆与电视机之间。若欲接入互联网，还需增加 HFC 网所使用的调制解调器，称为 <strong>电缆调制解调器 (cable modem)</strong>。</p>
+<h5 id="fttx-技术">2.6.3 FTTx 技术</h5>
+<p>​ <strong>光纤到户 FTTH (Fiber To The Home)</strong> 两个问题：</p>
+<p>​ (1) 价格高昂。</p>
+<p>​ (2) 一般家庭用户没有这样高的数据率需求。</p>
+<p>​ 这种情况下，出现了多种宽带光纤接入方式，称为 FTTx ，x 表示不同的光纤接入地点。</p>
+<p>​ 为有效利用光纤资源，光纤干线和用户之间，需要铺设一段中间转换装置即 <strong>光配线网 ODN (Optical Distribution Network)</strong>，使得数十个家庭用户可以共享一根光纤。 五元的逛配线网称为<strong>无源光网络 PON (Passive Optical Network)</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310221001923.png" alt="image-20231022100126778" /><figcaption aria-hidden="true">image-20231022100126778</figcaption>
+</figure>
+<p>​ 光纤干线与<strong>光线路终端 OLT (Optical Line Terminal)</strong> 相连，OLT 把收到的下行数据发往无源的 1:N <strong>光分路器 (splitter)</strong> ，然后以广播方式向所有用户端的<strong>光网络单元 ONU (Optical Network Unit)</strong> 发送。</p>
+<p>​ 光配线网采用波分复用，上行和下行分别使用不同的波长。</p>
+<p>​ 目前已实现了多种不同的 FTTx， 如 <strong>光纤到路边 FTTC（C 表示 Curb）</strong>、<strong>光纤到小区 FTTZ（Z 表示 Zone）</strong>、<strong>光纤到大楼 FTTB（B 表示 Building）</strong>、<strong>光纤到楼层 FTTF（F 表示 Floor）</strong>、<strong>光纤到办公室 FTTO （O 表示 Office）</strong>、<strong>光纤到桌面 FTTD（D 表示 Desk）</strong>等等。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1416,141 +1651,10 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2023/06/29/%E5%BD%93%E6%88%91%E5%BC%80%E5%A7%8B%E7%9C%9F%E6%AD%A3%E7%88%B1%E8%87%AA%E5%B7%B1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/06/29/%E5%BD%93%E6%88%91%E5%BC%80%E5%A7%8B%E7%9C%9F%E6%AD%A3%E7%88%B1%E8%87%AA%E5%B7%B1/" class="post-title-link" itemprop="url">当我开始真正爱自己</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-06-29 10:50:37" itemprop="dateCreated datePublished" datetime="2023-06-29T10:50:37+08:00">2023-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%AF%97%E6%AD%8C/" itemprop="url" rel="index"><span itemprop="name">诗歌</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><em>作者：卓别林</em></p>
-<p>当我真正开始爱自己，</p>
-<p>我才认识到，所有的痛苦和情感的折磨，</p>
-<p>都只是提醒我：活着，不要违背自己的本心。</p>
-<p>今天我明白了，这叫做“真实”。</p>
-<p>​</p>
-<p>当我真正开始爱自己，</p>
-<p>我才懂得，把自己的愿望强加于人，</p>
-<p>是多么的无礼，就算我知道，时机并不成熟，</p>
-<p>那人也还没有做好准备，</p>
-<p>就算那个人就是我自己。</p>
-<p>今天我明白了，这叫做“尊重”。</p>
-<p>​</p>
-<p>当我开始爱自己，</p>
-<p>我不再渴求不同的人生，</p>
-<p>我知道任何发生在我身边的事情，</p>
-<p>都是对我成长的邀请。</p>
-<p>如今，我称之为“成熟”。</p>
-<p>​</p>
-<p>当我开始真正爱自己，</p>
-<p>我才明白，我其实一直都在正确的时间，</p>
-<p>正确的地方，发生的一切都恰如其分。</p>
-<p>由此我得以平静。</p>
-<p>今天我明白了，这叫做“自信”。</p>
-<p>​</p>
-<p>当我真正开始爱自己，</p>
-<p>我不再牺牲自己的自由时间，</p>
-<p>不再去勾画什么宏伟的明天。</p>
-<p>今天我只做有趣和快乐的事，</p>
-<p>做自己热爱，让心欢喜的事，</p>
-<p>用我的方式、我的韵律。</p>
-<p>今天我明白了，这叫做“单纯”。</p>
-<p>​</p>
-<p>当我开始真正爱自己，</p>
-<p>我开始远离一切不健康的东西。</p>
-<p>不论是饮食和人物，还是事情和环境，</p>
-<p>我远离一切让我远离本真的东西。</p>
-<p>从前我把这叫做“追求健康的自私自利”，</p>
-<p>但今天我明白了，这是“自爱”。</p>
-<p>​</p>
-<p>当我开始真正爱自己，</p>
-<p>我不再总想着要永远正确，不犯错误。</p>
-<p>我今天明白了，这叫做“谦逊“。</p>
-<p>​</p>
-<p>当我开始真正爱自己，</p>
-<p>我不再继续沉溺于过去，</p>
-<p>也不再为明天而忧虑，</p>
-<p>现在我只活在一切正在发生的当下，</p>
-<p>今天，我活在此时此地，</p>
-<p>如此日复一日。这就叫“完美”。</p>
-<p>​</p>
-<p>当我开始真正爱自己，</p>
-<p>我明白，我的思虑让我变得贫乏和病态，</p>
-<p>但当我唤起了心灵的力量，</p>
-<p>理智就变成了一个重要的伙伴，</p>
-<p>这种组合我称之为，“心的智慧”。</p>
-<p>我们无须再害怕自己和他人的分歧，</p>
-<p>矛盾和问题，因为即使星星有时也会碰在一起，形成新的世界，今天我明白，这就是“生命”。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left" aria-label="上一页"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right" aria-label="下一页"></i></a>
   </nav>
 
 
@@ -1618,7 +1722,7 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">20</span>
+          <span class="site-state-item-count">21</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
