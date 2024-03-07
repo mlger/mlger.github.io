@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="5.1 引言 ​ 需求开发阶段主要任务是分析问题，研究问题所发生的现实世界（即问题域），寻找实现软件系统与现实世界的有效互动办法，并严描述该互动办法（即建立软件解决方案，又称软件规格说明）。 ​ 软件需求开发：既需要从问题出发，分析问题域，研究解决问题所需要的互动效应；又需要关注软件系统的解决方案，建立软件规格说明，保证基于软件规格说明构造的软件产品能够解决用户问题。 ​ 常见的忽略需求开发">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程与计算II-0x05 软件需求基础">
+<meta property="og:url" content="https://example.com/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="5.1 引言 ​ 需求开发阶段主要任务是分析问题，研究问题所发生的现实世界（即问题域），寻找实现软件系统与现实世界的有效互动办法，并严描述该互动办法（即建立软件解决方案，又称软件规格说明）。 ​ 软件需求开发：既需要从问题出发，分析问题域，研究解决问题所需要的互动效应；又需要关注软件系统的解决方案，建立软件规格说明，保证基于软件规格说明构造的软件产品能够解决用户问题。 ​ 常见的忽略需求开发">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228150540004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228151033402.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152035031.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152407624.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152731582.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152817344.png">
+<meta property="article:published_time" content="2024-02-28T07:40:00.000Z">
+<meta property="article:modified_time" content="2024-02-29T07:29:47.582Z">
+<meta property="article:author" content="Lg">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228150540004.png">
+
+<link rel="canonical" href="https://example.com/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件工程与计算II-0x05 软件需求基础 | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件工程与计算II-0x05 软件需求基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2024-02-28 15:40:00" itemprop="dateCreated datePublished" datetime="2024-02-28T15:40:00+08:00">2024-02-28</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-02-29 15:29:47" itemprop="dateModified" datetime="2024-02-29T15:29:47+08:00">2024-02-29</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="引言">5.1 引言</h4>
+<p>​ 需求开发阶段主要任务是分析问题，研究问题所发生的现实世界（即问题域），寻找实现软件系统与现实世界的有效互动办法，并严描述该互动办法（即建立软件解决方案，又称软件规格说明）。</p>
+<p>​ 软件需求开发：既需要从问题出发，分析问题域，研究解决问题所需要的互动效应；又需要关注软件系统的解决方案，建立软件规格说明，保证基于软件规格说明构造的软件产品能够解决用户问题。</p>
+<p>​ 常见的忽略需求开发的情况有：</p>
+<ul>
+<li>问题广为人知或者需求非常明确。</li>
+<li>问题小而简单。</li>
+</ul>
+<h4 id="需求工程基础">5.2 需求工程基础</h4>
+<h5 id="需求工程简介">5.2.1 需求工程简介</h5>
+<p>​ 需求工程三个主要任务：</p>
+<ul>
+<li><p>说明软件系统将被应用的环境及其目标，说明用来达到这些目标的软件功能，即要同时说明软件“需要做什么”和“为什么需要做”。</p></li>
+<li><p>将目标和功能反映到软件系统中，映射为可行的软件行为，并对软件行为进行准确的规格说明。</p></li>
+<li><p>妥善处理目标和功能随着时间演化的变动情况。</p></li>
+</ul>
+<h5 id="需求工程活动">5.2.2 需求工程活动</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228150540004.png" alt="image-20240228150540004" /><figcaption aria-hidden="true">image-20240228150540004</figcaption>
+</figure>
+<p>​ 需求开发是专门用来处理需求的软件技术。</p>
+<p>​ 需求获取目的是从空白开始建立最初的原始需求。研究系统将来的应用环境，确定涉众，了解现有问题，建立系统目标，获取业务细节和具体用户需求。</p>
+<p>​ 需求分析目的是保证需求的完整性和一致性。从需求获取阶段输出的原始需求和业务细节出发，建立系统模型和系统及需求，标识并修复需求缺陷，发现并弥补遗漏需求。</p>
+<p>​ 需求规格说明目的是将完整、一致的软件解决方案以文档的方式固定下来。</p>
+<p>​ 需求验证的目的是保证软件需求规格说明文档的质量，要求文档内需求正确地反映用户的真实意图，并保证整个文档的一致性和完整性。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228151033402.png" alt="image-20240228151033402" /><figcaption aria-hidden="true">image-20240228151033402</figcaption>
+</figure>
+<p>​ 需求管理是对需求开发所建立的需求基线的管理，在基线完成后正式开始，并在需求开发结束之后持续存在。</p>
+<h5 id="需求获取">5.2.3 需求获取</h5>
+<p>​ 任务有两方面。</p>
+<ol type="1">
+<li><strong>目标分析</strong></li>
+</ol>
+<ul>
+<li>根据问题确定目标。发现问题比发现目标简单一些，问题反面就是目标。</li>
+<li>通过分析利害关系人确定目标。</li>
+</ul>
+<ol start="2" type="1">
+<li><strong>用户需求获取</strong></li>
+</ol>
+<ul>
+<li>面谈</li>
+<li>集体获取方法</li>
+<li>头脑风暴</li>
+<li>原型：建立一个有形的制品来增进用户与需求工程师之间的交流。</li>
+</ul>
+<h5 id="需求分析">5.2.4 需求分析</h5>
+<ol type="1">
+<li><strong>边界分析</strong></li>
+</ol>
+<p>​ 系统边界定义了项目范围，边界之内定义的是系统需要对外提供的功能，边界之外标识的是对系统有功能要求的外部实体或者对系统有所限制的环境要素。</p>
+<p>​ 系统用例图和上下文图常用来定义系统边界。</p>
+<ol start="2" type="1">
+<li><strong>需求建模</strong></li>
+</ol>
+<p>​ 模型能够在有限空间内表述更加严谨、准确和高密度的信息，建模是需求分析中最为基础和重要的一项任务。</p>
+<p>​ 常用技术包括数据流图、实体关系图、状态转换图、类图等半形式化建模技术。更严格的领域也会应用 Z 模型等更加严格要求的形式化技术。</p>
+<h5 id="需求规格说明">5.2.5 需求规格说明</h5>
+<ol type="1">
+<li><strong>定制文档模板</strong></li>
+<li><strong>编写文档</strong></li>
+</ol>
+<h5 id="需求验证">5.2.6 需求验证</h5>
+<p>​ 需求规格说明文档至少应满足以下标准：</p>
+<ul>
+<li>文档内每条需求都正确、准确地反映用户意图。</li>
+<li>文档记录的需求集在整体上具有完整性和一致性。</li>
+<li>文档的组织方式和需求的书写方式具有可读性和可修改性。</li>
+</ul>
+<h5 id="需求管理">5.2.7 需求管理</h5>
+<p>​ 需求管理会进行变更控制，纳入和实现合理的变更请求，拒绝不合理的变更请求，控制变更的成本和影响范围。</p>
+<h4 id="需求基础">5.3 需求基础</h4>
+<h5 id="需求">5.3.1 需求</h5>
+<p>​ 需求通常被表述为“系统应该……”、“在……时，系统应该……”。如：</p>
+<ul>
+<li>系统应该允许顾客退回已经购买的产品。</li>
+</ul>
+<h5 id="需求的层次性">5.3.2 需求的层次性</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152035031.png" alt="image-20240228152035031" /><figcaption aria-hidden="true">image-20240228152035031</figcaption>
+</figure>
+<ol type="1">
+<li><p><strong>业务需求</strong></p>
+<p>描述了组织为什么要开发系统。</p>
+<p>高层次解决方案与系统特性说明了系统为用户提供的各项功能，限定系统范围，帮助用户和开发者确定系统边界。</p></li>
+<li><p><strong>用户需求</strong></p>
+<p>用户需求是执行工作的用户对系统所能完成具体任务的期望，描述了系统能够帮助用户做些什么。</p></li>
+<li><p><strong>系统级需求</strong></p>
+<p>系统级需求是用户对系统行为的期望，每个系统及需求反映了一次外界与系统的交互行为，或是系统的一个细节。</p>
+<p>系统级需求可以直接映射为系统行为，定义了系统中需要实现的功能，描述了开发人员需要实现什么。</p></li>
+</ol>
+<h5 id="结合层次性的需求开发">5.3.3 结合层次性的需求开发</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152407624.png" alt="image-20240228152407624" /><figcaption aria-hidden="true">image-20240228152407624</figcaption>
+</figure>
+<p>​ 软件需求的开发从业务需求开始，它具有明显的目的性，比较容易获取与确认。</p>
+<p>​ 业务需求影响着用户需求的获取。</p>
+<p>​ 很多情况下得到用户需求后即可结束需求开发，进入设计阶段。但系统比较复杂的情况下，还需继续细化用户需求，处理为等价的系统级需求。</p>
+<h5 id="区分需求问题域与规格说明">5.3.4 区分需求、问题域与规格说明</h5>
+<p>​ 需求是一种期望，既源于现实又高于现实。</p>
+<p>​ 问题域是对现实世界运行规律的一种反映，是需求的生产地，也是需求的解决地。</p>
+<p>​ 规格说明是软件产品的方案描述，以软件产品的运行机制为主要内容。不是需求但实现需求，不是问题域但需要与问题域互动。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152731582.png" alt="image-20240228152731582" /><figcaption aria-hidden="true">image-20240228152731582</figcaption>
+</figure>
+<h4 id="需求分类">5.4 需求分类</h4>
+<h5 id="需求谱系">5.4.1 需求谱系</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240228152817344.png" alt="image-20240228152817344" /><figcaption aria-hidden="true">image-20240228152817344</figcaption>
+</figure>
+<h5 id="软件需求分类">5.4.2 软件需求分类</h5>
+<ul>
+<li>功能需求</li>
+<li>性能需求</li>
+<li>质量属性</li>
+<li>对外接口</li>
+<li>约束</li>
+<li>数据需求等其它需求</li>
+</ul>
+<ol type="1">
+<li><p><strong>功能需求</strong>：</p>
+<p>最常见、最主要、最重要的需求，也是最复杂的需求。</p>
+<p>功能需求是一个软件产品能够解决用户问题和产生价值的基础，是整个软件开发工作的基础。</p></li>
+<li><p><strong>性能需求</strong>：</p>
+<p>速度、容量、吞吐量、负载、实时性。</p></li>
+<li><p><strong>质量属性</strong>：</p>
+<p>一方面质量属性是隐式的；另一方面在后续开发中，质量属性需求会极大影响软件体系结构设计。常见质量属性有：可靠性、可用性、安全性、可维护性、可移植性。</p></li>
+<li><p><strong>对外接口</strong>：</p>
+<p>对外接口部分通常被封装起来，防止接口的另一方发生变化时，尽可能少地影响软件系统内部。</p>
+<p>重要的用户界面接口需要提供界面原型。</p>
+<p>对系统间的软硬件接口和通信接口需说明以下内容：</p>
+<ul>
+<li>接口的用途</li>
+<li>接口的输入、输出</li>
+<li>数据格式</li>
+<li>命令格式</li>
+<li>异常处理要求</li>
+</ul></li>
+<li><p><strong>约束</strong>：</p>
+<p>约束是在总体上限制开发人员设计和构建系统时的选择范围。常见约束有三类：</p>
+<ul>
+<li>系统开发及运行的环境。</li>
+<li>问题域内的相关标准，包括法律法规、行业规定、企业规章等。</li>
+<li>商业原则。</li>
+</ul></li>
+<li><p><strong>数据需求</strong>：、</p>
+<p>数据需求是需要在数据库、文件或者其他介质中存储的数据描述，通常包含：</p>
+<ul>
+<li>各个功能使用的数据信息；</li>
+<li>使用频率；</li>
+<li>可访问性要求；</li>
+<li>数据实体及其关系；</li>
+<li>完整性约束；</li>
+<li>数据保持要求。</li>
+</ul></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag"># 专业课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/02/27/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x04%20%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86%E5%9F%BA%E7%A1%80/" rel="prev" title="软件工程与计算II-0x04 项目管理基础">
+      <i class="fa fa-chevron-left"></i> 软件工程与计算II-0x04 项目管理基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/02/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x06%20%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/" rel="next" title="软件工程与计算II-0x06 需求分析方法">
+      软件工程与计算II-0x06 需求分析方法 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BC%95%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">5.1 引言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">5.2 需求工程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E7%AE%80%E4%BB%8B"><span class="nav-number">2.1.</span> <span class="nav-text">5.2.1 需求工程简介</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%B7%A5%E7%A8%8B%E6%B4%BB%E5%8A%A8"><span class="nav-number">2.2.</span> <span class="nav-text">5.2.2 需求工程活动</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%8E%B7%E5%8F%96"><span class="nav-number">2.3.</span> <span class="nav-text">5.2.3 需求获取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90"><span class="nav-number">2.4.</span> <span class="nav-text">5.2.4 需求分析</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E"><span class="nav-number">2.5.</span> <span class="nav-text">5.2.5 需求规格说明</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E9%AA%8C%E8%AF%81"><span class="nav-number">2.6.</span> <span class="nav-text">5.2.6 需求验证</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E7%AE%A1%E7%90%86"><span class="nav-number">2.7.</span> <span class="nav-text">5.2.7 需求管理</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80"><span class="nav-number">3.</span> <span class="nav-text">5.3 需求基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82"><span class="nav-number">3.1.</span> <span class="nav-text">5.3.1 需求</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E7%9A%84%E5%B1%82%E6%AC%A1%E6%80%A7"><span class="nav-number">3.2.</span> <span class="nav-text">5.3.2 需求的层次性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E5%90%88%E5%B1%82%E6%AC%A1%E6%80%A7%E7%9A%84%E9%9C%80%E6%B1%82%E5%BC%80%E5%8F%91"><span class="nav-number">3.3.</span> <span class="nav-text">5.3.3 结合层次性的需求开发</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%8C%BA%E5%88%86%E9%9C%80%E6%B1%82%E9%97%AE%E9%A2%98%E5%9F%9F%E4%B8%8E%E8%A7%84%E6%A0%BC%E8%AF%B4%E6%98%8E"><span class="nav-number">3.4.</span> <span class="nav-text">5.3.4 区分需求、问题域与规格说明</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E7%B1%BB"><span class="nav-number">4.</span> <span class="nav-text">5.4 需求分类</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E8%B0%B1%E7%B3%BB"><span class="nav-number">4.1.</span> <span class="nav-text">5.4.1 需求谱系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%88%86%E7%B1%BB"><span class="nav-number">4.2.</span> <span class="nav-text">5.4.2 软件需求分类</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

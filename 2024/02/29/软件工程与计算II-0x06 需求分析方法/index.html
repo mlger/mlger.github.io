@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="6.1 需求分析基础 6.1.1 需求分析的原因 ​ 需求获取中得到的信息仅仅解释了用户对软件系统的期待，还不是开发者能够立即加以实现的解决方案。需求分析的任务是：  建立分析模型，达成开发者和用户对需求信息的共同理解。关键活动是建模。 依据共同理解，发挥创造性，创建软件系统解决方案。   image-20240229201207520  6.1.2 需求分析模型  建模">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程与计算II-0x06 需求分析方法">
+<meta property="og:url" content="https://example.com/2024/02/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x06%20%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="6.1 需求分析基础 6.1.1 需求分析的原因 ​ 需求获取中得到的信息仅仅解释了用户对软件系统的期待，还不是开发者能够立即加以实现的解决方案。需求分析的任务是：  建立分析模型，达成开发者和用户对需求信息的共同理解。关键活动是建模。 依据共同理解，发挥创造性，创建软件系统解决方案。   image-20240229201207520  6.1.2 需求分析模型  建模">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201207520.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201215098.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201226878.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201443310.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201527064.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201552187.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201643944.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201649765.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201700494.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229202119656.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229202435531.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229203038749.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211259685.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211437510.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211651115.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211906600.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212042518.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212251428.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212259525.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212416175.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212405699.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212353692.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212516222.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212752587.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212757767.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229213349451.png">
+<meta property="article:published_time" content="2024-02-29T13:34:00.000Z">
+<meta property="article:modified_time" content="2024-02-29T13:34:34.333Z">
+<meta property="article:author" content="Lg">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201207520.png">
+
+<link rel="canonical" href="https://example.com/2024/02/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x06%20%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件工程与计算II-0x06 需求分析方法 | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/02/29/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x06%20%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件工程与计算II-0x06 需求分析方法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-02-29 21:34:00 / 修改时间：21:34:34" itemprop="dateCreated datePublished" datetime="2024-02-29T21:34:00+08:00">2024-02-29</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="需求分析基础">6.1 需求分析基础</h4>
+<h5 id="需求分析的原因">6.1.1 需求分析的原因</h5>
+<p>​ 需求获取中得到的信息仅仅解释了用户对软件系统的期待，还不是开发者能够立即加以实现的解决方案。需求分析的任务是：</p>
+<ul>
+<li><p>建立分析模型，达成开发者和用户对需求信息的共同理解。关键活动是<strong>建模</strong>。</p></li>
+<li><p>依据共同理解，发挥创造性，创建软件系统解决方案。</p></li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201207520.png" alt="image-20240229201207520" /><figcaption aria-hidden="true">image-20240229201207520</figcaption>
+</figure>
+<h5 id="需求分析模型">6.1.2 需求分析模型</h5>
+<ol start="2" type="1">
+<li><p><strong>建模</strong></p>
+<p><strong>抽象 (abstraction)</strong> 和 <strong>分解 (decomposition / partitioning)</strong> 是建模最常用的两种手段。</p></li>
+<li><p><strong>需求分析模型的特点及常见分析模型</strong></p>
+<p>需求分析模型一方面使用了软件的内部实体，以对象、类、函数、过程、属性等作为模型的基本元素；另一方面使用问题域的概念来描述软件内部实体，使用问题域语言表现语义。</p></li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201215098.png" alt="image-20240229201215098" /><figcaption aria-hidden="true">image-20240229201215098</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201226878.png" alt="image-20240229201226878" /><figcaption aria-hidden="true">image-20240229201226878</figcaption>
+</figure>
+<h4 id="结构化分析">6.2 结构化分析</h4>
+<h5 id="结构化分析方法">6.2.1 结构化分析方法</h5>
+<p>​ 结构化分析方法把现实世界描绘为数据在信息系统中的流动，以及在数据流动过程中数据向信息的转化。</p>
+<p>​ 数据流图 (DFD) 是结构化分析方法的核心技术，表明系统的输入、处理、存储和输出，以及它们如何在一起协同工作。</p>
+<p>​ 实体关系图 (ERD) 是另一个核心技术，用来描述系统需要存储的数据信息。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201443310.png" alt="image-20240229201443310" /><figcaption aria-hidden="true">image-20240229201443310</figcaption>
+</figure>
+<h5 id="数据流图">6.2.2 数据流图</h5>
+<ol type="1">
+<li><p><strong>基本元素</strong></p>
+<p>外部实体、过程、数据流和数据存储。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201527064.png" alt="image-20240229201527064" /><figcaption aria-hidden="true">image-20240229201527064</figcaption>
+</figure></li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201552187.png" alt="image-20240229201552187" /><figcaption aria-hidden="true">image-20240229201552187</figcaption>
+</figure>
+<ol start="2" type="1">
+<li><p><strong>语法规则</strong></p>
+<ol type="1">
+<li>必须有输入，也必须有输出。</li>
+<li>数据流必须和过程关联。</li>
+<li>每个对象必须有唯一标识名称。</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201643944.png" alt="image-20240229201643944" /><figcaption aria-hidden="true">image-20240229201643944</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201649765.png" alt="image-20240229201649765" /><figcaption aria-hidden="true">image-20240229201649765</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229201700494.png" alt="image-20240229201700494" /><figcaption aria-hidden="true">image-20240229201700494</figcaption>
+</figure></li>
+<li><p>分层结构</p>
+<p>分层的 DFD 定义了三个层次类别：上下文图、0 层图和 N 层图。</p>
+<ol type="1">
+<li>上下文图：最高层次，将整个系统看作一个功能，实现系统所有功能。</li>
+<li>0 层图：是上下文图单一过程的细节描述，是对该单一过程的第一次功能分解，需要在一个图中概况系统所有功能。</li>
+<li>分解规则：要求 DFD 子图的输入流、输出流必须和父过程的输入流、输出流保持一致。</li>
+</ol></li>
+</ol>
+<h5 id="实体关系图-entity-relation-diagram-erd">6.2.3 实体关系图 (Entity Relation Diagram, ERD)</h5>
+<p>​ ERD 描述数据的定义、结构和关系等特性。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229202119656.png" alt="image-20240229202119656" /><figcaption aria-hidden="true">image-20240229202119656</figcaption>
+</figure>
+<p>​ 最小基数为 0 为 Optional，最小基数为 1 为 Mandatory。</p>
+<p>​ 最大基数为 1 为 One， 最大基数大于 1 为 Many。</p>
+<p>​ 实体是需要在系统中收集和存储的现实世界事物的类别描述。</p>
+<p>​ 属性是可以对实体进行描述的特征。</p>
+<p>​ 若某个标识可以唯一确定实体中的一个实例，则称为<strong>标识符</strong>或<strong>键 (key)</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229202435531.png" alt="image-20240229202435531" /><figcaption aria-hidden="true">image-20240229202435531</figcaption>
+</figure>
+<h4 id="面向对象分析">6.3 面向对象分析</h4>
+<h5 id="面向对象分析方法">6.3.1 面向对象分析方法</h5>
+<p>​ <strong>统一建模语言 (Unified modeling Language, UML)</strong> 是面向对象分析的主要模型技术。常见有类图、用例图、交互图（顺序图）、状态图和对象约束语言 (OCL)。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229203038749.png" alt="image-20240229203038749" /><figcaption aria-hidden="true">image-20240229203038749</figcaption>
+</figure>
+<h5 id="用例">6.3.2 用例</h5>
+<p>​ 一个用例承载了所有与用户某一个目标相关的成功和失败场景的集合。</p>
+<h5 id="用例图">6.3.3 用例图</h5>
+<ol type="1">
+<li><p><strong>基本元素</strong></p>
+<p>用例、参与者、关系和系统边界。</p></li>
+<li><p><strong>建立</strong></p>
+<ol type="1">
+<li>进行目标分析与确定解决方向</li>
+<li>寻找参与者</li>
+<li>寻找用例</li>
+</ol>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211259685.png" alt="image-20240229211259685" /><figcaption aria-hidden="true">image-20240229211259685</figcaption>
+</figure>
+<ol start="4" type="1">
+<li><p>细化用例：用例描述了为应对一个业务事件，由一个用户发起，并在一个连续时间段内完成，可以增加业务价值的任务。</p>
+<ul>
+<li>不要将粒度细化过小，将用例细化为单个操作。</li>
+<li>不要将同一个业务目标细化为不同用例。</li>
+<li>不要将没有业务价值的内容作为用例。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211437510.png" alt="image-20240229211437510" /><figcaption aria-hidden="true">image-20240229211437510</figcaption>
+</figure></li>
+</ol></li>
+</ol>
+<h5 id="用例描述">6.3.4 用例描述</h5>
+<ul>
+<li>围绕“交互”进行场景描述。</li>
+<li>保持“规格说明”级别，尽可能不要涉及界面、按钮、方法等软件内部构造机制。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211651115.png" alt="image-20240229211651115" /><figcaption aria-hidden="true">image-20240229211651115</figcaption>
+</figure>
+<h5 id="概念类图领域模型">6.3.5 概念类图（领域模型）</h5>
+<p>​ 基本元素有对象、类、链接、关联（聚合）、继承。</p>
+<p>​ 对象有三方面内容：标识符、状态、行为。</p>
+<p>​ 概念类会显示描述自己一些重要属性，但不是全部的详细属性，而且概念类的属性通常没有类型的约束。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229211906600.png" alt="image-20240229211906600" /><figcaption aria-hidden="true">image-20240229211906600</figcaption>
+</figure>
+<p>​ 类之间的关系被称为<strong>关联 (association)</strong>。</p>
+<p>​ <strong>聚合 (aggregation)</strong>：空心菱形。标识整体与部分的关系。</p>
+<p>​ <strong>组合 (composition)</strong>：实心菱形。一旦一个部分属于某个整体，就无法属于其它整体，也无法单独存在。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212042518.png" alt="image-20240229212042518" /><figcaption aria-hidden="true">image-20240229212042518</figcaption>
+</figure>
+<p>​ 继承：三角箭头。</p>
+<p>​ <strong>建立概念类图</strong>：</p>
+<ul>
+<li>建立局部概念类图。</li>
+<li>合并，建立软件系统整体概念类图。识别候选类、确定概念类、识别关联、识别重要属性。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212251428.png" alt="image-20240229212251428" /><figcaption aria-hidden="true">image-20240229212251428</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212259525.png" alt="image-20240229212259525" /><figcaption aria-hidden="true">image-20240229212259525</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212416175.png" alt="image-20240229212416175" /><figcaption aria-hidden="true">image-20240229212416175</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212405699.png" alt="image-20240229212405699" /><figcaption aria-hidden="true">image-20240229212405699</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212353692.png" alt="image-20240229212353692" /><figcaption aria-hidden="true">image-20240229212353692</figcaption>
+</figure>
+<h5 id="交互图顺序图">6.3.6 交互图（顺序图）</h5>
+<p>​ <strong>交互图</strong>是描述对象协作的技术。</p>
+<p>​ <strong>顺序图</strong>：纵向是时间轴，向下延伸。横轴表示参与协作的对象。</p>
+<p>​ 系统顺序图是将整个系统看作一个黑箱的对象而描述的简单顺序图形式，强调外部参与者和系统的交互行为，重点展示系统级事件。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212516222.png" alt="image-20240229212516222" /><figcaption aria-hidden="true">image-20240229212516222</figcaption>
+</figure>
+<h5 id="状态图">6.3.7 状态图</h5>
+<p>​ 有限状态机是状态图的基础。</p>
+<p>​ 建立状态图：</p>
+<ul>
+<li>确定上下文环境。</li>
+<li>识别状态。建立状态转换。</li>
+<li>补充详细信息，完善状态图。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212752587.png" alt="image-20240229212752587" /><figcaption aria-hidden="true">image-20240229212752587</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229212757767.png" alt="image-20240229212757767" /><figcaption aria-hidden="true">image-20240229212757767</figcaption>
+</figure>
+<h4 id="使用需求分析方法细化和明确需求">6.4 使用需求分析方法细化和明确需求</h4>
+<h5 id="细化和明确需求内容">6.4.1 细化和明确需求内容</h5>
+<p>​ 需求分析模型的建立是为了改进用例文本描述的内容，细化和明确需求，发现其中的冗余、遗漏、错误和冲突。</p>
+<h5 id="建立系统级需求">6.4.2 建立系统级需求</h5>
+<p>​ 需要分析完所有流程的系统顺序图，才能得到所有的刺激与响应。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240229213349451.png" alt="image-20240229213349451" /><figcaption aria-hidden="true">image-20240229213349451</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag"># 专业课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/" rel="prev" title="软件工程与计算II-0x05 软件需求基础">
+      <i class="fa fa-chevron-left"></i> 软件工程与计算II-0x05 软件需求基础
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/02/README/" rel="next" title="README">
+      README <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E5%9F%BA%E7%A1%80"><span class="nav-number">1.</span> <span class="nav-text">6.1 需求分析基础</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="nav-number">1.1.</span> <span class="nav-text">6.1.1 需求分析的原因</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%A8%A1%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">6.1.2 需求分析模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90"><span class="nav-number">2.</span> <span class="nav-text">6.2 结构化分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%93%E6%9E%84%E5%8C%96%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">2.1.</span> <span class="nav-text">6.2.1 结构化分析方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B5%81%E5%9B%BE"><span class="nav-number">2.2.</span> <span class="nav-text">6.2.2 数据流图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%AE%9E%E4%BD%93%E5%85%B3%E7%B3%BB%E5%9B%BE-entity-relation-diagram-erd"><span class="nav-number">2.3.</span> <span class="nav-text">6.2.3 实体关系图 (Entity Relation Diagram, ERD)</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90"><span class="nav-number">3.</span> <span class="nav-text">6.3 面向对象分析</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95"><span class="nav-number">3.1.</span> <span class="nav-text">6.3.1 面向对象分析方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B"><span class="nav-number">3.2.</span> <span class="nav-text">6.3.2 用例</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E5%9B%BE"><span class="nav-number">3.3.</span> <span class="nav-text">6.3.3 用例图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%94%A8%E4%BE%8B%E6%8F%8F%E8%BF%B0"><span class="nav-number">3.4.</span> <span class="nav-text">6.3.4 用例描述</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5%E7%B1%BB%E5%9B%BE%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B"><span class="nav-number">3.5.</span> <span class="nav-text">6.3.5 概念类图（领域模型）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BA%A4%E4%BA%92%E5%9B%BE%E9%A1%BA%E5%BA%8F%E5%9B%BE"><span class="nav-number">3.6.</span> <span class="nav-text">6.3.6 交互图（顺序图）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%8A%B6%E6%80%81%E5%9B%BE"><span class="nav-number">3.7.</span> <span class="nav-text">6.3.7 状态图</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E9%9C%80%E6%B1%82%E5%88%86%E6%9E%90%E6%96%B9%E6%B3%95%E7%BB%86%E5%8C%96%E5%92%8C%E6%98%8E%E7%A1%AE%E9%9C%80%E6%B1%82"><span class="nav-number">4.</span> <span class="nav-text">6.4 使用需求分析方法细化和明确需求</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BB%86%E5%8C%96%E5%92%8C%E6%98%8E%E7%A1%AE%E9%9C%80%E6%B1%82%E5%86%85%E5%AE%B9"><span class="nav-number">4.1.</span> <span class="nav-text">6.4.1 细化和明确需求内容</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BB%BA%E7%AB%8B%E7%B3%BB%E7%BB%9F%E7%BA%A7%E9%9C%80%E6%B1%82"><span class="nav-number">4.2.</span> <span class="nav-text">6.4.2 建立系统级需求</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

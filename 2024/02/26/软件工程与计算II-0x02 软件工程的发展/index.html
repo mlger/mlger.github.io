@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="2.1 软件工程发展脉络    年代 总结     20 世纪 50 年代 科学计算。 以机器为中心编程。 像生产硬件一样生产软件。   20 世纪 60 年代 业务应用。 软件不同于硬件。 用软件工艺的方式生产软件。   20 世纪 70 年代 结构化方法。 瀑布模型。 强调规则和纪律。 奠定了软件工程的基础。   20 世纪 80 年代 追求生产力">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程与计算II-0x02 软件工程的发展">
+<meta property="og:url" content="https://example.com/2024/02/26/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x02%20%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="2.1 软件工程发展脉络    年代 总结     20 世纪 50 年代 科学计算。 以机器为中心编程。 像生产硬件一样生产软件。   20 世纪 60 年代 业务应用。 软件不同于硬件。 用软件工艺的方式生产软件。   20 世纪 70 年代 结构化方法。 瀑布模型。 强调规则和纪律。 奠定了软件工程的基础。   20 世纪 80 年代 追求生产力">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226204854533.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226205315658.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226205327513.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226210613268.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226212203493.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226212514573.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226215349460.png">
+<meta property="og:image" content="c:\Users\13701\AppData\Roaming\Typora\typora-user-images\image-20240226220607090.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226221134298.png">
+<meta property="article:published_time" content="2024-02-26T14:16:00.000Z">
+<meta property="article:modified_time" content="2024-02-26T14:16:51.344Z">
+<meta property="article:author" content="Lg">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226204854533.png">
+
+<link rel="canonical" href="https://example.com/2024/02/26/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x02%20%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件工程与计算II-0x02 软件工程的发展 | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/02/26/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x02%20%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%9A%84%E5%8F%91%E5%B1%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件工程与计算II-0x02 软件工程的发展
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-02-26 22:16:00 / 修改时间：22:16:51" itemprop="dateCreated datePublished" datetime="2024-02-26T22:16:00+08:00">2024-02-26</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="软件工程发展脉络">2.1 软件工程发展脉络</h4>
+<table>
+<thead>
+<tr class="header">
+<th>年代</th>
+<th>总结</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>20 世纪 50 年代</td>
+<td>科学计算。 以机器为中心编程。 像生产硬件一样生产软件。</td>
+</tr>
+<tr class="even">
+<td>20 世纪 60 年代</td>
+<td>业务应用。 软件不同于硬件。 用软件工艺的方式生产软件。</td>
+</tr>
+<tr class="odd">
+<td>20 世纪 70 年代</td>
+<td>结构化方法。 瀑布模型。 强调规则和纪律。 奠定了软件工程的基础。</td>
+</tr>
+<tr class="even">
+<td>20 世纪 80 年代</td>
+<td>追求生产力最大化。 现代结构方法/面向对象编程广泛应用。 重视过程的作用。</td>
+</tr>
+<tr class="odd">
+<td>20 世纪 90 年代</td>
+<td>企业为中心的大规模软件系统开发。 追求快速开发、可变更新和用户价值。 Web 应用出现。</td>
+</tr>
+<tr class="even">
+<td>21 世纪 00 年代</td>
+<td>大规模 Web 应用。 大量面向大众的 Web 产品。 追求快速开发、可变更性、用户价值和创新。</td>
+</tr>
+</tbody>
+</table>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226204854533.png" alt="image-20240226204854533" /><figcaption aria-hidden="true">image-20240226204854533</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226205315658.png" alt="image-20240226205315658" /><figcaption aria-hidden="true">image-20240226205315658</figcaption>
+</figure>
+<h4 id="世纪-50-年代的软件工程">2.2 20 世纪 50 年代的软件工程</h4>
+<h5 id="基础环境">1. 基础环境</h5>
+<ol type="1">
+<li>虚拟计算机：<strong>研究用大型机</strong>。</li>
+</ol>
+<p>​ 数量有限，编写程序基于基本输入输出系统 (Basic Input Output System, BIOS)，甚至直接基于硬件。编译环境只有汇编语言的编译器。</p>
+<ol start="2" type="1">
+<li>主要抽象软件实体：<strong>依赖于硬件的软件</strong>。</li>
+</ol>
+<p>​ 一个很大进步是汇编语言出现和普及，其隐藏了机器特定细节，将程序员从一些无关紧要的问题中解放出来。</p>
+<p>​ 20 世纪 50 年代后期开始出现 Fortran 等面向语句编程的初级语言。</p>
+<h5 id="主要现实问题">2. 主要现实问题</h5>
+<p>​ 计算资源宝贵，软件<strong>以机器为中心 (machine-centric)</strong>。</p>
+<h5 id="软件开发方法与技术">3. 软件开发方法与技术</h5>
+<p>​ 暂未出现，精力集中于硬件上。</p>
+<h5 id="软件开发过程">4. 软件开发过程</h5>
+<p>​ “制造软件和硬件是一样的”。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226205327513.png" alt="image-20240226205327513" /><figcaption aria-hidden="true">image-20240226205327513</figcaption>
+</figure>
+<h5 id="重要思想">5. 重要思想</h5>
+<p>​ 重视产品质量，进行评审和测试。</p>
+<h5 id="总结">6. 总结</h5>
+<ul>
+<li>科学计算。</li>
+<li>以机器为中心编程。</li>
+<li>像生产硬件一样生产软件。</li>
+</ul>
+<h4 id="世纪-60-年代的软件工程">2.3 20 世纪 60 年代的软件工程</h4>
+<h5 id="基础环境-1">1. 基础环境</h5>
+<ol type="1">
+<li>虚拟计算机：<strong>商业大型机</strong>。</li>
+</ol>
+<p>​ 价格昂贵。为提高开发效率，企业愿意购买协助开发的系统软件，如操作系统、高级语言编译器、命令行模式的开发环境、代码工具库等。</p>
+<ol start="2" type="1">
+<li>主要抽象软件实体：<strong>第 3 代语言</strong>。</li>
+</ol>
+<p>​ 提供了函数（过程）机制，因为编译器已经能够很好完成对语句的优化，程序员可以转移出精力考虑如何从更高层次的函数（过程）构建程序。</p>
+<p>​ 提供了更好类型系统和数据结构化。</p>
+<h5 id="主要现实问题-1">2. 主要现实问题</h5>
+<p>​ 需要软件解决的问题从科学计算转向业务应用，称作<strong>以应用为中心 (application-centric)</strong>。</p>
+<p>​ 业务应用开发比科学计算复杂得多，因为其问题和解决逻辑都是复杂且模糊的。</p>
+<h5 id="软件开发方法与技术-1">3. 软件开发方法与技术</h5>
+<p>​ 总体上依靠程序员能力，“工艺式”开发。</p>
+<h5 id="软件开发过程-1">4. 软件开发过程</h5>
+<p>​ “工艺式”程序员使用<strong>“构建-修复” (build-fix)</strong> 过程开发软件。</p>
+<p>​ 导致了“个人英雄主义编程”，“牛仔程序员”是常见角色。为了赶在 ddl 前完工，召集夜猫子 debug，然后被当作英雄。</p>
+<h5 id="重要思想-1">5. 重要思想</h5>
+<ol type="1">
+<li>软件不同于硬件。</li>
+</ol>
+<ul>
+<li>软件与现实关系更加密切，对需求规格化更难。</li>
+<li>软件比硬件容易修改得多，并且不需要昂贵的生产线复制产品。</li>
+<li>软件没有损耗。</li>
+<li>软件不可见。</li>
+</ul>
+<ol start="2" type="1">
+<li>避免“工艺式”生产，用工程方式生产软件</li>
+</ol>
+<ul>
+<li>”工艺式“软件生产导致了<strong>质量低、开发效率低、成本提高、可维护性低、没有适当的文档材料、对开发成本和进度难以估计</strong>等问题。</li>
+<li>1968 年和 1969 年召开两届里程碑式的“软件工程”会议。1968 年的会议提出了“软件危机”的说法，1969 年的会议指出“软件工程”方向，用工程的方法生产软件。</li>
+</ul>
+<h5 id="总结-1">6. 总结</h5>
+<ul>
+<li>业务应用。</li>
+<li>软件不同于硬件。</li>
+<li>用软件工艺的方式生产软件。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226210613268.png" alt="image-20240226210613268" /><figcaption aria-hidden="true">image-20240226210613268</figcaption>
+</figure>
+<h4 id="世纪-70-年代的软件工程">2.4 20 世纪 70 年代的软件工程</h4>
+<h5 id="基础环境-2">1. 基础环境</h5>
+<ol type="1">
+<li>虚拟计算机：<strong>商业微型机</strong>。</li>
+</ol>
+<p>​ 体积更小，成本更低。</p>
+<p>​ 系统软件方面，关系代数和演算的成熟产生了数据库管理系统 DBMS 软件，极大提高开发者处理可持久化数据能力。</p>
+<ol start="2" type="1">
+<li>主要抽象软件实体：<strong>结构化程序设计理论</strong>。</li>
+</ol>
+<p>​ 结构化程序设计理论使用函数（过程）、块结构 (block structure) 和三种基本控制结构（顺序、循环、分支）为基础构建程序。</p>
+<p>​ 最大粒度软件抽象实体仍是函数（过程）。</p>
+<h5 id="主要现实问题-2">2. 主要现实问题</h5>
+<p>​ 更多的企业带来<strong>更多的业务应用</strong>。对软件产品需求增多。</p>
+<p>​ 结构化程序设计理论使得小型程序开发成功率有了一定保证。保证复杂软件系统开发的成功、解决复杂软件系统的复杂性成为开发工作主要指导思想。</p>
+<h5 id="软件开发方法与技术-2">3. 软件开发方法与技术</h5>
+<p>​ 70 年代早期开始广泛使用结构化编程方法，使用函数（过程）构建程序，使用块结构和三种基本控制结构组织函数（过程）的代码，使用<strong>程序流程图</strong>描述逻辑进行程序设计，使用<strong>逐步精细化、自顶向下</strong>的软件开发方法进行开发。</p>
+<p>​ 70 年代中后期，结构化方法从编程活动扩展到分析和设计活动，围绕功能分解思想和层次模块结构，使用<strong>数据流图 (Data Flow Diagram, DFD)、实体关系图 (Entity Relation ship Diagram, ERD) 和结构图 (Structure Chart)</strong>，建立了结构化设计、结构化分析、 JSP (Jackson Structured Programming) 等结构化分析与设计方法。</p>
+<h5 id="软件开发过程-2">4. 软件开发过程</h5>
+<p>​ <strong>“瀑布模型”</strong>：开发中越早发现缺陷并修复，工作量和成本越低，因此强调一个结束阶段进行验证和检验，尽早修复缺陷，降低成本，提高成功率。</p>
+<p>​ 但瀑布模型被解释为一个纯顺序过程，这种僵硬的顺序要求不符合软件开发实际。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226212203493.png" alt="image-20240226212203493" /><figcaption aria-hidden="true">image-20240226212203493</figcaption>
+</figure>
+<h5 id="重要思想-2">5. 重要思想</h5>
+<p>​ <strong>越早发现和修复问题，代价越低</strong>。</p>
+<h5 id="总结-2">6. 总结</h5>
+<ul>
+<li>结构化方法。</li>
+<li>瀑布模型。</li>
+<li>强调规则和纪律。</li>
+<li>奠定了软件工程的基础。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226212514573.png" alt="image-20240226212514573" /><figcaption aria-hidden="true">image-20240226212514573</figcaption>
+</figure>
+<h4 id="世纪-80-年代的软件工程">2.5 20 世纪 80 年代的软件工程</h4>
+<h5 id="基础环境-3">1. 基础环境</h5>
+<ol type="1">
+<li>虚拟计算机：<strong>个人计算机</strong>。</li>
+</ol>
+<p>​ 图形用户界面 GUI 出现。</p>
+<ol start="2" type="1">
+<li>主要抽象软件实体：<strong>面向对象编程方法</strong>。</li>
+</ol>
+<p>​ 核心抽象实体是<strong>“对象/类”</strong>，粒度更大。</p>
+<h5 id="主要现实问题-3">2. 主要现实问题</h5>
+<p>​ 业务应用。</p>
+<h5 id="软件开发方法与技术-3">3. 软件开发方法与技术</h5>
+<ol type="1">
+<li><strong>结构化方法</strong></li>
+</ol>
+<p>​ 产生现代结构化方法，如信息工程、现代结构化分析。更加注重系统构建而非程序构建。</p>
+<ol start="2" type="1">
+<li><strong>面向对象编程</strong></li>
+</ol>
+<p>​ C++ 的出现和应用。C++ 的成果是因为其保留了 C 的各种特性，另一方面是由于面向对象语言支持复用和更适于复杂软件开发。可复用性，可修改性。</p>
+<ol start="3" type="1">
+<li><strong>软件复用</strong></li>
+</ol>
+<h5 id="软件开发过程-3">4. 软件开发过程</h5>
+<ol type="1">
+<li><strong>过程模型</strong></li>
+</ol>
+<p>​ ①迭代式开发；②并行开发，最大化缩减整体开发时间；③快速开发，利用原型等方法缩短开发时间。</p>
+<ol start="2" type="1">
+<li><p><strong>过程评价</strong></p></li>
+<li><p><strong>使用工具支持软件开发过程</strong></p></li>
+</ol>
+<p>​ 支持需求分析与软件设计的建模工具、支持软件测试的测试工具、支持编程的集成开发环境、支持团队协作的配置管理工具等。</p>
+<h5 id="重要思想-3">5. 重要思想</h5>
+<p>​ <strong>没有银弹</strong>。 复杂度、一致性、可变性、不可见性。软件内在特性决定复杂软件系统开发的困难是：充分利用多种模型手段，尽可能将内部元素与外部接口可视化，以推理其正确性、可靠性、完备性和可修改性。</p>
+<p>​ <strong>重视人的作用</strong>。人是项目最大的资产。卓越设计人员是“银弹”之一。“个人与交互胜过过程与工具”。</p>
+<h5 id="总结-3">6. 总结</h5>
+<ul>
+<li>追求生产力最大化。</li>
+<li>现代结构方法/面向对象编程广泛应用。</li>
+<li>重视过程的作用。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226215349460.png" alt="image-20240226215349460" /><figcaption aria-hidden="true">image-20240226215349460</figcaption>
+</figure>
+<h4 id="世纪-90-年代的软件工程">2.6 20 世纪 90 年代的软件工程</h4>
+<h5 id="基础环境-4">1. 基础环境</h5>
+<ol type="1">
+<li><p>虚拟计算机：<strong>Internet</strong>。</p></li>
+<li><p>主要抽象软件实体：<strong>面向对象分析与设计方法</strong>、<strong>软件体系结构方法</strong></p></li>
+</ol>
+<h5 id="主要现实问题-4">2. 主要现实问题</h5>
+<p>​ <strong>业务应用</strong>。复杂度、可修改性、开发周期、用户价值。</p>
+<p>​ 维护人员数量开始超过开发人员数量。</p>
+<h5 id="软件开发方法与技术-4">3. 软件开发方法与技术</h5>
+<p>​ 面向对象方法。</p>
+<p>​ 软件体系结构。</p>
+<p>​ 人机交互：基本目标是开发更加友好的软件产品，最低标准是普通人使用时比较顺畅，较高标准是在使用时感到满足和愉悦。</p>
+<p>​ 需求工程：利用工程化手段进行需求处理，以保证需求处理正确运行。</p>
+<p>​ 基于软件复用的大规模软件系统开发技术：框架 (frame) 和构件 (component)。</p>
+<p>​ Web 开发技术：Web 程序的数据描述标准 XML。</p>
+<h5 id="软件开发过程-4">4. 软件开发过程</h5>
+<ol type="1">
+<li><strong>过程模型</strong></li>
+</ol>
+<p>​ 主流的重量级过程方法 RUP (Rational Unified Process) 和很多轻量级过程方法。</p>
+<p>​ 前者思想是在一个基本框架下组织和使用最佳实践方法，有全程的软件过程工具支持。</p>
+<p>​ 后者则是抛弃传统上僵化的过程框架，选择一套能够互相配合的最佳实践方法组织开发过程，21 世纪前 10 年发展为敏捷 (agile) 方法。</p>
+<ol start="2" type="1">
+<li><p><strong>过程改进</strong></p></li>
+<li><p><strong>开源软件</strong></p></li>
+</ol>
+<p>​ 一个公司将自己产品开源而不牟利通常有两个理由：打击竞争对手，将与对手相似产品开源；促进与开源相关其它产品的销售。</p>
+<h5 id="重要思想-4">5. 重要思想</h5>
+<p>​ <strong>重视最佳实践方法</strong>。最佳实践是指那些在软件开发实践中被反复证明能减少开发时间、降低开发成本、提高产品质量的实践方法。</p>
+<h5 id="总结-4">6. 总结</h5>
+<ul>
+<li>企业为中心的大规模软件系统开发。</li>
+<li>追求快速开发、可变更新和用户价值。</li>
+<li>Web 应用出现。</li>
+</ul>
+<figure>
+<img src="C:\Users\13701\AppData\Roaming\Typora\typora-user-images\image-20240226220607090.png" alt="image-20240226220607090" /><figcaption aria-hidden="true">image-20240226220607090</figcaption>
+</figure>
+<h4 id="世纪-00-年代的软件工程">2.7 21 世纪 00 年代的软件工程</h4>
+<h5 id="基础环境-5">1. 基础环境</h5>
+<ol type="1">
+<li><p>虚拟计算机：<strong>更广 (Internet) 和更小 （嵌入式设备与移动终端）</strong>。</p></li>
+<li><p>主要抽象软件实体：对面向对象的一些概念做了更严谨的规格化，发布了 UML2.0。</p></li>
+</ol>
+<h5 id="主要现实问题-5">2. 主要现实问题</h5>
+<ul>
+<li>基于 Internet 而非 Intranet 的大规模 Web 应用日益成为主流。</li>
+<li>面向消费大众的软件产品需求出现爆炸性增长。</li>
+</ul>
+<h5 id="软件开发方法与技术-5">3. 软件开发方法与技术</h5>
+<ol type="1">
+<li>延续 90 年代技术</li>
+</ol>
+<ul>
+<li><p>软件体系结构。</p></li>
+<li><p>人机交互</p></li>
+<li><p>需求工程</p></li>
+<li><p>基于软件复用的大规模软件系统开发技术</p></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Web 技术发展</p></li>
+<li><p>特定领域的软件工程方法</p></li>
+</ol>
+<h5 id="软件开发过程-5">4. 软件开发过程</h5>
+<p>​ 敏捷方法继续发展，产生广泛影响。</p>
+<p>​ 探索外包软件的开发方式。</p>
+<h5 id="总结-5">6. 总结</h5>
+<ul>
+<li>大规模 Web 应用。</li>
+<li>大量面向大众的 Web 产品。</li>
+<li>追求快速开发、可变更性、用户价值和创新。</li>
+</ul>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240226221134298.png" alt="image-20240226221134298" /><figcaption aria-hidden="true">image-20240226221134298</figcaption>
+</figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag"># 专业课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/01/22/%E5%85%B3%E4%BA%8E%E6%8A%91%E9%83%81%E7%97%87/" rel="prev" title="关于抑郁症">
+      <i class="fa fa-chevron-left"></i> 关于抑郁症
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/02/27/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x03%20%E7%A4%BA%E4%BE%8B%E9%A1%B9%E7%9B%AE%E6%8F%8F%E8%BF%B0/" rel="next" title="软件工程与计算II-0x03 示例项目描述">
+      软件工程与计算II-0x03 示例项目描述 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E5%8F%91%E5%B1%95%E8%84%89%E7%BB%9C"><span class="nav-number">1.</span> <span class="nav-text">2.1 软件工程发展脉络</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-50-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">2.2 20 世纪 50 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83"><span class="nav-number">2.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF"><span class="nav-number">2.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B"><span class="nav-number">2.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3"><span class="nav-number">2.5.</span> <span class="nav-text">5. 重要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">2.6.</span> <span class="nav-text">6. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-60-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">3.</span> <span class="nav-text">2.3 20 世纪 60 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98-1"><span class="nav-number">3.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF-1"><span class="nav-number">3.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B-1"><span class="nav-number">3.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3-1"><span class="nav-number">3.5.</span> <span class="nav-text">5. 重要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-1"><span class="nav-number">3.6.</span> <span class="nav-text">6. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-70-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">4.</span> <span class="nav-text">2.4 20 世纪 70 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-2"><span class="nav-number">4.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98-2"><span class="nav-number">4.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF-2"><span class="nav-number">4.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B-2"><span class="nav-number">4.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3-2"><span class="nav-number">4.5.</span> <span class="nav-text">5. 重要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-2"><span class="nav-number">4.6.</span> <span class="nav-text">6. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-80-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">5.</span> <span class="nav-text">2.5 20 世纪 80 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-3"><span class="nav-number">5.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98-3"><span class="nav-number">5.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF-3"><span class="nav-number">5.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B-3"><span class="nav-number">5.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3-3"><span class="nav-number">5.5.</span> <span class="nav-text">5. 重要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-3"><span class="nav-number">5.6.</span> <span class="nav-text">6. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-90-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">6.</span> <span class="nav-text">2.6 20 世纪 90 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-4"><span class="nav-number">6.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98-4"><span class="nav-number">6.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF-4"><span class="nav-number">6.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B-4"><span class="nav-number">6.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%87%8D%E8%A6%81%E6%80%9D%E6%83%B3-4"><span class="nav-number">6.5.</span> <span class="nav-text">5. 重要思想</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-4"><span class="nav-number">6.6.</span> <span class="nav-text">6. 总结</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%96%E7%BA%AA-00-%E5%B9%B4%E4%BB%A3%E7%9A%84%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B"><span class="nav-number">7.</span> <span class="nav-text">2.7 21 世纪 00 年代的软件工程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9F%BA%E7%A1%80%E7%8E%AF%E5%A2%83-5"><span class="nav-number">7.1.</span> <span class="nav-text">1. 基础环境</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%BB%E8%A6%81%E7%8E%B0%E5%AE%9E%E9%97%AE%E9%A2%98-5"><span class="nav-number">7.2.</span> <span class="nav-text">2. 主要现实问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E6%96%B9%E6%B3%95%E4%B8%8E%E6%8A%80%E6%9C%AF-5"><span class="nav-number">7.3.</span> <span class="nav-text">3. 软件开发方法与技术</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91%E8%BF%87%E7%A8%8B-5"><span class="nav-number">7.4.</span> <span class="nav-text">4. 软件开发过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%BB%E7%BB%93-5"><span class="nav-number">7.5.</span> <span class="nav-text">6. 总结</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

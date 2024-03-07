@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="8.1 软件设计思想的发展 ​ 20 世纪 60 年代中后期到 70 年代前中期，组织结构从语句上升为函数。 ​ 20 世纪 70 年代中后期到 90 年代，从函数级别转向模块级别的“软件设计”：首先进行概要设计，根据功能设计软件的整体模块结构；其次进行详细设计，建立模块的层次化分解，定义高质量、可实现的细化模块，并设计各细化模块内部的程序结构。  软件设计是独立于软件实现的活动，需要独立">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程与计算II-0x08 软件设计基础">
+<meta property="og:url" content="https://example.com/2024/03/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x08%20%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="8.1 软件设计思想的发展 ​ 20 世纪 60 年代中后期到 70 年代前中期，组织结构从语句上升为函数。 ​ 20 世纪 70 年代中后期到 90 年代，从函数级别转向模块级别的“软件设计”：首先进行概要设计，根据功能设计软件的整体模块结构；其次进行详细设计，建立模块的层次化分解，定义高质量、可实现的细化模块，并设计各细化模块内部的程序结构。  软件设计是独立于软件实现的活动，需要独立">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194639504.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194700097.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194745047.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195405179.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195517847.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195606616.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200110717.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200200493.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200804263.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200844320.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200907357.png">
+<meta property="og:image" content="c:\Users\13701\AppData\Roaming\Typora\typora-user-images\image-20240304200915062.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200948708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201020054.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201038782.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201045598.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201059310.png">
+<meta property="article:published_time" content="2024-03-04T12:34:00.000Z">
+<meta property="article:modified_time" content="2024-03-04T12:14:37.349Z">
+<meta property="article:author" content="Lg">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194639504.png">
+
+<link rel="canonical" href="https://example.com/2024/03/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x08%20%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>软件工程与计算II-0x08 软件设计基础 | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/03/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x08%20%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E5%9F%BA%E7%A1%80/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件工程与计算II-0x08 软件设计基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-03-04 20:34:00 / 修改时间：20:14:37" itemprop="dateCreated datePublished" datetime="2024-03-04T20:34:00+08:00">2024-03-04</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="软件设计思想的发展">8.1 软件设计思想的发展</h4>
+<p>​ 20 世纪 60 年代中后期到 70 年代前中期，组织结构从语句上升为函数。</p>
+<p>​ 20 世纪 70 年代中后期到 90 年代，从函数级别转向模块级别的“软件设计”：首先进行概要设计，根据功能设计软件的整体模块结构；其次进行详细设计，建立模块的层次化分解，定义高质量、可实现的细化模块，并设计各细化模块内部的程序结构。</p>
+<ul>
+<li>软件设计是独立于软件实现的活动，需要独立的方法、模型和工具。</li>
+<li>结构化设计方法的提出。数据流图和结构图是结构化设计方法的核心技术。</li>
+<li>面向对象设计逐渐发展起来。抽象数据类型、信息隐藏、封装、多态、继承等思想提出。</li>
+</ul>
+<p>​ 20 世纪 90 年代之后，软件设计也进入“大规模软件设计”年代。</p>
+<ul>
+<li>复用思想越来越得到重视，包括产品线、框架、设计模式等“基于复用的设计”和“为复用而设计”的思想。</li>
+</ul>
+<h4 id="软件设计的核心思想">8.2 软件设计的核心思想</h4>
+<p>​ <strong>分解 (decomposition)</strong> 是横向上将系统分割为几个相对简单的<strong>子系统 (subsystem)</strong> 以及各子系统间的关系。<strong>抽象 (abstraction)</strong> 则是在纵向上聚焦各子系统的接口。这里的<strong>接口 (interface)</strong> 和<strong>实现 (implementation)</strong> 相对。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194639504.png" alt="image-20240304194639504" /></p>
+<p>​ 分解和抽象都是具有层次性的。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194700097.png" alt="image-20240304194700097" /></p>
+<h4 id="理解软件设计">8.3 理解软件设计</h4>
+<h5 id="设计与软件设计">8.3.1 设计与软件设计</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304194745047.png" alt="image-20240304194745047" /><figcaption aria-hidden="true">image-20240304194745047</figcaption>
+</figure>
+<h5 id="工程设计与艺术设计">8.3.2 工程设计与艺术设计</h5>
+<p>​ 从工程设计角度看，软件设计要：时刻保持以用户为中心，为其建造有用的软件产品；将设计知识科学化、系统化；能够进行设计决策与折中，解决设计过程中出现的不确定性、信息不充分、要求冲突等复杂情况。</p>
+<p>​ 艺术性要求设计师学会：发散性思维与创新；与用户共情；进行相关因素的评价和平衡；构思与想象。</p>
+<h5 id="理性主义和经验主义">8.3.3 理性主义和经验主义</h5>
+<p>​ 理性主义更看重设计的工程性。</p>
+<p>​ 经验主义者则在重视工程性同时，也强调艺术性，要求给软件设计过程框架添加一些灵活性以应对设计中人的因素。</p>
+<h5 id="软件设计的演化性">8.3.4 软件设计的演化性</h5>
+<p>​ 真实的设计过程是演化与迭代的，而不是一次完成的。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195405179.png" alt="image-20240304195405179" /></p>
+<h5 id="软件设计的决策性">8.3.5 软件设计的决策性</h5>
+<p>​ 软件设计通常以如下知识为决策依据：设计师自身的从业经验、类似系统的设计、参考模型、设计约定、设计原理、现有的体系结构风格和设计模式等。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195517847.png" alt="image-20240304195517847" /></p>
+<p>​ 整个设计过程其实是一个设计决策链，且具有不可逆性。一旦作出某个决策，很难通过回退完全消除其影响。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304195606616.png" alt="image-20240304195606616" /></p>
+<h5 id="软件设计的约束满足和多样性">8.3.6 软件设计的约束满足和多样性</h5>
+<p>​ 约束可以帮助设计师暂时验证解空间中多样设计方案的合理性。</p>
+<p>​ 约束是随着设计过程深入而逐渐发现的，而不是一开始就能完全明确的；不同的设计时间点，约束会发生变化。这两个原因决定了设计过程不是线性的，而是迭代的。</p>
+<h4 id="软件设计的分层">8.4 软件设计的分层</h4>
+<p>​ 软件设计可分为高层设计、中层设计和低层设计。</p>
+<p>​ 高层设计基于反映软件高层抽象的构件层次，描述系统的高层结构、关注点和决策设计。</p>
+<p>​ 中层设计更加关注构建的模块的划分、导入 / 导出、过程之间调用关系或者类之间的协作。</p>
+<p>​ 低层设计则深入模块和类的内部，关注数据结构、算法、类型、语句和控制结构等。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200110717.png" alt="image-20240304200110717" /><figcaption aria-hidden="true">image-20240304200110717</figcaption>
+</figure>
+<h4 id="软件设计过程的主要活动">8.5 软件设计过程的主要活动</h4>
+<p>​ 分析设计出发点、建立候选方案、生成最终方案、评价。</p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200200493.png" alt="image-20240304200200493" /></p>
+<h4 id="软件设计的方法和模型">8.6 软件设计的方法和模型</h4>
+<h5 id="软件设计方法">8.6.1 软件设计方法</h5>
+<ol type="1">
+<li><p><strong>结构化设计</strong></p>
+<p>采用自下向上和逐步求精的思路，按照功能对系统进行分解。</p></li>
+<li><p><strong>面向对象设计</strong></p>
+<p>利用封装、继承、多态等方法，提高软件的可扩展性和可复用性。</p></li>
+<li><p><strong>数据结构为中心设计</strong></p>
+<p>开始于系统操纵的数据结构而不是其功能。</p></li>
+<li><p><strong>基于构件的设计</strong></p>
+<p>重在构件的提供、开发和集成，以提高系统的可复用性。</p></li>
+<li><p><strong>形式化方法设计</strong></p>
+<p>通过数学方法对复杂系统建模。</p></li>
+</ol>
+<h5 id="软件设计的模型">8.6.2 软件设计的模型</h5>
+<p>​ 静态模型是通过快照的方式对系统进行描述，通常描述状态而不是行为。</p>
+<p>​ 动态模型通常描述系统行为和状态转移。</p>
+<h4 id="软件设计描述">8.7 软件设计描述</h4>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200804263.png" alt="image-20240304200804263" /></p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200844320.png" alt="image-20240304200844320" /><figcaption aria-hidden="true">image-20240304200844320</figcaption>
+</figure>
+<h5 id="设计视图和设计图">8.7.1 设计视图和设计图</h5>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200907357.png" alt="image-20240304200907357" /></p>
+<p>​ <img src="C:\Users\13701\AppData\Roaming\Typora\typora-user-images\image-20240304200915062.png" alt="image-20240304200915062" /></p>
+<h5 id="设计视角和设计关注">8.7.2 设计视角和设计关注</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304200948708.png" alt="image-20240304200948708" /><figcaption aria-hidden="true">image-20240304200948708</figcaption>
+</figure>
+<h5 id="需求与涉众">8.7.3 需求与涉众</h5>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201020054.png" alt="image-20240304201020054" /></p>
+<h5 id="设计理由">8.7.4 设计理由</h5>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201038782.png" alt="image-20240304201038782" /></p>
+<p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201045598.png" alt="image-20240304201045598" /></p>
+<h5 id="设计描述的模板">8.7.5 设计描述的模板</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240304201059310.png" alt="image-20240304201059310" /><figcaption aria-hidden="true">image-20240304201059310</figcaption>
+</figure>
+<h5 id="软件设计文档书写要点">8.7.6 软件设计文档书写要点</h5>
+<ol type="1">
+<li>充分利用标准的文档模板，根据项目特点进行适当的裁剪。</li>
+<li>利用体系结构风格示意图，让读者更容易把握高层抽象。</li>
+<li>利用完整的接口规格说明定义模块与模块之间的交互。</li>
+<li>从多视角出发，让读者感受一个立体的软件系统。</li>
+<li>设计文档中应体现对于变更的灵活性。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag"># 专业课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/03/04/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x07%20%E9%9C%80%E6%B1%82%E6%96%87%E6%A1%A3%E5%8C%96%E4%B8%8E%E9%AA%8C%E8%AF%81/" rel="prev" title="软件工程与计算II-0x07 需求文档化与验证">
+      <i class="fa fa-chevron-left"></i> 软件工程与计算II-0x07 需求文档化与验证
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2024/03/07/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9B%B8%E5%85%B3/" rel="next" title="大二下相关">
+      大二下相关 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%80%9D%E6%83%B3%E7%9A%84%E5%8F%91%E5%B1%95"><span class="nav-number">1.</span> <span class="nav-text">8.1 软件设计思想的发展</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%A0%B8%E5%BF%83%E6%80%9D%E6%83%B3"><span class="nav-number">2.</span> <span class="nav-text">8.2 软件设计的核心思想</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%90%86%E8%A7%A3%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.</span> <span class="nav-text">8.3 理解软件设计</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.1.</span> <span class="nav-text">8.3.1 设计与软件设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E7%A8%8B%E8%AE%BE%E8%AE%A1%E4%B8%8E%E8%89%BA%E6%9C%AF%E8%AE%BE%E8%AE%A1"><span class="nav-number">3.2.</span> <span class="nav-text">8.3.2 工程设计与艺术设计</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%90%86%E6%80%A7%E4%B8%BB%E4%B9%89%E5%92%8C%E7%BB%8F%E9%AA%8C%E4%B8%BB%E4%B9%89"><span class="nav-number">3.3.</span> <span class="nav-text">8.3.3 理性主义和经验主义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%BC%94%E5%8C%96%E6%80%A7"><span class="nav-number">3.4.</span> <span class="nav-text">8.3.4 软件设计的演化性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%86%B3%E7%AD%96%E6%80%A7"><span class="nav-number">3.5.</span> <span class="nav-text">8.3.5 软件设计的决策性</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E7%BA%A6%E6%9D%9F%E6%BB%A1%E8%B6%B3%E5%92%8C%E5%A4%9A%E6%A0%B7%E6%80%A7"><span class="nav-number">3.6.</span> <span class="nav-text">8.3.6 软件设计的约束满足和多样性</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%88%86%E5%B1%82"><span class="nav-number">4.</span> <span class="nav-text">8.4 软件设计的分层</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E8%BF%87%E7%A8%8B%E7%9A%84%E4%B8%BB%E8%A6%81%E6%B4%BB%E5%8A%A8"><span class="nav-number">5.</span> <span class="nav-text">8.5 软件设计过程的主要活动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%96%B9%E6%B3%95%E5%92%8C%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.</span> <span class="nav-text">8.6 软件设计的方法和模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%96%B9%E6%B3%95"><span class="nav-number">6.1.</span> <span class="nav-text">8.6.1 软件设计方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E7%9A%84%E6%A8%A1%E5%9E%8B"><span class="nav-number">6.2.</span> <span class="nav-text">8.6.2 软件设计的模型</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%8F%8F%E8%BF%B0"><span class="nav-number">7.</span> <span class="nav-text">8.7 软件设计描述</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A7%86%E5%9B%BE%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%9B%BE"><span class="nav-number">7.1.</span> <span class="nav-text">8.7.1 设计视图和设计图</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E8%A7%86%E8%A7%92%E5%92%8C%E8%AE%BE%E8%AE%A1%E5%85%B3%E6%B3%A8"><span class="nav-number">7.2.</span> <span class="nav-text">8.7.2 设计视角和设计关注</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9C%80%E6%B1%82%E4%B8%8E%E6%B6%89%E4%BC%97"><span class="nav-number">7.3.</span> <span class="nav-text">8.7.3 需求与涉众</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E7%90%86%E7%94%B1"><span class="nav-number">7.4.</span> <span class="nav-text">8.7.4 设计理由</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AE%BE%E8%AE%A1%E6%8F%8F%E8%BF%B0%E7%9A%84%E6%A8%A1%E6%9D%BF"><span class="nav-number">7.5.</span> <span class="nav-text">8.7.5 设计描述的模板</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AF%E4%BB%B6%E8%AE%BE%E8%AE%A1%E6%96%87%E6%A1%A3%E4%B9%A6%E5%86%99%E8%A6%81%E7%82%B9"><span class="nav-number">7.6.</span> <span class="nav-text">8.7.6 软件设计文档书写要点</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
