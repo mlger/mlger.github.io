@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="1.1 概念  何为计算机：计算机是指“通用电子计算机”  通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示  计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接  对编程人员不可见 包括：控制信号，存储技术等  何为计算机”结构“：直接影响逻辑程序执行的属性  对编程人员可见 包括：指令集，表示数据类型的位数等">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计组01-计算机系统概述">
+<meta property="og:url" content="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="1.1 概念  何为计算机：计算机是指“通用电子计算机”  通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示  计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接  对编程人员不可见 包括：控制信号，存储技术等  何为计算机”结构“：直接影响逻辑程序执行的属性  对编程人员可见 包括：指令集，表示数据类型的位数等">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png">
+<meta property="article:published_time" content="2023-09-08T08:42:00.000Z">
+<meta property="article:modified_time" content="2023-12-09T13:09:43.304Z">
+<meta property="article:author" content="Lg">
+<meta property="article:tag" content="专业课">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png">
+
+<link rel="canonical" href="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>计组01-计算机系统概述 | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          计组01-计算机系统概述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-08 16:42:00" itemprop="dateCreated datePublished" datetime="2023-09-08T16:42:00+08:00">2023-09-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BB%84/" itemprop="url" rel="index"><span itemprop="name">计组</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="概念">1.1 概念</h4>
+<ul>
+<li>何为计算机：计算机是指“<strong>通用电子计算机</strong>”
+<ul>
+<li>通用：不是专用设备</li>
+<li>电子：采用电子元器件</li>
+<li>数字：信息采用数字化形式表示</li>
+</ul></li>
+<li>计算机系统：硬件和软件</li>
+<li>何为计算机“<strong>组织</strong>”：操作单元及其互联连接
+<ul>
+<li>对编程人员不可见</li>
+<li>包括：控制信号，存储技术等</li>
+</ul></li>
+<li>何为计算机”<strong>结构</strong>“：直接影响逻辑程序执行的属性
+<ul>
+<li>对编程人员可见</li>
+<li>包括：指令集，表示数据类型的位数等</li>
+</ul></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png" /></p>
+<ul>
+<li><strong>指令集体系结构</strong>： <strong>ISA</strong> ，有时称为<strong>指令系统</strong>。 ISA 是一种规约，规定如何使用硬件。
+<ul>
+<li>可执行指令的集合，包含指令格式、操作种类及操作数的规定</li>
+<li>指令可以接受的操作数类型</li>
+<li>操作数所能存放的寄存器组的结构，包括每个寄存器的名称、编号、长度和用途</li>
+<li>操作数所能存放的<strong>存储空间的大小和编址方式</strong></li>
+<li>操作数在存储空间存放时按照<strong>大端还是小端方式存放</strong></li>
+<li>指令获取操作数的方式，即<strong>寻址方式</strong></li>
+<li>指令执行过程的控制方式，包括<strong>程序计数器（PC）、条件码定义</strong>等</li>
+</ul></li>
+<li>ISA 与组成之间的关系：计算机组成必须能够<strong>实现 ISA 规定的功能</strong>，如提供 GPR 、标志、运算电路等，<strong>一种 ISA 可以有不同的计算机组成</strong>。</li>
+</ul>
+<h4 id="计算机简史">1.2 计算机简史</h4>
+<h5 id="第一代真空管">1.2.1 第一代：真空管</h5>
+<ul>
+<li>ENIAC ：第一台<strong>通用</strong>计算机，十进制，手动编程</li>
+<li>ABC ：第一台<strong>电子</strong>计算机，不可编程</li>
+<li>EDVAC ：冯·诺伊曼架构（普林斯顿架构）</li>
+<li>三个基本原则：
+<ul>
+<li>二进制</li>
+<li>存储程序</li>
+<li>5个组成部分
+<ul>
+<li>主存储器：地址和存储内容</li>
+<li>算术逻辑单元 / 处理单元：执行信息处理</li>
+<li>程序控制单元 / 控制单元：指挥信息处理</li>
+<li>输入设备</li>
+<li>输出设备</li>
+</ul></li>
+</ul></li>
+</ul>
+<h5 id="第二代晶体管">1.2.2 第二代：晶体管</h5>
+<ul>
+<li>体积更小、更便宜、发热更少</li>
+<li>使用高级语言编程，并为计算机提供了系统软件</li>
+</ul>
+<h5 id="第三代中小规模集成电路">1.2.3 第三代：中小规模集成电路</h5>
+<h5 id="第四代超大规模集成电路">1.2.4 第四代：（超）大规模集成电路</h5>
+<ul>
+<li>思想：
+<ul>
+<li>将整个电路安装在很小的硅片上，而不是用分立元件搭成的等价电路</li>
+<li>晶体管可以通过金属化相互连接，形成电路</li>
+</ul></li>
+<li><ul>
+<li></li>
+</ul></li>
+</ul>
+<h4 id="计算机发展">1.3 计算机发展</h4>
+<h5 id="摩尔定律">1.3.1 摩尔定律</h5>
+<ul>
+<li>价格不变时，单芯片上所能包含的晶体管数量每年翻一番 (1965-1969) / 1970年起减慢为每18个月翻一番</li>
+<li>影响：
+<ul>
+<li>更小尺寸带来更多<strong>灵活性</strong>与<strong>可能性</strong></li>
+<li>成本下降</li>
+<li><strong>减小电能损耗与冷却要求</strong></li>
+<li><strong>芯片间连接更少</strong>，更可靠</li>
+</ul></li>
+</ul>
+<h4 id="计算机性能">1.4 计算机性能</h4>
+<h5 id="cpu-性能">1.4.1 CPU 性能</h5>
+<ul>
+<li>计算机设计主要目标：提升 CPU 性能</li>
+<li>系统时钟
+<ul>
+<li>时钟频率： 1s 内执行基本操作的次数</li>
+<li>始终周期：执行每次最基本操作的时间</li>
+</ul></li>
+<li>指令执行： <span class="math inline">\(CPI_i\)</span> 表示第 <span class="math inline">\(i\)</span> 种指令需要周期数， <span class="math inline">\(I_i\)</span> 表示第 <span class="math inline">\(i\)</span> 类指令条数，则有</li>
+</ul>
+<p><span class="math display">\[
+CPI=\frac{\sum_{i=1}^n(CPI_i \times I_i)}{I_c},I_c=\sum_{i=1}^n I_i
+\]</span></p>
+<p>​ 执行一个程序的处理时间表示为 <span class="math display">\[
+T=I_c\times CPI \times t
+\]</span></p>
+<ul>
+<li>每秒百万条指令（ MIPS ）：</li>
+</ul>
+<p><span class="math display">\[
+MIPS = \frac{I_c}{T\times 10^6}=\frac{f}{CPI\times 10^6}
+\]</span></p>
+<ul>
+<li>每秒百万条浮点操作（ MFLOPS ）：</li>
+</ul>
+<p><span class="math display">\[
+MFLOPS=\frac{N_{floating-point\ op}}{T\times 10^6}
+\]</span></p>
+<h5 id="性能设计的基本原则">1.4.2 性能设计的基本原则</h5>
+<ul>
+<li><strong>大概率事件优先原则</strong>：对于大概率事件，赋予优先的处理权与资源使用权。</li>
+</ul>
+<p><span class="math display">\[
+系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}
+\]</span></p>
+<ul>
+<li><strong>Amdahl</strong> 定律：
+<ul>
+<li>部件系统加速比受限于其在系统中所占重要性比例。</li>
+<li>性能增加的递减规则：改进越，系统获得效果越小</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}=\frac{1}{(1-局部占比)+
+\frac{局部占比}{提升的性能}}
+\]</span></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag"># 专业课</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01-%E6%A6%82%E8%BF%B0/" rel="prev" title="计算机网络01">
+      <i class="fa fa-chevron-left"></i> 计算机网络01
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2023/10/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02-%E7%89%A9%E7%90%86%E5%B1%82/" rel="next" title="谢希仁计算机网络02-物理层">
+      谢希仁计算机网络02-物理层 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%80%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">1.2 计算机简史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%BB%A3%E7%9C%9F%E7%A9%BA%E7%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1 第一代：真空管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E4%BB%A3%E6%99%B6%E4%BD%93%E7%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2 第二代：晶体管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E4%BB%A3%E4%B8%AD%E5%B0%8F%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.3.</span> <span class="nav-text">1.2.3 第三代：中小规模集成电路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E4%BB%A3%E8%B6%85%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.4.</span> <span class="nav-text">1.2.4 第四代：（超）大规模集成电路</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">1.3 计算机发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">1.3.1 摩尔定律</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">1.4 计算机性能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu-%E6%80%A7%E8%83%BD"><span class="nav-number">4.1.</span> <span class="nav-text">1.4.1 CPU 性能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.2.</span> <span class="nav-text">1.4.2 性能设计的基本原则</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">31</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">19</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+//    window.MathJax = {
+//      loader: {
+//
+//        source: {//
+//          '[tex]/amsCd': '[tex]/amscd',
+//          '[tex]/AMScd': '[tex]/amscd'
+//        }
+//      },
+//      tex: {//
+//        inlineMath: {'[+]': [['$', '$']]},
+//
+//        tags: 'ams'
+//      },
+//      options: {
+//        renderActions: {
+//          findScript: [10, doc => {
+//            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+//              const display = !!node.type.match(/; *mode=display/);
+//              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+//              const text = document.createTextNode('');
+//              node.parentNode.replaceChild(text, node);
+//              math.start = {node: text, delim: '', n: 0};
+//              math.end = {node: text, delim: '', n: 0};
+//              doc.math.push(math);
+//            });
+//          }, '', false],
+//          insertedScript: [200, () => {
+//            document.querySelectorAll('mjx-container').forEach(node => {
+//              let target = node.parentNode;
+//              if (target.nodeName.toLowerCase() === 'li') {
+//                target.parentNode.classList.add('has-jax');
+//              }
+//            });
+//          }, '', false]
+//        }
+//      }
+//    };
+    window.MathJax = {
+      tex2jax: {
+        inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+        processEscapes: true
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@2.7.8/unpacked/MathJax.js?config=TeX-MML-AM_CHTML';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
