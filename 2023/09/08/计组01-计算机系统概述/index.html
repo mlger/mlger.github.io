@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="1.1 概念  何为计算机：计算机是指“通用电子计算机”  通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示  计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接  对编程人员不可见 包括：控制信号，存储技术等  何为计算机”结构“：直接影响逻辑程序执行的属性  对编程人员可见 包括：指令集，表示数据类型的位数等">
+  <meta name="description" content="1.1 概念 何为计算机：计算机是指“通用电子计算机” 通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示   计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接 对编程人员不可见 包括：控制信号，存储技术等   何为计算机”结构“：直接影响逻辑程序执行的属性 对编程人员可见 包括：指令集，表示数据类型的位数等      指令集体系结构： ISA ，有时称为指令系">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计组01-计算机系统概述">
 <meta property="og:url" content="https://example.com/2023/09/08/%E8%AE%A1%E7%BB%8401-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E6%A6%82%E8%BF%B0/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="1.1 概念  何为计算机：计算机是指“通用电子计算机”  通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示  计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接  对编程人员不可见 包括：控制信号，存储技术等  何为计算机”结构“：直接影响逻辑程序执行的属性  对编程人员可见 包括：指令集，表示数据类型的位数等">
+<meta property="og:description" content="1.1 概念 何为计算机：计算机是指“通用电子计算机” 通用：不是专用设备 电子：采用电子元器件 数字：信息采用数字化形式表示   计算机系统：硬件和软件 何为计算机“组织”：操作单元及其互联连接 对编程人员不可见 包括：控制信号，存储技术等   何为计算机”结构“：直接影响逻辑程序执行的属性 对编程人员可见 包括：指令集，表示数据类型的位数等      指令集体系结构： ISA ，有时称为指令系">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png">
 <meta property="article:published_time" content="2023-09-08T08:42:00.000Z">
@@ -246,29 +246,28 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="概念">1.1 概念</h4>
-<ul>
-<li>何为计算机：计算机是指“<strong>通用电子计算机</strong>”
-<ul>
+        <h4 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h4><ul>
+<li>何为计算机：计算机是指“<strong>通用电子计算机</strong>”<ul>
 <li>通用：不是专用设备</li>
 <li>电子：采用电子元器件</li>
 <li>数字：信息采用数字化形式表示</li>
-</ul></li>
+</ul>
+</li>
 <li>计算机系统：硬件和软件</li>
-<li>何为计算机“<strong>组织</strong>”：操作单元及其互联连接
-<ul>
+<li>何为计算机“<strong>组织</strong>”：操作单元及其互联连接<ul>
 <li>对编程人员不可见</li>
 <li>包括：控制信号，存储技术等</li>
-</ul></li>
-<li>何为计算机”<strong>结构</strong>“：直接影响逻辑程序执行的属性
-<ul>
+</ul>
+</li>
+<li>何为计算机”<strong>结构</strong>“：直接影响逻辑程序执行的属性<ul>
 <li>对编程人员可见</li>
 <li>包括：指令集，表示数据类型的位数等</li>
-</ul></li>
 </ul>
-<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png" /></p>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202309081604546.png" alt=""></p>
 <ul>
-<li><strong>指令集体系结构</strong>： <strong>ISA</strong> ，有时称为<strong>指令系统</strong>。 ISA 是一种规约，规定如何使用硬件。
+<li><p><strong>指令集体系结构</strong>： <strong>ISA</strong> ，有时称为<strong>指令系统</strong>。 ISA 是一种规约，规定如何使用硬件。</p>
 <ul>
 <li>可执行指令的集合，包含指令格式、操作种类及操作数的规定</li>
 <li>指令可以接受的操作数类型</li>
@@ -277,106 +276,91 @@
 <li>操作数在存储空间存放时按照<strong>大端还是小端方式存放</strong></li>
 <li>指令获取操作数的方式，即<strong>寻址方式</strong></li>
 <li>指令执行过程的控制方式，包括<strong>程序计数器（PC）、条件码定义</strong>等</li>
-</ul></li>
-<li>ISA 与组成之间的关系：计算机组成必须能够<strong>实现 ISA 规定的功能</strong>，如提供 GPR 、标志、运算电路等，<strong>一种 ISA 可以有不同的计算机组成</strong>。</li>
 </ul>
-<h4 id="计算机简史">1.2 计算机简史</h4>
-<h5 id="第一代真空管">1.2.1 第一代：真空管</h5>
-<ul>
+</li>
+<li><p>ISA 与组成之间的关系：计算机组成必须能够<strong>实现 ISA 规定的功能</strong>，如提供 GPR 、标志、运算电路等，<strong>一种 ISA 可以有不同的计算机组成</strong>。</p>
+</li>
+</ul>
+<h4 id="1-2-计算机简史"><a href="#1-2-计算机简史" class="headerlink" title="1.2 计算机简史"></a>1.2 计算机简史</h4><h5 id="1-2-1-第一代：真空管"><a href="#1-2-1-第一代：真空管" class="headerlink" title="1.2.1 第一代：真空管"></a>1.2.1 第一代：真空管</h5><ul>
 <li>ENIAC ：第一台<strong>通用</strong>计算机，十进制，手动编程</li>
 <li>ABC ：第一台<strong>电子</strong>计算机，不可编程</li>
-<li>EDVAC ：冯·诺伊曼架构（普林斯顿架构）</li>
-<li>三个基本原则：
-<ul>
+<li>EDVAC ：冯·诺伊曼架构（普林斯顿架构）<ul>
+<li>三个基本原则：<ul>
 <li>二进制</li>
 <li>存储程序</li>
-<li>5个组成部分
-<ul>
+<li>5个组成部分<ul>
 <li>主存储器：地址和存储内容</li>
 <li>算术逻辑单元 / 处理单元：执行信息处理</li>
 <li>程序控制单元 / 控制单元：指挥信息处理</li>
 <li>输入设备</li>
 <li>输出设备</li>
-</ul></li>
-</ul></li>
 </ul>
-<h5 id="第二代晶体管">1.2.2 第二代：晶体管</h5>
-<ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h5 id="1-2-2-第二代：晶体管"><a href="#1-2-2-第二代：晶体管" class="headerlink" title="1.2.2 第二代：晶体管"></a>1.2.2 第二代：晶体管</h5><ul>
 <li>体积更小、更便宜、发热更少</li>
 <li>使用高级语言编程，并为计算机提供了系统软件</li>
 </ul>
-<h5 id="第三代中小规模集成电路">1.2.3 第三代：中小规模集成电路</h5>
-<h5 id="第四代超大规模集成电路">1.2.4 第四代：（超）大规模集成电路</h5>
-<ul>
-<li>思想：
+<h5 id="1-2-3-第三代：中小规模集成电路"><a href="#1-2-3-第三代：中小规模集成电路" class="headerlink" title="1.2.3 第三代：中小规模集成电路"></a>1.2.3 第三代：中小规模集成电路</h5><h5 id="1-2-4-第四代：（超）大规模集成电路"><a href="#1-2-4-第四代：（超）大规模集成电路" class="headerlink" title="1.2.4 第四代：（超）大规模集成电路"></a>1.2.4 第四代：（超）大规模集成电路</h5><ul>
+<li><p>思想：</p>
 <ul>
 <li>将整个电路安装在很小的硅片上，而不是用分立元件搭成的等价电路</li>
 <li>晶体管可以通过金属化相互连接，形成电路</li>
-</ul></li>
+</ul>
+</li>
 <li><ul>
 <li></li>
-</ul></li>
 </ul>
-<h4 id="计算机发展">1.3 计算机发展</h4>
-<h5 id="摩尔定律">1.3.1 摩尔定律</h5>
-<ul>
+</li>
+</ul>
+<h4 id="1-3-计算机发展"><a href="#1-3-计算机发展" class="headerlink" title="1.3 计算机发展"></a>1.3 计算机发展</h4><h5 id="1-3-1-摩尔定律"><a href="#1-3-1-摩尔定律" class="headerlink" title="1.3.1 摩尔定律"></a>1.3.1 摩尔定律</h5><ul>
 <li>价格不变时，单芯片上所能包含的晶体管数量每年翻一番 (1965-1969) / 1970年起减慢为每18个月翻一番</li>
-<li>影响：
-<ul>
+<li>影响：<ul>
 <li>更小尺寸带来更多<strong>灵活性</strong>与<strong>可能性</strong></li>
 <li>成本下降</li>
 <li><strong>减小电能损耗与冷却要求</strong></li>
 <li><strong>芯片间连接更少</strong>，更可靠</li>
-</ul></li>
 </ul>
-<h4 id="计算机性能">1.4 计算机性能</h4>
-<h5 id="cpu-性能">1.4.1 CPU 性能</h5>
-<ul>
+</li>
+</ul>
+<h4 id="1-4-计算机性能"><a href="#1-4-计算机性能" class="headerlink" title="1.4 计算机性能"></a>1.4 计算机性能</h4><h5 id="1-4-1-CPU-性能"><a href="#1-4-1-CPU-性能" class="headerlink" title="1.4.1 CPU 性能"></a>1.4.1 CPU 性能</h5><ul>
 <li>计算机设计主要目标：提升 CPU 性能</li>
-<li>系统时钟
-<ul>
+<li>系统时钟<ul>
 <li>时钟频率： 1s 内执行基本操作的次数</li>
 <li>始终周期：执行每次最基本操作的时间</li>
-</ul></li>
-<li>指令执行： <span class="math inline">\(CPI_i\)</span> 表示第 <span class="math inline">\(i\)</span> 种指令需要周期数， <span class="math inline">\(I_i\)</span> 表示第 <span class="math inline">\(i\)</span> 类指令条数，则有</li>
 </ul>
-<p><span class="math display">\[
-CPI=\frac{\sum_{i=1}^n(CPI_i \times I_i)}{I_c},I_c=\sum_{i=1}^n I_i
-\]</span></p>
-<p>​ 执行一个程序的处理时间表示为 <span class="math display">\[
-T=I_c\times CPI \times t
-\]</span></p>
-<ul>
+</li>
+<li>指令执行： $CPI_i$ 表示第 $i$ 种指令需要周期数， $I_i$ 表示第 $i$ 类指令条数，则有</li>
+</ul>
+<script type="math/tex; mode=display">
+CPI=\frac{\sum_{i=1}^n(CPI_i \times I_i)}{I_c},I_c=\sum_{i=1}^n I_i</script><p>​    执行一个程序的处理时间表示为</p>
+<script type="math/tex; mode=display">
+T=I_c\times CPI \times t</script><ul>
 <li>每秒百万条指令（ MIPS ）：</li>
 </ul>
-<p><span class="math display">\[
-MIPS = \frac{I_c}{T\times 10^6}=\frac{f}{CPI\times 10^6}
-\]</span></p>
-<ul>
+<script type="math/tex; mode=display">
+MIPS = \frac{I_c}{T\times 10^6}=\frac{f}{CPI\times 10^6}</script><ul>
 <li>每秒百万条浮点操作（ MFLOPS ）：</li>
 </ul>
-<p><span class="math display">\[
-MFLOPS=\frac{N_{floating-point\ op}}{T\times 10^6}
-\]</span></p>
-<h5 id="性能设计的基本原则">1.4.2 性能设计的基本原则</h5>
-<ul>
+<script type="math/tex; mode=display">
+MFLOPS=\frac{N_{floating-point\ op}}{T\times 10^6}</script><h5 id="1-4-2-性能设计的基本原则"><a href="#1-4-2-性能设计的基本原则" class="headerlink" title="1.4.2 性能设计的基本原则"></a>1.4.2 性能设计的基本原则</h5><ul>
 <li><strong>大概率事件优先原则</strong>：对于大概率事件，赋予优先的处理权与资源使用权。</li>
 </ul>
-<p><span class="math display">\[
-系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}
-\]</span></p>
-<ul>
-<li><strong>Amdahl</strong> 定律：
-<ul>
+<script type="math/tex; mode=display">
+系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}</script><ul>
+<li><strong>Amdahl</strong> 定律：<ul>
 <li>部件系统加速比受限于其在系统中所占重要性比例。</li>
 <li>性能增加的递减规则：改进越，系统获得效果越小</li>
-</ul></li>
 </ul>
-<p><span class="math display">\[
+</li>
+</ul>
+<script type="math/tex; mode=display">
 系统加速比=\frac{总执行时间_{改进前}}{总执行时间_{改进后}}=\frac{1}{(1-局部占比)+
-\frac{局部占比}{提升的性能}}
-\]</span></p>
-
+\frac{局部占比}{提升的性能}}</script>
     </div>
 
     
@@ -459,7 +443,7 @@ MFLOPS=\frac{N_{floating-point\ op}}{T\times 10^6}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%80%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">1.2 计算机简史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E4%BB%A3%E7%9C%9F%E7%A9%BA%E7%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1 第一代：真空管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E4%BB%A3%E6%99%B6%E4%BD%93%E7%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2 第二代：晶体管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E4%BB%A3%E4%B8%AD%E5%B0%8F%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.3.</span> <span class="nav-text">1.2.3 第三代：中小规模集成电路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E4%BB%A3%E8%B6%85%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.4.</span> <span class="nav-text">1.2.4 第四代：（超）大规模集成电路</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">1.3 计算机发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">1.3.1 摩尔定律</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">1.4 计算机性能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#cpu-%E6%80%A7%E8%83%BD"><span class="nav-number">4.1.</span> <span class="nav-text">1.4.1 CPU 性能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%80%A7%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.2.</span> <span class="nav-text">1.4.2 性能设计的基本原则</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-%E6%A6%82%E5%BF%B5"><span class="nav-number">1.</span> <span class="nav-text">1.1 概念</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%AE%80%E5%8F%B2"><span class="nav-number">2.</span> <span class="nav-text">1.2 计算机简史</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-1-%E7%AC%AC%E4%B8%80%E4%BB%A3%EF%BC%9A%E7%9C%9F%E7%A9%BA%E7%AE%A1"><span class="nav-number">2.1.</span> <span class="nav-text">1.2.1 第一代：真空管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-2-%E7%AC%AC%E4%BA%8C%E4%BB%A3%EF%BC%9A%E6%99%B6%E4%BD%93%E7%AE%A1"><span class="nav-number">2.2.</span> <span class="nav-text">1.2.2 第二代：晶体管</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-3-%E7%AC%AC%E4%B8%89%E4%BB%A3%EF%BC%9A%E4%B8%AD%E5%B0%8F%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.3.</span> <span class="nav-text">1.2.3 第三代：中小规模集成电路</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-2-4-%E7%AC%AC%E5%9B%9B%E4%BB%A3%EF%BC%9A%EF%BC%88%E8%B6%85%EF%BC%89%E5%A4%A7%E8%A7%84%E6%A8%A1%E9%9B%86%E6%88%90%E7%94%B5%E8%B7%AF"><span class="nav-number">2.4.</span> <span class="nav-text">1.2.4 第四代：（超）大规模集成电路</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%8F%91%E5%B1%95"><span class="nav-number">3.</span> <span class="nav-text">1.3 计算机发展</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-3-1-%E6%91%A9%E5%B0%94%E5%AE%9A%E5%BE%8B"><span class="nav-number">3.1.</span> <span class="nav-text">1.3.1 摩尔定律</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-4-%E8%AE%A1%E7%AE%97%E6%9C%BA%E6%80%A7%E8%83%BD"><span class="nav-number">4.</span> <span class="nav-text">1.4 计算机性能</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-1-CPU-%E6%80%A7%E8%83%BD"><span class="nav-number">4.1.</span> <span class="nav-text">1.4.1 CPU 性能</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#1-4-2-%E6%80%A7%E8%83%BD%E8%AE%BE%E8%AE%A1%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%8E%9F%E5%88%99"><span class="nav-number">4.2.</span> <span class="nav-text">1.4.2 性能设计的基本原则</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
