@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承">
+  <meta name="description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承诺，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谢希仁计算机网络04-网络层">
 <meta property="og:url" content="https://example.com/2023/11/20/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C04-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承">
+<meta property="og:description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承诺，">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png">
@@ -284,10 +284,10 @@
 <p>​ 电信网采用<strong>面向连接</strong>的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立<strong>虚电路</strong>进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。</p>
 <p>​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：<strong>网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务</strong>。<strong>网络层不提供服务质量的承诺</strong>，可靠传输由网络主机中的运输层保障。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png" alt="image-20231118144200510" /><figcaption aria-hidden="true">image-20231118144200510</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png" alt="" /><figcaption>image-20231118144200510</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png" alt="image-20231118163954841" /><figcaption aria-hidden="true">image-20231118163954841</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png" alt="" /><figcaption>image-20231118163954841</figcaption>
 </figure>
 <h4 id="网际协议-ip">4.2 网际协议 IP</h4>
 <p>​ 与 IP 协议配套的三个协议：</p>
@@ -298,7 +298,7 @@
 </ul>
 <p>​ 三协议关系如下：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118164422575.png" alt="image-20231118164422575" /><figcaption aria-hidden="true">image-20231118164422575</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118164422575.png" alt="" /><figcaption>image-20231118164422575</figcaption>
 </figure>
 <p>​ TCP/IP 协议中的网络层常常被称为<strong>网际层</strong>或 <strong>IP 层</strong>。</p>
 <h5 id="虚拟互联网络">4.2.1 虚拟互联网络</h5>
@@ -312,17 +312,17 @@
 <p>​ 由于历史原因，许多 TCP/IP 的文献曾把网络层使用的路由器称为网关。</p>
 <p>​ 参与互连的计算机网络都是用相同的网际协议 IP，因此可以看作一个大的虚拟互连网络。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118170200174.png" alt="image-20231118170200174" /><figcaption aria-hidden="true">image-20231118170200174</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118170200174.png" alt="" /><figcaption>image-20231118170200174</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181737412.png" alt="image-20231118181737412" /><figcaption aria-hidden="true">image-20231118181737412</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181737412.png" alt="" /><figcaption>image-20231118181737412</figcaption>
 </figure>
 <h5 id="分类的-ip-地址">4.2.2 分类的 IP 地址</h5>
 <p><span class="math display">\[
 IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 \]</span></p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181859665.png" alt="image-20231118181859665" /><figcaption aria-hidden="true">image-20231118181859665</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181859665.png" alt="" /><figcaption>image-20231118181859665</figcaption>
 </figure>
 <p>​ 其中 D 类地址用于<strong>多播</strong>。</p>
 <p>​ <strong>点分十进制表示法</strong>：32 位 IPv4 地址，八位一段点分隔，每段十进制表示。</p>
@@ -343,14 +343,14 @@ IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 </ul></li>
 </ul>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118183641070.png" alt="image-20231118183641070" /><figcaption aria-hidden="true">image-20231118183641070</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118183641070.png" alt="" /><figcaption>image-20231118183641070</figcaption>
 </figure>
 <p>​ 两个路由器相连，在连线两端的接口处可分配也可不分配 IP 地址。节省资源则不分配，常称为 <strong>无编号网络</strong>或<strong>无名网络</strong>。</p>
 <h5 id="ip-地址与硬件地址">4.2.3 IP 地址与硬件地址</h5>
 <p>​ <strong>物理地址是数据链路层和物理层使用的地址，</strong>而 <strong>IP 地址是网络层和以上各层使用的地址，是一种逻辑地址。</strong></p>
 <p>​ 在通讯过程，数据从高层下到低层，层层封装，然后才到链路上传输。设备在收到 MAC 帧时，根据首部硬件地址决定收下或丢弃。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118184141275.png" alt="image-20231118184141275" /><figcaption aria-hidden="true">image-20231118184141275</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118184141275.png" alt="" /><figcaption>image-20231118184141275</figcaption>
 </figure>
 <p>​ <strong>IP 层抽象的互联网上只能看到 IP 数据报</strong>。</p>
 <p>​ <strong>虽然 IP 数据报有源地址，但路由器只根据目的站 IP 地址的网络号进行路由选择</strong>。</p>
@@ -360,7 +360,7 @@ IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 <p>​ ARP 解决的是<strong>同一个局域网</strong>上的映射问题。</p>
 <h5 id="ip-数据报的格式">4.2.5 IP 数据报的格式</h5>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118200817531.png" alt="image-20231118200817531" /><figcaption aria-hidden="true">image-20231118200817531</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118200817531.png" alt="" /><figcaption>image-20231118200817531</figcaption>
 </figure>
 <ul>
 <li><strong>版本</strong>：4 位，指版本号，实际使用的只有 IPv4 和 IPv6。</li>
@@ -379,7 +379,7 @@ IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 <li><strong>首部检验和</strong>：16 位，，只检验数据报首部，但不包括数据部分。发送方，检验和置位剩余 16 位字的反码之和。接收方将检验和在内的所有 16 位字相加，若首部未变化，其和必为 0。</li>
 </ul>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202056828.png" alt="image-20231118202056828" /><figcaption aria-hidden="true">image-20231118202056828</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202056828.png" alt="" /><figcaption>image-20231118202056828</figcaption>
 </figure>
 <ul>
 <li><strong>源地址</strong>：32 位</li>
@@ -402,7 +402,7 @@ IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 </blockquote>
 <p>​</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118203422006.png" alt="image-20231118203422006" /><figcaption aria-hidden="true">image-20231118203422006</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118203422006.png" alt="" /><figcaption>image-20231118203422006</figcaption>
 </figure>
 <p>​ <strong>分组转发算法的流程</strong>：</p>
 <ol type="1">
@@ -429,7 +429,7 @@ IP地址:=\{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;\}
 <p>​ B 类地址默认掩码为 255.255.0.0，或 0xFFFF0000。</p>
 <p>​ C 类地址默认掩码为 255.255.255.0，或 0xFFFFFF00。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119102550234.png" alt="image-20231119102550234" /><figcaption aria-hidden="true">image-20231119102550234</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119102550234.png" alt="" /><figcaption>image-20231119102550234</figcaption>
 </figure>
 <h5 id="使用子网时的分组转发算法">4.3.2 使用子网时的分组转发算法</h5>
 <p>​ 路由表包含：<strong>目的网络地址、子网掩码</strong>和<strong>下一跳地址</strong>。</p>
@@ -452,17 +452,17 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <p>​ 在查找下一跳时，可能有多个 CIDR 地址块都能够与目的地址匹配，此时则根据<strong>最长前缀匹配</strong>原则确定下一跳。</p>
 <p>​ 由于要进行最长前缀匹配，故最方便的方法即是在构造路由表时采用<strong>二叉线索</strong>，即 01-Trie，然后查询时即可迅速进行前缀匹配。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119105513490.png" alt="image-20231119105513490" /><figcaption aria-hidden="true">image-20231119105513490</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119105513490.png" alt="" /><figcaption>image-20231119105513490</figcaption>
 </figure>
 <p>​ 为了提高效率，还可采用各式<strong>压缩技术</strong>。</p>
 <h4 id="网际控制报文协议-icmp">4.4 网际控制报文协议 ICMP</h4>
 <p>​ ICMP 报文分为 <strong>ICMP 差错报告报文</strong>和 <strong>ICMP 询问报文</strong>。</p>
 <p>​ ICMP 报文前 4 个字节是统一的格式，三个字段：类型、代码和检验和。接着 4 个字节与 ICMP 类型有关。最后面是数据字段，长度取决于 ICMP 类型。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150429359.png" alt="image-20231119150429359" /><figcaption aria-hidden="true">image-20231119150429359</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150429359.png" alt="" /><figcaption>image-20231119150429359</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150446519.png" alt="image-20231119150446519" /><figcaption aria-hidden="true">image-20231119150446519</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150446519.png" alt="" /><figcaption>image-20231119150446519</figcaption>
 </figure>
 <p>​ <strong>改变路由（重定向）：</strong> 路由器把改变路由报文发送给主机，让主机知道下次该将数据报发送给另外的路由器（可通过更好的路由）。</p>
 <p>​ 不应发送 ICMP 差错报告的情况：</p>
@@ -495,7 +495,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <p>​ 为此，把互联网划分为许多小的<strong>自治系统 AS (autonomous system)</strong>。一个 AS 对其他的 AS 表现出的是<strong>一个单一的和一致的路由选择策略</strong>。</p>
 <p>​ 故此，路由选择协议可以划分为两类：<strong>内部网关协议 IGP (Interior Gateway Protocol)</strong> 和<strong>外部网关协议 EGP (External Gateway Protocol)</strong>。常用的 IGP 有 RIP 和 OSPF 协议，常用的 EGP 有 BGP-4。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119160651490.png" alt="image-20231119160651490" /><figcaption aria-hidden="true">image-20231119160651490</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119160651490.png" alt="" /><figcaption>image-20231119160651490</figcaption>
 </figure>
 <p>​ 此外，路由选择协议还可依照路由表更新方分为<strong>静态路由协议</strong>和<strong>动态路由协议</strong>，常见的动态路由协议有 RIP、OSPF、BGP 等。</p>
 <h5 id="rip">4.5.2 RIP</h5>
@@ -512,14 +512,14 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 \]</span></p>
 <p>​ 下介绍路由更新算法：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161304200.png" alt="image-20231119161304200" /><figcaption aria-hidden="true">image-20231119161304200</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161304200.png" alt="" /><figcaption>image-20231119161304200</figcaption>
 </figure>
 <p>​ 其实就是 Bellman-Fold 算法，不断遍历，能松弛即松弛。</p>
 <p>​ 对于解释 3，书中的解释是无论距离是增大减小亦或不变，都要更新为最新的信息。</p>
 <h6 id="rip-报文格式">4.5.2.2 RIP 报文格式</h6>
 <p>​ RIP 报文格式：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161732197.png" alt="image-20231119161732197" /><figcaption aria-hidden="true">image-20231119161732197</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161732197.png" alt="" /><figcaption>image-20231119161732197</figcaption>
 </figure>
 <ul>
 <li><p>首部 4 字节，命令字段指出报文意义。</p></li>
@@ -532,7 +532,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 </ul>
 <p>RIP 存在的问题：<strong>当网络出现故障，需要经过比较长的时间才能将此信息传送到所有的路由器</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119163624180.png" alt="image-20231119163624180" /><figcaption aria-hidden="true">image-20231119163624180</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119163624180.png" alt="" /><figcaption>image-20231119163624180</figcaption>
 </figure>
 <p>​ RIP 特点总结：<strong>实现简单开销小，距离有限，坏消息传播慢</strong>。</p>
 <h5 id="内部网关协议-ospf">4.5.3 内部网关协议 OSPF</h5>
@@ -545,7 +545,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <p>​ 由此，每个路由器都能够得到本网完整的网络拓扑，采用 djikstra 算法即可得出最短路径从而构造路由表。</p>
 <p>​ 而且 OSPF 将一个自治系统再划分为若干个小的范围，称为<strong>区域 (area)</strong>。连接不同区域的路由器叫<strong>区域边界路由器</strong>。主干区域的路由器称<strong>主干路由器</strong>。OSPF 不用 UDP 而是<strong>直接用 IP 数据报传送</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119170556159.png" alt="image-20231119170556159" /><figcaption aria-hidden="true">image-20231119170556159</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119170556159.png" alt="" /><figcaption>image-20231119170556159</figcaption>
 </figure>
 <p>​ OSPF 其它特点：</p>
 <ul>
@@ -570,7 +570,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 </ul>
 <p>​ BGP 的目的寻找一条能够到达目的且网络条件比较好的路由而非最佳路由，采用<strong>路径向量 (path vector) 路由选择协议</strong>。每个自治系统至少选定一 <strong>BGP 发言人</strong>，往往选定<strong>边界路由器</strong>。发言人之间采用 BGP 协议。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main//newPath/image-20231120080108690.png" alt="image-20231120080108690" /><figcaption aria-hidden="true">image-20231120080108690</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main//newPath/image-20231120080108690.png" alt="" /><figcaption>image-20231120080108690</figcaption>
 </figure>
 <p>​ 在 RFC 4271 中规定了 BGP-4 的四种报文：</p>
 <ul>
@@ -581,7 +581,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 </ul>
 <p>​ BGP 报文格式：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120080845868.png" alt="image-20231120080845868" /><figcaption aria-hidden="true">image-20231120080845868</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120080845868.png" alt="" /><figcaption>image-20231120080845868</figcaption>
 </figure>
 <p>​ 标记 (marker) 段 16 字节长，用于鉴别，不需鉴别是置全 1。</p>
 <p>​ 长度字段指出包括首部在内整个 BGP 报文<strong>字节</strong>为单位的长度，最小 19，最大 4096。（查了下，是根据 TCP 协议的滑动窗口决定的 <a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/428983149?bd_page_type=0&amp;pu=&amp;init=middle">这里</a>)</p>
@@ -593,11 +593,11 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <p>​ 交换结构 (switching fabric) 又称<strong>交换组织</strong>，作用是根据转发表处理分组，把输入的分组从魔偶个端口输出出去。</p>
 <p>​ 为了使交换功能分散化，往往把复制到转发表放在每个输入端口中，称为<strong>"影子副本"</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083022304.png" alt="image-20231120083022304" /><figcaption aria-hidden="true">image-20231120083022304</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083022304.png" alt="" /><figcaption>image-20231120083022304</figcaption>
 </figure>
 <p>​ 最早使用的路由器是普通的计算机，采用 CPU 作为路由选择处理机，利用中断机制启动处理。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083350315.png" alt="image-20231120083350315" /><figcaption aria-hidden="true">image-20231120083350315</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083350315.png" alt="" /><figcaption>image-20231120083350315</figcaption>
 </figure>
 <h4 id="ipv6">4.6 IPv6</h4>
 <p>​ 变化：</p>
@@ -608,10 +608,10 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 </ul>
 <p>​ IPv6 数据报有 <strong>基本首部</strong>和<strong>有效载荷</strong>两部分组成，有效载荷也成为<strong>净载荷</strong>。有效载荷允许零个或多个<strong>扩展首部</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083649979.png" alt="image-20231120083649979" /><figcaption aria-hidden="true">image-20231120083649979</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083649979.png" alt="" /><figcaption>image-20231120083649979</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083714488.png" alt="image-20231120083714488" /><figcaption aria-hidden="true">image-20231120083714488</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083714488.png" alt="" /><figcaption>image-20231120083714488</figcaption>
 </figure>
 <ul>
 <li><strong>通信量类：</strong> 8 位，区分不同 IPv6 数据报类别或优先级。</li>
@@ -631,18 +631,18 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 </ul>
 <p>​ 地址分类：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120084419498.png" alt="image-20231120084419498" /><figcaption aria-hidden="true">image-20231120084419498</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120084419498.png" alt="" /><figcaption>image-20231120084419498</figcaption>
 </figure>
 <h5 id="ipv4-向-ipv6-过渡">4.6.3 IPv4 向 IPv6 过渡</h5>
 <p>​ 策略一：<strong>双协议栈</strong>。装有双协议栈的主机或路由器既能与 IPv4 主机通信，又能与 IPv6 主机通信。根据域名系统 DNS 返回的地址类型确定主机使用的地址类型。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120103834796.png" alt="image-20231120103834796" /><figcaption aria-hidden="true">image-20231120103834796</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120103834796.png" alt="" /><figcaption>image-20231120103834796</figcaption>
 </figure>
 <p>​ 策略二：<strong>隧道技术</strong>。IPv6 数据报进入 IPv4 网络时，把 IPv6 数据报封装成 IPv4 数据报。要使得双协议栈主机知道 IPv4 数据报内封装的时 IPv6 数据报，则需要将 IPv4 首部的协议字段值设置为 41。</p>
 <h5 id="icmpv6">4.6.4 ICMPv6</h5>
 <p>​ IPv6 也不保证数据可靠交付，因此采用 ICMP 来反馈差错。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120104137961.png" alt="image-20231120104137961" /><figcaption aria-hidden="true">image-20231120104137961</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120104137961.png" alt="" /><figcaption>image-20231120104137961</figcaption>
 </figure>
 <h4 id="ip-多播">4.7 IP 多播</h4>
 <p>​ 与单播相比，一对多的网络通信中，多播可大大节约网络资源。</p>
@@ -660,7 +660,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <h5 id="nat">4.8.2 NAT</h5>
 <p>​ 已经分配到本地 IP 地址，又想进行全球通信，则可使用 NAT。NAT 将每台计算机映射到 NAT 路由器的一个端口（每个端口具有一个全球 IP 地址），由此便可进行互联网通讯，此时目的主机只能知道 NAT 路由器端口的地址而不知发送端的地址。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142901992.png" alt="image-20231120142901992" /><figcaption aria-hidden="true">image-20231120142901992</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142901992.png" alt="" /><figcaption>image-20231120142901992</figcaption>
 </figure>
 <h4 id="mlps">4.9 MLPS</h4>
 <p>​ MLPS 作为一种 IP 增强技术，广泛应用在互联网中。特点如下：</p>
@@ -673,7 +673,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <p>​ 在 MPLS 域入口处打上固定长的 MPLS 标记，然后对打上标记的 IP 数据报用硬件转发，只经过第二层，称为<strong>标记交换</strong>。</p>
 <p>​ MPLS 域是指该域中有许多彼此相邻路由器，且均为支持 MPLS 技术的<strong>标记路由器 LSR</strong>。一个标记仅在两个 LSR 间才有意义。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120143602027.png" alt="image-20231120143602027" /><figcaption aria-hidden="true">image-20231120143602027</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120143602027.png" alt="" /><figcaption>image-20231120143602027</figcaption>
 </figure>
 <p>​ 如入接口 0 收到一个标记为 3 的 IP 数据报，路由器就知道应从出接口 1 转发且打上标记 1。</p>
 <h5 id="转发等价类-fec">4.9.2 转发等价类 FEC</h5>
@@ -687,10 +687,10 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <h5 id="mpls-首部的格式">4.9.3 MPLS 首部的格式</h5>
 <p>​</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144102987.png" alt="image-20231120144102987" /><figcaption aria-hidden="true">image-20231120144102987</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144102987.png" alt="" /><figcaption>image-20231120144102987</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144109443.png" alt="image-20231120144109443" /><figcaption aria-hidden="true">image-20231120144109443</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144109443.png" alt="" /><figcaption>image-20231120144109443</figcaption>
 </figure>
 
     </div>

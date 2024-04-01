@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="5.1 运输层概述 5.1.1 基础知识补充 ​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个进程与另一台主机一个的进程。 ​ 因此，运输层有一个比较重要的功能——复用 (multiplexing) 和分用 (demultiplexing)。复用是指发送端不同应用程序可以使用同一个运输层传输协议。  image-2023112116005">
+  <meta name="description" content="5.1 运输层概述 5.1.1 基础知识补充 ​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个进程与另一台主机一个的进程。 ​ 因此，运输层有一个比较重要的功能——复用 (multiplexing) 和分用 (demultiplexing)。复用是指发送端不同应用程序可以使用同一个运输层传输协议。  image-20231121160059831">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谢希仁计算机网络05-运输层">
 <meta property="og:url" content="https://example.com/2023/11/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C05-%E8%BF%90%E8%BE%93%E5%B1%82/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="5.1 运输层概述 5.1.1 基础知识补充 ​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个进程与另一台主机一个的进程。 ​ 因此，运输层有一个比较重要的功能——复用 (multiplexing) 和分用 (demultiplexing)。复用是指发送端不同应用程序可以使用同一个运输层传输协议。  image-2023112116005">
+<meta property="og:description" content="5.1 运输层概述 5.1.1 基础知识补充 ​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个进程与另一台主机一个的进程。 ​ 因此，运输层有一个比较重要的功能——复用 (multiplexing) 和分用 (demultiplexing)。复用是指发送端不同应用程序可以使用同一个运输层传输协议。  image-20231121160059831">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121160059831.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162255202.png">
@@ -263,7 +263,7 @@
 <p>​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个<strong>进程</strong>与另一台主机一个的<strong>进程</strong>。</p>
 <p>​ 因此，运输层有一个比较重要的功能——<strong>复用 (multiplexing) </strong>和<strong>分用 (demultiplexing)</strong>。复用是指发送端不同应用程序可以使用同一个运输层传输协议。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121160059831.png" alt="image-20231121160059831" /><figcaption aria-hidden="true">image-20231121160059831</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121160059831.png" alt="" /><figcaption>image-20231121160059831</figcaption>
 </figure>
 <p>​ 由图观之，网络层为主机之间提供逻辑通信，而运输层为进程之间提供逻辑通信。</p>
 <h5 id="运输层的端口">5.1.2 运输层的端口</h5>
@@ -282,7 +282,7 @@
 <p>​ <strong>用户数据报协议 UDP (User Datagram Protocol)</strong>：传输前无需建立连接，不提供可靠交付，且较为简单。</p>
 <p>​ <strong>传输控制协议 TCP (Transmission Control Protocol)</strong>：提供<strong>面向连接</strong>的服务，但不提供广播或多播服务，较为复杂。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162255202.png" alt="image-20231121162255202" /><figcaption aria-hidden="true">image-20231121162255202</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162255202.png" alt="" /><figcaption>image-20231121162255202</figcaption>
 </figure>
 <p>​ 接下来将详细阐述两个协议的内容及要点。</p>
 <h4 id="用户数据报协议-udp">5.2 用户数据报协议 UDP</h4>
@@ -297,7 +297,7 @@
 </ul>
 <p>​ 首部格式如图：</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162325100.png" alt="image-20231121162325100" /><figcaption aria-hidden="true">image-20231121162325100</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162325100.png" alt="" /><figcaption>image-20231121162325100</figcaption>
 </figure>
 <p>​ 若接收方发现收到端口号不正确，则丢弃并由网际控制报文协议 ICMP 发送”端口不可达“差错报文。</p>
 <p>​ ”伪首部“的出现是为了计算检验和，在实际传输中并不存在。检验和为 UDP 数据报每一个 16 位字之和的反码，到接收端再与每一 16 位字相加，最终结果为全 1 即无差错。</p>
@@ -344,17 +344,17 @@ U = \frac{T_D}{T_D+RTT+T_A}
 \]</span> <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184735026.png" alt="image-20231121184735026" /></p>
 <p>​ 为了提高传输效率，我们采用<strong>流水线传输</strong>。为此引出下面一堆芝士。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184822027.png" alt="image-20231121184822027" /><figcaption aria-hidden="true">image-20231121184822027</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184822027.png" alt="" /><figcaption>image-20231121184822027</figcaption>
 </figure>
 <h5 id="连续-arq-协议">5.4.2 连续 ARQ 协议</h5>
 <p>​ 核心概念是<strong>窗口</strong>，窗口大小设定为 size。</p>
 <p>每次，发送端将窗口内连续的分组全部发送出去，接收端采用<strong>累计确认</strong>方式，对按序到达的最后一个分组发送确认。发送端每收到一个确认，就进行调整把滑动窗口前移。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184940413.png" alt="image-20231121184940413" /><figcaption aria-hidden="true">image-20231121184940413</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184940413.png" alt="" /><figcaption>image-20231121184940413</figcaption>
 </figure>
 <h4 id="tcp-报文段首部格式">5.5 TCP 报文段首部格式</h4>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121185758124.png" alt="image-20231121185758124" /><figcaption aria-hidden="true">image-20231121185758124</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121185758124.png" alt="" /><figcaption>image-20231121185758124</figcaption>
 </figure>
 <ul>
 <li><strong>确认号</strong>：期望收到下一个报文段的第一个数据字节的序号。</li>
@@ -392,17 +392,17 @@ U = \frac{T_D}{T_D+RTT+T_A}
 <h5 id="超时重传时间的选择">5.6.2 超时重传时间的选择</h5>
 <p>​ 采用自适应算法。<strong>RTT：往返时间。RTO：超时重传时间</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192544945.png" alt="image-20231121192544945" /><figcaption aria-hidden="true">image-20231121192544945</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192544945.png" alt="" /><figcaption>image-20231121192544945</figcaption>
 </figure>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231229104747507.png" alt="image-20231229104747507" /><figcaption aria-hidden="true">image-20231229104747507</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231229104747507.png" alt="" /><figcaption>image-20231229104747507</figcaption>
 </figure>
 <p>​ <strong>Karn 算法及修正</strong>：计算加权 RTTS 时，不考虑重传段。每重传一次，将 RTO 加倍。</p>
 <h4 id="tcp-流量控制">5.7 TCP 流量控制</h4>
 <p>​ 流量控制就是<strong>让发送方发送速率不要太快，让接收方来得及接收</strong>。</p>
 <p>​ 发送方的窗口不能超过接收方给出的接收窗口的数值。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121194421960.png" alt="image-20231121194421960" /><figcaption aria-hidden="true">image-20231121194421960</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121194421960.png" alt="" /><figcaption>image-20231121194421960</figcaption>
 </figure>
 <p>​ 若 B 向 A 发送零窗口后， 又有了存储空间，继续发送 rwnd = 400 的报文段，却于传输途中丢失，A 一直等待 B 的通知，而 B 也一直等待 A 的报文段，若没有其它措施，死锁局面将一直持续下去。为此，TCP 为每个连接设有一个<strong>持续计时器 (persistence timer)</strong>。只要一方收到对方零窗口通知则启动计时器，时间到期则发送零窗口<strong>探测报文段（仅携带 1 字节数据）</strong>。若窗口值确实为 0，就重置，否则死锁局面被打破。</p>
 <p>​ TCP 的实现广泛使用 Nagle 算法：若进程把数据逐字节发送到 TCP 缓存，则发送方把第一个数据字节先发送出去，把后面到达的全部缓存。当收到第一个数据字符确认后，再把缓存中所有数据组装成一个报文发送出去，对随后到达的数据缓存。仅当收到前一个段的确认后才发送下一个段。当到达数据已经到达发送窗口大小一般或最大报文长度，就立即发送。 这种算法可以有效提高网络吞吐量。</p>
@@ -414,7 +414,7 @@ U = \frac{T_D}{T_D+RTT+T_A}
 \]</span></p>
 <p>​ 拥塞控制即<strong>防止过多数据注入到网络中，可以使网络中路由器或链路不至过载</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121202516053.png" alt="image-20231121202516053" /><figcaption aria-hidden="true">image-20231121202516053</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121202516053.png" alt="" /><figcaption>image-20231121202516053</figcaption>
 </figure>
 <p>​ 拥塞控制分为<strong>开环控制</strong>与<strong>闭环控制</strong>两种。开环控制是在设计网络时事先将有关发生拥塞的因素考虑到，但系统运行后就不做改变了。</p>
 <p>​ 闭环控制基于环路反馈，有如下措施：</p>
@@ -437,7 +437,7 @@ U = \frac{T_D}{T_D+RTT+T_A}
 </ul>
 <p>​ 实际操作中，慢开始和拥塞避免是配合使用的。设定一个 ssthresh 值，cwnd 小于该值，用慢启动；cwnd 大于该值，用拥塞避免；等于二者均可。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121203427954.png" alt="image-20231121203427954" /><figcaption aria-hidden="true">image-20231121203427954</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121203427954.png" alt="" /><figcaption>image-20231121203427954</figcaption>
 </figure>
 <p>​ 超时则门限值置为当前 cwnd 的一半。当 B 端收到无序帧时，仍然发送对最前端已确认帧的确认，当 A 端收到一连三个确认帧，即可视为发生了数据丢失。</p>
 <p>​ <strong>快恢复算法</strong>：发送端得知丢失个别报文段，便不进行慢启动，二是置拥塞窗口 sstresh = cwnd = cwnd / 2，并执行拥塞避免算法。</p>
@@ -484,7 +484,7 @@ U = \frac{T_D}{T_D+RTT+T_A}
 <p>​ 此外，TCP 设有一个<strong>保活计时器</strong>，每个一段时间发送探测字段，若一连几个都收不到回应，则关闭连接。</p>
 <h5 id="tcp-有限状态机">5.9.3 TCP 有限状态机</h5>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231122081330855.png" alt="image-20231122081330855" /><figcaption aria-hidden="true">image-20231122081330855</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231122081330855.png" alt="" /><figcaption>image-20231122081330855</figcaption>
 </figure>
 
     </div>

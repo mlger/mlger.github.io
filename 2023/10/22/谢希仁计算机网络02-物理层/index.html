@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="2.1 物理层的基本概念 ​ 用于物理层的协议也称为规程(procedure)。 ​ 可将物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即： ​ (1) 机械特性：指明接口所用接线器的形状尺寸、引脚数目排列等。 ​ (2) 电气特性：指明接口电缆各条线电压范围。 ​ (3) 功能特性：指明某条线某电平的电压的意义。 ​ (4) 过程特性：指明不同功能的各种可能事件的出现顺序">
+  <meta name="description" content="2.1 物理层的基本概念 ​ 用于物理层的协议也称为规程(procedure)。 ​ 可将物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即： ​ (1) 机械特性：指明接口所用接线器的形状尺寸、引脚数目排列等。 ​ (2) 电气特性：指明接口电缆各条线电压范围。 ​ (3) 功能特性：指明某条线某电平的电压的意义。 ​ (4) 过程特性：指明不同功能的各种可能事件的出现顺序。 ​ 数据">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谢希仁计算机网络02-物理层">
 <meta property="og:url" content="https://example.com/2023/10/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C02-%E7%89%A9%E7%90%86%E5%B1%82/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="2.1 物理层的基本概念 ​ 用于物理层的协议也称为规程(procedure)。 ​ 可将物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即： ​ (1) 机械特性：指明接口所用接线器的形状尺寸、引脚数目排列等。 ​ (2) 电气特性：指明接口电缆各条线电压范围。 ​ (3) 功能特性：指明某条线某电平的电压的意义。 ​ (4) 过程特性：指明不同功能的各种可能事件的出现顺序">
+<meta property="og:description" content="2.1 物理层的基本概念 ​ 用于物理层的协议也称为规程(procedure)。 ​ 可将物理层的主要任务描述为确定与传输媒体的接口有关的一些特性，即： ​ (1) 机械特性：指明接口所用接线器的形状尺寸、引脚数目排列等。 ​ (2) 电气特性：指明接口电缆各条线电压范围。 ​ (3) 功能特性：指明某条线某电平的电压的意义。 ​ (4) 过程特性：指明不同功能的各种可能事件的出现顺序。 ​ 数据">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/202310211254285.jpg">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/202310211404631.png">
@@ -292,7 +292,7 @@
 <p>​</p>
 <p>​ 来自信源的信号称为<strong>基带信号</strong>，往往含有较多低频成分甚至直流成分，而许多信道并不能传输这种低频或直流分量，因此必须对基带信号进行<strong>调制(coding)</strong>。使用<strong>载波(carrier)</strong>进行调制，把基带信号频率搬移到较高频段，并转化为模拟信号，便可更好在模拟信道中传输。载波调制后信号称<strong>带通信号</strong>，调制称为<strong>载波调制</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211254285.jpg" alt="0d28fb91042f8ce7aa2ce716249dd2d" /><figcaption aria-hidden="true">0d28fb91042f8ce7aa2ce716249dd2d</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211254285.jpg" alt="" /><figcaption>0d28fb91042f8ce7aa2ce716249dd2d</figcaption>
 </figure>
 <h5 id="信道极限容量">2.2.3 信道极限容量</h5>
 <p>​ 限制码元在信道上传输速率的因素：</p>
@@ -320,7 +320,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <h6 id="光缆">3. <strong>光缆</strong></h6>
 <p>​ <strong>光纤</strong>在发送端有光源，可采用发光二极管或半导体激光器。接收端用光电二极管做成光检测器，可还原出电脉冲。原理是利用光的全反射。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211409293.png" alt="image-20231021140938197" /><figcaption aria-hidden="true">image-20231021140938197</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211409293.png" alt="" /><figcaption>image-20231021140938197</figcaption>
 </figure>
 <p>​ 现代工艺可制造出超低损耗光纤，即做到传输数公里而没什么衰耗。这是光纤通信飞速发展的最关键因素。</p>
 <p>​ 可以存在多条不同角度入射光线在同一光纤中传输，称为<strong>多模光纤</strong>。但光脉冲传输时会展宽，因此多模光纤<strong>仅适用于近距离传输</strong>。</p>
@@ -334,7 +334,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ 在电线杆上架设互相绝缘的明线（铜线或铁线）。许多国家都已经停止铺设，目前我国一些农村与边远地区仍使用。</p>
 <h5 id="非导引型传输媒体">2.3.2 非导引型传输媒体</h5>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211418400.png" alt="image-20231021141801277" /><figcaption aria-hidden="true">image-20231021141801277</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211418400.png" alt="" /><figcaption>image-20231021141801277</figcaption>
 </figure>
 <p>​ 无线传输可使用频段很广，紫外线和更高的波段目前还不能用于通信。</p>
 <p>​ 短波通信（即高频通信）主要靠电离层反射，但电离层不稳定产生的衰落现象和反射产生的多径效应，使得短波通信质量较差。因此短波无线电台一般采用低速传输。</p>
@@ -356,13 +356,13 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <h4 id="信道复用技术">2.4 信道复用技术</h4>
 <h5 id="频分复用时分复用与统计时分复用">2.4.1 频分复用、时分复用与统计时分复用</h5>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211436769.png" alt="image-20231021143631664" /><figcaption aria-hidden="true">image-20231021143631664</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211436769.png" alt="" /><figcaption>image-20231021143631664</figcaption>
 </figure>
 <p>​ <strong>频分复用 FDM (Frequency Division Multiplexing)</strong> 的所有用户<strong>在同样时间占用不同带宽资源</strong>。</p>
 <p>​ <strong>时分复用 TDM (Time Division Multiplexing)</strong> 则是将时间划分为一段段等长的 TDM 帧，所有用户<strong>在不同时间占用同样的频带宽度</strong>。</p>
 <p>​ <strong>复用器(multiplexer)</strong> 和<strong>分用器(demultiplexer)</strong> 成对使用。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211439720.png" alt="image-20231021143935600" /><figcaption aria-hidden="true">image-20231021143935600</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211439720.png" alt="" /><figcaption>image-20231021143935600</figcaption>
 </figure>
 <p>​ <strong>统计时分复用 STDM (Statistic TDM)</strong> 是一种改进的时分复用，能明显提高信道利用率。使用<strong>集中器(concentrator)</strong> 进行复用。集中器也称<strong>智能复用器</strong>。</p>
 <p>​ <img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211444418.png" alt="image-20231021144401327" /></p>
@@ -370,7 +370,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ <strong>波分复用 WDM (Wavelength Division Multiplexing)</strong> 就是<strong>光的频分复用</strong>。一根光纤复用几十路或更多路光载波信号，使用<strong>密集波分复用 DWDM (Dense WDM)</strong> 这一名词。</p>
 <p>​ <strong>掺铒光纤放大器 EDFA (Erbium Doped Fiber Amplifier)</strong> 不需要进行光电转化直接对光信号进行放大。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211448096.png" alt="image-20231021144822976" /><figcaption aria-hidden="true">image-20231021144822976</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211448096.png" alt="" /><figcaption>image-20231021144822976</figcaption>
 </figure>
 <h5 id="码分复用">2.4.3 码分复用</h5>
 <p>​ <strong>码分复用 CDM (Code Division Multiplexing)</strong> 是另一种共享信道方法，也称<strong>码分多址 CDMA (Code Division Multiple Access)</strong> 。每个用户可以在同一时间用同样频带进行通信。<strong>各用户间不会造成干扰，具有很强抗干扰能力，频谱类似于白噪声，不易被敌人发现</strong>。</p>
@@ -385,7 +385,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ 为解决上述问题，美国于 1988 年首先推出一个数字传输标准，叫<strong>同步光纤网 SONET (Synchronous Optical Network)</strong>。</p>
 <p>​ ITU-T 以 SONET 为基础，制定国际标准<strong>同步数字系列 SDH (Synchronous Digital Hierarchy)</strong>。 SDH/SONET 标准的制定及各国的统一运用，实现了数字传输体制上的世界性标准。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211642004.png" alt="image-20231021164224886" /><figcaption aria-hidden="true">image-20231021164224886</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310211642004.png" alt="" /><figcaption>image-20231021164224886</figcaption>
 </figure>
 <h4 id="宽带接入技术">2.6 宽带接入技术</h4>
 <h5 id="adsl-技术">2.6.1 ADSL 技术</h5>
@@ -393,7 +393,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ ADSL 在用户线两端各安装一个 ADSL 调制解调器，我国目前采用的实现方法是 <strong>离散多音调 DMT (Discrete Multi-Tone) 调制技术</strong>。 ADSL 并不能保证固定的数据率。 其最大优点是不需要重新布线。</p>
 <p>​ 基于 ADSL 的接入网三大组成部分：<strong>数字用户线接入复用器 DSLAM (DSL Access Multiplexer)</strong>，用户线和用户家中一些设施。 ADSL 调制解调器必须成对使用，把端局和用户家中的 ADSL 调制解调器分别记为 ATU-C（C 代表<strong>端局 (Central Office)</strong>）和 ATU-R （R代表<strong>远端 (Remote)</strong>）。用户电话通过<strong>分离器 (Splitter)</strong> 与 ATU-R 连在一起。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220934571.png" alt="image-20231022093405458" /><figcaption aria-hidden="true">image-20231022093405458</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220934571.png" alt="" /><figcaption>image-20231022093405458</figcaption>
 </figure>
 <p>​ ADSL 技术也在发展，第二代 ADSL 改进的地方主要为：</p>
 <p>​ (1) 通过提高调制效率得到更高的数据率。</p>
@@ -404,7 +404,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ <strong>光纤同轴混合网 （HFC 网，HFC 是 Hybrid Fiber Coax 缩写）</strong>是基于有线电视网基础上开发的一种居民宽带接入网，主要特点如下：</p>
 <p>​ 把原有有线电视网同轴电缆主干部分该换为光纤，从头端连接到<strong>光纤节点 (fiber node)</strong>。光纤节点光信号转化为电信号，通过同轴电缆传输到每个家庭。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220944400.png" alt="image-20231022094401301" /><figcaption aria-hidden="true">image-20231022094401301</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310220944400.png" alt="" /><figcaption>image-20231022094401301</figcaption>
 </figure>
 <p>​ 模拟电视机要能够接受数字电视信号，需要一个<strong>机顶盒 (set-top box)</strong>连接在同轴电缆与电视机之间。若欲接入互联网，还需增加 HFC 网所使用的调制解调器，称为 <strong>电缆调制解调器 (cable modem)</strong>。</p>
 <h5 id="fttx-技术">2.6.3 FTTx 技术</h5>
@@ -414,7 +414,7 @@ C = W\log_2(1+S/N)\ \ \ (bit/s)
 <p>​ 这种情况下，出现了多种宽带光纤接入方式，称为 FTTx ，x 表示不同的光纤接入地点。</p>
 <p>​ 为有效利用光纤资源，光纤干线和用户之间，需要铺设一段中间转换装置即 <strong>光配线网 ODN (Optical Distribution Network)</strong>，使得数十个家庭用户可以共享一根光纤。 五元的逛配线网称为<strong>无源光网络 PON (Passive Optical Network)</strong>。</p>
 <figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310221001923.png" alt="image-20231022100126778" /><figcaption aria-hidden="true">image-20231022100126778</figcaption>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/202310221001923.png" alt="" /><figcaption>image-20231022100126778</figcaption>
 </figure>
 <p>​ 光纤干线与<strong>光线路终端 OLT (Optical Line Terminal)</strong> 相连，OLT 把收到的下行数据发往无源的 1:N <strong>光分路器 (splitter)</strong> ，然后以广播方式向所有用户端的<strong>光网络单元 ONU (Optical Network Unit)</strong> 发送。</p>
 <p>​ 光配线网采用波分复用，上行和下行分别使用不同的波长。</p>
