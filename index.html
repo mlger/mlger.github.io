@@ -445,7 +445,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2024-04-08 14:23:00 / 修改时间：18:54:05" itemprop="dateCreated datePublished" datetime="2024-04-08T14:23:00+08:00">2024-04-08</time>
+              <time title="创建时间：2024-04-08 14:23:00 / 修改时间：13:46:21" itemprop="dateCreated datePublished" datetime="2024-04-08T14:23:00+08:00">2024-04-08</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -481,7 +481,7 @@
 <p>使用 grun 生成语法树的命令如下：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">grun [语法名] [入口] -gui</span><br></pre></td></tr></table></figure>
 <p>输入后在下方输入代码，然后输入终止符 Ctrl-D 即可在弹出窗口中见到。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> <span class="variable">$COMPILER</span>/src	//切换到工作目录</span><br><span class="line">$ antlr4 SysYLexer.g4 SysYParser.g4</span><br><span class="line">$ javac *.java</span><br><span class="line">grun SysY program -gui &lt; ../tests/test.txt	//管道输入</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">cd</span> <span class="variable">$COMPILER</span>/src	//切换到工作目录</span><br><span class="line">$ antlr4 SysYLexer.g4 SysYParser.g4</span><br><span class="line">$ javac *.java</span><br><span class="line">$ grun SysY program -gui &lt; ../tests/test.txt	//管道输入</span><br></pre></td></tr></table></figure>
 <figure>
 <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240408153940165.png" alt="" /><figcaption>image-20240408153940165</figcaption>
 </figure>
@@ -493,7 +493,7 @@
 <li>void SysYParser.removeErrorListeners(): 清除所有错误监听器。</li>
 <li>void SysYParser.addErrorListener(ANTLRErrorListener listener): 添加错误监听器。</li>
 <li>ParseTree SysYParser.program(): 这是整个语法分析的入口，执行之后会将输入的代码进行语法分析，并生成语法分析树。</li>
-<li>BaseErrorListener.class，这是错误监听器的基础版本，我们在其上进行修改。</li>
+<li>BaseErrorListener.class: 这是错误监听器的基础版本，我们在其上进行修改。</li>
 </ul>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ErrorListener</span> <span class="keyword">extends</span> <span class="title class_">BaseErrorListener</span> &#123;</span><br><span class="line">    <span class="keyword">final</span> List&lt;String&gt; errors = <span class="keyword">new</span> <span class="title class_">ArrayList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">syntaxError</span><span class="params">(Recognizer&lt;?, ?&gt; recognizer, Object offendingSymbol, <span class="type">int</span> line, <span class="type">int</span> charPositionInLine,</span></span><br><span class="line"><span class="params">                            String msg, RecognitionException e)</span> &#123;</span><br><span class="line">        <span class="type">String</span> <span class="variable">errorMessage</span> <span class="operator">=</span> <span class="string">&quot;Error type B at Line &quot;</span> + line + <span class="string">&quot;: &quot;</span> + msg;</span><br><span class="line">        <span class="comment">//TODO</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	<span class="comment">//自定义函数...</span></span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">void</span> <span class="title function_">printErrors</span><span class="params">()</span> &#123;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>修改完后 new 一个监听器然后替换掉原来的，接着执行 SysYParser.program() 即可对代码进行语法分析，其中遇到语法错误会由监听器处理。</p>
