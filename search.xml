@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ubuntu 相关配置</title>
+      <link href="/2024/04/08/Ubuntu%20%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/"/>
+      <url>/2024/04/08/Ubuntu%20%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/</url>
+      
+        <content type="html"><![CDATA[<h4 id="一前言">一、前言</h4><p>这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。</p><h4 id="二配置">二、配置</h4><h5 id="无法连接校园网的问题">1. 无法连接校园网的问题</h5><p>在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。</p><p>原因是 iwlwifi 驱动未加载，查看：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep iwlwifi</span><br></pre></td></tr></table></figure><p>发现并无输出，说明驱动并没有启动。重新加载模块：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo modprobe iwlwifi</span><br></pre></td></tr></table></figure><p>加载后即可顺利连接校园网。</p><h5 id="修改配置文件后无法进入系统的问题">2. 修改配置文件后无法进入系统的问题</h5><p>在修改完配置后无法顺利进入系统，黑屏仅右上角有光标闪烁。</p><p>开机选择 ubuntu develop 模式启动，选择 root，输入密码后即可以 root 进入命令行模式，定位错误信息修改后即可。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ubuntu </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Ubuntu 下 MySQL 安装与权限相关问题</title>
       <link href="/2024/04/04/Ubuntu%20%E4%B8%8B%20MySQL%20%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/"/>
       <url>/2024/04/04/Ubuntu%20%E4%B8%8B%20MySQL%20%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/</url>
@@ -13,14 +38,14 @@
       
       <categories>
           
-          <category> code </category>
+          <category> ubuntu </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 杂项 </tag>
+            <tag> 系统 </tag>
             
         </tags>
       
