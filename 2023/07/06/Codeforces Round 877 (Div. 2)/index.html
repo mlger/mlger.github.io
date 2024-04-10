@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="传送门：Codeforces Round 877 (Div. 2) A. Blackboard List 题意： ​ 给定包含两个数字的初始，然后进行 \(n-2\) 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 \(n\) 的序列。 ​ 现给定最终序列（乱序）， 求最初始数字之一。 题解： ​ 由于新加入数字必为非负数，因此序列中的负数必定是初始">
+  <meta name="description" content="传送门：Codeforces Round 877 (Div. 2) A. Blackboard List题意： ​    给定包含两个数字的初始，然后进行 $n-2$ 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 $n$ 的序列。 ​    现给定最终序列（乱序）， 求最初始数字之一。 题解： ​    由于新加入数字必为非负数，因此序列中的负数必">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Codeforces Round 877 (Div. 2)">
 <meta property="og:url" content="https://example.com/2023/07/06/Codeforces%20Round%20877%20(Div.%202)/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="传送门：Codeforces Round 877 (Div. 2) A. Blackboard List 题意： ​ 给定包含两个数字的初始，然后进行 \(n-2\) 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 \(n\) 的序列。 ​ 现给定最终序列（乱序）， 求最初始数字之一。 题解： ​ 由于新加入数字必为非负数，因此序列中的负数必定是初始">
+<meta property="og:description" content="传送门：Codeforces Round 877 (Div. 2) A. Blackboard List题意： ​    给定包含两个数字的初始，然后进行 $n-2$ 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 $n$ 的序列。 ​    现给定最终序列（乱序）， 求最初始数字之一。 题解： ​    由于新加入数字必为非负数，因此序列中的负数必">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-07-06T11:48:00.000Z">
 <meta property="article:modified_time" content="2023-12-09T13:09:43.294Z">
@@ -244,70 +244,66 @@
 
       
         <p>传送门：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1838">Codeforces Round 877 (Div. 2)</a></p>
-<h5 id="a.-blackboard-list">A. Blackboard List</h5>
-<p><strong>题意：</strong></p>
-<p>​ 给定包含两个数字的初始，然后进行 <span class="math inline">\(n-2\)</span> 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 <span class="math inline">\(n\)</span> 的序列。</p>
-<p>​ 现给定最终序列（乱序）， 求最初始数字之一。</p>
+<h5 id="A-Blackboard-List"><a href="#A-Blackboard-List" class="headerlink" title="A. Blackboard List"></a>A. Blackboard List</h5><p><strong>题意：</strong></p>
+<p>​    给定包含两个数字的初始，然后进行 $n-2$ 次操作，每次操作从序列中取出两个数字（不能取同一个），将其差之绝对值加入序列，最终得到一长度为 $n$ 的序列。</p>
+<p>​    现给定最终序列（乱序）， 求最初始数字之一。</p>
 <p><strong>题解：</strong></p>
-<p>​ 由于新加入数字必为非负数，因此序列中的负数必定是初始数字。</p>
-<p>​ 若全为非负数，由于 <span class="math inline">\(|a-b|\leq|a|\)</span> 且 <span class="math inline">\(|a-b|\leq |b|\)</span> ，因此最大数字必为初始数字。</p>
-<h5 id="b.-minimize-permutation-subarrays">B. Minimize Permutation Subarrays</h5>
-<p><strong>题意：</strong></p>
-<p>​ 给定一 <span class="math inline">\(n\)</span> 的排列。交换两数字的位置，使得交换后序列中，能够成排列的连续子序列数目最少。</p>
+<p>​    由于新加入数字必为非负数，因此序列中的负数必定是初始数字。</p>
+<p>​    若全为非负数，由于 $|a-b|\leq|a|$ 且 $|a-b|\leq |b|$ ，因此最大数字必为初始数字。</p>
+<h5 id="B-Minimize-Permutation-Subarrays"><a href="#B-Minimize-Permutation-Subarrays" class="headerlink" title="B. Minimize Permutation Subarrays"></a>B. Minimize Permutation Subarrays</h5><p><strong>题意：</strong></p>
+<p>​    给定一 $n$ 的排列。交换两数字的位置，使得交换后序列中，能够成排列的连续子序列数目最少。</p>
 <p><strong>题解：</strong></p>
-<p>​ <span class="math inline">\(1\)</span> 与 <span class="math inline">\(2\)</span> 之间夹 <span class="math inline">\(n\)</span> ，这样能够使得数目恒为 <span class="math inline">\(1\)</span> ，是为最少。讨论即可</p>
-<h5 id="c.-no-prime-differences">C. No Prime Differences</h5>
-<p><strong>题意：</strong></p>
-<p>​ 将 <span class="math inline">\(n*m\)</span> 之内的正整数排成一个 <span class="math inline">\(n*m\)</span> 矩阵，使得矩阵中任意两相邻元素差值的绝对值不为素数。</p>
+<p>​    $1$ 与 $2$ 之间夹 $n$ ，这样能够使得数目恒为 $1$ ，是为最少。讨论即可</p>
+<h5 id="C-No-Prime-Differences"><a href="#C-No-Prime-Differences" class="headerlink" title="C. No Prime Differences"></a>C. No Prime Differences</h5><p><strong>题意：</strong></p>
+<p>​    将 $n<em>m$ 之内的正整数排成一个 $n</em>m$ 矩阵，使得矩阵中任意两相邻元素差值的绝对值不为素数。</p>
 <p><strong>题解：</strong></p>
-<p>​ 先考虑 <span class="math inline">\(m\geq 5\)</span> 时，将 <span class="math inline">\(\{0, 1*n, 2*n, 3*n, ... (m-1)*n\}\)</span> 排成一列。以下是一种合适的构造方法。</p>
-<p>​ 设 <span class="math inline">\(p=\lfloor \frac{m-1}{2}\rfloor\)</span> 考虑两个序列 <span class="math display">\[
+<p>​    先考虑 $m\geq 5$ 时，将 $\{0, 1<em>n, 2</em>n, 3<em>n, … (m-1)</em>n\}$ 排成一列。以下是一种合适的构造方法。</p>
+<p>​    设 $p=\lfloor \frac{m-1}{2}\rfloor$ 考虑两个序列 </p>
+<script type="math/tex; mode=display">
 \{0, 1*n, 2*n, ...p*n \} \\
-\{(p+1)*n, (p+2)*n, ... (m-1)*n\}
-\]</span> ​ 然后将两序列合成（下面序列的元素依次插入上面序列的空隙）。</p>
-<p>​ 若 <span class="math inline">\(m=4\)</span> ，则可构造为 <span class="math inline">\(\{1*n, 3*n, 0, 2*n\}\)</span></p>
-<p>​ 设该序列为 <span class="math inline">\(A\)</span> ，则最终矩阵可构造为 <span class="math inline">\(p_{i, j}=i+A_j\)</span></p>
+\{(p+1)*n, (p+2)*n, ... (m-1)*n\}</script><p>​    然后将两序列合成（下面序列的元素依次插入上面序列的空隙）。</p>
+<p>​    若 $m=4$ ，则可构造为 $\{1<em>n, 3</em>n, 0, 2*n\}$</p>
+<p>​    设该序列为 $A$ ，则最终矩阵可构造为 $p_{i, j}=i+A_j$</p>
 <p><strong>code：</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">add</span><span class="params">(m)</span></span>;</span><br><span class="line">    <span class="type">int</span> now = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; m; i += <span class="number">2</span>) &#123;</span><br><span class="line">        add[i] = now;</span><br><span class="line">        now += n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; m; i += <span class="number">2</span>) &#123;</span><br><span class="line">        add[i] = now;</span><br><span class="line">        now += n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span> (m == <span class="number">4</span>) &#123;</span><br><span class="line">        add[<span class="number">0</span>] = n;</span><br><span class="line">        add[<span class="number">1</span>] = <span class="number">3</span> * n;</span><br><span class="line">        add[<span class="number">2</span>] = <span class="number">0</span>;</span><br><span class="line">        add[<span class="number">3</span>] = <span class="number">2</span> * n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> j = <span class="number">0</span>; j &lt; m; j++) cout &lt;&lt; i + add[j] &lt;&lt; <span class="string">&#x27; &#x27;</span>;</span><br><span class="line">        cout &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="d.-bracket-walk">D. Bracket Walk</h5>
-<p><strong>题意：</strong></p>
-<p>​ 一括号序列，从最左侧出发可以随意向左右移动（不超边界），最终停在最右侧。途经符号构成一括号序列，若该括号序列合法，则称原序列 walkable 。</p>
-<p>​ 现给定一括号序列 <span class="math inline">\(s\)</span> ， <span class="math inline">\(q\)</span> 次单点修改，要求求出每次单点修改后，序列是否 walkable 。</p>
+<h5 id="D-Bracket-Walk"><a href="#D-Bracket-Walk" class="headerlink" title="D. Bracket Walk"></a>D. Bracket Walk</h5><p><strong>题意：</strong></p>
+<p>​    一括号序列，从最左侧出发可以随意向左右移动（不超边界），最终停在最右侧。途经符号构成一括号序列，若该括号序列合法，则称原序列 walkable 。</p>
+<p>​    现给定一括号序列 $s$ ， $q$ 次单点修改，要求求出每次单点修改后，序列是否 walkable 。</p>
 <p><strong>题解：</strong></p>
-<p>​ walkable 的必要条件首先是长度 <span class="math inline">\(n\)</span> 为偶数。</p>
-<p>​ 其次构造一序列 <span class="math inline">\(A\)</span> ，包含所有的 <span class="math inline">\(i\)</span> ，使得</p>
+<p>​    walkable 的必要条件首先是长度 $n$ 为偶数。</p>
+<p>​    其次构造一序列 $A$ ，包含所有的 $i$ ，使得</p>
 <ul>
-<li><p><span class="math inline">\(s_i=&#39;)&#39;\)</span> 且 <span class="math inline">\(i\)</span> 为奇数</p></li>
-<li><p><span class="math inline">\(s_i=&#39;(&#39;\)</span> 且 <span class="math inline">\(i\)</span> 为偶数</p>
-<ol type="1">
-<li>若 <span class="math inline">\(A\)</span> 为空，则显然圆括号序列为 <span class="math inline">\(()\)</span> 重复若干次，必定 walkable。</li>
-<li>若 <span class="math inline">\(A\)</span> 非空，其中最小数字为奇数，则意味着序列开头为 <span class="math inline">\(()()()...())\)</span> ，必定非法</li>
-<li>若 <span class="math inline">\(A\)</span> 非空，其中最大数字为偶数，则意味着序列末尾为 <span class="math inline">\((()()()\)</span> ，必定非法</li>
-<li>剩余情况， <span class="math inline">\(A\)</span> 中最小数字 <span class="math inline">\(m\)</span> 为偶数， 最大数字 <span class="math inline">\(M\)</span> 为奇数，则 <span class="math inline">\(m, M\)</span> 之间符号数为偶数，其中左右括号奇偶性相同。则在 <span class="math inline">\(m-1,m\)</span> 这两个位置产生足够多的 <span class="math inline">\(((....\)</span> 来消除右侧的 <span class="math inline">\()\)</span>，然后在<span class="math inline">\(M,M+1\)</span> 两个位置产生对应数量的 <span class="math inline">\())\)</span> 补齐即可。合法。</li>
-</ol></li>
+<li>$s_i=’)’$ 且 $i$ 为奇数</li>
+<li><p>$s_i=’(‘$ 且 $i$ 为偶数</p>
+<ol>
+<li>若 $A$ 为空，则显然圆括号序列为 $()$ 重复若干次，必定 walkable。</li>
+<li>若 $A$ 非空，其中最小数字为奇数，则意味着序列开头为 $()()()…())$ ，必定非法</li>
+<li>若 $A$ 非空，其中最大数字为偶数，则意味着序列末尾为 $(()()()$ ，必定非法</li>
+<li>剩余情况， $A$ 中最小数字 $m$ 为偶数， 最大数字 $M$ 为奇数，则 $m, M$ 之间符号数为偶数，其中左右括号奇偶性相同。则在 $m-1,m$ 这两个位置产生足够多的 $((….$ 来消除右侧的 $)$，然后在$M,M+1$ 两个位置产生对应数量的 $))$ 补齐即可。合法。</li>
+</ol>
+</li>
 </ul>
 <p><strong>code：</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n, q;</span><br><span class="line">    set&lt;<span class="type">int</span>&gt; s;</span><br><span class="line">    string str;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; q;</span><br><span class="line">    cin &gt;&gt; str;</span><br><span class="line">    <span class="keyword">auto</span> check = [&amp;str](<span class="type">int</span> p) &#123;</span><br><span class="line">        <span class="built_in">return</span> ((str[p - <span class="number">1</span>] == <span class="string">&#x27;(&#x27;</span>) ^ (p &amp; <span class="number">1</span>));</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(i)) s.<span class="built_in">insert</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">     * 2 9</span></span><br><span class="line"><span class="comment">     * */</span></span><br><span class="line">    <span class="type">int</span> pos;</span><br><span class="line">    <span class="keyword">while</span> (q--) &#123;</span><br><span class="line">        cin &gt;&gt; pos;</span><br><span class="line">        <span class="keyword">if</span> (n &amp; <span class="number">1</span>) &#123;</span><br><span class="line">            cout &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">continue</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">check</span>(pos)) s.<span class="built_in">erase</span>(pos);</span><br><span class="line">        <span class="keyword">else</span> s.<span class="built_in">insert</span>(pos);</span><br><span class="line">        str[pos - <span class="number">1</span>] = <span class="string">&#x27;(&#x27;</span> + <span class="string">&#x27;)&#x27;</span> - str[pos - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">if</span> (s.<span class="built_in">empty</span>()) cout &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> ((*s.<span class="built_in">begin</span>() &amp; <span class="number">1</span>) || !(*s.<span class="built_in">rbegin</span>() &amp; <span class="number">1</span>)) cout &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; endl;</span><br><span class="line">        <span class="keyword">else</span> cout &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="e.-count-supersequences">E. Count Supersequences</h5>
-<p><strong>题意：</strong></p>
-<p>​ 求满足以下条件的 <span class="math inline">\(b\)</span> 序列个数：</p>
+<h5 id="E-Count-Supersequences"><a href="#E-Count-Supersequences" class="headerlink" title="E. Count Supersequences"></a>E. Count Supersequences</h5><p><strong>题意：</strong></p>
+<p>​    求满足以下条件的 $b$ 序列个数：</p>
 <ul>
-<li><span class="math inline">\(b\)</span> 序列含 <span class="math inline">\(m\)</span> 个正整数，所有数字均在 <span class="math inline">\([1,k]\)</span> 内</li>
-<li><span class="math inline">\(b\)</span> 序列删去若干个数，顺序不变，可以得到 <span class="math inline">\(a\)</span> 序列</li>
+<li>$b$ 序列含 $m$ 个正整数，所有数字均在 $[1,k]$ 内</li>
+<li>$b$ 序列删去若干个数，顺序不变，可以得到 $a$ 序列</li>
 </ul>
 <p><strong>题解：</strong></p>
-<p>​ 考虑 <span class="math inline">\(dp\)</span></p>
-<p>​ <span class="math inline">\(f[i][j]\)</span> 表示含 <span class="math inline">\(i\)</span> 个正整数删去后可得到长度为 <span class="math inline">\(j\)</span> 的 <span class="math inline">\(a\)</span> 序列前缀的序列数，则有如下转移方程： <span class="math display">\[
+<p>​    考虑 $dp$</p>
+<p>​    $f[i][j]$ 表示含 $i$ 个正整数删去后可得到长度为 $j$ 的 $a$ 序列前缀的序列数，则有如下转移方程：</p>
+<script type="math/tex; mode=display">
 f[i][j]=
 \begin{cases}
-f[i-1][j-1]+(k-1)*f[i-1][j],\ j&lt;n \\
+f[i-1][j-1]+(k-1)*f[i-1][j],\ j<n \\
 f[i-1][j-1]+k*f[i-1][j], \ j=n
-\end{cases}
-\]</span> ​ 发现该转移方程与 <span class="math inline">\(a\)</span> 无关。</p>
-<p>​ 因此将 <span class="math inline">\(a\)</span> 序列设为 <span class="math inline">\(n\)</span> 个 <span class="math inline">\(1\)</span> ，然后作差法。</p>
-<p>​ 最终答案为： <span class="math display">\[
-k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
-\]</span> <strong>code：</strong></p>
+\end{cases}</script><p>​    发现该转移方程与 $a$ 无关。</p>
+<p>​    因此将 $a$ 序列设为 $n$ 个 $1$ ，然后作差法。</p>
+<p>​    最终答案为：</p>
+<script type="math/tex; mode=display">
+k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}</script><p><strong>code：</strong></p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">const</span> <span class="type">long</span> <span class="type">long</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">    <span class="type">int</span> n, m, k;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, x; i &lt;= n; i++) cin &gt;&gt; x;</span><br><span class="line">    <span class="keyword">auto</span> quick_pow = [&amp;mod](<span class="type">int</span> a, <span class="type">int</span> b) &#123;</span><br><span class="line">        <span class="type">int</span> res = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (; b; b &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (b &amp; <span class="number">1</span>) res = <span class="number">1ll</span> * res * a % mod;</span><br><span class="line">            a = <span class="number">1ll</span> * a * a % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="type">int</span> ans = <span class="built_in">quick_pow</span>(k, m);</span><br><span class="line">    <span class="type">int</span> now = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) &#123;</span><br><span class="line">        ans -= <span class="number">1ll</span> * now * <span class="built_in">quick_pow</span>(k - <span class="number">1</span>, m - i) % mod;</span><br><span class="line">        ans %= mod;</span><br><span class="line">        ans += mod;</span><br><span class="line">        ans %= mod;</span><br><span class="line">        now = <span class="number">1ll</span> * now * (m - (i+<span class="number">1</span>) + <span class="number">1</span>) % mod;</span><br><span class="line">        now = <span class="number">1ll</span> * now * <span class="built_in">quick_pow</span>((i+<span class="number">1</span>), mod - <span class="number">2</span>) % mod;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
     </div>
@@ -389,7 +385,7 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#a.-blackboard-list"><span class="nav-number">1.</span> <span class="nav-text">A. Blackboard List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#b.-minimize-permutation-subarrays"><span class="nav-number">2.</span> <span class="nav-text">B. Minimize Permutation Subarrays</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#c.-no-prime-differences"><span class="nav-number">3.</span> <span class="nav-text">C. No Prime Differences</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#d.-bracket-walk"><span class="nav-number">4.</span> <span class="nav-text">D. Bracket Walk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#e.-count-supersequences"><span class="nav-number">5.</span> <span class="nav-text">E. Count Supersequences</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#A-Blackboard-List"><span class="nav-number">1.</span> <span class="nav-text">A. Blackboard List</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B-Minimize-Permutation-Subarrays"><span class="nav-number">2.</span> <span class="nav-text">B. Minimize Permutation Subarrays</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#C-No-Prime-Differences"><span class="nav-number">3.</span> <span class="nav-text">C. No Prime Differences</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#D-Bracket-Walk"><span class="nav-number">4.</span> <span class="nav-text">D. Bracket Walk</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#E-Count-Supersequences"><span class="nav-number">5.</span> <span class="nav-text">E. Count Supersequences</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
