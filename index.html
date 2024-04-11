@@ -218,7 +218,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-07 22:26:18" itemprop="dateModified" datetime="2024-03-07T22:26:18+08:00">2024-03-07</time>
+                <time title="修改时间：2024-04-11 21:19:07" itemprop="dateModified" datetime="2024-04-11T21:19:07+08:00">2024-04-11</time>
               </span>
 
           
@@ -405,6 +405,208 @@
 </tr>
 </tbody>
 </table>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/04/11/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/11/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/" class="post-title-link" itemprop="url">验收准备</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-11 21:19:00 / 修改时间：21:19:42" itemprop="dateCreated datePublished" datetime="2024-04-11T21:19:00+08:00">2024-04-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一-hello-os">一、 Hello OS</h4>
+<ol type="1">
+<li>制作镜像</li>
+</ol>
+<p>bximage fd 1.44M name</p>
+<ol start="2" type="1">
+<li>boot.asm</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nasm boot.asm –o boot.bin	</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>写入软盘</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd if=boot.bin of=a.img bs=512 count=1</span><br><span class="line">- if：代表输入文件</span><br><span class="line">- of：代表输出设备</span><br><span class="line">- bs：代表一个扇区大小</span><br><span class="line">- count：代表扇区数</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>bochsrc</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">megs:32</span><br><span class="line">display_library: sdl2</span><br><span class="line">floppya: 1_44=a.img, status=inserted</span><br><span class="line">boot: floppy</span><br><span class="line">romimage: file=$BXSHARE/BIOS-bochs-legacy</span><br><span class="line"></span><br><span class="line">- megs:32: 指定模拟器虚拟机的内存大小为 32 MB。这表示 Bochs 将模拟一个拥有 32 MB 内存的虚拟计算机。</span><br><span class="line">- display_library: sdl2: 指定使用 SDL2 库来进行图形显示。这将影响模拟器的图形输出方式。</span><br><span class="line">- floppya: 1_44=a.img, status=inserted: 设置第一个虚拟软盘驱动器 (floppya) 的参数。1_44=a.img 表示使用 1.44 MB 容量的软盘镜像文件 a.img，status=inserted 表示在启动时将这个软盘镜像插入虚拟机中。</span><br><span class="line">- boot: floppy: 指定虚拟机启动时从软盘 (floppy) 启动。</span><br><span class="line">- romimage: file=$BXSHARE/BIOS-bochs-legacy: 指定使用 Bochs 提供的旧版 BIOS 镜像文件 BIOS-bochs-legacy。</span><br></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li>启动</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bochs -f bochsrc</span><br><span class="line">-f 是一个选项，后面跟着配置文件的名称，这里是 bochsrc。</span><br></pre></td></tr></table></figure>
+<h4 id="三实验问题">三、实验问题</h4>
+<ol type="1">
+<li><p>8086 有哪 5 类寄存器？ 请分别举例说明其作⽤。</p>
+<ol type="1">
+<li><strong>通用寄存器</strong>：
+<ul>
+<li>通用寄存器用于存储数据和执行算术和逻辑操作。</li>
+<li>例如：AX、BX、CX、DX 寄存器。其中，AX 可用于存放运算结果，BX 可用于存放内存地址，CX 可用于循环计数，DX 则可用于 I/O 操作。</li>
+</ul></li>
+<li><strong>段寄存器</strong>：
+<ul>
+<li>段寄存器用于存储段的起始地址，是实现内存分段的关键。</li>
+<li>例如：CS、DS、SS、ES 寄存器。CS 用于存放代码段的起始地址，DS 存放数据段的起始地址，SS 存放堆栈段的起始地址，ES 则是额外的数据段寄存器，用于一些特定的操作。</li>
+</ul></li>
+<li><strong>指令指针寄存器</strong>：
+<ul>
+<li>指令指针寄存器存储了 CPU 正在执行的指令的地址。</li>
+<li>例如：IP 寄存器，它存放着当前指令的偏移地址。</li>
+</ul></li>
+<li><strong>标志寄存器</strong>：
+<ul>
+<li>标志寄存器用于存储 CPU 执行指令后产生的标志位，例如零标志、进位标志等。</li>
+<li>例如：FLAGS 寄存器，包含了 AF（辅助进位标志）、ZF（零标志）、SF（符号标志）等。</li>
+</ul></li>
+<li><strong>控制寄存器</strong>：
+<ul>
+<li>控制寄存器用于控制 CPU 的工作模式和行为。</li>
+<li>例如：CS（代码段寄存器）、DS（数据段寄存器）、SS（堆栈段寄存器）等，这些寄存器可以用来改变 CPU 的工作状态，例如切换到保护模式等。</li>
+</ul></li>
+</ol>
+<p>这些寄存器的作用使得 CPU 能够执行各种不同的指令，并对数据进行处理、存储和传输。</p></li>
+<li><p>有哪些段寄存器， 它们的作⽤是什么？</p>
+<p>​ 对应用程序来说，主要设计3类段：存放程序中指令代码的代码段（Code Segment）、存放当前运行程序所用数据的数据段（Data Segment）和指明程序使用的堆栈区域的堆栈段（Stack Segment）。 ​ 为了表明段在主存中的位置，8086设计有4个16位段寄存器：代码段寄存器CS、堆栈段寄存器SS、数据段寄存器DS和附加段寄存器ES（Extra Segment）。其中，附加段也是用于存放数据的数据段，专为处理数据串设计的串指令必须使用附加段作为其目的操作数的存放区域。</p></li>
+<li><p>什么是寻址？ 8086 有哪些寻址⽅式？</p>
+<p>寻址是指找到操作数的地址(从而能够取出操作数)。</p>
+<p>8086的寻址方式</p>
+<ul>
+<li>立即寻址、直接寻址</li>
+<li>寄存器寻址、寄存器间接寻址、寄存器相对寻址</li>
+<li>基址加变址、相对基址加变址</li>
+</ul></li>
+<li><p>主程序与⼦程序之间如何传递参数</p>
+<ul>
+<li>利用寄存器传递参数</li>
+<li>缺点：能传递的参数有限，因为寄存器有限</li>
+<li>利用约定的地址传递参数</li>
+<li>利用堆栈传递参数（常用）</li>
+</ul></li>
+<li><p>解释 boot.asm ⽂件中 org 07c00h 的作⽤。 如果去掉这⼀句， 整个程序应该怎么修改？</p>
+<p>​ 告诉汇编器，当前这段代码会放在 07c00h处。所以，如果之后遇到需要绝对寻址的指令，那么绝对地址就是07c00h加上相对地址。</p>
+<p>​ 如果去掉 org 07c00h，需要修改程序中的所有跳转、访存和地址相关的指令，确保它们正确地指向引导扇区程序在内存中的新位置。同时，还需要确保程序的大小不超过 512 字节，并且适当调整程序入口点。这样 BIOS 才能正确加载引导扇区程序并执行。</p></li>
+<li><p>解释 int 10h 的功能。</p>
+<p>中断调用 10H 功能，用于执行文本和图形模式下的视频显示操作。</p></li>
+<li><p>解释 boot.asm ⽂件中 times 510-(<span class="math inline">\(-\)</span>$) db 0 的作⽤。</p>
+<p>零填充使文件大小达到 510 字节，以确保引导扇区的大小为 512 字节。</p>
+<ul>
+<li><code>times</code> 是一个汇编伪操作，它用于重复执行一段代码或填充一定数量的数据。</li>
+<li><code>510-($-$$)</code> 表示需要填充的字节数，其中 <code>$</code> 表示当前位置的地址。因此，<code>$-$$</code> 表示当前位置距离文件开头的偏移量。<code>510-($-$$)</code> 计算了当前位置到文件开头的偏移量，然后将其与 510 比较，以确定需要填充多少字节。</li>
+<li><code>db 0</code> 表示以字节为单位将零填充到指定的位置。</li>
+</ul></li>
+<li><p>解释 bochsrc 中各参数的含义。</p>
+<ol type="1">
+<li><code>megs:32</code>：
+<ul>
+<li>这指定了虚拟机或仿真器应该分配给操作系统或应用程序的内存量。在这种情况下，32 表示分配了 32MB 的内存。这可以用来模拟具有指定内存量的计算机环境。</li>
+</ul></li>
+<li><code>display_library: sdl2</code>：
+<ul>
+<li>这指定了用于显示的库或驱动程序。在这里，<code>sdl2</code> 可能是指 Simple DirectMedia Layer（简称SDL）的第二个版本，它是一个跨平台的多媒体库，用于在不同的平台上处理音频、视频和输入。使用 SDL2 可能是为了在模拟器或虚拟机中提供跨平台的图形支持。</li>
+</ul></li>
+<li><code>floppya: 1_44=a.img, status=inserted</code>：
+<ul>
+<li>这定义了一个虚拟的软盘驱动器，指定了软盘的类型和镜像文件的位置。在这种情况下，<code>1_44</code> 表示一个 1.44MB 的软盘，<code>a.img</code> 是镜像文件的路径。<code>status=inserted</code> 表示该软盘已插入到虚拟软盘驱动器中。</li>
+</ul></li>
+<li><code>boot: floppy</code>：
+<ul>
+<li>这告诉虚拟机或仿真器在启动时应该从软盘驱动器引导。也就是说，操作系统或引导程序应该从软盘镜像 (<code>a.img</code>) 中加载。</li>
+</ul></li>
+<li><code>romimage: file=$BXSHARE/BIOS-bochs-legacy</code> 这一行指定了一个 ROM 镜像文件的路径，路径为 <code>$BXSHARE/BIOS-bochs-legacy</code>。</li>
+</ol></li>
+<li><p>boot.bin 应该放在软盘的哪⼀个扇区？ 为什么？</p>
+<p><code>boot.bin</code> 需要被放置在软盘的第一个扇区，以便 BIOS 能够正确加载并执行其中的引导程序。</p></li>
+<li><p>为什么不让 Boot 程序直接加载内核， ⽽需要先加载 Loader 再加载内核？</p>
+<p>在一些操作系统设计中，引导程序（Bootloader）和加载程序（Loader）的分离是有一些好处的：</p>
+<ol type="1">
+<li><strong>复杂度管理</strong>：引导程序负责在计算机启动时加载最基本的系统组件，如引导扇区、文件系统等，而加载程序则负责更复杂的任务，例如从文件系统中加载内核、初始化内存、设置环境等。将这些任务分开可以更好地管理复杂度，使得引导程序更加简洁、可靠。</li>
+<li><strong>灵活性</strong>：通过将加载程序与引导程序分开，可以更灵活地设计系统。例如，加载程序可以支持从不同类型的文件系统中加载内核，而引导程序则可以专注于在引导阶段完成最基本的硬件初始化和引导过程。</li>
+<li><strong>模块化设计</strong>：将引导过程分成多个阶段可以实现系统的模块化设计。这样，如果需要更改加载过程中的某一部分，只需要修改加载程序而不影响引导程序，从而提高了系统的可维护性和扩展性。</li>
+<li><strong>错误处理</strong>：通过引导程序和加载程序的分离，可以更好地处理错误情况。例如，如果加载程序在加载内核时出现错误，可以有机会显示错误消息或采取其他适当的处理措施，而不会影响到引导程序的功能。</li>
+</ol>
+<p>总的来说，通过引导程序和加载程序的分离，可以更好地管理复杂度、提高灵活性、实现模块化设计并改善错误处理，从而提高操作系统的可靠性和可维护性。</p></li>
+<li><p>Loader 的作⽤有哪些？</p>
+<p>加载程序（Loader）在操作系统启动过程中扮演着重要的角色，其主要作用包括：</p>
+<ol type="1">
+<li><strong>加载内核</strong>：加载程序负责从存储介质（如硬盘、软盘、网络等）中读取操作系统内核的镜像文件，并将其加载到内存中。加载内核是操作系统启动过程中最关键的任务之一。</li>
+<li><strong>初始化内存</strong>：加载程序可能需要在加载内核之前对系统内存进行初始化。这包括设置内存分页、建立内存映射表、分配内存空间等操作，以确保内核能够正常运行。</li>
+<li><strong>设置环境</strong>：加载程序负责设置操作系统运行所需的执行环境。这包括设置堆栈、参数传递、初始化全局变量等操作，以确保内核能够正确执行。</li>
+<li><strong>启动内核</strong>：加载程序加载完内核后，将控制权转移给内核，启动操作系统的正常运行。这通常是通过跳转到内核的入口点来实现的。</li>
+<li><strong>错误处理</strong>：加载程序可能需要处理加载过程中出现的错误情况。这包括检测加载错误、显示错误信息、尝试恢复等操作，以确保系统能够正确启动或提供错误信息以供用户参考。</li>
+</ol>
+<p>总的来说，加载程序负责将操作系统内核加载到内存中，并为其提供必要的执行环境，从而启动操作系统的正常运行。加载程序在操作系统启动过程中起着至关重要的作用。</p></li>
+<li><p>Kernel 的作⽤有哪些？</p>
+<p>操作系统内核（Kernel）是操作系统的核心部分，负责管理计算机的硬件资源并提供各种系统服务。其主要作用包括：</p>
+<ol type="1">
+<li><strong>硬件管理</strong>：内核管理计算机的硬件资源，包括处理器、内存、输入输出设备等。它负责分配和管理这些资源，以确保它们能够被应用程序有效地使用。</li>
+<li><strong>进程管理</strong>：内核负责管理系统中运行的进程。它分配处理器时间片给不同的进程，并调度它们的执行顺序。此外，内核还负责进程的创建、终止、暂停和恢复等操作。</li>
+<li><strong>内存管理</strong>：内核管理系统的内存资源，包括物理内存和虚拟内存。它负责将进程的内存空间映射到物理内存中，并处理内存的分配、回收和页面置换等操作。</li>
+<li><strong>文件系统</strong>：内核提供文件系统服务，允许应用程序访问和管理文件和目录。它负责文件的创建、打开、读写、关闭等操作，并管理文件系统的存储空间。</li>
+<li><strong>设备驱动程序</strong>：内核包含设备驱动程序，允许应用程序通过标准接口与硬件设备进行通信。它负责处理设备的初始化、数据传输、中断处理等操作。</li>
+<li><strong>系统调用接口</strong>：内核提供系统调用接口，允许应用程序向内核请求系统服务。这些系统调用包括文件操作、进程管理、网络通信等，为应用程序提供了访问操作系统功能的途径。</li>
+<li><strong>安全性和权限管理</strong>：内核负责实施安全策略和权限管理，保护系统和用户数据免受未经授权的访问和恶意软件的攻击。</li>
+</ol>
+<p>总的来说，内核是操作系统的核心部分，负责管理系统的硬件资源、提供系统服务和接口，并保证系统的安全性和稳定性。它为应用程序提供了一个统一的接口，使它们能够在计算机系统上运行并与硬件设备进行通信。</p></li>
+</ol>
 
       
     </div>
@@ -1166,87 +1368,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">软件工程与计算II-0x05 软件需求基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-28 15:40:00" itemprop="dateCreated datePublished" datetime="2024-02-28T15:40:00+08:00">2024-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-07 23:19:19" itemprop="dateModified" datetime="2024-03-07T23:19:19+08:00">2024-03-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1318,14 +1439,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-count">35</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1357,7 +1478,7 @@
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
