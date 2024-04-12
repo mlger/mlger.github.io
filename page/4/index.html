@@ -187,128 +187,6 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/" class="post-title-link" itemprop="url">Codeforces Round 879 (Div. 2)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-01 21:00:00" itemprop="dateCreated datePublished" datetime="2023-07-01T21:00:00+08:00">2023-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-27 17:31:40" itemprop="dateModified" datetime="2024-02-27T17:31:40+08:00">2024-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>传送门：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1834">Codeforces Round 879 (Div. 2)</a></p>
-<p>难度适中，但菜鸡依旧。</p>
-<h6 id="b.-maximum-strength">B. Maximum Strength</h6>
-<p><strong>题意：</strong></p>
-<p>​ <span class="math inline">\([l,r]\)</span> 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 <span class="math inline">\(0\)</span> 对齐。</p>
-<p><strong>题解：</strong></p>
-<p>​ 设 <span class="math inline">\(l\)</span> 和 <span class="math inline">\(r\)</span> 位数分别为 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(m\)</span> ，取的数字为 <span class="math inline">\(x&lt;y\)</span> ，分情况讨论。</p>
-<ul>
-<li>若 <span class="math inline">\(n&lt;m\)</span> ，则最优情况为 <span class="math inline">\(x\)</span> 取 <span class="math inline">\(m-1\)</span> 个 <span class="math inline">\(9\)</span> , <span class="math inline">\(y\)</span> 保留 <span class="math inline">\(r\)</span> 的最高位，剩余位为 <span class="math inline">\(0\)</span></li>
-<li>若 <span class="math inline">\(n=m\)</span> ，则除去相同前缀，然后 <span class="math inline">\(y\)</span> 保留最高位，剩余位为 <span class="math inline">\(0\)</span> ， <span class="math inline">\(x\)</span> 保留最高位，剩余位为 <span class="math inline">\(9\)</span> 即可。</li>
-</ul>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    n = s1.length();</span><br><span class="line">    m = s2.length();</span><br><span class="line">    if (n &lt; m) &#123;</span><br><span class="line">        cout &lt;&lt; (s2[0] - &#x27;0&#x27;) + (m - 1) * 9 &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (s1[i] == s2[i]) continue;</span><br><span class="line">            cout &lt;&lt; s2[i] - s1[i] + (n - i - 1) * 9 &lt;&lt; endl;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; 0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="c.-game-with-reversing">C. Game with Reversing</h6>
-<p><strong>题意：</strong></p>
-<p>​ 给定两等长串 <span class="math inline">\(S\)</span> 和 <span class="math inline">\(T\)</span> ， Alice 和 Bob 轮流操作。Alice 每次可以替换一个字符，Bob 每次可以翻转一个串， 当两串相同时，停止操作。Alice 希望操作次数尽量少， Bob 希望操作次数尽量多， 求两个人都采取最优策略的情况下，实际游戏操作次数。</p>
-<p><strong>题解：</strong></p>
-<p>​ 解释起来比较啰嗦，这里简述。</p>
-<p>​ 实际上 Bob 每轮操作都是相同的，因此可以假设 Bob 只翻转一个字符串 <span class="math inline">\(T\)</span> 。</p>
-<p>​ 对 Alice 来说，则可以有两种选择，将 <span class="math inline">\(S\)</span> 变为 <span class="math inline">\(T\)</span> 或 <span class="math inline">\(rev(T)\)</span> 。二者最小步数都容易 <span class="math inline">\(O(n)\)</span> 求出。 最后根据实际的奇偶性补齐 Bob 的操作数即可。</p>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    int ans1 = 0, ans2 = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (s1[i] != s2[i]) ++ans1;</span><br><span class="line">        if (s1[i] != s2[n - i - 1]) ++ans2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (ans1 &amp; 1) ans1 = ans1 * 2 - 1;</span><br><span class="line">    else ans1 = ans1 * 2;</span><br><span class="line">    if (ans2 &amp; 1) ans2 = ans2 * 2;</span><br><span class="line">    else if (ans2 == 0) ans2 = 2;</span><br><span class="line">    else ans2 = ans2 * 2 - 1;</span><br><span class="line">    cout &lt;&lt; min(ans1, ans2) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="d.-survey-in-class">D. Survey in Class</h6>
-<p><strong>题意：</strong></p>
-<p>​ <span class="math inline">\(n\)</span> 位学生，<span class="math inline">\(m\)</span> 个知识点。第 <span class="math inline">\(i\)</span> 个学生学习了 <span class="math inline">\([l_i, r_i]\)</span> 个知识点。</p>
-<p>​ 上课老师提问，每个问题至多提问一次。初始同学分数均为 <span class="math inline">\(0\)</span> ，答对加一分，答错减一分，分数可为负。求最大分差。</p>
-<p><strong>题解：</strong></p>
-<p>​ 对于线段 <span class="math inline">\([l_1, r_1]\)</span> 和线段 <span class="math inline">\([l_2,r_2]\)</span> ，设 <span class="math inline">\(r_1&lt;r_2\)</span> ，则分三种情况讨论：</p>
-<ul>
-<li><span class="math inline">\(r_1&lt;l_2\)</span> ，则最大差值可以分别来源于两线段整段，即 <span class="math inline">\(max(r_1-l_1+1, r_2-l_2+1)\)</span> ；</li>
-<li><span class="math inline">\(l_1\leq l_2\leq r_1 \leq r_2\)</span>，则最大差值来源于二者分别对交集取补，即 <span class="math inline">\(max(r_2-r_1, l_2-l_1)\)</span> ；</li>
-<li><span class="math inline">\(l_2\leq l_1 \leq r_1 \leq r_2\)</span> ，包含关系，最大差值来源于长线段对短线段取补，即 <span class="math inline">\((r_2-l_2+1)-(r_1-l_1+1)\)</span> 。</li>
-</ul>
-<p>​ 将每条线段按右端点排序，枚举线段 <span class="math inline">\([l_2,r_2]\)</span> ， 目标是找出对应的 <span class="math inline">\([l_1, r_1]\)</span> ， 三种情况分别需要求：</p>
-<ul>
-<li>右端点小于 <span class="math inline">\(l_2\)</span> 的直线中，<span class="math inline">\(r-l+1\)</span> 的最大值</li>
-<li>相交直线中， <span class="math inline">\(r\)</span> 的最小值以及 <span class="math inline">\(l\)</span> 的最小值</li>
-<li>左端点大于等于 <span class="math inline">\(l_2\)</span> 的直线中， <span class="math inline">\(r-l+1\)</span> 的最小值</li>
-</ul>
-<p>​ 四个值四棵动态开点线段树维护即可。</p>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x7fffffff</span><br><span class="line">int cnt = 0;</span><br><span class="line">const int N = 4e5 + 5;</span><br><span class="line">int dat[N &lt;&lt; 5], lc[N &lt;&lt; 5], rc[N &lt;&lt; 5];</span><br><span class="line"></span><br><span class="line">void update(int &amp;p, int l, int r, int k, int val) &#123;</span><br><span class="line">    if (!p) p = ++cnt, dat[p] = inf;</span><br><span class="line">    if (l == r) return (void) (dat[p] = min(dat[p], val));</span><br><span class="line">    int mid = l + r &gt;&gt; 1;</span><br><span class="line">    if (k &lt;= mid) update(lc[p], l, mid, k, val);</span><br><span class="line">    else update(rc[p], mid + 1, r, k, val);</span><br><span class="line">    dat[p] = inf;</span><br><span class="line">    if (lc[p]) dat[p] = min(dat[p], dat[lc[p]]);</span><br><span class="line">    if (rc[p]) dat[p] = min(dat[p], dat[rc[p]]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline int query(int p, int l, int r, int u, int v) &#123;</span><br><span class="line">    if (!p) return inf;</span><br><span class="line">    if (u &lt;= l &amp;&amp; r &lt;= v) return dat[p];</span><br><span class="line">    int mid = l + r &gt;&gt; 1, res = inf;</span><br><span class="line">    if (u &lt;= mid) res = min(res, query(lc[p], l, mid, u, v));</span><br><span class="line">    if (v &gt; mid) res = min(res, query(rc[p], mid + 1, r, u, v));</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(pair&lt;int, int&gt; A, pair&lt;int, int&gt; B) &#123;</span><br><span class="line">    return A.second == B.second ? A.first &lt; B.first : A.second &lt; B.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solve() &#123;</span><br><span class="line">#define mp(x, y) make_pair(x, y)</span><br><span class="line">    int t1 = 0, t2 = 0, t3 = 0, t4 = 0;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;pair&lt;int, int&gt; &gt; Stu(n);</span><br><span class="line">    for (int i = 0, l, r; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        Stu[i] = mp(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(Stu.begin(), Stu.end(), cmp);</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (auto stu: Stu) &#123;</span><br><span class="line">        int l = stu.first, r = stu.second;</span><br><span class="line">        int rem;</span><br><span class="line">        rem = -query(t1, 0, m, 0, l - 1);</span><br><span class="line">        if (rem != -inf) ans = max(ans, max(rem &lt;&lt; 1, (r - l + 1) &lt;&lt; 1));</span><br><span class="line">        update(t1, 0, m, r, l - r - 1);</span><br><span class="line"></span><br><span class="line">        rem = query(t2, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (r - rem) &lt;&lt; 1);</span><br><span class="line">        update(t2, 0, m, r, r);</span><br><span class="line"></span><br><span class="line">        rem = query(t3, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (l - rem) &lt;&lt; 1);</span><br><span class="line">        update(t3, 0, m, r, l);</span><br><span class="line"></span><br><span class="line">        rem = query(t4, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, ((r - l + 1) - rem) &lt;&lt; 1);</span><br><span class="line">        update(t4, 0, m, l, r - l + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="e.-mex-of-lcm">E. MEX of LCM</h5>
-<p><strong>题意：</strong></p>
-<p>​ 题如其名。给定 <span class="math inline">\(n\)</span> 个数，则对应的有 <span class="math inline">\(C_n^2\)</span> 个连续子序列。求所有子序列数值 <span class="math inline">\(lcm\)</span> 的 <span class="math inline">\(Mex\)</span> 。</p>
-<p><strong>题解：</strong></p>
-<p>​ 同样是利用好值域。 对于区间 <span class="math inline">\([l,r]\)</span> ，固定住右端点 <span class="math inline">\(r\)</span> ，则至多还剩下 <span class="math inline">\(r\)</span> 个左端点，对应 <span class="math inline">\(r\)</span> 个区间。这 <span class="math inline">\(r\)</span> 个区间有多少 <span class="math inline">\(lcm\)</span> 值？从 <span class="math inline">\(l=r\)</span> 开始，每次向左添加一个数， <span class="math inline">\(lcm\)</span> 要么不变， 要么至少翻一倍，因此 <span class="math inline">\(lcm\)</span> 值的数目是 <span class="math inline">\(log\)</span> 级别的。因此整个序列所有 <span class="math inline">\(lcm\)</span> 值的数目不超过 <span class="math inline">\(nlogn\)</span> ，迭代求出然后求 <span class="math inline">\(Mex\)</span> 即可。复杂度 <span class="math inline">\(O(nlogn)\)</span></p>
-<p><strong>code：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">long</span> <span class="type">long</span> <span class="title">lcm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> x, <span class="type">long</span> <span class="type">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x / __gcd(x, y) * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> inf = <span class="number">1ll</span> * n * n + <span class="number">2</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">num</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; num[i];</span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; s;	<span class="comment">//以r-1为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; rem; <span class="comment">//以r为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; ans;	<span class="comment">//所有lcm序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: num) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> p = <span class="built_in">lcm</span>(y, x);</span><br><span class="line">            <span class="keyword">if</span> (p &lt;= inf) rem.<span class="built_in">insert</span>(p);</span><br><span class="line">        &#125;</span><br><span class="line">        rem.<span class="built_in">insert</span>(x);</span><br><span class="line">        s.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: rem) s.<span class="built_in">insert</span>(y);</span><br><span class="line">        rem.<span class="built_in">clear</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) ans.<span class="built_in">insert</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> now = <span class="number">1</span>;</span><br><span class="line">    ans.<span class="built_in">insert</span>(inf);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: ans) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x != now) &#123;</span><br><span class="line">            cout &lt;&lt; now &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ++now;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/01/%E6%95%B0%E7%90%86%E6%80%9D%E7%BB%B4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -750,6 +628,236 @@
   
   
 
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/1970/01/01/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/1970/01/01/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/" class="post-title-link" itemprop="url">未命名</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：1970-01-01 08:00:00" itemprop="dateCreated datePublished" datetime="1970-01-01T08:00:00+08:00">1970-01-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-12 19:24:48" itemprop="dateModified" datetime="2024-04-12T19:24:48+08:00">2024-04-12</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一-hello-os">一、 Hello OS</h4>
+<ol type="1">
+<li>制作镜像</li>
+</ol>
+<p>bximage fd 1.44M name</p>
+<ol start="2" type="1">
+<li>boot.asm</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nasm boot.asm –o boot.bin	</span><br></pre></td></tr></table></figure>
+<ol start="3" type="1">
+<li>写入软盘</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">dd if=boot.bin of=a.img bs=512 count=1</span><br><span class="line">- if：代表输入文件</span><br><span class="line">- of：代表输出设备</span><br><span class="line">- bs：block size</span><br><span class="line">- count：block count</span><br></pre></td></tr></table></figure>
+<ol start="4" type="1">
+<li>bochsrc</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">megs:32</span><br><span class="line">display_library: sdl2</span><br><span class="line">floppya: 1_44=a.img, status=inserted</span><br><span class="line">boot: floppy</span><br><span class="line">romimage: file=$BXSHARE/BIOS-bochs-legacy</span><br><span class="line"></span><br><span class="line">- megs:32: 指定模拟器虚拟机的内存大小为 32 MB。这表示 Bochs 将模拟一个拥有 32 MB 内存的虚拟计算机。</span><br><span class="line">- display_library: sdl2: 指定使用 SDL2 库来进行图形显示。这将影响模拟器的图形输出方式。</span><br><span class="line">- floppya: 1_44=a.img, status=inserted: 设置第一个虚拟软盘驱动器 (floppya) 的参数。1_44=a.img 表示使用 1.44 MB 容量的软盘镜像文件 a.img，status=inserted 表示在启动时将这个软盘镜像插入虚拟机中。</span><br><span class="line">- boot: floppy: 指定虚拟机启动时从软盘 (floppy) 启动。</span><br><span class="line">- romimage: file=$BXSHARE/BIOS-bochs-legacy: 指定使用 Bochs 提供的旧版 BIOS 镜像文件 BIOS-bochs-legacy。</span><br></pre></td></tr></table></figure>
+<ol start="5" type="1">
+<li>启动</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">bochs -f bochsrc</span><br><span class="line">-f 是一个选项，后面跟着配置文件的名称，这里是 bochsrc。</span><br></pre></td></tr></table></figure>
+<h4 id="三实验问题">三、实验问题</h4>
+<ol type="1">
+<li><p>8086 有哪 5 类寄存器？ 请分别举例说明其作⽤。</p>
+<ol type="1">
+<li><strong>通用寄存器</strong>：
+<ul>
+<li>通用寄存器用于存储数据和执行算术和逻辑操作。</li>
+<li>例如：AX、BX、CX、DX 寄存器。其中，AX 可用于存放运算结果，BX 可用于存放内存地址，CX 可用于循环计数，DX 则可用于 I/O 操作。</li>
+</ul></li>
+<li><strong>段寄存器</strong>：
+<ul>
+<li>段寄存器用于存储段的起始地址，是实现内存分段的关键。</li>
+<li>例如：CS、DS、SS、ES 寄存器。CS 用于存放代码段的起始地址，DS 存放数据段的起始地址，SS 存放堆栈段的起始地址，ES 则是额外的数据段寄存器，用于一些特定的操作。</li>
+</ul></li>
+<li><strong>指令指针寄存器</strong>：
+<ul>
+<li>指令指针寄存器存储了 CPU 正在执行的指令的地址。</li>
+<li>例如：IP 寄存器，它存放着当前指令的偏移地址。</li>
+</ul></li>
+<li><strong>标志寄存器</strong>：
+<ul>
+<li>标志寄存器用于存储 CPU 执行指令后产生的标志位，例如零标志、进位标志等。</li>
+<li>例如：FLAGS 寄存器，包含了 AF（辅助进位标志）、ZF（零标志）、SF（符号标志）等。</li>
+</ul></li>
+<li><strong>控制寄存器</strong>：
+<ul>
+<li>控制寄存器用于控制 CPU 的工作模式和行为。</li>
+<li><strong>CR0（Control Register 0）</strong>：
+<ul>
+<li>控制处理器的基本运行模式和特权级别。</li>
+<li>包括控制处理器的保护模式、分页机制、数学协处理器的使用等。</li>
+<li>包含的标志位例如保护模式使能标志（PE）、分页使能标志（PG）等。</li>
+</ul></li>
+<li><strong>CR2（Control Register 2）</strong>：
+<ul>
+<li>存储导致页面故障（Page Fault）的线性地址。</li>
+<li>在分页机制中，当发生页面故障时，处理器会将故障的线性地址存储在 CR2 中。</li>
+</ul></li>
+<li><strong>CR3（Control Register 3）</strong>：
+<ul>
+<li>存储页目录表（Page Directory Table）的物理地址。</li>
+<li>在分页机制中，CR3 寄存器指定了页表的基址，用于实现虚拟地址到物理地址的转换。</li>
+</ul></li>
+<li><strong>CR4（Control Register 4）</strong>：
+<ul>
+<li>控制处理器的一些扩展特性和功能。</li>
+<li>包括控制页大小（PS）、物理地址扩展（PAE）、机器检查异常（MCE）等功能。</li>
+</ul></li>
+<li><strong>CR8（Control Register 8）</strong>：
+<ul>
+<li>控制处理器对外部中断的响应优先级。</li>
+<li>允许软件控制中断响应的屏蔽级别。</li>
+</ul></li>
+<li><strong>MSR（Model-Specific Registers）</strong>：
+<ul>
+<li>一类特殊的控制寄存器，用于存储处理器的模型特定配置信息和状态。</li>
+<li>包括诸如时间戳计数器（TSC）、性能计数器（PMC）、功耗管理（Power Management）等功能。</li>
+</ul></li>
+</ul></li>
+</ol>
+<p>这些寄存器的作用使得 CPU 能够执行各种不同的指令，并对数据进行处理、存储和传输。</p></li>
+<li><p>有哪些段寄存器， 它们的作⽤是什么？</p>
+<p>​ 对应用程序来说，主要设计3类段：存放程序中指令代码的代码段（Code Segment）、存放当前运行程序所用数据的数据段（Data Segment）和指明程序使用的堆栈区域的堆栈段（Stack Segment）。 ​ 为了表明段在主存中的位置，8086设计有4个16位段寄存器：代码段寄存器CS、堆栈段寄存器SS、数据段寄存器DS和附加段寄存器ES（Extra Segment）。其中，附加段也是用于存放数据的数据段，专为处理数据串设计的串指令必须使用附加段作为其目的操作数的存放区域。</p></li>
+<li><p>什么是寻址？ 8086 有哪些寻址⽅式？</p>
+<p>寻址是指找到操作数的地址(从而能够取出操作数)。</p>
+<p>8086的寻址方式</p>
+<ul>
+<li>立即寻址、直接寻址</li>
+<li>寄存器寻址、寄存器间接寻址、寄存器相对寻址</li>
+<li>基址加变址、相对基址加变址</li>
+</ul></li>
+<li><p>主程序与⼦程序之间如何传递参数</p>
+<ul>
+<li>利用寄存器传递参数</li>
+<li>缺点：能传递的参数有限，因为寄存器有限</li>
+<li>利用约定的地址传递参数</li>
+<li>利用堆栈传递参数（常用）</li>
+</ul></li>
+<li><p>解释 boot.asm ⽂件中 org 07c00h 的作⽤。 如果去掉这⼀句， 整个程序应该怎么修改？</p>
+<p>​ 告诉汇编器，当前这段代码会放在 07c00h处。所以，如果之后遇到需要绝对寻址的指令，那么绝对地址就是07c00h加上相对地址。</p>
+<p>​ 如果去掉 org 07c00h，需要修改程序中的所有跳转、访存和地址相关的指令，确保它们正确地指向引导扇区程序在内存中的新位置。同时，还需要确保程序的大小不超过 512 字节，并且适当调整程序入口点。这样 BIOS 才能正确加载引导扇区程序并执行。</p></li>
+<li><p>解释 int 10h 的功能。</p>
+<p>中断调用 10H 功能，用于执行文本和图形模式下的视频显示操作。</p></li>
+<li><p>解释 boot.asm ⽂件中 times 510-(<span class="math inline">\(-\)</span>$) db 0 的作⽤。</p>
+<p>零填充使文件大小达到 510 字节，以确保引导扇区的大小为 512 字节。</p>
+<ul>
+<li><code>times</code> 是一个汇编伪操作，它用于重复执行一段代码或填充一定数量的数据。</li>
+<li><code>510-($-$$)</code> 表示需要填充的字节数，其中 <code>$</code> 表示当前位置的地址。因此，<code>$-$$</code> 表示当前位置距离文件开头的偏移量。<code>510-($-$$)</code> 计算了当前位置到文件开头的偏移量，然后将其与 510 比较，以确定需要填充多少字节。</li>
+<li>前面的 2 字节被用于存放磁盘分区的信息。</li>
+<li><code>db 0</code> 表示以字节为单位将零填充到指定的位置。</li>
+</ul></li>
+<li><p>解释 bochsrc 中各参数的含义。</p>
+<ol type="1">
+<li><code>megs:32</code>：
+<ul>
+<li>这指定了虚拟机或仿真器应该分配给操作系统或应用程序的内存量。在这种情况下，32 表示分配了 32MB 的内存。这可以用来模拟具有指定内存量的计算机环境。</li>
+</ul></li>
+<li><code>display_library: sdl2</code>：
+<ul>
+<li>这指定了用于显示的库或驱动程序。在这里，<code>sdl2</code> 可能是指 Simple DirectMedia Layer（简称SDL）的第二个版本，它是一个跨平台的多媒体库，用于在不同的平台上处理音频、视频和输入。使用 SDL2 可能是为了在模拟器或虚拟机中提供跨平台的图形支持。</li>
+</ul></li>
+<li><code>floppya: 1_44=a.img, status=inserted</code>：
+<ul>
+<li>这定义了一个虚拟的软盘驱动器，指定了软盘的类型和镜像文件的位置。在这种情况下，<code>1_44</code> 表示一个 1.44MB 的软盘，<code>a.img</code> 是镜像文件的路径。<code>status=inserted</code> 表示该软盘已插入到虚拟软盘驱动器中。</li>
+</ul></li>
+<li><code>boot: floppy</code>：
+<ul>
+<li>这告诉虚拟机或仿真器在启动时应该从软盘驱动器引导。也就是说，操作系统或引导程序应该从软盘镜像 (<code>a.img</code>) 中加载。</li>
+</ul></li>
+<li><code>romimage: file=$BXSHARE/BIOS-bochs-legacy</code> 这一行指定了一个 ROM 镜像文件的路径，路径为 <code>$BXSHARE/BIOS-bochs-legacy</code>。</li>
+</ol></li>
+<li><p>boot.bin 应该放在软盘的哪⼀个扇区？ 为什么？</p>
+<p><code>boot.bin</code> 需要被放置在软盘的第一个扇区，以便 BIOS 能够正确加载并执行其中的引导程序。</p></li>
+<li><p>为什么不让 Boot 程序直接加载内核， ⽽需要先加载 Loader 再加载内核？</p>
+<p>在一些操作系统设计中，引导程序（Bootloader）和加载程序（Loader）的分离是有一些好处的：</p>
+<ol type="1">
+<li><strong>复杂度管理</strong>：引导程序负责在计算机启动时加载最基本的系统组件，如引导扇区、文件系统等，而加载程序则负责更复杂的任务，例如从文件系统中加载内核、初始化内存、设置环境等。将这些任务分开可以更好地管理复杂度，使得引导程序更加简洁、可靠。</li>
+<li><strong>灵活性</strong>：通过将加载程序与引导程序分开，可以更灵活地设计系统。例如，加载程序可以支持从不同类型的文件系统中加载内核，而引导程序则可以专注于在引导阶段完成最基本的硬件初始化和引导过程。</li>
+<li><strong>模块化设计</strong>：将引导过程分成多个阶段可以实现系统的模块化设计。这样，如果需要更改加载过程中的某一部分，只需要修改加载程序而不影响引导程序，从而提高了系统的可维护性和扩展性。</li>
+<li><strong>错误处理</strong>：通过引导程序和加载程序的分离，可以更好地处理错误情况。例如，如果加载程序在加载内核时出现错误，可以有机会显示错误消息或采取其他适当的处理措施，而不会影响到引导程序的功能。</li>
+</ol>
+<p>总的来说，通过引导程序和加载程序的分离，可以更好地管理复杂度、提高灵活性、实现模块化设计并改善错误处理，从而提高操作系统的可靠性和可维护性。</p></li>
+<li><p>Loader 的作⽤有哪些？</p>
+<p>加载程序（Loader）在操作系统启动过程中扮演着重要的角色，其主要作用包括：</p>
+<ol type="1">
+<li><strong>加载内核</strong>：加载程序负责从存储介质（如硬盘、软盘、网络等）中读取操作系统内核的镜像文件，并将其加载到内存中。加载内核是操作系统启动过程中最关键的任务之一。</li>
+<li><strong>初始化内存</strong>：加载程序可能需要在加载内核之前对系统内存进行初始化。这包括设置内存分页、建立内存映射表、分配内存空间等操作，以确保内核能够正常运行。</li>
+<li><strong>设置环境</strong>：加载程序负责设置操作系统运行所需的执行环境。这包括设置堆栈、参数传递、初始化全局变量等操作，以确保内核能够正确执行。</li>
+<li><strong>启动内核</strong>：加载程序加载完内核后，将控制权转移给内核，启动操作系统的正常运行。这通常是通过跳转到内核的入口点来实现的。</li>
+<li><strong>错误处理</strong>：加载程序可能需要处理加载过程中出现的错误情况。这包括检测加载错误、显示错误信息、尝试恢复等操作，以确保系统能够正确启动或提供错误信息以供用户参考。</li>
+</ol>
+<p>总的来说，加载程序负责将操作系统内核加载到内存中，并为其提供必要的执行环境，从而启动操作系统的正常运行。加载程序在操作系统启动过程中起着至关重要的作用。</p></li>
+<li><p>Kernel 的作⽤有哪些？</p>
+<p>操作系统内核（Kernel）是操作系统的核心部分，负责管理计算机的硬件资源并提供各种系统服务。其主要作用包括：</p>
+<ol type="1">
+<li><strong>硬件管理</strong>：内核管理计算机的硬件资源，包括处理器、内存、输入输出设备等。它负责分配和管理这些资源，以确保它们能够被应用程序有效地使用。</li>
+<li><strong>进程管理</strong>：内核负责管理系统中运行的进程。它分配处理器时间片给不同的进程，并调度它们的执行顺序。此外，内核还负责进程的创建、终止、暂停和恢复等操作。</li>
+<li><strong>内存管理</strong>：内核管理系统的内存资源，包括物理内存和虚拟内存。它负责将进程的内存空间映射到物理内存中，并处理内存的分配、回收和页面置换等操作。</li>
+<li><strong>文件系统</strong>：内核提供文件系统服务，允许应用程序访问和管理文件和目录。它负责文件的创建、打开、读写、关闭等操作，并管理文件系统的存储空间。</li>
+<li><strong>设备驱动程序</strong>：内核包含设备驱动程序，允许应用程序通过标准接口与硬件设备进行通信。它负责处理设备的初始化、数据传输、中断处理等操作。</li>
+<li><strong>系统调用接口</strong>：内核提供系统调用接口，允许应用程序向内核请求系统服务。这些系统调用包括文件操作、进程管理、网络通信等，为应用程序提供了访问操作系统功能的途径。</li>
+<li><strong>安全性和权限管理</strong>：内核负责实施安全策略和权限管理，保护系统和用户数据免受未经授权的访问和恶意软件的攻击。</li>
+</ol>
+<p>总的来说，内核是操作系统的核心部分，负责管理系统的硬件资源、提供系统服务和接口，并保证系统的安全性和稳定性。它为应用程序提供了一个统一的接口，使它们能够在计算机系统上运行并与硬件设备进行通信。</p></li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
 
   
   <nav class="pagination">
@@ -828,7 +936,7 @@
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">13</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -860,7 +968,7 @@
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
