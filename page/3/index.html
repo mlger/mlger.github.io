@@ -187,6 +187,307 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/11/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C05-%E8%BF%90%E8%BE%93%E5%B1%82/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/11/22/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C05-%E8%BF%90%E8%BE%93%E5%B1%82/" class="post-title-link" itemprop="url">谢希仁计算机网络05-运输层</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-11-22 08:14:00" itemprop="dateCreated datePublished" datetime="2023-11-22T08:14:00+08:00">2023-11-22</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-01-05 08:58:53" itemprop="dateModified" datetime="2024-01-05T08:58:53+08:00">2024-01-05</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">计网</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h3 id="运输层概述">5.1 运输层概述</h3>
+<h5 id="基础知识补充">5.1.1 基础知识补充</h5>
+<p>​ 从 IP 层来说，通讯主体是两台主机。但从运输层的视角来看，真正进行通信的实体一台主机中的一个<strong>进程</strong>与另一台主机一个的<strong>进程</strong>。</p>
+<p>​ 因此，运输层有一个比较重要的功能——<strong>复用 (multiplexing) </strong>和<strong>分用 (demultiplexing)</strong>。复用是指发送端不同应用程序可以使用同一个运输层传输协议。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121160059831.png" alt="" /><figcaption>image-20231121160059831</figcaption>
+</figure>
+<p>​ 由图观之，网络层为主机之间提供逻辑通信，而运输层为进程之间提供逻辑通信。</p>
+<h5 id="运输层的端口">5.1.2 运输层的端口</h5>
+<p>​ 单个计算机用的是进程标识符，但由于计算机操作系统种类很多，因此使用该种进程标识符来表示进程并不合适。</p>
+<p>​ 此外，由于进程创建撤销均是动态的，通信一方几乎无法识别对方机器上的进程，因而将特定进程指名为终点是不可行的。</p>
+<p>​ 解决方案是运输层采用<strong>协议端口号 (protocol port number)</strong>，或简称为<strong>端口 (port)</strong>。这种抽象的协议端口是<strong>软件端口</strong>。端口号只具有<strong>本地意义</strong>，只是为了标志<strong>本计算机</strong>应用层中的各个进程在运输层交互时的层间接口。不同计算机相同端口号是<strong>没有关联</strong>的。</p>
+<p>​ 运输层端口号分为两大类：</p>
+<ul>
+<li><strong>服务器端使用的端口号</strong>：又分为两种
+<ul>
+<li>熟知端口号：又称<strong>系统端口号</strong>。</li>
+<li>系统端口号：又称<strong>短暂端口号</strong>，通信结束就回收可给其它进程使用。</li>
+</ul></li>
+</ul>
+<h5 id="运输层两个协议">5.1.3 运输层两个协议</h5>
+<p>​ <strong>用户数据报协议 UDP (User Datagram Protocol)</strong>：传输前无需建立连接，不提供可靠交付，且较为简单。</p>
+<p>​ <strong>传输控制协议 TCP (Transmission Control Protocol)</strong>：提供<strong>面向连接</strong>的服务，但不提供广播或多播服务，较为复杂。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162255202.png" alt="" /><figcaption>image-20231121162255202</figcaption>
+</figure>
+<p>​ 接下来将详细阐述两个协议的内容及要点。</p>
+<h4 id="用户数据报协议-udp">5.2 用户数据报协议 UDP</h4>
+<p>​ UDP 有主要特点如：</p>
+<ul>
+<li>UDP 是无连接的。</li>
+<li>UDP 使用尽最大努力的交付。</li>
+<li>UDP 是面向报文的。直接将来自应用程序的报文添加首部后即交付 IP 层，因此报文大小的缺点需由应用程序负责。</li>
+<li>UDP 无拥塞控制。</li>
+<li>UDP 支持<strong>一对一</strong>、<strong>一对多</strong>、<strong>多对一</strong>和<strong>多对多</strong>交互通信。</li>
+<li>UDP 首部开销小，止 8 字节。</li>
+</ul>
+<p>​ 首部格式如图：</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121162325100.png" alt="" /><figcaption>image-20231121162325100</figcaption>
+</figure>
+<p>​ 若接收方发现收到端口号不正确，则丢弃并由网际控制报文协议 ICMP 发送”端口不可达“差错报文。</p>
+<p>​ ”伪首部“的出现是为了计算检验和，在实际传输中并不存在。检验和为 UDP 数据报每一个 16 位字之和的反码，到接收端再与每一 16 位字相加，最终结果为全 1 即无差错。</p>
+<h4 id="传输控制协议-tcp-概述">5.3 传输控制协议 TCP 概述</h4>
+<h5 id="tcp-协议主要特点">5.3.1 TCP 协议主要特点</h5>
+<ol type="1">
+<li><strong>面向连接</strong>，使用前建立连接，使用后释放连接。</li>
+<li>只能是<strong>点对点</strong>的通信。</li>
+<li>提供<strong>可靠交付</strong>，无差错，不丢失，不重复，且按序到达。</li>
+<li>提供<strong>全双工通信</strong>。</li>
+<li>面向<strong>字节流</strong>。流是指<strong>流入到进程或从进程流出的字节序列</strong>。</li>
+</ol>
+<h5 id="tcp-的连接">5.3.2 TCP 的连接</h5>
+<p>​ TCP 连接的端点叫<strong>套接字 (socket)</strong> 或<strong>插口</strong>，我们由： <span class="math display">\[
+socket = (IP:port)\\
+TCP\ link::=\{socket1,socket_2\}=\{(IP_1:port_1),(IP_2:port_2)\}
+\]</span></p>
+<h4 id="可靠传输工作原理">5.4 可靠传输工作原理</h4>
+<p>​ 理想传输条件两大特点：</p>
+<ul>
+<li>传输信道不产生差错。</li>
+<li>不论发送端以多快速度发送数据，接收端总来得及处理收到数据。</li>
+</ul>
+<h5 id="停止等待协议">5.4.1 停止等待协议</h5>
+<p>​ 假定 A 与 B 之间进行通讯。</p>
+<h6 id="无差错情况">5.4.1.1 无差错情况</h6>
+<p>​ 无差错时，A 发予 B 一个分组，B 接受后对 A 发送该分组的确认，A 收到确认后继续发送下一分组，如此往复。</p>
+<h6 id="出现差错">5.4.1.2 出现差错</h6>
+<p>​ B 接受到分组时除了差错并丢弃，或是分组在传输中丢失，B 都不会发送任何消息。A 过了一段时间没收到确认，就执行<strong>超时重传</strong>。为实现超时重传，每发送一个分组设置一个<strong>超时计时器</strong>。若计时器到期前收到确认，则撤销计时器。</p>
+<ul>
+<li>A 发送完分组必须保存副本以备重传。</li>
+<li>分组与确认分组必须<strong>编号</strong>。</li>
+<li>重传时间应稍大于平均往返时间，提升效率节省资源。</li>
+</ul>
+<h6 id="确认丢失与确认迟到">5.4.1.3 确认丢失与确认迟到</h6>
+<p>​ 倘如 B 接收到分组 <span class="math inline">\(M_1\)</span>，但发回 A 的确认丢失，A 执行重传，B 又收到了相同的分组，此时应作两个动作：</p>
+<ul>
+<li><strong>丢弃重复分组。</strong></li>
+<li><strong>向 A 发送确认。</strong></li>
+</ul>
+<p>​ 这种可靠传输协议通常称<strong>自动重传请求 ARQ (Automatic Repeat reQuest)</strong>。</p>
+<p>​ 重传协议的优点是简单，但缺点是信道利用率低。 <span class="math display">\[
+U = \frac{T_D}{T_D+RTT+T_A}
+\]</span> <img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184735026.png" alt="image-20231121184735026" /></p>
+<p>​ 为了提高传输效率，我们采用<strong>流水线传输</strong>。为此引出下面一堆芝士。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184822027.png" alt="" /><figcaption>image-20231121184822027</figcaption>
+</figure>
+<h5 id="连续-arq-协议">5.4.2 连续 ARQ 协议</h5>
+<p>​ 核心概念是<strong>窗口</strong>，窗口大小设定为 size。</p>
+<p>每次，发送端将窗口内连续的分组全部发送出去，接收端采用<strong>累计确认</strong>方式，对按序到达的最后一个分组发送确认。发送端每收到一个确认，就进行调整把滑动窗口前移。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121184940413.png" alt="" /><figcaption>image-20231121184940413</figcaption>
+</figure>
+<h4 id="tcp-报文段首部格式">5.5 TCP 报文段首部格式</h4>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121185758124.png" alt="" /><figcaption>image-20231121185758124</figcaption>
+</figure>
+<ul>
+<li><strong>确认号</strong>：期望收到下一个报文段的第一个数据字节的序号。</li>
+</ul>
+<blockquote>
+<p>若确认号 = N，则表明：到序号 N-1 为止所有的数据都已经收到。</p>
+</blockquote>
+<ul>
+<li><strong>紧急 URG (URGent)</strong>：置为 1 时，紧急指针字段有效，应尽快传送。</li>
+<li><strong>确认 ACK (ACKnowledgment)</strong>：置为 1 时确认号才有效。TCP 规定建立连接后所有报文段 ACK 都必须置为 1。</li>
+<li><strong>同步 SYN (SYNchronization)</strong>：置为 1 表示是一个连接请求或连接接受报文。</li>
+<li><strong>窗口</strong>：接收方让发送方设置其发送窗口的依据。窗口字段指出了现在允许对方发送的数据量。窗口值经常动态变化着。</li>
+<li><strong>紧急指针</strong>：指出紧急数据字节数。</li>
+<li>选项
+<ul>
+<li>TCP 最初只规定一种选项，<strong>最大报文长度 MSS (Maximum Segment Size)</strong>，指的是每一个 TCP 报文段<strong>数据字段最大长度</strong>，默认值为 536 字节。</li>
+<li>后续增加<strong>窗口扩大</strong>选项，TCP 首部窗口是 16 位，窗口扩大选项占 3 字节，其中一个字节表示移位值 S，位数从 16 增大到 (16 + S)，且 S 最大值为 14。无需扩大时，可以发送 S = 0 的选项。</li>
+<li><strong>时间戳</strong>，一是用于计算往返时间 RTT，二是处理 TCP 序号溢出的情况。</li>
+</ul></li>
+</ul>
+<h4 id="tcp-可靠传输的实现">5.6 TCP 可靠传输的实现</h4>
+<h5 id="补充">5.6.1 补充</h5>
+<p>​ TCP 滑动窗口也有可能后缩，但 TCP 标准<strong>墙裂不推荐这么做</strong>。重传机制已如上讲述。</p>
+<p>​ 发送缓存暂时存放：</p>
+<ul>
+<li>发送程序传送给发送方 TCP 准备发送的数据；</li>
+<li>TCP 已发送但未收到确认的数据。</li>
+</ul>
+<p>​ 接收缓存暂时存放：</p>
+<ul>
+<li>按序到达但尚未被接收程序读取的数据；</li>
+<li>未按序到达的数据。</li>
+</ul>
+<p>​ 对于未按序到达的数据，TCP 标注并无明确规定如何处理。一般是待缺失的数据流收到后，再按序交付上层。</p>
+<h5 id="超时重传时间的选择">5.6.2 超时重传时间的选择</h5>
+<p>​ 采用自适应算法。<strong>RTT：往返时间。RTO：超时重传时间</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121192544945.png" alt="" /><figcaption>image-20231121192544945</figcaption>
+</figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231229104747507.png" alt="" /><figcaption>image-20231229104747507</figcaption>
+</figure>
+<p>​ <strong>Karn 算法及修正</strong>：计算加权 RTTS 时，不考虑重传段。每重传一次，将 RTO 加倍。</p>
+<h4 id="tcp-流量控制">5.7 TCP 流量控制</h4>
+<p>​ 流量控制就是<strong>让发送方发送速率不要太快，让接收方来得及接收</strong>。</p>
+<p>​ 发送方的窗口不能超过接收方给出的接收窗口的数值。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121194421960.png" alt="" /><figcaption>image-20231121194421960</figcaption>
+</figure>
+<p>​ 若 B 向 A 发送零窗口后， 又有了存储空间，继续发送 rwnd = 400 的报文段，却于传输途中丢失，A 一直等待 B 的通知，而 B 也一直等待 A 的报文段，若没有其它措施，死锁局面将一直持续下去。为此，TCP 为每个连接设有一个<strong>持续计时器 (persistence timer)</strong>。只要一方收到对方零窗口通知则启动计时器，时间到期则发送零窗口<strong>探测报文段（仅携带 1 字节数据）</strong>。若窗口值确实为 0，就重置，否则死锁局面被打破。</p>
+<p>​ TCP 的实现广泛使用 Nagle 算法：若进程把数据逐字节发送到 TCP 缓存，则发送方把第一个数据字节先发送出去，把后面到达的全部缓存。当收到第一个数据字符确认后，再把缓存中所有数据组装成一个报文发送出去，对随后到达的数据缓存。仅当收到前一个段的确认后才发送下一个段。当到达数据已经到达发送窗口大小一般或最大报文长度，就立即发送。 这种算法可以有效提高网络吞吐量。</p>
+<p>​ <strong>窗口糊涂综合征：</strong>TCP 接收方缓存已满，而交互式应用进程每次只从接收缓存中读取 1 字节。接收方发回确认，将窗口置位 1 字节。如此下去，效率很低。为解决此问题，可以让接收方等待一段时间，待缓存能容纳一个最长报文段或有一半闲余空间，发出确认报文，并通知当前窗口大小。</p>
+<h4 id="tcp-拥塞控制">5.8 TCP 拥塞控制</h4>
+<h5 id="拥塞控制一般原理">5.8.1 拥塞控制一般原理</h5>
+<p><span class="math display">\[
+\sum对资源需求&gt;可用资源
+\]</span></p>
+<p>​ 拥塞控制即<strong>防止过多数据注入到网络中，可以使网络中路由器或链路不至过载</strong>。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121202516053.png" alt="" /><figcaption>image-20231121202516053</figcaption>
+</figure>
+<p>​ 拥塞控制分为<strong>开环控制</strong>与<strong>闭环控制</strong>两种。开环控制是在设计网络时事先将有关发生拥塞的因素考虑到，但系统运行后就不做改变了。</p>
+<p>​ 闭环控制基于环路反馈，有如下措施：</p>
+<ul>
+<li>检测网络系统以定位拥塞。</li>
+<li>将拥塞信息传送到可采取行动的地方。</li>
+<li>调整网络系统运行以解决问题。</li>
+</ul>
+<h5 id="拥塞控制方法">5.8.2 拥塞控制方法</h5>
+<p>​ <strong>慢开始</strong>、<strong>拥塞避免</strong>、<strong>快重传</strong>、<strong>快恢复</strong>四种算法。</p>
+<ul>
+<li>慢开始：发送方维护一个<strong>拥塞窗口 cwnd (congestion winodw)</strong> 变量，发送时<strong>发送窗口等于拥塞窗口</strong>。以超时为依据判断网络拥塞，自小到大采用倍增增大拥塞窗口。</li>
+</ul>
+<p><span class="math display">\[
+\Delta cwnd =min(N,SMSS)
+\]</span></p>
+<p>​ 用报文段个数作为窗口大小单位，每经过一个传输轮次，cwnd 加倍。SMSS (Sender Maximum Segment Size) 是指发送方的最大报文段。</p>
+<ul>
+<li>拥塞避免算法：每经过一个 RTT 就让 cwnd 加 1，呈线性缓慢增长。</li>
+</ul>
+<p>​ 实际操作中，慢开始和拥塞避免是配合使用的。设定一个 ssthresh 值，cwnd 小于该值，用慢启动；cwnd 大于该值，用拥塞避免；等于二者均可。</p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231121203427954.png" alt="" /><figcaption>image-20231121203427954</figcaption>
+</figure>
+<p>​ 超时则门限值置为当前 cwnd 的一半。当 B 端收到无序帧时，仍然发送对最前端已确认帧的确认，当 A 端收到一连三个确认帧，即可视为发生了数据丢失。</p>
+<p>​ <strong>快恢复算法</strong>：发送端得知丢失个别报文段，便不进行慢启动，二是置拥塞窗口 sstresh = cwnd = cwnd / 2，并执行拥塞避免算法。</p>
+<p>​ 拥塞避免阶段窗口线性增大，称为<strong>加法增大 AI (Additive Increase)</strong>。出现拥塞将门限值调整为原来一半，称为<strong>乘法减小 MD (Multiplicative Decrease)</strong>。二者结合即 AIMD 算法。</p>
+<p>​ 同时发送窗口不得超过接收端窗口上限 rwnd。故有： <span class="math display">\[
+发送窗口上限 = min[rwnd,cwnd]
+\]</span></p>
+<h5 id="主动队列管理-aqm">5.8.3 主动队列管理 AQM</h5>
+<p>​ 路由器队列管理通常按照<strong>先进先出 FIFO</strong> 规则处理到来数据，当队列满时丢弃后续到达所有分组，称为<strong>尾部丢弃策略</strong>。但这种做法会导致短时间内大量连接同时进入满开始阶段，称为<strong>全局同步 (global syncronization)</strong>。</p>
+<p>​ 为避免这种情况。出现了<strong>主动队列管理 AQM (Active Queue Management)</strong>，当队列长度达到某个警惕值时丢弃到达分组。曾流行的实现方法是<strong>随即早期检测 RED (Random Early Detection)</strong>，描述如下：</p>
+<ul>
+<li>若平均队列长小于最小门限，则将新分组加入队列。</li>
+<li>若超过最大门限，则丢弃新分组。</li>
+<li>若介于二者之间，则按某一丢弃概率 p 将新分组丢弃。</li>
+</ul>
+<h4 id="tcp-运输连接管理">5.9 TCP 运输连接管理</h4>
+<p>​ 主动发起连接的进程称为<strong>客户 (client)</strong>，被动等待连接的进程称为<strong>服务器 (sever)</strong>。</p>
+<h5 id="tcp-连接的建立">5.9.1 TCP 连接的建立</h5>
+<p>​ 三次握手协议：（来自亲爱的 ChatGPT）</p>
+<ul>
+<li><strong>第一步 - 客户端发送连接请求：</strong>
+<ul>
+<li>客户端首先向服务器发送一个TCP报文，标志位中设置了SYN（同步）标志，并选择一个初始序列号（Initial Sequence Number）。</li>
+<li>这个报文包含了客户端的一些连接参数，如MSS（Maximum Segment Size），表示客户端能够接受的最大报文段大小。</li>
+</ul></li>
+<li><strong>第二步 - 服务器确认请求并发送自己的连接请求：</strong>
+<ul>
+<li>服务器接收到客户端的SYN报文后，会回复一个确认报文，其中设置了SYN和ACK（确认）标志。</li>
+<li>服务器也会选择一个自己的初始序列号，并在确认中包含自己的一些连接参数，如MSS。</li>
+</ul></li>
+<li><strong>第三步 - 客户端确认服务器的连接请求：</strong>
+<ul>
+<li>客户端接收到服务器的确认后，会向服务器发送一个确认报文，其中设置了ACK标志。</li>
+<li>这个确认报文不包含SYN标志，因为连接已经建立。</li>
+<li>服务器收到这个确认后，连接建立完成。</li>
+</ul></li>
+</ul>
+<h5 id="tcp-连接释放">5.9.2 TCP 连接释放</h5>
+<ol type="1">
+<li>A 的进程线向其 TCP 发出连接释放报文段，并停止发送数据，主动关闭 TCP 连接。FIN 报文消耗一个序号，即使不携带数据。</li>
+<li>B 收到报文段后立即发出确认，确认号 ack = u + 1，从 A 到 B 的连接即释放了，但从 B 到 A 的连接仍未释放，TCP 处于<strong>半关闭</strong>状态。</li>
+<li>若 B 依据没有要向 A 发送数据，则发出释放报文，假定序号为 w。A 收到后，必须发出确认，ack = w + 1，序号为 seq = u + 1，经过<strong>等待计时器</strong>设置的时间 2MSL 后， A 进入 CLOSED 状态。，MSL 是<strong>最长报文段寿命</strong>。</li>
+</ol>
+<p>​ 此外，TCP 设有一个<strong>保活计时器</strong>，每个一段时间发送探测字段，若一连几个都收不到回应，则关闭连接。</p>
+<h5 id="tcp-有限状态机">5.9.3 TCP 有限状态机</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231122081330855.png" alt="" /><figcaption>image-20231122081330855</figcaption>
+</figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/11/20/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C04-%E7%BD%91%E7%BB%9C%E5%B1%82/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -2116,128 +2417,6 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2023/07/01/Codeforces%20Round%20879%20(Div.%202)/" class="post-title-link" itemprop="url">Codeforces Round 879 (Div. 2)</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2023-07-01 21:00:00" itemprop="dateCreated datePublished" datetime="2023-07-01T21:00:00+08:00">2023-07-01</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-02-27 17:31:40" itemprop="dateModified" datetime="2024-02-27T17:31:40+08:00">2024-02-27</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%AF%94%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">比赛</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>传送门：<a target="_blank" rel="noopener" href="https://codeforces.com/contest/1834">Codeforces Round 879 (Div. 2)</a></p>
-<p>难度适中，但菜鸡依旧。</p>
-<h6 id="b.-maximum-strength">B. Maximum Strength</h6>
-<p><strong>题意：</strong></p>
-<p>​ <span class="math inline">\([l,r]\)</span> 之间选两个数，使得十进制表示下各个位数的差值绝对值之和最大，位数不同则较小数补前导 <span class="math inline">\(0\)</span> 对齐。</p>
-<p><strong>题解：</strong></p>
-<p>​ 设 <span class="math inline">\(l\)</span> 和 <span class="math inline">\(r\)</span> 位数分别为 <span class="math inline">\(n\)</span> 和 <span class="math inline">\(m\)</span> ，取的数字为 <span class="math inline">\(x&lt;y\)</span> ，分情况讨论。</p>
-<ul>
-<li>若 <span class="math inline">\(n&lt;m\)</span> ，则最优情况为 <span class="math inline">\(x\)</span> 取 <span class="math inline">\(m-1\)</span> 个 <span class="math inline">\(9\)</span> , <span class="math inline">\(y\)</span> 保留 <span class="math inline">\(r\)</span> 的最高位，剩余位为 <span class="math inline">\(0\)</span></li>
-<li>若 <span class="math inline">\(n=m\)</span> ，则除去相同前缀，然后 <span class="math inline">\(y\)</span> 保留最高位，剩余位为 <span class="math inline">\(0\)</span> ， <span class="math inline">\(x\)</span> 保留最高位，剩余位为 <span class="math inline">\(9\)</span> 即可。</li>
-</ul>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    n = s1.length();</span><br><span class="line">    m = s2.length();</span><br><span class="line">    if (n &lt; m) &#123;</span><br><span class="line">        cout &lt;&lt; (s2[0] - &#x27;0&#x27;) + (m - 1) * 9 &lt;&lt; endl;</span><br><span class="line">    &#125; else &#123;</span><br><span class="line">        int ans = 0;</span><br><span class="line">        for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">            if (s1[i] == s2[i]) continue;</span><br><span class="line">            cout &lt;&lt; s2[i] - s1[i] + (n - i - 1) * 9 &lt;&lt; endl;</span><br><span class="line">            return;</span><br><span class="line">        &#125;</span><br><span class="line">        cout &lt;&lt; 0 &lt;&lt; endl;</span><br><span class="line">    &#125;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="c.-game-with-reversing">C. Game with Reversing</h6>
-<p><strong>题意：</strong></p>
-<p>​ 给定两等长串 <span class="math inline">\(S\)</span> 和 <span class="math inline">\(T\)</span> ， Alice 和 Bob 轮流操作。Alice 每次可以替换一个字符，Bob 每次可以翻转一个串， 当两串相同时，停止操作。Alice 希望操作次数尽量少， Bob 希望操作次数尽量多， 求两个人都采取最优策略的情况下，实际游戏操作次数。</p>
-<p><strong>题解：</strong></p>
-<p>​ 解释起来比较啰嗦，这里简述。</p>
-<p>​ 实际上 Bob 每轮操作都是相同的，因此可以假设 Bob 只翻转一个字符串 <span class="math inline">\(T\)</span> 。</p>
-<p>​ 对 Alice 来说，则可以有两种选择，将 <span class="math inline">\(S\)</span> 变为 <span class="math inline">\(T\)</span> 或 <span class="math inline">\(rev(T)\)</span> 。二者最小步数都容易 <span class="math inline">\(O(n)\)</span> 求出。 最后根据实际的奇偶性补齐 Bob 的操作数即可。</p>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">void solve() &#123;</span><br><span class="line">    int n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    string s1, s2;</span><br><span class="line">    cin &gt;&gt; s1 &gt;&gt; s2;</span><br><span class="line">    int ans1 = 0, ans2 = 0;</span><br><span class="line">    for (int i = 0; i &lt; n; i++) &#123;</span><br><span class="line">        if (s1[i] != s2[i]) ++ans1;</span><br><span class="line">        if (s1[i] != s2[n - i - 1]) ++ans2;</span><br><span class="line">    &#125;</span><br><span class="line">    if (ans1 &amp; 1) ans1 = ans1 * 2 - 1;</span><br><span class="line">    else ans1 = ans1 * 2;</span><br><span class="line">    if (ans2 &amp; 1) ans2 = ans2 * 2;</span><br><span class="line">    else if (ans2 == 0) ans2 = 2;</span><br><span class="line">    else ans2 = ans2 * 2 - 1;</span><br><span class="line">    cout &lt;&lt; min(ans1, ans2) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="d.-survey-in-class">D. Survey in Class</h6>
-<p><strong>题意：</strong></p>
-<p>​ <span class="math inline">\(n\)</span> 位学生，<span class="math inline">\(m\)</span> 个知识点。第 <span class="math inline">\(i\)</span> 个学生学习了 <span class="math inline">\([l_i, r_i]\)</span> 个知识点。</p>
-<p>​ 上课老师提问，每个问题至多提问一次。初始同学分数均为 <span class="math inline">\(0\)</span> ，答对加一分，答错减一分，分数可为负。求最大分差。</p>
-<p><strong>题解：</strong></p>
-<p>​ 对于线段 <span class="math inline">\([l_1, r_1]\)</span> 和线段 <span class="math inline">\([l_2,r_2]\)</span> ，设 <span class="math inline">\(r_1&lt;r_2\)</span> ，则分三种情况讨论：</p>
-<ul>
-<li><span class="math inline">\(r_1&lt;l_2\)</span> ，则最大差值可以分别来源于两线段整段，即 <span class="math inline">\(max(r_1-l_1+1, r_2-l_2+1)\)</span> ；</li>
-<li><span class="math inline">\(l_1\leq l_2\leq r_1 \leq r_2\)</span>，则最大差值来源于二者分别对交集取补，即 <span class="math inline">\(max(r_2-r_1, l_2-l_1)\)</span> ；</li>
-<li><span class="math inline">\(l_2\leq l_1 \leq r_1 \leq r_2\)</span> ，包含关系，最大差值来源于长线段对短线段取补，即 <span class="math inline">\((r_2-l_2+1)-(r_1-l_1+1)\)</span> 。</li>
-</ul>
-<p>​ 将每条线段按右端点排序，枚举线段 <span class="math inline">\([l_2,r_2]\)</span> ， 目标是找出对应的 <span class="math inline">\([l_1, r_1]\)</span> ， 三种情况分别需要求：</p>
-<ul>
-<li>右端点小于 <span class="math inline">\(l_2\)</span> 的直线中，<span class="math inline">\(r-l+1\)</span> 的最大值</li>
-<li>相交直线中， <span class="math inline">\(r\)</span> 的最小值以及 <span class="math inline">\(l\)</span> 的最小值</li>
-<li>左端点大于等于 <span class="math inline">\(l_2\)</span> 的直线中， <span class="math inline">\(r-l+1\)</span> 的最小值</li>
-</ul>
-<p>​ 四个值四棵动态开点线段树维护即可。</p>
-<p><strong>code：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;bits/stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define inf 0x7fffffff</span><br><span class="line">int cnt = 0;</span><br><span class="line">const int N = 4e5 + 5;</span><br><span class="line">int dat[N &lt;&lt; 5], lc[N &lt;&lt; 5], rc[N &lt;&lt; 5];</span><br><span class="line"></span><br><span class="line">void update(int &amp;p, int l, int r, int k, int val) &#123;</span><br><span class="line">    if (!p) p = ++cnt, dat[p] = inf;</span><br><span class="line">    if (l == r) return (void) (dat[p] = min(dat[p], val));</span><br><span class="line">    int mid = l + r &gt;&gt; 1;</span><br><span class="line">    if (k &lt;= mid) update(lc[p], l, mid, k, val);</span><br><span class="line">    else update(rc[p], mid + 1, r, k, val);</span><br><span class="line">    dat[p] = inf;</span><br><span class="line">    if (lc[p]) dat[p] = min(dat[p], dat[lc[p]]);</span><br><span class="line">    if (rc[p]) dat[p] = min(dat[p], dat[rc[p]]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">inline int query(int p, int l, int r, int u, int v) &#123;</span><br><span class="line">    if (!p) return inf;</span><br><span class="line">    if (u &lt;= l &amp;&amp; r &lt;= v) return dat[p];</span><br><span class="line">    int mid = l + r &gt;&gt; 1, res = inf;</span><br><span class="line">    if (u &lt;= mid) res = min(res, query(lc[p], l, mid, u, v));</span><br><span class="line">    if (v &gt; mid) res = min(res, query(rc[p], mid + 1, r, u, v));</span><br><span class="line">    return res;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool cmp(pair&lt;int, int&gt; A, pair&lt;int, int&gt; B) &#123;</span><br><span class="line">    return A.second == B.second ? A.first &lt; B.first : A.second &lt; B.second;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">void solve() &#123;</span><br><span class="line">#define mp(x, y) make_pair(x, y)</span><br><span class="line">    int t1 = 0, t2 = 0, t3 = 0, t4 = 0;</span><br><span class="line">    int n, m;</span><br><span class="line">    cin &gt;&gt; n &gt;&gt; m;</span><br><span class="line">    vector&lt;pair&lt;int, int&gt; &gt; Stu(n);</span><br><span class="line">    for (int i = 0, l, r; i &lt; n; i++) &#123;</span><br><span class="line">        cin &gt;&gt; l &gt;&gt; r;</span><br><span class="line">        Stu[i] = mp(l, r);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(Stu.begin(), Stu.end(), cmp);</span><br><span class="line">    int ans = 0;</span><br><span class="line">    for (auto stu: Stu) &#123;</span><br><span class="line">        int l = stu.first, r = stu.second;</span><br><span class="line">        int rem;</span><br><span class="line">        rem = -query(t1, 0, m, 0, l - 1);</span><br><span class="line">        if (rem != -inf) ans = max(ans, max(rem &lt;&lt; 1, (r - l + 1) &lt;&lt; 1));</span><br><span class="line">        update(t1, 0, m, r, l - r - 1);</span><br><span class="line"></span><br><span class="line">        rem = query(t2, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (r - rem) &lt;&lt; 1);</span><br><span class="line">        update(t2, 0, m, r, r);</span><br><span class="line"></span><br><span class="line">        rem = query(t3, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, (l - rem) &lt;&lt; 1);</span><br><span class="line">        update(t3, 0, m, r, l);</span><br><span class="line"></span><br><span class="line">        rem = query(t4, 0, m, l, r);</span><br><span class="line">        if (rem != inf) ans = max(ans, ((r - l + 1) - rem) &lt;&lt; 1);</span><br><span class="line">        update(t4, 0, m, l, r - l + 1);</span><br><span class="line">    &#125;</span><br><span class="line">    cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    return;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">    int T;</span><br><span class="line">    cin &gt;&gt; T;</span><br><span class="line">    while (T--) &#123;</span><br><span class="line">        solve();</span><br><span class="line">    &#125;</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="e.-mex-of-lcm">E. MEX of LCM</h5>
-<p><strong>题意：</strong></p>
-<p>​ 题如其名。给定 <span class="math inline">\(n\)</span> 个数，则对应的有 <span class="math inline">\(C_n^2\)</span> 个连续子序列。求所有子序列数值 <span class="math inline">\(lcm\)</span> 的 <span class="math inline">\(Mex\)</span> 。</p>
-<p><strong>题解：</strong></p>
-<p>​ 同样是利用好值域。 对于区间 <span class="math inline">\([l,r]\)</span> ，固定住右端点 <span class="math inline">\(r\)</span> ，则至多还剩下 <span class="math inline">\(r\)</span> 个左端点，对应 <span class="math inline">\(r\)</span> 个区间。这 <span class="math inline">\(r\)</span> 个区间有多少 <span class="math inline">\(lcm\)</span> 值？从 <span class="math inline">\(l=r\)</span> 开始，每次向左添加一个数， <span class="math inline">\(lcm\)</span> 要么不变， 要么至少翻一倍，因此 <span class="math inline">\(lcm\)</span> 值的数目是 <span class="math inline">\(log\)</span> 级别的。因此整个序列所有 <span class="math inline">\(lcm\)</span> 值的数目不超过 <span class="math inline">\(nlogn\)</span> ，迭代求出然后求 <span class="math inline">\(Mex\)</span> 即可。复杂度 <span class="math inline">\(O(nlogn)\)</span></p>
-<p><strong>code：</strong></p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">long</span> <span class="type">long</span> <span class="title">lcm</span><span class="params">(<span class="type">long</span> <span class="type">long</span> x, <span class="type">long</span> <span class="type">long</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x / __gcd(x, y) * y;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> n;</span><br><span class="line">    cin &gt;&gt; n;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> inf = <span class="number">1ll</span> * n * n + <span class="number">2</span>;</span><br><span class="line">    <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">num</span><span class="params">(n)</span></span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; n; i++) cin &gt;&gt; num[i];</span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; s;	<span class="comment">//以r-1为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; rem; <span class="comment">//以r为右端点的lcm序列</span></span><br><span class="line">    set&lt;<span class="type">long</span> <span class="type">long</span>&gt; ans;	<span class="comment">//所有lcm序列</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: num) &#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) &#123;</span><br><span class="line">            <span class="type">long</span> <span class="type">long</span> p = <span class="built_in">lcm</span>(y, x);</span><br><span class="line">            <span class="keyword">if</span> (p &lt;= inf) rem.<span class="built_in">insert</span>(p);</span><br><span class="line">        &#125;</span><br><span class="line">        rem.<span class="built_in">insert</span>(x);</span><br><span class="line">        s.<span class="built_in">clear</span>();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: rem) s.<span class="built_in">insert</span>(y);</span><br><span class="line">        rem.<span class="built_in">clear</span>();</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> y: s) ans.<span class="built_in">insert</span>(y);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="type">long</span> <span class="type">long</span> now = <span class="number">1</span>;</span><br><span class="line">    ans.<span class="built_in">insert</span>(inf);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">auto</span> x: ans) &#123;</span><br><span class="line">        <span class="keyword">if</span> (x != now) &#123;</span><br><span class="line">            cout &lt;&lt; now &lt;&lt; endl;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        ++now;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -2309,14 +2488,14 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -2348,7 +2527,7 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>

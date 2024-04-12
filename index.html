@@ -424,6 +424,168 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/04/13/OS-Lab0x02%20%E6%80%9D%E8%B7%AF/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2024/04/13/OS-Lab0x02%20%E6%80%9D%E8%B7%AF/" class="post-title-link" itemprop="url">OS-Lab0x02 思路</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-13 01:14:00 / 修改时间：01:15:24" itemprop="dateCreated datePublished" datetime="2024-04-13T01:14:00+08:00">2024-04-13</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/OS/" itemprop="url" rel="index"><span itemprop="name">OS</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="一任务">一、任务</h4>
+<p>制作一个 FAT12 镜像查看器。</p>
+<p>支持命令：ls, ls -l, cat。</p>
+<h4 id="二知识">二、知识</h4>
+<p>学长的文章（写得好好）： <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_66026801/article/details/130520032">FAT12镜像查看工具_解析fat32镜像文件-CSDN博客</a></p>
+<p>cat 需要访问数据区。</p>
+<p>ls、ls -l 需要访问目录区。</p>
+<h5 id="mbr-区">1. MBR 区</h5>
+<p>从第 <code>11</code> 个字节开始的 <code>25</code> 个字节构成一个较为特殊的结构 <code>BPB(Bios Parameter Block)</code>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BPB &#123;</span><br><span class="line">    u16  BPB_BytsPerSec;	//每扇区字节数</span><br><span class="line">    u8   BPB_SecPerClus;	//每簇扇区数</span><br><span class="line">    u16  BPB_RsvdSecCnt;	//Boot记录占用的扇区数</span><br><span class="line">    u8   BPB_NumFATs;	        //FAT表个数</span><br><span class="line">    u16  BPB_RootEntCnt;	//根目录最大文件数</span><br><span class="line">    u16  BPB_TotSec16;		//扇区总数</span><br><span class="line">    u8   BPB_Media;             //介质描述符</span><br><span class="line">    u16  BPB_FATSz16;	        //每个FAT表所占扇区数</span><br><span class="line">    u16  BPB_SecPerTrk;         //每磁道扇区数（Sector/track）</span><br><span class="line">    u16  BPB_NumHeads;	        //磁头数（面数）</span><br><span class="line">    u32  BPB_HiddSec;	        //隐藏扇区数</span><br><span class="line">    u32  BPB_TotSec32;	        //如果BPB_ToSec16为0，该值为扇区数</span><br><span class="line">&#125; BPB;                          //25字节</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="fat-表">2. FAT 表</h5>
+<p><code>FAT1</code> 与 <code>FAT2</code> 互为备份，所以理论上两张表是一样的。</p>
+<p>FAT 表项的值的含义：</p>
+<ul>
+<li>通常情况下代表文件下一簇号。</li>
+<li>值 <code>&gt;= 0xFF8</code>，该簇已经是文件最后一个簇。</li>
+<li>值 <code>= 0xFF7</code>，表示一个坏簇。</li>
+</ul>
+<p><strong>簇的编号与 FAT 表中的索引</strong>：每个簇都有一个唯一的编号，FAT 表中的项索引与这些簇的编号对应。例如，第一个簇的编号对应 FAT 表中的第一个项，第二个簇对应第二个项，依此类推。</p>
+<h5 id="根目录区">3. 根目录区</h5>
+<p>一个目录项占据 <code>32</code> 字节。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">typedef struct RootEntry &#123;</span><br><span class="line">    char DIR_Name[11];      //长度名+扩展名</span><br><span class="line">    u8   DIR_Attr;          //文件属性</span><br><span class="line">    char reserved[10];      //保留位</span><br><span class="line">    u16  DIR_WrtTime;       //最后一次写入时间</span><br><span class="line">    u16  DIR_WrtDate;       //最后一次写入日期</span><br><span class="line">    u16  DIR_FstClus;	    //开始簇号</span><br><span class="line">    u32  DIR_FileSize;      //文件大小</span><br><span class="line">&#125; RootEntry;                //32字节</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>由此，归结起来，FAT12访问文件的基本操作为：</p>
+<ol type="1">
+<li>首先通过根目录文件查找文件名，确定是哪一个条目，接着在条目中访问 DIR_FstClus 对应的开始簇号。</li>
+<li>当一个簇号访问完后，通过FAT表项查询下一簇号，决定是结束还是继续访问下一簇号，重复第二条。</li>
+</ol>
+<h5 id="数据区">4. 数据区</h5>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">typedef struct Entry&#123;</span><br><span class="line">	char FILE_NAME[11];      //长度名+扩展名</span><br><span class="line">    u8   FILE_Attr;          //文件属性</span><br><span class="line">    char reserved[10];      //保留位</span><br><span class="line">    u16  DIR_WrtTime;       //最后一次写入时间</span><br><span class="line">    u16  DIR_WrtDate;       //最后一次写入日期</span><br><span class="line">    u16  DIR_FstClus;	    //开始簇号</span><br><span class="line">    u32  DIR_FileSize;      //文件大小</span><br><span class="line">&#125;;	//跟 RootEntry 一模一样</span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/5a90e9eb1d9186eaad167bb31fd1ce9d.png" alt="" /><figcaption>FAT12.png</figcaption>
+</figure>
+<h5 id="file-attribution">5. File Attribution</h5>
+<table>
+<thead>
+<tr class="header">
+<th>位</th>
+<th>掩码</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>0</td>
+<td>0x01</td>
+<td>只读</td>
+</tr>
+<tr class="even">
+<td>1</td>
+<td>0x02</td>
+<td>隐藏</td>
+</tr>
+<tr class="odd">
+<td>2</td>
+<td>0x04</td>
+<td>系统</td>
+</tr>
+<tr class="even">
+<td>3</td>
+<td>0x08</td>
+<td>卷标</td>
+</tr>
+<tr class="odd">
+<td>4</td>
+<td>0x10</td>
+<td>子目录</td>
+</tr>
+<tr class="even">
+<td>5</td>
+<td>0x20</td>
+<td>档案</td>
+</tr>
+<tr class="odd">
+<td>6</td>
+<td>0x40</td>
+<td>设备（内部使用，磁盘上看不到）</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td>0x80</td>
+<td>没有使用</td>
+</tr>
+</tbody>
+</table>
+<p>0x0F 是 LFN。</p>
+<h4 id="三代码设计">三、代码设计</h4>
+<p>整体访问思路是：表项 =&gt; 数据区 =&gt; 下一表项</p>
+<p>数据预处理，获取 BPB、表项、根目录及数据簇。</p>
+<p>暂时先不考虑 LFN 的情况。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> <span class="title class_">BPB</span> &#123;                  <span class="comment">// 11-35  25Bytes</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_BytsPerSec;  <span class="comment">// 每扇区字节数</span></span><br><span class="line">    <span class="type">uint8_t</span> BPB_SecPerClus;   <span class="comment">// 每簇扇区数</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_RsvdSecCnt;  <span class="comment">// Boot记录占用的扇区数</span></span><br><span class="line">    <span class="type">uint8_t</span> BPB_NumFATs;      <span class="comment">// FAT表个数</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_RootEntCnt;  <span class="comment">// 根目录最大文件数</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_TotSec16;    <span class="comment">// 扇区总数</span></span><br><span class="line">    <span class="type">uint8_t</span> BPB_Media;        <span class="comment">// 介质描述符</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_FATSz16;     <span class="comment">// 每个FAT表所占扇区数</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_SecPerTrk;   <span class="comment">// 每磁道扇区数（Sector/track）</span></span><br><span class="line">    <span class="type">uint16_t</span> BPB_NumHeads;    <span class="comment">// 磁头数（面数）</span></span><br><span class="line">    <span class="type">uint32_t</span> BPB_HiddSec;     <span class="comment">// 隐藏扇区数</span></span><br><span class="line">    <span class="type">uint32_t</span> BPB_TotSec32;    <span class="comment">// 如果BPB_ToSec16为0，该值为扇区数</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">Entry</span> &#123;              <span class="comment">// 32 Bytes</span></span><br><span class="line">    <span class="type">char</span> FILE_Name[<span class="number">11</span>];     <span class="comment">// 长度名+扩展名</span></span><br><span class="line">    <span class="type">uint8_t</span> FILE_Attr;      <span class="comment">// 文件属性</span></span><br><span class="line">    <span class="type">char</span> reserved[<span class="number">10</span>];      <span class="comment">// 保留位</span></span><br><span class="line">    <span class="type">uint16_t</span> DIR_WrtTime;   <span class="comment">// 最后一次写入时间</span></span><br><span class="line">    <span class="type">uint16_t</span> DIR_WrtDate;   <span class="comment">// 最后一次写入日期</span></span><br><span class="line">    <span class="type">uint16_t</span> DIR_FstClus;   <span class="comment">// 开始簇号</span></span><br><span class="line">    <span class="type">uint32_t</span> DIR_FileSize;  <span class="comment">// 文件大小</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">LongFileNameEntry</span> &#123;  <span class="comment">// unused temporarily</span></span><br><span class="line">    <span class="type">uint8_t</span> LFNOrd;         <span class="comment">// 长文件名序号</span></span><br><span class="line">    <span class="type">uint16_t</span> LFNPart1[<span class="number">5</span>];   <span class="comment">// 长文件名的第一部分</span></span><br><span class="line">    <span class="type">uint8_t</span> LFNAttributes;  <span class="comment">// 文件属性标志</span></span><br><span class="line">    <span class="type">uint8_t</span> LFNReserved1;   <span class="comment">// 保留字段，应为0x00</span></span><br><span class="line">    <span class="type">uint8_t</span> LFNChecksum;    <span class="comment">// 校验和</span></span><br><span class="line">    <span class="type">uint16_t</span> LFNPart2[<span class="number">6</span>];   <span class="comment">// 长文件名的第二部分</span></span><br><span class="line">    <span class="type">uint16_t</span> LFNReserved2;  <span class="comment">// 保留字段，应为0x0000</span></span><br><span class="line">    <span class="type">uint16_t</span> LFNPart3[<span class="number">2</span>];   <span class="comment">// 长文件名的第三部分</span></span><br><span class="line">&#125;;</span><br><span class="line">BPB bpb;</span><br><span class="line">vector&lt;<span class="type">int</span>&gt; tabFAT;</span><br><span class="line">vector&lt;Entry&gt; rootEntry, dataEntry;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">init</span><span class="params">(<span class="type">char</span>* str)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>以下代码慎重参考，个人风格较强。</strong>（好吧个人风格没写到 QwQ）。</p>
+<p>使用一个全局的 vector 来存储答案：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vector&lt;char&gt; res;</span><br></pre></td></tr></table></figure>
+<p>将 <code>ls</code> 与 <code>ls -l</code> 集成：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">ls</span><span class="params">(<span class="type">int</span> id, <span class="type">char</span> dirName[], <span class="type">char</span> args[])</span> </span>&#123;</span><br><span class="line">	<span class="comment">// 判定是否存在-l</span></span><br><span class="line">	<span class="comment">// 根据dirName提取簇号id</span></span><br><span class="line">	<span class="built_in">visit</span>(id);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">visit</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// output information ID</span></span><br><span class="line">    <span class="built_in">visit</span>(<span class="built_in">getBeginClus</span>(id));</span><br><span class="line">	<span class="built_in">visit</span>(<span class="built_in">getNextClus</span>(id));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getType</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;	<span class="comment">// 判断目录/文件</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">char</span>* <span class="title">getInformation</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;	</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getFileSize</span><span class="params">(<span class="type">int</span> id)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getNextClus</span><span class="params">(<span class="type">int</span> id)</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getBeginClus</span><span class="params">(<span class="type">int</span> id)</span></span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2024/04/08/Compiler-Lab0x02/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1166,87 +1328,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://example.com/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="mlger">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/" class="post-title-link" itemprop="url">软件工程与计算II-0x05 软件需求基础</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2024-02-28 15:40:00" itemprop="dateCreated datePublished" datetime="2024-02-28T15:40:00+08:00">2024-02-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-03-07 23:19:19" itemprop="dateModified" datetime="2024-03-07T23:19:19+08:00">2024-03-07</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II/" itemprop="url" rel="index"><span itemprop="name">软件工程与计算II</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          Here's something encrypted, password is required to continue reading.
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2024/02/28/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E4%B8%8E%E8%AE%A1%E7%AE%97II-0x05%20%E8%BD%AF%E4%BB%B6%E9%9C%80%E6%B1%82%E5%9F%BA%E7%A1%80/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1318,14 +1399,14 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">35</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">12</span>
+        <span class="site-state-item-count">13</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -1357,7 +1438,7 @@
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">20</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">21</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
