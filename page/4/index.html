@@ -200,6 +200,240 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01-%E6%A6%82%E8%BF%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2023/09/05/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C01-%E6%A6%82%E8%BF%B0/" class="post-title-link" itemprop="url">计算机网络01</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2023-09-05 08:33:00" itemprop="dateCreated datePublished" datetime="2023-09-05T08:33:00+08:00">2023-09-05</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-12-09 21:09:43" itemprop="dateModified" datetime="2023-12-09T21:09:43+08:00">2023-12-09</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%BD%91/" itemprop="url" rel="index"><span itemprop="name">计网</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h4 id="第1章-概述">第1章 概述</h4>
+<h4 id="计算机网络在信息时代的作用">1.1 计算机网络在信息时代的作用</h4>
+<p>​ 21世纪<strong>数字化</strong>、<strong>网络化</strong>、<strong>信息化</strong>，形成<strong>以网络为核心的信息时代</strong>。</p>
+<p>​ 三大类网络：电信网络、有线电视网络、计算机网络</p>
+<p>​ 互联网两个基本特点：<strong>连通性</strong>和<strong>共享</strong></p>
+<ul>
+<li>连通性：不论多远，都可便捷地交换各种信息</li>
+<li>资源共享：信息共享、软件共享、硬件共享</li>
+</ul>
+<h4 id="互联网概述">1.2 互联网概述</h4>
+<p>​ <strong>计算机网络</strong>由若干<strong>节点( node )</strong>和连接这些节点的<strong>链路( link )</strong>组成。</p>
+<ul>
+<li>节点：计算机、集线器、交换机、路由器等</li>
+</ul>
+<p>​ 网络把许多计算机连接在一起，<strong>互连网</strong>把许多网络通过路由器连在一起。与网络相连接的计算机称为<strong>主机</strong>。</p>
+<p>​ 互联网发展的三个阶段：</p>
+<ol type="1">
+<li>由 ARPANET 向互连网发展。 20 世纪 70 年代， APRA 开始研究多种网络互连的技术，称为互联网的雏形。 1983 年 TCP/IP 成为 ARPANET 上的标准协议，互联网诞生。 1990 年 ARPANET 关闭。</li>
+</ol>
+<ul>
+<li><strong>internet （互连网）</strong>：指多个网络连接而成的网络</li>
+<li><strong>Internet （互联网）</strong>：专有名词</li>
+</ul>
+<ol start="2" type="1">
+<li>第二阶段特点是建成了<strong>三级结构的互联网</strong>。分为<strong>主干网</strong>、<strong>地区网</strong>和<strong>校园网（企业网）</strong>。</li>
+<li>第三阶段特点是形成了<strong>多层次 ISP 结构的互联网</strong>。 ISP 译为<strong>互联网服务提供商</strong>。</li>
+</ol>
+<p>​</p>
+<p>​ 计算机网络的分类：</p>
+<ul>
+<li><strong>LAN</strong> （<strong>局域网</strong>）</li>
+<li>特点
+<ul>
+<li>作用范围小</li>
+<li>多用户访问</li>
+<li>高速度</li>
+<li>错误率可控</li>
+</ul></li>
+<li>设备
+<ul>
+<li><strong>Hub</strong> （集线器）：多端口中继器</li>
+<li><strong>Bridge</strong> （网桥）：</li>
+<li><strong>Switch</strong> （交换机）：</li>
+<li><strong>Router</strong> （路由器）：分组交换，转发收到的分组</li>
+</ul></li>
+<li><strong>WAN</strong> （<strong>广域网</strong>）</li>
+<li>特点
+<ul>
+<li>作用范围大</li>
+<li>通过链路传输</li>
+<li>速度相对较低</li>
+<li>错误率较难控制</li>
+</ul></li>
+<li>设备
+<ul>
+<li><strong>Router</strong> （路由器）：</li>
+<li><strong>Modem CSU/DSU TA/NT1</strong></li>
+</ul></li>
+</ul>
+<p><strong>Boring！</strong></p>
+<h4 id="互联网的组成">1.3 互联网的组成</h4>
+<ul>
+<li><p>互联网的组成：</p>
+<ul>
+<li><p>（1）<strong>边缘部分</strong>：由所有连接在互联网上的主机组成，是<strong>用户直接使用</strong>的部分。主机又称为<strong>端系统（end system）</strong></p></li>
+<li><p>（2）<strong>核心部分</strong>：由大量网络和连接这些网络的路由器组成。这部分是<strong>为边缘部分提供服务的</strong>。</p></li>
+</ul></li>
+<li><p>端系统间通信方式：客户-服务器模式 and 对等连接方式</p>
+<ul>
+<li><strong>客户(client)</strong>-<strong>服务器(sever)</strong>模式（C/S模式）
+<ul>
+<li>客户是服务请求方，服务器是服务提供方</li>
+</ul></li>
+<li>对等连接方式（P2P）
+<ul>
+<li>并不区分服务请求方与服务提供方</li>
+</ul></li>
+</ul></li>
+<li><p><strong>电路交换</strong>主要特点：</p>
+<ul>
+<li><strong>建立连接</strong> → <strong>通话</strong> → <strong>释放资源</strong></li>
+<li>在通话的全部时间内，通话的两个用户始终占用端到端的通信资源</li>
+<li>传输效率较低</li>
+</ul></li>
+<li><p><strong>分组交换</strong>主要特点：</p>
+<ul>
+<li>采取<strong>存储转发</strong>技术</li>
+<li>发送的整块数据成为<strong>报文</strong>(message)</li>
+<li>发送之前，先将报文划分成一个个更小的等长数据段，加上必要控制信息组成的<strong>首部</strong>(header)或<strong>包头</strong>，构成一个<strong>分组</strong>(packet)或<strong>包</strong>。</li>
+<li>主机进行信息处理，路由器用来转发分组，即进行分组交换。</li>
+</ul></li>
+</ul>
+<h4 id="计算机网络的类别">1.5 计算机网络的类别</h4>
+<ul>
+<li>按照网络的作用范围分类：
+<ul>
+<li><strong>广域网 WAN </strong>：</li>
+<li><strong>域域网 MAN </strong>：作用范围一般是一个城市。可以为一个或几个单位所有，也可以是一种公用设施，用来将多个局域网进行互连。</li>
+<li><strong>局域网 LAN </strong>：</li>
+<li><strong>个人区域网 PAN</strong>：把属于个人的设备用无线技术连接起来</li>
+</ul></li>
+<li>按网络使用分类：
+<ul>
+<li><strong>公用网</strong>(public network)</li>
+<li><strong>专用网</strong>(private network)</li>
+</ul></li>
+<li><strong>用来把用户接入到互联网的网络</strong>：
+<ul>
+<li><strong>接入网 AN</strong>：又称<strong>本地接入网</strong>或<strong>居民接入网</strong>。</li>
+</ul></li>
+</ul>
+<h4 id="计算机网络的性能">1.6 计算机网络的性能</h4>
+<h5 id="性能指标">1.6.1 性能指标</h5>
+<ul>
+<li><strong>速率</strong>：数据传送速率，也成为<strong>数据率</strong>或<strong>比特率</strong>。提到网络速率，往往指<strong>额定速率</strong>，而非运行速率。单位 bps 。</li>
+<li><strong>带宽</strong>：
+<ul>
+<li><strong>信号具有的频带宽度</strong>，单位是<strong>赫兹</strong>，表示<strong>某信道允许通过的信号频带范围</strong>。</li>
+<li>网络中某通道传输数据的效率，即<strong>最高数据率</strong>，单位是 bps 。</li>
+</ul></li>
+<li><strong>吞吐量</strong>：表示单位时间内通过某个网络的实际数据量</li>
+<li><strong>时延</strong>：数据从网络一端传送到另一端的时间，组成：
+<ul>
+<li><strong>发送时延</strong>：主机或路由器发送数据帧所需时间</li>
+<li><strong>处理时延</strong>：</li>
+<li><strong>排队时延</strong>：数据帧进入路由器后需排队等待处理，等待的时间成为排队时延</li>
+<li><strong>传播时延</strong>：信道中传播的时间</li>
+</ul></li>
+</ul>
+<p><span class="math display">\[
+传播时延=\frac{信道长度(m)}{电磁波在信道上传播速率(m/s)}
+\]</span></p>
+<ul>
+<li><strong>时延带宽积</strong>： 传播时延与带宽乘积</li>
+<li><strong>往返时间 RTT </strong>：数据在信道中往返一次所需时间</li>
+<li><strong>利用率</strong>：</li>
+</ul>
+<p><span class="math display">\[
+D=\frac{D_0}{1-U}
+\]</span></p>
+<h4 id="计算机网络体系结构">1.7 计算机网络体系结构</h4>
+<h5 id="osi-七层协议">1.7.1 OSI 七层协议</h5>
+<ul>
+<li><strong>物理层</strong>：管理通信设备和网络媒体之间的互联互通，<strong>规范</strong>链接的电气和功能<strong>规格</strong>。</li>
+<li><strong>数据链路层</strong>：<strong>通过物理链接提供数据传输链路</strong>。</li>
+<li><strong>网络层</strong>： 在两终端之间进行<strong>路径选择</strong>。</li>
+<li><strong>传输层</strong>：负责网络中<strong>端到端的网络通信</strong>，为虚拟电路的建立、维护、终止，传输故障检测及恢复，以及信息流的控制提供机制。</li>
+<li><strong>会话层</strong>：<strong>创建</strong>、<strong>管理</strong>和<strong>维护</strong>会话。同步表示层实体间的会话并<strong>管理其间的数据交换</strong>。提供高效的<strong>数据传输</strong>、<strong>服务类别</strong>以及会话、演示及应用层的<strong>异常报告功能</strong>。</li>
+<li><strong>演示层</strong>：保证不同系统的信息交换，涉及<strong>数据编码</strong>、<strong>格式转换</strong>、<strong>数据加密</strong>。将多种数据格式转化成通信中采用的标准表示形式。</li>
+<li><strong>应用层</strong>：OSI 协议最高层，离用户最近，<strong>为用户应用程序提供网络服务</strong>，不为其它层提供服务。</li>
+</ul>
+<h5 id="五层协议的体系结构">1.7.2 五层协议的体系结构</h5>
+<ul>
+<li><strong>应用层</strong>：通过进程间的交互来完成特定网络应用，交互数据称为报文。不同网络应用需要有不同的应用层协议。</li>
+<li><strong>运输层</strong>：主要使用两种协议： <strong>TCP、UDP</strong> 。</li>
+<li><strong>网络层</strong>：把运输层产生的报文段或数据封装成<strong>包</strong>或<strong>分组</strong>进行传送。由于网络层使用 IP 协议，因此分组也叫 <strong>IP 数据报</strong>。</li>
+<li><strong>数据链路层</strong>：将网络层交下来的 <strong>IP 数据报</strong>组装成帧，每一帧包括数据和必要的控制信息。</li>
+<li><strong>物理层</strong>：上传数据单位为比特。</li>
+</ul>
+<h5 id="tcpip-四层协议">1.7.3 TCP/IP 四层协议</h5>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202309111635872.png" /></p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://example.com/2023/07/31/%E7%9B%B8%E4%BF%A1%E6%9C%AA%E6%9D%A5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1194,7 +1428,7 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">38</span>
+          <span class="site-state-item-count">39</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
@@ -1233,7 +1467,7 @@ k^m-\sum_{i=0}^{n-1}\binom{m}{i}(k-1)^{m-i}
       <div class="widget-wrap">
           <div id="myCanvasContainer" class="widget tagcloud">
               <canvas width="250" height="250" id="resCanvas" style="width:100%">
-                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">23</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
               </canvas>
           </div>
       </div>
