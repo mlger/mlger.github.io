@@ -29,19 +29,6 @@
     
     
     <entry>
-      <title>README</title>
-      <link href="/2024/04/20/README/"/>
-      <url>/2024/04/20/README/</url>
-      
-        <content type="html"><![CDATA[<p>​ 本站采用 hexo 架构，部署在 github pages 上，采用 github 作为图床。建议在能够流畅访问 github 的网络环境下浏览。</p><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202307042122433.png" /></p><p>​ 看见这幅美丽的画了吗？看见了说明你能看见这幅画 (bushi)。</p><p>​ 关于左边的这个抽象的双 tags 旋转动画，我也在 diss 它，有时间再把它 ban 掉了。</p><p>维修计划：</p><ul><li>缩进调整</li><li>关闭 tags 动画</li></ul>]]></content>
-      
-      
-      
-    </entry>
-    
-    
-    
-    <entry>
       <title>Ubuntu WeChat 安装</title>
       <link href="/2024/04/14/Ubuntu%20WeChat%20%E5%AE%89%E8%A3%85/"/>
       <url>/2024/04/14/Ubuntu%20WeChat%20%E5%AE%89%E8%A3%85/</url>
@@ -246,7 +233,7 @@
       <link href="/2024/03/07/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9B%B8%E5%85%B3/"/>
       <url>/2024/03/07/%E5%A4%A7%E4%BA%8C%E4%B8%8B%E7%9B%B8%E5%85%B3/</url>
       
-        <content type="html"><![CDATA[<h4 id="一index">一、index</h4><h5 id="软工ii">1. 软工II</h5><ul><li><p><a href="https://p.internal-paas.seec.seecoder.cn/">seec门户系统</a></p></li><li><p><a href="developer.internal-paas.seec.seecoder.cn">developer系统</a></p></li><li><p>作业相关</p><ul><li><a href="https://nqq5jc94uf.feishu.cn/docx/Qi4ydjqfQoV7ynxrCujciCB7nGh">大作业描述</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/Mo8UdFKMHoBcxkxzTkQcRo8mnSe">Developer使用说明</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/T3UedRuVHozcwMxgBe9cXxqRnjd">文档Lab1-项目启动文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/Wsdud2WMKol0qZxZViVcBGXfnSc">文档Lab2-用例文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/V9fFdlZMUol8xRxrYrVcPBEInkb">代码Lab1-熟悉项目</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/UfM1dtvK3oUFKsxhP8LcztRZn3b">代码Lab2-商店商品模块</a></li></ul></li></ul><h5 id="compiler">2. Compiler</h5><ul><li><a href="http://docs.compilers.cpl.icu/#/">Compiler@NJU-SE (cpl.icu)</a></li><li><a href="https://oj.compilers.cpl.icu/#/">Online Judge (cpl.icu)</a></li></ul><h5 id="数据管理基础-操作系统">3. 数据管理基础 / 操作系统</h5><ul><li><a href="https://selearning.nju.edu.cn/login/index.php">教学支持系统: 登录本网站 (nju.edu.cn)</a></li></ul><h5 id="ml">4. ML</h5><ul><li>https://www.lamda.nju.edu.cn/ML2024Spring/</li></ul><h5 id="nlp">5. NLP</h5><h4 id="二最近活动">二、最近活动</h4><table><thead><tr class="header"><th>活动</th><th>时间/deadline</th></tr></thead><tbody><tr class="odd"><td>大创二阶段</td><td>03/07 - 03/22</td></tr></tbody></table><h4 id="三任务链">三、任务链</h4><table><thead><tr class="header"><th>阶段一</th><th>进度</th></tr></thead><tbody><tr class="odd"><td>ML lab2</td><td></td></tr><tr class="even"><td>近纲书评</td><td></td></tr><tr class="odd"><td>c毛概社会实践材料 0426</td><td></td></tr><tr class="even"><td>OS Lab2</td><td></td></tr><tr class="odd"><td>数据库作业 6</td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h4 id="一index">一、index</h4><h5 id="软工ii">1. 软工II</h5><ul><li><a href="https://p.internal-paas.seec.seecoder.cn/">seec门户系统</a></li><li><a href="developer.internal-paas.seec.seecoder.cn">developer系统</a></li><li>作业相关<ul><li><a href="https://nqq5jc94uf.feishu.cn/docx/Qi4ydjqfQoV7ynxrCujciCB7nGh">大作业描述</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/Mo8UdFKMHoBcxkxzTkQcRo8mnSe">Developer使用说明</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/T3UedRuVHozcwMxgBe9cXxqRnjd">文档Lab1-项目启动文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/Wsdud2WMKol0qZxZViVcBGXfnSc">文档Lab2-用例文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/H4LTdxhBOoim7AxBAadcMmRnnce">文档Lab3-需求规格说明书》</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/WsjxdkUufohOx4xAadmcKaI9n7c">文档Lab4-体系结构设计文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/P6z8dJ2GIoSdsXxMkO2cAgPon1d">文档Lab5-人机交互设计文档</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/V9fFdlZMUol8xRxrYrVcPBEInkb">代码Lab1-熟悉项目</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/UfM1dtvK3oUFKsxhP8LcztRZn3b">代码Lab2-商店商品模块</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/S7Kodx1pjoWwqLxHuEHcjeVanaf">代码Lab3-订单模块</a></li><li><a href="https://nqq5jc94uf.feishu.cn/docx/AOxZdv9JroKj2BxGKkrc5G4hnvb">代码Lab4-优惠券模块</a></li></ul></li></ul><h5 id="compiler">2. Compiler</h5><ul><li><a href="http://docs.compilers.cpl.icu/#/">Compiler@NJU-SE (cpl.icu)</a></li><li><a href="https://oj.compilers.cpl.icu/#/">Online Judge (cpl.icu)</a></li></ul><h5 id="数据管理基础-操作系统">3. 数据管理基础 / 操作系统</h5><ul><li><a href="https://selearning.nju.edu.cn/login/index.php">教学支持系统: 登录本网站 (nju.edu.cn)</a></li></ul><h5 id="ml">4. ML</h5><ul><li>https://www.lamda.nju.edu.cn/ML2024Spring/</li></ul><h4 id="二最近活动">二、最近活动</h4><table><thead><tr class="header"><th>活动</th><th>时间/deadline</th></tr></thead><tbody><tr class="odd"><td>大创二阶段</td><td>03/07 - 03/22</td></tr></tbody></table><h4 id="三任务链">三、任务链</h4><table><thead><tr class="header"><th>阶段一</th><th>进度</th></tr></thead><tbody><tr class="odd"><td>近纲书评</td><td></td></tr><tr class="even"><td>毛概社会实践材料 0426</td><td></td></tr><tr class="odd"><td>OS Lab2 验收</td><td></td></tr><tr class="even"><td>Compiler Lab3</td><td></td></tr><tr class="odd"><td>SEEC Lab4 Lab5</td><td></td></tr><tr class="even"><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -919,6 +906,19 @@
             <tag> 诗歌 </tag>
             
         </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>README</title>
+      <link href="/1970/01/01/README/"/>
+      <url>/1970/01/01/README/</url>
+      
+        <content type="html"><![CDATA[<p>​ 本站采用 hexo 架构，部署在 github pages 上，采用 github 作为图床。建议在能够流畅访问 github 的网络环境下浏览。</p><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/202307042122433.png" /></p><p>​ 看见这幅美丽的画了吗？看见了说明你能看见这幅画 (bushi)。</p><p>​ 关于左边的这个抽象的双 tags 旋转动画，我也在 diss 它，有时间再把它 ban 掉了。</p><p>维修计划：</p><ul><li>缩进调整</li><li>关闭 tags 动画</li></ul>]]></content>
+      
+      
       
     </entry>
     
