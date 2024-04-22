@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 6.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+  <link rel="stylesheet" href="/lib/pace/pace-theme-minimal.min.css">
+  <script src="/lib/pace/pace.min.js"></script>
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="一、PPT相关内容 1.何谓实模式，何谓保护模式？  实模式：基地址+偏移量可以直接获得物理地址的模式  缺点：非常不安全  保护模式：不能直接拿到物理地址  需要进行地址转换 从80286开始，是现代操作系统的主要模式   2. 什么是选择子？ 在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="验收准备.md">
+<meta property="og:url" content="https://example.com/2024/04/22/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/index.html">
+<meta property="og:site_name" content="mlger">
+<meta property="og:description" content="一、PPT相关内容 1.何谓实模式，何谓保护模式？  实模式：基地址+偏移量可以直接获得物理地址的模式  缺点：非常不安全  保护模式：不能直接拿到物理地址  需要进行地址转换 从80286开始，是现代操作系统的主要模式   2. 什么是选择子？ 在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png">
+<meta property="article:published_time" content="2024-04-22T13:10:00.000Z">
+<meta property="article:modified_time" content="2024-04-22T13:10:13.887Z">
+<meta property="article:author" content="Lg">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png">
+
+<link rel="canonical" href="https://example.com/2024/04/22/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css"><style>
+#needsharebutton-postbottom {
+  cursor: pointer;
+  height: 26px;
+  margin-top: 10px;
+  position: relative;
+}
+#needsharebutton-postbottom .btn {
+  border: 1px solid $btn-default-border-color;
+  border-radius: 3px;
+  display: initial;
+  padding: 1px 4px;
+}
+</style>
+  <title>验收准备.md | mlger</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">mlger</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://example.com/2024/04/22/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+      <meta itemprop="name" content="Lg">
+      <meta itemprop="description" content="青春无悔不死">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="mlger">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          验收准备.md
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2024-04-22 21:10:00 / 修改时间：21:10:13" itemprop="dateCreated datePublished" datetime="2024-04-22T21:10:00+08:00">2024-04-22</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h4 id="一ppt相关内容">一、PPT相关内容</h4>
+<h5 id="何谓实模式何谓保护模式">1.何谓实模式，何谓保护模式？</h5>
+<ul>
+<li>实模式：基地址+偏移量可以直接获得物理地址的模式
+<ul>
+<li>缺点：非常不安全</li>
+</ul></li>
+<li>保护模式：不能直接拿到物理地址
+<ul>
+<li>需要进行地址转换</li>
+<li>从80286开始，是现代操作系统的主要模式</li>
+</ul></li>
+</ul>
+<h5 id="什么是选择子">2. 什么是选择子？</h5>
+<p>在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：</p>
+<ol type="1">
+<li><strong>请求特权级（RPL）</strong>：选择子的低2位表示请求的特权级，决定访问权限。</li>
+<li><strong>表指示标志（TI）</strong>：第3位，表示选择的是全局描述符表（GDT，TI=0）还是局部描述符表（LDT，TI=1）。</li>
+<li><strong>索引</strong>：高13位，表示在GDT或LDT中的具体位置，即该表中的偏移量。</li>
+</ol>
+<p>选择子是放在段选择寄存器中的16位值，通过它，处理器可以访问描述符表中相应的段描述符，进而获得段的具体信息，如基地址和界限等。</p>
+<h5 id="什么是描述符">3. 什么是描述符？</h5>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png" alt="" /><figcaption>image-20240421185319902</figcaption>
+</figure>
+<p>描述符是在保护模式下操作系统中使用的一个数据结构，用于定义内存段的属性和访问权限。每个描述符通常存储在全局描述符表（GDT）或局部描述符表（LDT）中。描述符中包含了以下关键信息：</p>
+<ol type="1">
+<li><strong>基地址（Base Address）</strong>：段的起始物理地址。</li>
+<li><strong>段界限（Segment Limit）</strong>：与基地址相结合，定义了段的大小。这个界限用于限制段内的偏移，确保访问不会超出段的实际物理内存范围。</li>
+<li><strong>访问权限（Access Rights）</strong>：描述段的类型（例如，代码段、数据段等）、描述符类型（系统段或代码/数据段）、以及其他访问控制信息（如读/写权限、执行权限）。</li>
+<li><strong>特权级（DPL, Descriptor Privilege Level）</strong>：定义了访问该段所需的最低CPU特权级（CPL, Current Privilege Level）。</li>
+</ol>
+<p>描述符确保了内存段的保护和正确的访问，是实现多任务和内存保护的基础。通过这些信息，操作系统能够管理不同任务的内存访问权限，防止未授权访问，同时允许合法的访问和操作。</p>
+<h5 id="什么是-gdt什么是-ldt">4. 什么是 GDT，什么是 LDT？</h5>
+<p>GDT（Global Descriptor Table）和LDT（Local Descriptor Table）是在保护模式下使用的两种描述符表，用于定义内存段的属性和访问权限。它们的具体作用和特性如下：</p>
+<ul>
+<li>GDT (Global Descriptor Table)：全局描述符表，是全局唯一的。
+<ul>
+<li>存放一些公用的描述符，和包含各进程局部描述符表首地址的描述符。</li>
+</ul></li>
+<li>LDT (Local Descriptor Table)：局部描述符表，每个进程都可以有一个。
+<ul>
+<li>存放本进程内使用的描述符。</li>
+</ul></li>
+</ul>
+<h5 id="分别说明-gdtr-和-ldtr">5. 分别说明 GDTR 和 LDTR</h5>
+<ul>
+<li>GDTR (GDT Register)：48位寄存器，高32位放置GDT首地址，低16位放置GDT限长
+<ul>
+<li>限长决定了可寻址的大小，注意低16位放的不是选择子</li>
+</ul></li>
+<li>LDTR (LDT Register)：16位寄存器，放置一个特殊的选择子，用于查找当前进程的LDT首地址。</li>
+</ul>
+<h5 id="说明-gdt-直接查找物理地址的具体步骤">6. 说明 GDT 直接查找物理地址的具体步骤。</h5>
+<ol type="1">
+<li>给出段选择子（放在段选择寄存器里）+ 偏移量</li>
+<li>若选择了 GDT 方式，则从 GDTR 获取 GDT 首地址，用段选择子中的13位做偏移，拿到 GDT 中的描述符</li>
+<li>如果合法且有权限，用描述符中的段首地址加上 1 中的偏移量找到物理地址, 寻址结束</li>
+</ol>
+<h5 id="说明通过-ldt-查找物理地址的具体步骤">7. 说明通过 LDT 查找物理地址的具体步骤。</h5>
+<ol type="1">
+<li>给出段选择子（放在段选择寄存器中）+ 偏移量</li>
+<li>若选择了 LDT 方式，则从 GDTR 获取 GDT 首地址，用 LDTR 中的偏移量做偏移，拿到 GDT 中的描述符 1</li>
+<li>从描述符 1 中获取 LDT 首地址，用段选择子中的13位做偏移，拿到 LDT 中的描述符2</li>
+<li>如果合法且有权限，用描述符2中的段首地址加上步骤 1 中的偏移量找到物理地址。寻址结束</li>
+</ol>
+<h5 id="根目录区大小一定么扇区号是多少为什么">8. 根目录区大小一定么?扇区号是多少?为什么?</h5>
+<h6 id="根目录区大小">根目录区大小</h6>
+<ol type="1">
+<li><strong>大小设置</strong>：
+<ul>
+<li>在FAT12文件系统中，根目录区的大小是在格式化时预设的。这个大小是由根目录区能够包含的最大条目数决定的，而每个条目通常占用32字节。例如，如果系统允许根目录区包含224个条目，则根目录区的大小将是224 × 32 = 7168字节。</li>
+</ul></li>
+<li><strong>计算扇区数</strong>：
+<ul>
+<li>由于扇区通常是512字节，根目录区的大小（以字节为单位）将被512除以得到所需的扇区数。继续上面的例子，7168字节的根目录区将占用7168 / 512 = 14个扇区。</li>
+</ul></li>
+</ol>
+<h6 id="扇区号">扇区号</h6>
+<ol type="1">
+<li><strong>起始扇区</strong>：
+<ul>
+<li>FAT12文件系统的根目录区紧跟在两个FAT表之后。文件系统的起始部分包括保留扇区（通常包括引导扇区），其后是两个FAT表。</li>
+<li>根目录的起始扇区号可以通过计算保留扇区和FAT表所占的扇区数来确定。</li>
+</ul></li>
+<li><strong>计算方法</strong>：
+<ul>
+<li>假设有一个保留扇区和两个FAT表，每个FAT表大小为9扇区，那么根目录的起始扇区号将是 1（保留扇区）+ 9×2（两个FAT表） = 19。因此，根目录的起始扇区号为19。</li>
+</ul></li>
+</ol>
+<h5 id="数据区第一个簇号是多少为什么">9. 数据区第一个簇号是多少?为什么?</h5>
+<p>在1.44M软盘上，FAT前三个字节的值是固定的0xF0、0xFF、0xFF，用于表示这是一个应用在1.44M软盘上的FAT12文件系统。本来序号为0和1的FAT表项应该对应于簇0和簇1，但是由于这两个表项被设置成了固定值，簇0和簇1就没有存在的意义了，所以数据区就起始于簇2</p>
+<h5 id="fat表的作用">10. FAT表的作用？</h5>
+<p>FAT项的值代表文件的下一个簇号 值大于或等于0xFF8，表示当前簇已经是本文件的最后一个簇 值为0xFF7，表示它是一个坏簇</p>
+<h5 id="解释静态链接的过程">11. 解释静态链接的过程。</h5>
+<ol type="1">
+<li>使用gcc –c命令分别得到test.o以及my_lib.o</li>
+<li>使用ar命令生成libmylib.a或直接使用gcc生成最终可执行文件。</li>
+<li>使用ld(或gcc) –L./ -lmylib通过静态链接库mylib以及test.o生成最后的可执行文件</li>
+</ol>
+<h5 id="静态链接相关ppt中为什么使用ld链接而不是gcc">12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</h5>
+<h5 id="linux下可执行文件的虚拟地址空间默认从哪里开始分配">13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</h5>
+<h4 id="二实验相关内容">二、实验相关内容</h4>
+<h5 id="bpb指定字段的含义">1. BPB指定字段的含义</h5>
+<h5 id="如何进入子目录并输出说明方法调用">2. 如何进入子目录并输出(说明方法调用)</h5>
+<h5 id="如何获得指定文件的内容即如何获得数据区的内容比如使用指针等">3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</h5>
+<h5 id="如何进行c代码和汇编之间的参数传递和返回值传递">4. 如何进行C代码和汇编之间的参数传递和返回值传递</h5>
+<h5 id="汇编代码中对io的处理方式说明指定寄存器所存值的含义">5. 汇编代码中对I/O的处理方式,说明指定寄存器所存值的含义</h5>
+
+    </div>
+
+    
+    
+    <div class="post-widgets">
+      <div id="needsharebutton-postbottom">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    </div>
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/04/20/ubuntu%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E7%9A%84%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%A1%8C%E5%8A%9E%E6%B3%95/" rel="prev" title="ubuntu系统迁移的一种可行办法">
+      <i class="fa fa-chevron-left"></i> ubuntu系统迁移的一种可行办法
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80ppt%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">一、PPT相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%95%E8%B0%93%E5%AE%9E%E6%A8%A1%E5%BC%8F%E4%BD%95%E8%B0%93%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1.何谓实模式，何谓保护模式？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%89%E6%8B%A9%E5%AD%90"><span class="nav-number">1.2.</span> <span class="nav-text">2. 什么是选择子？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">3. 什么是描述符？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-gdt%E4%BB%80%E4%B9%88%E6%98%AF-ldt"><span class="nav-number">1.4.</span> <span class="nav-text">4. 什么是 GDT，什么是 LDT？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E5%88%AB%E8%AF%B4%E6%98%8E-gdtr-%E5%92%8C-ldtr"><span class="nav-number">1.5.</span> <span class="nav-text">5. 分别说明 GDTR 和 LDTR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E-gdt-%E7%9B%B4%E6%8E%A5%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.6.</span> <span class="nav-text">6. 说明 GDT 直接查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%E9%80%9A%E8%BF%87-ldt-%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.7.</span> <span class="nav-text">7. 说明通过 LDT 查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F%E4%B8%80%E5%AE%9A%E4%B9%88%E6%89%87%E5%8C%BA%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.8.</span> <span class="nav-text">8. 根目录区大小一定么?扇区号是多少?为什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.8.1.</span> <span class="nav-text">根目录区大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%87%E5%8C%BA%E5%8F%B7"><span class="nav-number">1.8.2.</span> <span class="nav-text">扇区号</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%B0%87%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.9.</span> <span class="nav-text">9. 数据区第一个簇号是多少?为什么?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fat%E8%A1%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.10.</span> <span class="nav-text">10. FAT表的作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.11.</span> <span class="nav-text">11. 解释静态链接的过程。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9B%B8%E5%85%B3ppt%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8ld%E9%93%BE%E6%8E%A5%E8%80%8C%E4%B8%8D%E6%98%AFgcc"><span class="nav-number">1.12.</span> <span class="nav-text">12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E9%BB%98%E8%AE%A4%E4%BB%8E%E5%93%AA%E9%87%8C%E5%BC%80%E5%A7%8B%E5%88%86%E9%85%8D"><span class="nav-number">1.13.</span> <span class="nav-text">13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%AE%9E%E9%AA%8C%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">二、实验相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bpb%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. BPB指定字段的含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E5%AD%90%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%BE%93%E5%87%BA%E8%AF%B4%E6%98%8E%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 如何进入子目录并输出(说明方法调用)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%E5%8D%B3%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E5%86%85%E5%AE%B9%E6%AF%94%E5%A6%82%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E7%AD%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8Cc%E4%BB%A3%E7%A0%81%E5%92%8C%E6%B1%87%E7%BC%96%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%A0%E9%80%92"><span class="nav-number">2.4.</span> <span class="nav-text">4. 如何进行C代码和汇编之间的参数传递和返回值传递</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%AF%B9io%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%E6%8C%87%E5%AE%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%89%80%E5%AD%98%E5%80%BC%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.5.</span> <span class="nav-text">5. 汇编代码中对I&#x2F;O的处理方式,说明指定寄存器所存值的含义</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Lg"
+      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
+  <p class="site-author-name" itemprop="name">Lg</p>
+  <div class="site-description" itemprop="description">青春无悔不死</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      友链
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://zjy1412.github.io/" title="https:&#x2F;&#x2F;zjy1412.github.io" rel="noopener" target="_blank">耀耀</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+      
+      <script type="text/javascript" charset="utf-8" src="/js/tagcloud.js"></script>
+      <script type="text/javascript" charset="utf-8" src="/js/tagcanvas.js"></script>
+      <div class="widget-wrap">
+          <div id="myCanvasContainer" class="widget tagcloud">
+              <canvas width="250" height="250" id="resCanvas" style="width:100%">
+                  <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E4%B8%93%E4%B8%9A%E8%AF%BE/" rel="tag">专业课</a><span class="tag-list-count">22</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E7%B3%BB%E7%BB%9F/" rel="tag">系统</a><span class="tag-list-count">4</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E8%AF%97%E6%AD%8C/" rel="tag">诗歌</a><span class="tag-list-count">4</span></li></ul>
+              </canvas>
+          </div>
+      </div>
+      
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2023-06 – 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lg</span>
+</div>
+  <div class="powered-by">
+    <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+  
+
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+      pbOptions = {};
+        pbOptions.iconStyle = "box";
+        pbOptions.boxForm = "horizontal";
+        pbOptions.position = "bottomCenter";
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+  </script>
+</body>
+</html>
