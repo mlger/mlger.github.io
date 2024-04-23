@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、PPT相关内容 1.何谓实模式，何谓保护模式？  实模式：基地址+偏移量可以直接获得物理地址的模式  缺点：非常不安全  保护模式：不能直接拿到物理地址  需要进行地址转换 从80286开始，是现代操作系统的主要模式   2. 什么是选择子？ 在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权">
+  <meta name="description" content="一、PPT相关内容1.何谓实模式，何谓保护模式？ 实模式：基地址+偏移量可以直接获得物理地址的模式 缺点：非常不安全   保护模式：不能直接拿到物理地址 需要进行地址转换 从80286开始，是现代操作系统的主要模式    2. 什么是选择子？在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权级（R">
 <meta property="og:type" content="article">
 <meta property="og:title" content="验收准备.md">
 <meta property="og:url" content="https://example.com/2024/04/22/%E9%AA%8C%E6%94%B6%E5%87%86%E5%A4%87/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="一、PPT相关内容 1.何谓实模式，何谓保护模式？  实模式：基地址+偏移量可以直接获得物理地址的模式  缺点：非常不安全  保护模式：不能直接拿到物理地址  需要进行地址转换 从80286开始，是现代操作系统的主要模式   2. 什么是选择子？ 在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权">
+<meta property="og:description" content="一、PPT相关内容1.何谓实模式，何谓保护模式？ 实模式：基地址+偏移量可以直接获得物理地址的模式 缺点：非常不安全   保护模式：不能直接拿到物理地址 需要进行地址转换 从80286开始，是现代操作系统的主要模式    2. 什么是选择子？在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：  请求特权级（R">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png">
 <meta property="article:published_time" content="2024-04-22T13:10:00.000Z">
-<meta property="article:modified_time" content="2024-04-22T13:10:13.887Z">
+<meta property="article:modified_time" content="2024-04-23T14:05:12.071Z">
 <meta property="article:author" content="Lg">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png">
@@ -227,10 +227,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-04-22 21:10:00 / 修改时间：21:10:13" itemprop="dateCreated datePublished" datetime="2024-04-22T21:10:00+08:00">2024-04-22</time>
+              <time title="创建时间：2024-04-22 21:10:00" itemprop="dateCreated datePublished" datetime="2024-04-22T21:10:00+08:00">2024-04-22</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-04-23 22:05:12" itemprop="dateModified" datetime="2024-04-23T22:05:12+08:00">2024-04-23</time>
+              </span>
 
           
 
@@ -243,115 +249,92 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一ppt相关内容">一、PPT相关内容</h4>
-<h5 id="何谓实模式何谓保护模式">1.何谓实模式，何谓保护模式？</h5>
-<ul>
-<li>实模式：基地址+偏移量可以直接获得物理地址的模式
-<ul>
+        <h4 id="一、PPT相关内容"><a href="#一、PPT相关内容" class="headerlink" title="一、PPT相关内容"></a>一、PPT相关内容</h4><h5 id="1-何谓实模式，何谓保护模式？"><a href="#1-何谓实模式，何谓保护模式？" class="headerlink" title="1.何谓实模式，何谓保护模式？"></a>1.何谓实模式，何谓保护模式？</h5><ul>
+<li>实模式：基地址+偏移量可以直接获得物理地址的模式<ul>
 <li>缺点：非常不安全</li>
-</ul></li>
-<li>保护模式：不能直接拿到物理地址
-<ul>
+</ul>
+</li>
+<li>保护模式：不能直接拿到物理地址<ul>
 <li>需要进行地址转换</li>
 <li>从80286开始，是现代操作系统的主要模式</li>
-</ul></li>
 </ul>
-<h5 id="什么是选择子">2. 什么是选择子？</h5>
-<p>在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：</p>
-<ol type="1">
+</li>
+</ul>
+<h5 id="2-什么是选择子？"><a href="#2-什么是选择子？" class="headerlink" title="2. 什么是选择子？"></a>2. 什么是选择子？</h5><p>在计算机体系结构中，特别是在涉及保护模式的操作系统中，选择子是用于指定描述符表（GDT或LDT）中的描述符的索引。选择子包含了几个关键部分：</p>
+<ol>
 <li><strong>请求特权级（RPL）</strong>：选择子的低2位表示请求的特权级，决定访问权限。</li>
 <li><strong>表指示标志（TI）</strong>：第3位，表示选择的是全局描述符表（GDT，TI=0）还是局部描述符表（LDT，TI=1）。</li>
 <li><strong>索引</strong>：高13位，表示在GDT或LDT中的具体位置，即该表中的偏移量。</li>
 </ol>
 <p>选择子是放在段选择寄存器中的16位值，通过它，处理器可以访问描述符表中相应的段描述符，进而获得段的具体信息，如基地址和界限等。</p>
-<h5 id="什么是描述符">3. 什么是描述符？</h5>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png" alt="" /><figcaption>image-20240421185319902</figcaption>
-</figure>
+<h5 id="3-什么是描述符？"><a href="#3-什么是描述符？" class="headerlink" title="3. 什么是描述符？"></a>3. 什么是描述符？</h5><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240421185319902.png" alt="image-20240421185319902"></p>
 <p>描述符是在保护模式下操作系统中使用的一个数据结构，用于定义内存段的属性和访问权限。每个描述符通常存储在全局描述符表（GDT）或局部描述符表（LDT）中。描述符中包含了以下关键信息：</p>
-<ol type="1">
+<ol>
 <li><strong>基地址（Base Address）</strong>：段的起始物理地址。</li>
 <li><strong>段界限（Segment Limit）</strong>：与基地址相结合，定义了段的大小。这个界限用于限制段内的偏移，确保访问不会超出段的实际物理内存范围。</li>
 <li><strong>访问权限（Access Rights）</strong>：描述段的类型（例如，代码段、数据段等）、描述符类型（系统段或代码/数据段）、以及其他访问控制信息（如读/写权限、执行权限）。</li>
 <li><strong>特权级（DPL, Descriptor Privilege Level）</strong>：定义了访问该段所需的最低CPU特权级（CPL, Current Privilege Level）。</li>
 </ol>
 <p>描述符确保了内存段的保护和正确的访问，是实现多任务和内存保护的基础。通过这些信息，操作系统能够管理不同任务的内存访问权限，防止未授权访问，同时允许合法的访问和操作。</p>
-<h5 id="什么是-gdt什么是-ldt">4. 什么是 GDT，什么是 LDT？</h5>
-<p>GDT（Global Descriptor Table）和LDT（Local Descriptor Table）是在保护模式下使用的两种描述符表，用于定义内存段的属性和访问权限。它们的具体作用和特性如下：</p>
+<h5 id="4-什么是-GDT，什么是-LDT？"><a href="#4-什么是-GDT，什么是-LDT？" class="headerlink" title="4. 什么是 GDT，什么是 LDT？"></a>4. 什么是 GDT，什么是 LDT？</h5><p>GDT（Global Descriptor Table）和LDT（Local Descriptor Table）是在保护模式下使用的两种描述符表，用于定义内存段的属性和访问权限。它们的具体作用和特性如下：</p>
 <ul>
-<li>GDT (Global Descriptor Table)：全局描述符表，是全局唯一的。
-<ul>
+<li>GDT (Global Descriptor Table)：全局描述符表，是全局唯一的。<ul>
 <li>存放一些公用的描述符，和包含各进程局部描述符表首地址的描述符。</li>
-</ul></li>
-<li>LDT (Local Descriptor Table)：局部描述符表，每个进程都可以有一个。
-<ul>
-<li>存放本进程内使用的描述符。</li>
-</ul></li>
 </ul>
-<h5 id="分别说明-gdtr-和-ldtr">5. 分别说明 GDTR 和 LDTR</h5>
-<ul>
-<li>GDTR (GDT Register)：48位寄存器，高32位放置GDT首地址，低16位放置GDT限长
-<ul>
+</li>
+<li>LDT (Local Descriptor Table)：局部描述符表，每个进程都可以有一个。<ul>
+<li>存放本进程内使用的描述符。</li>
+</ul>
+</li>
+</ul>
+<h5 id="5-分别说明-GDTR-和-LDTR"><a href="#5-分别说明-GDTR-和-LDTR" class="headerlink" title="5. 分别说明 GDTR 和 LDTR"></a>5. 分别说明 GDTR 和 LDTR</h5><ul>
+<li>GDTR (GDT Register)：48位寄存器，高32位放置GDT首地址，低16位放置GDT限长<ul>
 <li>限长决定了可寻址的大小，注意低16位放的不是选择子</li>
-</ul></li>
+</ul>
+</li>
 <li>LDTR (LDT Register)：16位寄存器，放置一个特殊的选择子，用于查找当前进程的LDT首地址。</li>
 </ul>
-<h5 id="说明-gdt-直接查找物理地址的具体步骤">6. 说明 GDT 直接查找物理地址的具体步骤。</h5>
-<ol type="1">
+<h5 id="6-说明-GDT-直接查找物理地址的具体步骤。"><a href="#6-说明-GDT-直接查找物理地址的具体步骤。" class="headerlink" title="6. 说明 GDT 直接查找物理地址的具体步骤。"></a>6. 说明 GDT 直接查找物理地址的具体步骤。</h5><ol>
 <li>给出段选择子（放在段选择寄存器里）+ 偏移量</li>
 <li>若选择了 GDT 方式，则从 GDTR 获取 GDT 首地址，用段选择子中的13位做偏移，拿到 GDT 中的描述符</li>
 <li>如果合法且有权限，用描述符中的段首地址加上 1 中的偏移量找到物理地址, 寻址结束</li>
 </ol>
-<h5 id="说明通过-ldt-查找物理地址的具体步骤">7. 说明通过 LDT 查找物理地址的具体步骤。</h5>
-<ol type="1">
+<h5 id="7-说明通过-LDT-查找物理地址的具体步骤。"><a href="#7-说明通过-LDT-查找物理地址的具体步骤。" class="headerlink" title="7. 说明通过 LDT 查找物理地址的具体步骤。"></a>7. 说明通过 LDT 查找物理地址的具体步骤。</h5><ol>
 <li>给出段选择子（放在段选择寄存器中）+ 偏移量</li>
 <li>若选择了 LDT 方式，则从 GDTR 获取 GDT 首地址，用 LDTR 中的偏移量做偏移，拿到 GDT 中的描述符 1</li>
 <li>从描述符 1 中获取 LDT 首地址，用段选择子中的13位做偏移，拿到 LDT 中的描述符2</li>
 <li>如果合法且有权限，用描述符2中的段首地址加上步骤 1 中的偏移量找到物理地址。寻址结束</li>
 </ol>
-<h5 id="根目录区大小一定么扇区号是多少为什么">8. 根目录区大小一定么?扇区号是多少?为什么?</h5>
-<h6 id="根目录区大小">根目录区大小</h6>
-<ol type="1">
-<li><strong>大小设置</strong>：
-<ul>
+<h5 id="8-根目录区大小一定么-扇区号是多少-为什么"><a href="#8-根目录区大小一定么-扇区号是多少-为什么" class="headerlink" title="8. 根目录区大小一定么?扇区号是多少?为什么?"></a>8. 根目录区大小一定么?扇区号是多少?为什么?</h5><h6 id="根目录区大小"><a href="#根目录区大小" class="headerlink" title="根目录区大小"></a>根目录区大小</h6><ol>
+<li><strong>大小设置</strong>：<ul>
 <li>在FAT12文件系统中，根目录区的大小是在格式化时预设的。这个大小是由根目录区能够包含的最大条目数决定的，而每个条目通常占用32字节。例如，如果系统允许根目录区包含224个条目，则根目录区的大小将是224 × 32 = 7168字节。</li>
-</ul></li>
-<li><strong>计算扇区数</strong>：
-<ul>
+</ul>
+</li>
+<li><strong>计算扇区数</strong>：<ul>
 <li>由于扇区通常是512字节，根目录区的大小（以字节为单位）将被512除以得到所需的扇区数。继续上面的例子，7168字节的根目录区将占用7168 / 512 = 14个扇区。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-<h6 id="扇区号">扇区号</h6>
-<ol type="1">
-<li><strong>起始扇区</strong>：
-<ul>
+<h6 id="扇区号"><a href="#扇区号" class="headerlink" title="扇区号"></a>扇区号</h6><ol>
+<li><strong>起始扇区</strong>：<ul>
 <li>FAT12文件系统的根目录区紧跟在两个FAT表之后。文件系统的起始部分包括保留扇区（通常包括引导扇区），其后是两个FAT表。</li>
 <li>根目录的起始扇区号可以通过计算保留扇区和FAT表所占的扇区数来确定。</li>
-</ul></li>
-<li><strong>计算方法</strong>：
-<ul>
+</ul>
+</li>
+<li><strong>计算方法</strong>：<ul>
 <li>假设有一个保留扇区和两个FAT表，每个FAT表大小为9扇区，那么根目录的起始扇区号将是 1（保留扇区）+ 9×2（两个FAT表） = 19。因此，根目录的起始扇区号为19。</li>
-</ul></li>
+</ul>
+</li>
 </ol>
-<h5 id="数据区第一个簇号是多少为什么">9. 数据区第一个簇号是多少?为什么?</h5>
-<p>在1.44M软盘上，FAT前三个字节的值是固定的0xF0、0xFF、0xFF，用于表示这是一个应用在1.44M软盘上的FAT12文件系统。本来序号为0和1的FAT表项应该对应于簇0和簇1，但是由于这两个表项被设置成了固定值，簇0和簇1就没有存在的意义了，所以数据区就起始于簇2</p>
-<h5 id="fat表的作用">10. FAT表的作用？</h5>
-<p>FAT项的值代表文件的下一个簇号 值大于或等于0xFF8，表示当前簇已经是本文件的最后一个簇 值为0xFF7，表示它是一个坏簇</p>
-<h5 id="解释静态链接的过程">11. 解释静态链接的过程。</h5>
-<ol type="1">
+<h5 id="9-数据区第一个簇号是多少-为什么"><a href="#9-数据区第一个簇号是多少-为什么" class="headerlink" title="9. 数据区第一个簇号是多少?为什么?"></a>9. 数据区第一个簇号是多少?为什么?</h5><p>在1.44M软盘上，FAT前三个字节的值是固定的0xF0、0xFF、0xFF，用于表示这是一个应用在1.44M软盘上的FAT12文件系统。本来序号为0和1的FAT表项应该对应于簇0和簇1，但是由于这两个表项被设置成了固定值，簇0和簇1就没有存在的意义了，所以数据区就起始于簇2</p>
+<h5 id="10-FAT表的作用？"><a href="#10-FAT表的作用？" class="headerlink" title="10. FAT表的作用？"></a>10. FAT表的作用？</h5><p>FAT项的值代表文件的下一个簇号<br>值大于或等于0xFF8，表示当前簇已经是本文件的最后一个簇<br>值为0xFF7，表示它是一个坏簇</p>
+<h5 id="11-解释静态链接的过程。"><a href="#11-解释静态链接的过程。" class="headerlink" title="11. 解释静态链接的过程。"></a>11. 解释静态链接的过程。</h5><ol>
 <li>使用gcc –c命令分别得到test.o以及my_lib.o</li>
 <li>使用ar命令生成libmylib.a或直接使用gcc生成最终可执行文件。</li>
 <li>使用ld(或gcc) –L./ -lmylib通过静态链接库mylib以及test.o生成最后的可执行文件</li>
 </ol>
-<h5 id="静态链接相关ppt中为什么使用ld链接而不是gcc">12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</h5>
-<h5 id="linux下可执行文件的虚拟地址空间默认从哪里开始分配">13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</h5>
-<h4 id="二实验相关内容">二、实验相关内容</h4>
-<h5 id="bpb指定字段的含义">1. BPB指定字段的含义</h5>
-<h5 id="如何进入子目录并输出说明方法调用">2. 如何进入子目录并输出(说明方法调用)</h5>
-<h5 id="如何获得指定文件的内容即如何获得数据区的内容比如使用指针等">3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</h5>
-<h5 id="如何进行c代码和汇编之间的参数传递和返回值传递">4. 如何进行C代码和汇编之间的参数传递和返回值传递</h5>
-<h5 id="汇编代码中对io的处理方式说明指定寄存器所存值的含义">5. 汇编代码中对I/O的处理方式,说明指定寄存器所存值的含义</h5>
-
+<h5 id="12-静态链接相关PPT中为什么使用ld链接而不是gcc"><a href="#12-静态链接相关PPT中为什么使用ld链接而不是gcc" class="headerlink" title="12. 静态链接相关PPT中为什么使用ld链接而不是gcc?"></a>12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</h5><h5 id="13-linux下可执行文件的虚拟地址空间默认从哪里开始分配。"><a href="#13-linux下可执行文件的虚拟地址空间默认从哪里开始分配。" class="headerlink" title="13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。"></a>13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</h5><h4 id="二、实验相关内容"><a href="#二、实验相关内容" class="headerlink" title="二、实验相关内容"></a>二、实验相关内容</h4><h5 id="1-BPB指定字段的含义"><a href="#1-BPB指定字段的含义" class="headerlink" title="1. BPB指定字段的含义"></a>1. BPB指定字段的含义</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">typedef struct BPB &#123;</span><br><span class="line">    u16  BPB_BytsPerSec;	//每扇区字节数</span><br><span class="line">    u8   BPB_SecPerClus;	//每簇扇区数</span><br><span class="line">    u16  BPB_RsvdSecCnt;	//Boot记录占用的扇区数</span><br><span class="line">    u8   BPB_NumFATs;	        //FAT表个数</span><br><span class="line">    u16  BPB_RootEntCnt;	//根目录最大文件数</span><br><span class="line">    u16  BPB_TotSec16;		//扇区总数</span><br><span class="line">    u8   BPB_Media;             //介质描述符</span><br><span class="line">    u16  BPB_FATSz16;	        //每个FAT表所占扇区数</span><br><span class="line">    u16  BPB_SecPerTrk;         //每磁道扇区数（Sector/track）</span><br><span class="line">    u16  BPB_NumHeads;	        //磁头数（面数）</span><br><span class="line">    u32  BPB_HiddSec;	        //隐藏扇区数</span><br><span class="line">    u32  BPB_TotSec32;	        //如果BPB_ToSec16为0，该值为扇区数</span><br><span class="line">&#125; BPB;                          //25字节</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h5 id="2-如何进入子目录并输出-说明方法调用"><a href="#2-如何进入子目录并输出-说明方法调用" class="headerlink" title="2. 如何进入子目录并输出(说明方法调用)"></a>2. 如何进入子目录并输出(说明方法调用)</h5><h5 id="3-如何获得指定文件的内容-即如何获得数据区的内容-比如使用指针等"><a href="#3-如何获得指定文件的内容-即如何获得数据区的内容-比如使用指针等" class="headerlink" title="3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)"></a>3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</h5><h5 id="4-如何进行C代码和汇编之间的参数传递和返回值传递"><a href="#4-如何进行C代码和汇编之间的参数传递和返回值传递" class="headerlink" title="4. 如何进行C代码和汇编之间的参数传递和返回值传递"></a>4. 如何进行C代码和汇编之间的参数传递和返回值传递</h5><h5 id="5-汇编代码中对I-O的处理方式-说明指定寄存器所存值的含义"><a href="#5-汇编代码中对I-O的处理方式-说明指定寄存器所存值的含义" class="headerlink" title="5. 汇编代码中对I/O的处理方式,说明指定寄存器所存值的含义"></a>5. 汇编代码中对I/O的处理方式,说明指定寄存器所存值的含义</h5>
     </div>
 
     
@@ -434,7 +417,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80ppt%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">一、PPT相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%95%E8%B0%93%E5%AE%9E%E6%A8%A1%E5%BC%8F%E4%BD%95%E8%B0%93%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">1.何谓实模式，何谓保护模式？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%89%E6%8B%A9%E5%AD%90"><span class="nav-number">1.2.</span> <span class="nav-text">2. 什么是选择子？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%8F%E8%BF%B0%E7%AC%A6"><span class="nav-number">1.3.</span> <span class="nav-text">3. 什么是描述符？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-gdt%E4%BB%80%E4%B9%88%E6%98%AF-ldt"><span class="nav-number">1.4.</span> <span class="nav-text">4. 什么是 GDT，什么是 LDT？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E5%88%AB%E8%AF%B4%E6%98%8E-gdtr-%E5%92%8C-ldtr"><span class="nav-number">1.5.</span> <span class="nav-text">5. 分别说明 GDTR 和 LDTR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E-gdt-%E7%9B%B4%E6%8E%A5%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.6.</span> <span class="nav-text">6. 说明 GDT 直接查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%AF%B4%E6%98%8E%E9%80%9A%E8%BF%87-ldt-%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4"><span class="nav-number">1.7.</span> <span class="nav-text">7. 说明通过 LDT 查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F%E4%B8%80%E5%AE%9A%E4%B9%88%E6%89%87%E5%8C%BA%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.8.</span> <span class="nav-text">8. 根目录区大小一定么?扇区号是多少?为什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.8.1.</span> <span class="nav-text">根目录区大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%87%E5%8C%BA%E5%8F%B7"><span class="nav-number">1.8.2.</span> <span class="nav-text">扇区号</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%B0%87%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.9.</span> <span class="nav-text">9. 数据区第一个簇号是多少?为什么?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fat%E8%A1%A8%E7%9A%84%E4%BD%9C%E7%94%A8"><span class="nav-number">1.10.</span> <span class="nav-text">10. FAT表的作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%87%8A%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B"><span class="nav-number">1.11.</span> <span class="nav-text">11. 解释静态链接的过程。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9B%B8%E5%85%B3ppt%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8ld%E9%93%BE%E6%8E%A5%E8%80%8C%E4%B8%8D%E6%98%AFgcc"><span class="nav-number">1.12.</span> <span class="nav-text">12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#linux%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E9%BB%98%E8%AE%A4%E4%BB%8E%E5%93%AA%E9%87%8C%E5%BC%80%E5%A7%8B%E5%88%86%E9%85%8D"><span class="nav-number">1.13.</span> <span class="nav-text">13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E5%AE%9E%E9%AA%8C%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">二、实验相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#bpb%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. BPB指定字段的含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E5%AD%90%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%BE%93%E5%87%BA%E8%AF%B4%E6%98%8E%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 如何进入子目录并输出(说明方法调用)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9%E5%8D%B3%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E5%86%85%E5%AE%B9%E6%AF%94%E5%A6%82%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E7%AD%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8Cc%E4%BB%A3%E7%A0%81%E5%92%8C%E6%B1%87%E7%BC%96%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%A0%E9%80%92"><span class="nav-number">2.4.</span> <span class="nav-text">4. 如何进行C代码和汇编之间的参数传递和返回值传递</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%AF%B9io%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F%E8%AF%B4%E6%98%8E%E6%8C%87%E5%AE%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%89%80%E5%AD%98%E5%80%BC%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.5.</span> <span class="nav-text">5. 汇编代码中对I&#x2F;O的处理方式,说明指定寄存器所存值的含义</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81PPT%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">1.</span> <span class="nav-text">一、PPT相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E4%BD%95%E8%B0%93%E5%AE%9E%E6%A8%A1%E5%BC%8F%EF%BC%8C%E4%BD%95%E8%B0%93%E4%BF%9D%E6%8A%A4%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="nav-number">1.1.</span> <span class="nav-text">1.何谓实模式，何谓保护模式？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%BB%80%E4%B9%88%E6%98%AF%E9%80%89%E6%8B%A9%E5%AD%90%EF%BC%9F"><span class="nav-number">1.2.</span> <span class="nav-text">2. 什么是选择子？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E4%BB%80%E4%B9%88%E6%98%AF%E6%8F%8F%E8%BF%B0%E7%AC%A6%EF%BC%9F"><span class="nav-number">1.3.</span> <span class="nav-text">3. 什么是描述符？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E4%BB%80%E4%B9%88%E6%98%AF-GDT%EF%BC%8C%E4%BB%80%E4%B9%88%E6%98%AF-LDT%EF%BC%9F"><span class="nav-number">1.4.</span> <span class="nav-text">4. 什么是 GDT，什么是 LDT？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E5%88%86%E5%88%AB%E8%AF%B4%E6%98%8E-GDTR-%E5%92%8C-LDTR"><span class="nav-number">1.5.</span> <span class="nav-text">5. 分别说明 GDTR 和 LDTR</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E8%AF%B4%E6%98%8E-GDT-%E7%9B%B4%E6%8E%A5%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E3%80%82"><span class="nav-number">1.6.</span> <span class="nav-text">6. 说明 GDT 直接查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E8%AF%B4%E6%98%8E%E9%80%9A%E8%BF%87-LDT-%E6%9F%A5%E6%89%BE%E7%89%A9%E7%90%86%E5%9C%B0%E5%9D%80%E7%9A%84%E5%85%B7%E4%BD%93%E6%AD%A5%E9%AA%A4%E3%80%82"><span class="nav-number">1.7.</span> <span class="nav-text">7. 说明通过 LDT 查找物理地址的具体步骤。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F%E4%B8%80%E5%AE%9A%E4%B9%88-%E6%89%87%E5%8C%BA%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91-%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.8.</span> <span class="nav-text">8. 根目录区大小一定么?扇区号是多少?为什么?</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%A0%B9%E7%9B%AE%E5%BD%95%E5%8C%BA%E5%A4%A7%E5%B0%8F"><span class="nav-number">1.8.1.</span> <span class="nav-text">根目录区大小</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E6%89%87%E5%8C%BA%E5%8F%B7"><span class="nav-number">1.8.2.</span> <span class="nav-text">扇区号</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%B0%87%E5%8F%B7%E6%98%AF%E5%A4%9A%E5%B0%91-%E4%B8%BA%E4%BB%80%E4%B9%88"><span class="nav-number">1.9.</span> <span class="nav-text">9. 数据区第一个簇号是多少?为什么?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#10-FAT%E8%A1%A8%E7%9A%84%E4%BD%9C%E7%94%A8%EF%BC%9F"><span class="nav-number">1.10.</span> <span class="nav-text">10. FAT表的作用？</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#11-%E8%A7%A3%E9%87%8A%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9A%84%E8%BF%87%E7%A8%8B%E3%80%82"><span class="nav-number">1.11.</span> <span class="nav-text">11. 解释静态链接的过程。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#12-%E9%9D%99%E6%80%81%E9%93%BE%E6%8E%A5%E7%9B%B8%E5%85%B3PPT%E4%B8%AD%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BD%BF%E7%94%A8ld%E9%93%BE%E6%8E%A5%E8%80%8C%E4%B8%8D%E6%98%AFgcc"><span class="nav-number">1.12.</span> <span class="nav-text">12. 静态链接相关PPT中为什么使用ld链接而不是gcc?</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#13-linux%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E6%96%87%E4%BB%B6%E7%9A%84%E8%99%9A%E6%8B%9F%E5%9C%B0%E5%9D%80%E7%A9%BA%E9%97%B4%E9%BB%98%E8%AE%A4%E4%BB%8E%E5%93%AA%E9%87%8C%E5%BC%80%E5%A7%8B%E5%88%86%E9%85%8D%E3%80%82"><span class="nav-number">1.13.</span> <span class="nav-text">13. linux下可执行文件的虚拟地址空间默认从哪里开始分配。</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%9E%E9%AA%8C%E7%9B%B8%E5%85%B3%E5%86%85%E5%AE%B9"><span class="nav-number">2.</span> <span class="nav-text">二、实验相关内容</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-BPB%E6%8C%87%E5%AE%9A%E5%AD%97%E6%AE%B5%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.1.</span> <span class="nav-text">1. BPB指定字段的含义</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E5%A6%82%E4%BD%95%E8%BF%9B%E5%85%A5%E5%AD%90%E7%9B%AE%E5%BD%95%E5%B9%B6%E8%BE%93%E5%87%BA-%E8%AF%B4%E6%98%8E%E6%96%B9%E6%B3%95%E8%B0%83%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">2. 如何进入子目录并输出(说明方法调用)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%8C%87%E5%AE%9A%E6%96%87%E4%BB%B6%E7%9A%84%E5%86%85%E5%AE%B9-%E5%8D%B3%E5%A6%82%E4%BD%95%E8%8E%B7%E5%BE%97%E6%95%B0%E6%8D%AE%E5%8C%BA%E7%9A%84%E5%86%85%E5%AE%B9-%E6%AF%94%E5%A6%82%E4%BD%BF%E7%94%A8%E6%8C%87%E9%92%88%E7%AD%89"><span class="nav-number">2.3.</span> <span class="nav-text">3. 如何获得指定文件的内容,即如何获得数据区的内容(比如使用指针等)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8CC%E4%BB%A3%E7%A0%81%E5%92%8C%E6%B1%87%E7%BC%96%E4%B9%8B%E9%97%B4%E7%9A%84%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92%E5%92%8C%E8%BF%94%E5%9B%9E%E5%80%BC%E4%BC%A0%E9%80%92"><span class="nav-number">2.4.</span> <span class="nav-text">4. 如何进行C代码和汇编之间的参数传递和返回值传递</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%B1%87%E7%BC%96%E4%BB%A3%E7%A0%81%E4%B8%AD%E5%AF%B9I-O%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F-%E8%AF%B4%E6%98%8E%E6%8C%87%E5%AE%9A%E5%AF%84%E5%AD%98%E5%99%A8%E6%89%80%E5%AD%98%E5%80%BC%E7%9A%84%E5%90%AB%E4%B9%89"><span class="nav-number">2.5.</span> <span class="nav-text">5. 汇编代码中对I&#x2F;O的处理方式,说明指定寄存器所存值的含义</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 

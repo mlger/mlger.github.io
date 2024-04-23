@@ -22,16 +22,16 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、前言 这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。 二、配置 1. 无法连接校园网的问题 在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。 原因是 iwlwifi 驱动未加载，查看： 1$ lsmod | grep iwlwifi 发现并无输出，说明驱动并没有启动。重新加载模块： 1$ sudo modprobe iwlwifi 加载后即可">
+  <meta name="description" content="一、前言这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。 二、配置1. 无法连接校园网的问题在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。 原因是 iwlwifi 驱动未加载，查看： 1$ lsmod | grep iwlwifi 发现并无输出，说明驱动并没有启动。重新加载模块： 1$ sudo modprobe iwlwifi 加载后即可顺利连">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 相关配置">
 <meta property="og:url" content="https://example.com/2024/04/08/Ubuntu%20%E7%9B%B8%E5%85%B3%E9%85%8D%E7%BD%AE/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="一、前言 这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。 二、配置 1. 无法连接校园网的问题 在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。 原因是 iwlwifi 驱动未加载，查看： 1$ lsmod | grep iwlwifi 发现并无输出，说明驱动并没有启动。重新加载模块： 1$ sudo modprobe iwlwifi 加载后即可">
+<meta property="og:description" content="一、前言这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。 二、配置1. 无法连接校园网的问题在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。 原因是 iwlwifi 驱动未加载，查看： 1$ lsmod | grep iwlwifi 发现并无输出，说明驱动并没有启动。重新加载模块： 1$ sudo modprobe iwlwifi 加载后即可顺利连">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240422133508858.png">
 <meta property="article:published_time" content="2024-04-08T06:23:00.000Z">
-<meta property="article:modified_time" content="2024-04-23T05:24:00.985Z">
+<meta property="article:modified_time" content="2024-04-23T14:03:40.130Z">
 <meta property="article:author" content="Lg">
 <meta property="article:tag" content="系统">
 <meta name="twitter:card" content="summary">
@@ -236,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-23 13:24:00" itemprop="dateModified" datetime="2024-04-23T13:24:00+08:00">2024-04-23</time>
+                <time title="修改时间：2024-04-23 22:03:40" itemprop="dateModified" datetime="2024-04-23T22:03:40+08:00">2024-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -259,21 +259,16 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一前言">一、前言</h4>
-<p>这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。</p>
-<h4 id="二配置">二、配置</h4>
-<h5 id="无法连接校园网的问题">1. 无法连接校园网的问题</h5>
-<p>在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。</p>
+        <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>这是我在若干次重装 Ubuntu-22.04-LTS 时遇到的普遍性问题，遂志之。</p>
+<h4 id="二、配置"><a href="#二、配置" class="headerlink" title="二、配置"></a>二、配置</h4><h5 id="1-无法连接校园网的问题"><a href="#1-无法连接校园网的问题" class="headerlink" title="1. 无法连接校园网的问题"></a>1. 无法连接校园网的问题</h5><p>在重装完系统之后出现无法连接校园网，但却可以连接手机热点的问题。</p>
 <p>原因是 iwlwifi 驱动未加载，查看：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ lsmod | grep iwlwifi</span><br></pre></td></tr></table></figure>
 <p>发现并无输出，说明驱动并没有启动。重新加载模块：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo modprobe iwlwifi</span><br></pre></td></tr></table></figure>
 <p>加载后即可顺利连接校园网。</p>
-<h5 id="修改配置文件后无法进入系统的问题">2. 修改配置文件后无法进入系统的问题</h5>
-<p>在修改完配置后无法顺利进入系统，黑屏仅右上角有光标闪烁。</p>
+<h5 id="2-修改配置文件后无法进入系统的问题"><a href="#2-修改配置文件后无法进入系统的问题" class="headerlink" title="2. 修改配置文件后无法进入系统的问题"></a>2. 修改配置文件后无法进入系统的问题</h5><p>在修改完配置后无法顺利进入系统，黑屏仅右上角有光标闪烁。</p>
 <p>开机选择 ubuntu develop 模式启动，选择 root，输入密码后即可以 root 进入命令行模式，定位错误信息修改后即可。</p>
-<h5 id="开机自动挂载硬盘">3. 开机自动挂载硬盘</h5>
-<p>因为我 Ubuntu 和 Windows 系统会共用一些文件（没错就是这个 blog），每次开机需要打开磁盘挂载，比较麻烦，所以需要实现开机自动挂载。</p>
+<h5 id="3-开机自动挂载硬盘"><a href="#3-开机自动挂载硬盘" class="headerlink" title="3. 开机自动挂载硬盘"></a>3. 开机自动挂载硬盘</h5><p>因为我 Ubuntu 和 Windows 系统会共用一些文件（没错就是这个 blog），每次开机需要打开磁盘挂载，比较麻烦，所以需要实现开机自动挂载。</p>
 <p>手动挂载后，查看分区信息：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ <span class="built_in">df</span> - h</span><br><span class="line"></span><br><span class="line">文件系统        大小  已用  可用 已用% 挂载点</span><br><span class="line">tmpfs           1.4G  2.4M  1.4G    1% /run</span><br><span class="line">/dev/nvme1n1p8   73G   25G   45G   36% /</span><br><span class="line">...</span><br><span class="line">/dev/nvme0n1p1  806G  482G  325G   60% /media/lg/新加卷</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>可以看见最后一个就是目标挂载盘。查询挂载盘 UUID：</p>
@@ -282,15 +277,13 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/fstab</span><br></pre></td></tr></table></figure>
 <p>添加挂载条目：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &lt;file system&gt; &lt;mount point&gt;   &lt;type&gt;  &lt;options&gt;       &lt;dump&gt;  &lt;pass&gt;</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># /dev/nvme0n1p1</span></span><br><span class="line">UUID=1210A22E10A218AD /media/lg/新加卷 ntfs defaults 0 2</span><br></pre></td></tr></table></figure>
-<p>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘； 第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区</p>
-<h5 id="idea-运行内存设置">4. IDEA 运行内存设置</h5>
-<p>这几天在系统运行过程中，出现了三种卡顿情况：Webstorm 崩溃，IDEA 崩溃，以及输入框崩溃。经过内存监听，初步推断是内存问题。新买的两根 16G 的内存条还没发货，先看看能不能从软件层面入手。</p>
+<p>第一个数字：0表示开机不检查磁盘，1表示开机检查磁盘；<br>第二个数字：0表示交换分区，1代表启动分区（Linux），2表示普通分区 </p>
+<h5 id="4-IDEA-运行内存设置"><a href="#4-IDEA-运行内存设置" class="headerlink" title="4. IDEA 运行内存设置"></a>4. IDEA 运行内存设置</h5><p>这几天在系统运行过程中，出现了三种卡顿情况：Webstorm 崩溃，IDEA 崩溃，以及输入框崩溃。经过内存监听，初步推断是内存问题。新买的两根 16G 的内存条还没发货，先看看能不能从软件层面入手。</p>
 <p>顶部菜单 &gt; help &gt; Edit Custom VM options，输入</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">-Xmx5000m  最大堆内存大小为 5000MB</span><br><span class="line">-Xms1000m  //初始堆内存大小,随着应用程序的需求逐渐增加堆内存大小，最终不会超过 -Xmx 指定的最大值.</span><br><span class="line">-XX:ReservedCodeCacheSize=512m  设置保留代码缓存的大小为 512MB。代码缓存用于存储已编译的代码，以提高程序的执行效率。</span><br><span class="line">-XX:+UseG1GC  指示 JVM 使用 G1 (Garbage-First) 垃圾收集器</span><br></pre></td></tr></table></figure>
 <p>顺便清除下 IDEA 的缓存。</p>
 <p>顶部菜单 &gt; Invalidate Caches &gt; 二三项 &gt; Invalidate and Restart.</p>
-<h5 id="更换输入源">5. 更换输入源</h5>
-<p>经过调查，发现了输入区集体严重延迟的源头是 ibus-pinyin 输入法。</p>
+<h5 id="5-更换输入源"><a href="#5-更换输入源" class="headerlink" title="5. 更换输入源"></a>5. 更换输入源</h5><p>经过调查，发现了输入区集体严重延迟的源头是 ibus-pinyin 输入法。</p>
 <blockquote>
 <p>由于读取 sqlite 词库时有大量的IO操作，ibus-pinyin 在系统高负载时输入时有卡住的现象。</p>
 </blockquote>
@@ -298,28 +291,22 @@
 <p>目前没有找到特别合适的替代，暂时先更新原输入法吧，崩溃后再继续折腾。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install --reinstall ibus ibus-gtk ibus-gtk3 ibus-clutter ibus-pinyin</span><br><span class="line">$ ibus restart</span><br></pre></td></tr></table></figure>
 <p>最终解决办法是重新更换 fcitx5 输入法，更换皮肤后使用体验极佳。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240422133508858.png" alt="" /><figcaption>image-20240422133508858</figcaption>
-</figure>
-<h5 id="系统容灾备份-clonezilla">6. 系统容灾备份 (Clonezilla)</h5>
-<p>设备准备：2 枚 U盘，一枚作为引导盘（容量 4G 即可），一枚作为备份盘（需要较大容量，视备份数据量而定，我使用的是 64GB U盘）。其中引导盘需要先格式化（可以选择任意设备通用），并在其上建立一个分区。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240422133508858.png" alt="image-20240422133508858"></p>
+<h5 id="6-系统容灾备份-Clonezilla"><a href="#6-系统容灾备份-Clonezilla" class="headerlink" title="6. 系统容灾备份 (Clonezilla)"></a>6. 系统容灾备份 (Clonezilla)</h5><p>设备准备：2 枚 U盘，一枚作为引导盘（容量 4G 即可），一枚作为备份盘（需要较大容量，视备份数据量而定，我使用的是 64GB U盘）。其中引导盘需要先格式化（可以选择任意设备通用），并在其上建立一个分区。</p>
 <p>在 Clonezilla 官网上下载 zip 包，并解压到引导盘。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$ sudo lsblk</span><br><span class="line">$ sudo unzip clonezilla-live-20240116-mantic-amd64.zip -d /usb-boot</span><br><span class="line"></span><br><span class="line">$ <span class="built_in">cd</span> /usb-boot/utils/linux/</span><br><span class="line">$ sudo bash makeboot.sh /dev/sdaX</span><br></pre></td></tr></table></figure>
 <p><strong>这里的 /dev/sdaX 是引导盘，注意不能填错！！！</strong></p>
 <p>然后插入引导盘，进入 BIOS 界面设备选择将其置顶，再启动即可进入 Clonezilla 界面。</p>
 <p>备份的操作逻辑比较简单，这里就不多讲了。</p>
-<h5 id="系统异常时">7. 系统异常时</h5>
-<p>到目前为止系统异常甚至崩溃的原因有如下几点：</p>
+<h5 id="7-系统异常时"><a href="#7-系统异常时" class="headerlink" title="7. 系统异常时"></a>7. 系统异常时</h5><p>到目前为止系统异常甚至崩溃的原因有如下几点：</p>
 <ul>
-<li>nvidia 驱动：解决方案是通过 liveCD / 旧版内核，选择附加驱动安装推荐选项。（未尝试过 liveCD）</li>
+<li>nvidia 驱动：解决方案是通过 liveCD / 旧版内核，选择附加驱动安装推荐选项。（未尝试过  liveCD）</li>
 <li>分区挂载异常：livdCD 启动，挂在原系统根目录后修改 /etc/fstab 文件。</li>
 <li>引导程序异常：liveCD 启动，使用 boot-repair 推荐选项修复引导。</li>
 </ul>
-<h5 id="fuse-安装">8. fuse 安装</h5>
-<p>Ubuntu 22.04 及以上版本直接使用 <code>apt install fuse</code> 会导致与 gnome 冲突，删除相关包甚至影响系统。因此需要更改安装命令，对于 <strong>Ubuntu (<span class="math inline">\(\geq 22.04\)</span>)</strong>，以下命令可安全安装 fuse</p>
+<h5 id="8-fuse-安装"><a href="#8-fuse-安装" class="headerlink" title="8. fuse 安装"></a>8. fuse 安装</h5><p>Ubuntu 22.04 及以上版本直接使用 <code>apt install fuse</code> 会导致与 gnome 冲突，删除相关包甚至影响系统。因此需要更改安装命令，对于 <strong>Ubuntu ($\geq 22.04$)</strong>，以下命令可安全安装 fuse</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo add-apt-repository universe</span><br><span class="line">sudo apt install libfuse2</span><br></pre></td></tr></table></figure>
-<h4 id="三参考资料">三、参考资料</h4>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35451572/article/details/79541106">Ubuntu 磁盘挂载——开机自动挂载_ubuntu2204如何设置开机挂载硬盘-CSDN博客</a></p>
+<h5 id="9-Conky-安装与配置"><a href="#9-Conky-安装与配置" class="headerlink" title="9. Conky 安装与配置"></a>9. Conky 安装与配置</h5><h4 id="三、参考资料"><a href="#三、参考资料" class="headerlink" title="三、参考资料"></a>三、参考资料</h4><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35451572/article/details/79541106">Ubuntu 磁盘挂载——开机自动挂载_ubuntu2204如何设置开机挂载硬盘-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u014072827/article/details/114397807">ubuntu之制作再生龙(Clonezilla)启动盘_再生龙压缩包-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://github.com/AppImage/AppImageKit/wiki/FUSE">FUSE · AppImage/AppImageKit Wiki</a></p>
 
@@ -411,7 +398,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">1. 无法连接校园网的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8E%E6%97%A0%E6%B3%95%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">2. 修改配置文件后无法进入系统的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98"><span class="nav-number">2.3.</span> <span class="nav-text">3. 开机自动挂载硬盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#idea-%E8%BF%90%E8%A1%8C%E5%86%85%E5%AD%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">4. IDEA 运行内存设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%9B%B4%E6%8D%A2%E8%BE%93%E5%85%A5%E6%BA%90"><span class="nav-number">2.5.</span> <span class="nav-text">5. 更换输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%AE%B9%E7%81%BE%E5%A4%87%E4%BB%BD-clonezilla"><span class="nav-number">2.6.</span> <span class="nav-text">6. 系统容灾备份 (Clonezilla)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%B3%BB%E7%BB%9F%E5%BC%82%E5%B8%B8%E6%97%B6"><span class="nav-number">2.7.</span> <span class="nav-text">7. 系统异常时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fuse-%E5%AE%89%E8%A3%85"><span class="nav-number">2.8.</span> <span class="nav-text">8. fuse 安装</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">三、参考资料</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E9%85%8D%E7%BD%AE"><span class="nav-number">2.</span> <span class="nav-text">二、配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E6%97%A0%E6%B3%95%E8%BF%9E%E6%8E%A5%E6%A0%A1%E5%9B%AD%E7%BD%91%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">1. 无法连接校园网的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%BF%AE%E6%94%B9%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%E5%90%8E%E6%97%A0%E6%B3%95%E8%BF%9B%E5%85%A5%E7%B3%BB%E7%BB%9F%E7%9A%84%E9%97%AE%E9%A2%98"><span class="nav-number">2.2.</span> <span class="nav-text">2. 修改配置文件后无法进入系统的问题</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD%E7%A1%AC%E7%9B%98"><span class="nav-number">2.3.</span> <span class="nav-text">3. 开机自动挂载硬盘</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-IDEA-%E8%BF%90%E8%A1%8C%E5%86%85%E5%AD%98%E8%AE%BE%E7%BD%AE"><span class="nav-number">2.4.</span> <span class="nav-text">4. IDEA 运行内存设置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E6%9B%B4%E6%8D%A2%E8%BE%93%E5%85%A5%E6%BA%90"><span class="nav-number">2.5.</span> <span class="nav-text">5. 更换输入源</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-%E7%B3%BB%E7%BB%9F%E5%AE%B9%E7%81%BE%E5%A4%87%E4%BB%BD-Clonezilla"><span class="nav-number">2.6.</span> <span class="nav-text">6. 系统容灾备份 (Clonezilla)</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#7-%E7%B3%BB%E7%BB%9F%E5%BC%82%E5%B8%B8%E6%97%B6"><span class="nav-number">2.7.</span> <span class="nav-text">7. 系统异常时</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#8-fuse-%E5%AE%89%E8%A3%85"><span class="nav-number">2.8.</span> <span class="nav-text">8. fuse 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#9-Conky-%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AE"><span class="nav-number">2.9.</span> <span class="nav-text">9. Conky 安装与配置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="nav-number">3.</span> <span class="nav-text">三、参考资料</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
