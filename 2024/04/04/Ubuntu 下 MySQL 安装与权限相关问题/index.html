@@ -6,7 +6,7 @@
 <meta name="theme-color" content="#222">
 <meta name="generator" content="Hexo 6.3.0">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/Chtholly_red-32*32.jpg">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
   <link rel="mask-icon" href="/images/logo.svg" color="#222">
 
@@ -22,21 +22,21 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、 MySQL 安装与密码配置1. MySQL 安装MySQL 安装比较方便，运行如下命令： 12$ sudo apt update$ sudo apt install mysql-server 安装完成后，MySQL 服务将自动启动。验证 MySQL 服务器运行情况，输入： 1$ sudo systemctl status mysql 输出显示服务正在运行： 123456789101112●">
+  <meta name="description" content="一、 MySQL 安装与密码配置 1. MySQL 安装 MySQL 安装比较方便，运行如下命令： 12$ sudo apt update$ sudo apt install mysql-server 安装完成后，MySQL 服务将自动启动。验证 MySQL 服务器运行情况，输入： 1$ sudo systemctl status mysql 输出显示服务正在运行： 123456789101112">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Ubuntu 下 MySQL 安装与权限相关问题">
 <meta property="og:url" content="https://example.com/2024/04/04/Ubuntu%20%E4%B8%8B%20MySQL%20%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="一、 MySQL 安装与密码配置1. MySQL 安装MySQL 安装比较方便，运行如下命令： 12$ sudo apt update$ sudo apt install mysql-server 安装完成后，MySQL 服务将自动启动。验证 MySQL 服务器运行情况，输入： 1$ sudo systemctl status mysql 输出显示服务正在运行： 123456789101112●">
+<meta property="og:description" content="一、 MySQL 安装与密码配置 1. MySQL 安装 MySQL 安装比较方便，运行如下命令： 12$ sudo apt update$ sudo apt install mysql-server 安装完成后，MySQL 服务将自动启动。验证 MySQL 服务器运行情况，输入： 1$ sudo systemctl status mysql 输出显示服务正在运行： 123456789101112">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img-blog.csdn.net/20171220111132201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGpmMTYxMTA1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:image" content="https://example.com/home/lg/.config/Typora/typora-user-images/image-20240404015837864.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/20171220111132201">
+<meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240404015837864.png">
 <meta property="article:published_time" content="2024-04-03T18:14:00.000Z">
-<meta property="article:modified_time" content="2024-04-08T10:51:02.193Z">
-<meta property="article:author" content="Lg">
+<meta property="article:modified_time" content="2024-04-23T15:31:21.521Z">
+<meta property="article:author" content="Lingeng Ma">
 <meta property="article:tag" content="系统">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img-blog.csdn.net/20171220111132201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGpmMTYxMTA1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/mlger/Pict/main/newPath/20171220111132201">
 
 <link rel="canonical" href="https://example.com/2024/04/04/Ubuntu%20%E4%B8%8B%20MySQL%20%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
 
@@ -210,9 +210,9 @@
     <link itemprop="mainEntityOfPage" href="https://example.com/2024/04/04/Ubuntu%20%E4%B8%8B%20MySQL%20%E5%AE%89%E8%A3%85%E4%B8%8E%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-      <meta itemprop="name" content="Lg">
-      <meta itemprop="description" content="青春无悔不死">
+      <meta itemprop="image" content="https://gravatar.com/avatar/8dcc22778f5b9e30c8a3cffc3d44cb19?size=256&cache=1714135929675">
+      <meta itemprop="name" content="Lingeng Ma">
+      <meta itemprop="description" content="Falling like an aurora.">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -237,7 +237,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2024-04-08 18:51:02" itemprop="dateModified" datetime="2024-04-08T18:51:02+08:00">2024-04-08</time>
+                <time title="修改时间：2024-04-23 23:31:21" itemprop="dateModified" datetime="2024-04-23T23:31:21+08:00">2024-04-23</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -260,31 +260,36 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一、-MySQL-安装与密码配置"><a href="#一、-MySQL-安装与密码配置" class="headerlink" title="一、 MySQL 安装与密码配置"></a>一、 MySQL 安装与密码配置</h4><h5 id="1-MySQL-安装"><a href="#1-MySQL-安装" class="headerlink" title="1. MySQL 安装"></a>1. MySQL 安装</h5><p>MySQL 安装比较方便，运行如下命令：</p>
+        <h4 id="一-mysql-安装与密码配置">一、 MySQL 安装与密码配置</h4>
+<h5 id="mysql-安装">1. MySQL 安装</h5>
+<p>MySQL 安装比较方便，运行如下命令：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install mysql-server</span><br></pre></td></tr></table></figure>
 <p>安装完成后，MySQL 服务将自动启动。验证 MySQL 服务器运行情况，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo systemctl status mysql</span><br></pre></td></tr></table></figure>
 <p>输出显示服务正在运行：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">● mysql.service - MySQL Community Server</span><br><span class="line">     Loaded: loaded (/lib/systemd/system/mysql.service; enabled; vendor preset: enabled)</span><br><span class="line">     Active: active (running) since Thu 2024-04-04 00:35:37 CST; 45min ago</span><br><span class="line">    Process: 15355 ExecStartPre=/usr/share/mysql/mysql-systemd-start pre (code=exited, status=0/SUCCESS)</span><br><span class="line">   Main PID: 15363 (mysqld)</span><br><span class="line">     Status: <span class="string">&quot;Server is operational&quot;</span></span><br><span class="line">      Tasks: 38 (<span class="built_in">limit</span>: 16491)</span><br><span class="line">     Memory: 366.4M</span><br><span class="line">        CPU: 17.785s</span><br><span class="line">     CGroup: /system.slice/mysql.service</span><br><span class="line">             └─15363 /usr/sbin/mysqld</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<h5 id="2-以-root-用户登陆"><a href="#2-以-root-用户登陆" class="headerlink" title="2. 以 root 用户登陆"></a>2. 以 root 用户登陆</h5><p>刚安装完的 MySQL 是没有登陆密码的，以 root 身份登陆 MySQL，输入：</p>
+<h5 id="以-root-用户登陆">2. 以 root 用户登陆</h5>
+<p>刚安装完的 MySQL 是没有登陆密码的，以 root 身份登陆 MySQL，输入：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql</span><br></pre></td></tr></table></figure>
 <p>顺利进入 MySQL：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">Welcome <span class="keyword">to</span> the MySQL monitor.  Commands <span class="keyword">end</span> <span class="keyword">with</span> ; <span class="keyword">or</span> \g.</span><br><span class="line">Your MySQL connection id <span class="keyword">is</span> <span class="number">16</span></span><br><span class="line">Server version: <span class="number">8.0</span><span class="number">.36</span><span class="number">-0</span>ubuntu0<span class="number">.22</span><span class="number">.04</span><span class="number">.1</span> (Ubuntu)</span><br><span class="line"></span><br><span class="line">Copyright (c) <span class="number">2000</span>, <span class="number">2024</span>, Oracle <span class="keyword">and</span><span class="operator">/</span><span class="keyword">or</span> its affiliates.</span><br><span class="line"></span><br><span class="line">Oracle <span class="keyword">is</span> a registered trademark <span class="keyword">of</span> Oracle Corporation <span class="keyword">and</span><span class="operator">/</span><span class="keyword">or</span> its</span><br><span class="line">affiliates. Other names may be trademarks <span class="keyword">of</span> their respective</span><br><span class="line">owners.</span><br><span class="line"></span><br><span class="line">Type <span class="string">&#x27;help;&#x27;</span> <span class="keyword">or</span> <span class="string">&#x27;\h&#x27;</span> <span class="keyword">for</span> help. Type <span class="string">&#x27;\c&#x27;</span> <span class="keyword">to</span> clear the <span class="keyword">current</span> input statement.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">mysql<span class="operator">&gt;</span> </span><br></pre></td></tr></table></figure>
-<h5 id="3-初始化密码"><a href="#3-初始化密码" class="headerlink" title="3. 初始化密码"></a>3. 初始化密码</h5><p>初始化 root 密码，键入如下指令，将 MyPassword 替换为自己的密码即可：</p>
+<h5 id="初始化密码">3. 初始化密码</h5>
+<p>初始化 root 密码，键入如下指令，将 MyPassword 替换为自己的密码即可：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">ALTER</span> <span class="keyword">USER</span><span class="string">&#x27;root&#x27;</span>@<span class="string">&#x27;localhost&#x27;</span>IDENTIFIED <span class="keyword">BY</span> <span class="string">&#x27;MyPassword&#x27;</span>;</span><br></pre></td></tr></table></figure>
 <p>重新加载授权表并退出，使最近对授权进行的更改生效：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> flush privileges;</span><br><span class="line">mysql<span class="operator">&gt;</span> quit;</span><br><span class="line">Bye</span><br></pre></td></tr></table></figure>
 <p>重新进入 MySQL：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ sudo mysql -uroot -p</span><br><span class="line">Enter password:</span><br></pre></td></tr></table></figure>
 <p>然后输入密码即可。</p>
-<h4 id="二、权限相关问题与解决"><a href="#二、权限相关问题与解决" class="headerlink" title="二、权限相关问题与解决"></a>二、权限相关问题与解决</h4><p>以上过程证明了 MySQL 的安装是顺利的，以及密码设置也无误。但我去掉 <code>sudo</code> 运行，却出现如下情况：</p>
+<h4 id="二权限相关问题与解决">二、权限相关问题与解决</h4>
+<p>以上过程证明了 MySQL 的安装是顺利的，以及密码设置也无误。但我去掉 <code>sudo</code> 运行，却出现如下情况：</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ mysql -uroot -p</span><br><span class="line">Enter password: </span><br><span class="line">ERROR 2002 (HY000): Can<span class="string">&#x27;t connect to local MySQL server through socket &#x27;</span>/tmp/mysql.sock<span class="string">&#x27; (2)</span></span><br></pre></td></tr></table></figure>
 <p>一开始以为是密码输入错误，但由于 <code>sudo</code> 状态下能顺利登入。</p>
 <p>接下来检查权限，先以 root 用户登入服务器。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> use mysql;</span><br><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">select</span> <span class="keyword">user</span>,host,plugin <span class="keyword">from</span> <span class="keyword">user</span>;</span><br><span class="line"><span class="operator">+</span><span class="comment">------------------+-----------+-----------------------+</span></span><br><span class="line"><span class="operator">|</span> <span class="keyword">user</span>             <span class="operator">|</span> host      <span class="operator">|</span> plugin                <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------------------+-----------+-----------------------+</span></span><br><span class="line"><span class="operator">|</span> debian<span class="operator">-</span>sys<span class="operator">-</span>maint <span class="operator">|</span> localhost <span class="operator">|</span> caching_sha2_password <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> mysql.infoschema <span class="operator">|</span> localhost <span class="operator">|</span> caching_sha2_password <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> mysql.session    <span class="operator">|</span> localhost <span class="operator">|</span> caching_sha2_password <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> mysql.sys        <span class="operator">|</span> localhost <span class="operator">|</span> caching_sha2_password <span class="operator">|</span></span><br><span class="line"><span class="operator">|</span> root             <span class="operator">|</span> localhost <span class="operator">|</span> mysql_native_password <span class="operator">|</span></span><br><span class="line"><span class="operator">+</span><span class="comment">------------------+-----------+-----------------------+</span></span><br><span class="line"><span class="number">5</span> <span class="keyword">rows</span> <span class="keyword">in</span> <span class="keyword">set</span> (<span class="number">0.00</span> sec)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>若 root 的 plugin 是 auth_socket，更换为 mysql_native_password 即可解决问题。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql<span class="operator">&gt;</span> <span class="keyword">update</span> <span class="keyword">user</span> <span class="keyword">set</span> plugin <span class="operator">=</span> <span class="string">&#x27;mysql_native_password&#x27;</span>;</span><br><span class="line">mysql<span class="operator">&gt;</span> flush privileges;</span><br></pre></td></tr></table></figure>
-<p>错误只能在 <code>socket &#39;/tmp/mysql.sock&#39; (2)</code> 这里了。打开 /tmp 目录却发现并没有 mysql.sock 这个文件。</p>
+<p>错误只能在 <code>socket '/tmp/mysql.sock' (2)</code> 这里了。打开 /tmp 目录却发现并没有 mysql.sock 这个文件。</p>
 <p>尝试查询</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo find / -name mysql.sock</span><br></pre></td></tr></table></figure>
 <p>发现其在 <code>/var/lib/mysql</code> 目录下，创建软链接即可解决：</p>
@@ -307,10 +312,14 @@
 </blockquote>
 <p><code>/var/run/mysqld/mysqld.sock</code> 这个文件就是我们所需要的。查询发现确实有这个文件。</p>
 <p>接下来就是配置，查询到的配置方法如下：</p>
-<p><img src="https://img-blog.csdn.net/20171220111132201?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvaGpmMTYxMTA1/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="img"></p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/20171220111132201" alt="" /><figcaption>img</figcaption>
+</figure>
 <p>打开 <code>/etc/mysql/my.cnf</code> 配置文件。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo vim /etc/mysql/my.cnf</span><br></pre></td></tr></table></figure>
-<p><img src="/home/lg/.config/Typora/typora-user-images/image-20240404015837864.png" alt="image-20240404015837864"></p>
+<figure>
+<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240404015837864.png" alt="" /><figcaption>image-20240404015837864</figcaption>
+</figure>
 <p>发现不太一样，可以看到有效信息只有两行，这两行配置告诉MySQL服务器去两个指定目录查找 .cnf 配置文件，并将它们包含到主配置文件中。</p>
 <p>继续查询，<code>/etc/mysql/conf.d/</code> 和 <code>/etc/mysql/mysql.conf.d/</code> 目录下一共四个配置文件，一一查看后发现并没有 [client] 条目。</p>
 <p>创建 client 配置文件：</p>
@@ -323,7 +332,7 @@
 <p>三、参考文档</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40421671/article/details/113735462">ubuntu18.04下mysql必须要sudo权限才能打开-CSDN博客</a></p>
 <p><a target="_blank" rel="noopener" href="https://www.jetbrains.com/help/datagrip/how-to-connect-to-mysql-with-unix-sockets.html">Create a MySQL data source using unix sockets | DataGrip Documentation</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hjf161105/article/details/78850658">亲测有效，解决Can ‘t connect to local MySQL server through socket ‘/tmp/mysql.sock ‘(2) “;_can’t connect to local mysql server through socket-CSDN博客</a></p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hjf161105/article/details/78850658">亲测有效，解决Can 't connect to local MySQL server through socket '/tmp/mysql.sock '(2) ";_can't connect to local mysql server through socket-CSDN博客</a></p>
 
     </div>
 
@@ -413,16 +422,16 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81-MySQL-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%86%E7%A0%81%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">一、 MySQL 安装与密码配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-MySQL-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. MySQL 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E4%BB%A5-root-%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86"><span class="nav-number">1.2.</span> <span class="nav-text">2. 以 root 用户登陆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">3. 初始化密码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">二、权限相关问题与解决</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80-mysql-%E5%AE%89%E8%A3%85%E4%B8%8E%E5%AF%86%E7%A0%81%E9%85%8D%E7%BD%AE"><span class="nav-number">1.</span> <span class="nav-text">一、 MySQL 安装与密码配置</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#mysql-%E5%AE%89%E8%A3%85"><span class="nav-number">1.1.</span> <span class="nav-text">1. MySQL 安装</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BB%A5-root-%E7%94%A8%E6%88%B7%E7%99%BB%E9%99%86"><span class="nav-number">1.2.</span> <span class="nav-text">2. 以 root 用户登陆</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E5%AF%86%E7%A0%81"><span class="nav-number">1.3.</span> <span class="nav-text">3. 初始化密码</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%9D%83%E9%99%90%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%E4%B8%8E%E8%A7%A3%E5%86%B3"><span class="nav-number">2.</span> <span class="nav-text">二、权限相关问题与解决</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
       <div class="site-overview-wrap sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <img class="site-author-image" itemprop="image" alt="Lg"
-      src="https://cdn.luogu.com.cn/upload/image_hosting/oti64lgi.png">
-  <p class="site-author-name" itemprop="name">Lg</p>
-  <div class="site-description" itemprop="description">青春无悔不死</div>
+    <img class="site-author-image" itemprop="image" alt="Lingeng Ma"
+      src="https://gravatar.com/avatar/8dcc22778f5b9e30c8a3cffc3d44cb19?size=256&cache=1714135929675">
+  <p class="site-author-name" itemprop="name">Lingeng Ma</p>
+  <div class="site-description" itemprop="description">Falling like an aurora.</div>
 </div>
 <div class="site-state-wrap motion-element">
   <nav class="site-state">
@@ -495,7 +504,7 @@
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">Lg</span>
+  <span class="author" itemprop="copyrightHolder">Lingeng Ma</span>
 </div>
   <div class="powered-by">
     <!--由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动 -->
