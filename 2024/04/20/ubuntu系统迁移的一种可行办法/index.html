@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="一、前言 起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。 网上主流的方法有 systemback 备份，dd 注入，以及 Clonezilla 再生三种手段。对于 systemback 似乎我的主板不太">
+  <meta name="description" content="一、前言起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。 网上主流的方法有 systemback 备份，dd 注入，以及 Clonezilla 再生三种手段。对于 systemback 似乎我的主板不太支">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu系统迁移的一种可行办法">
 <meta property="og:url" content="https://example.com/2024/04/20/ubuntu%E7%B3%BB%E7%BB%9F%E8%BF%81%E7%A7%BB%E7%9A%84%E4%B8%80%E7%A7%8D%E5%8F%AF%E8%A1%8C%E5%8A%9E%E6%B3%95/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="一、前言 起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。 网上主流的方法有 systemback 备份，dd 注入，以及 Clonezilla 再生三种手段。对于 systemback 似乎我的主板不太">
+<meta property="og:description" content="一、前言起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。 网上主流的方法有 systemback 备份，dd 注入，以及 Clonezilla 再生三种手段。对于 systemback 似乎我的主板不太支">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-04-20T12:05:00.000Z">
 <meta property="article:modified_time" content="2024-04-20T12:36:43.756Z">
@@ -251,29 +251,21 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="一前言">一、前言</h4>
-<p>起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。</p>
+        <h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>起因是由于 512G 的 ssd 一盘双系统有些吃紧，ubuntu 的 home 和根分区逐渐膨胀，希望重新分区。Gparted 扩展分区仅限于相邻右侧空闲空间，构造逻辑卷组又比较担心对后续可能的系统迁移有所阻碍，于是决定提前进行系统迁移实验。</p>
 <p>网上主流的方法有 systemback 备份，dd 注入，以及 Clonezilla 再生三种手段。对于 systemback 似乎我的主板不太支持，换了三个 U 盘制作四五个镜像都没办法正常打开。dd 与 Clonezilla 原理差不多，不过 Clonezilla 是通过制作镜像实现文件迁移，因此自带备份效果。</p>
-<p>这里主要讲讲 Clonezilla 系统迁移。最近实在没什么时间，就写个大纲吧 ^_^。</p>
-<h4 id="二流程">二、流程</h4>
-<p><strong>请提前备份重要数据！</strong></p>
+<p>这里主要讲讲 Clonezilla 系统迁移。最近实在没什么时间，就写个大纲吧 \^_\^。</p>
+<h4 id="二、流程"><a href="#二、流程" class="headerlink" title="二、流程"></a>二、流程</h4><p><strong>请提前备份重要数据！</strong></p>
 <p>请提前准备三个 U 盘，两个引导盘 8G 左右即可，一个需要大些，用于存储镜像。</p>
 <p>在 linux 系统中，万物皆文件，文件即万物。迁移系统只需将系统中所有分区搬到目标位置，然后修改启动项即可。</p>
-<h5 id="镜像制作">1. 镜像制作</h5>
-<p>使用 Clonezilla 备份之前需要先制作引导盘，可参考我之前的文章（ubuntu 相关配置）。</p>
+<h5 id="1-镜像制作"><a href="#1-镜像制作" class="headerlink" title="1. 镜像制作"></a>1. 镜像制作</h5><p>使用 Clonezilla 备份之前需要先制作引导盘，可参考我之前的文章（ubuntu 相关配置）。</p>
 <p>然后还需要一个数据盘，进入再生龙界面后选择克隆分区到镜像，选中 ubuntu 的分区即可。</p>
-<h5 id="新建目标分区">2. 新建目标分区</h5>
-<p>使用 Ubuntu 引导盘进入 try 界面，利用 Gparted 建立与原系统分区格式相同的分区，且分区容量需大于原分区。</p>
-<h5 id="数据注入">3. 数据注入</h5>
-<p>再次进入 Clonezilla 界面，选择镜像导出到分区，由于一次性选择超过一个分区无法制定目标盘，因此一次选择一个分区注入到目标位置即可。</p>
-<h5 id="修改-fstab">4. 修改 fstab</h5>
-<p>查看分区 uuid</p>
+<h5 id="2-新建目标分区"><a href="#2-新建目标分区" class="headerlink" title="2. 新建目标分区"></a>2. 新建目标分区</h5><p>使用 Ubuntu 引导盘进入 try 界面，利用 Gparted 建立与原系统分区格式相同的分区，且分区容量需大于原分区。</p>
+<h5 id="3-数据注入"><a href="#3-数据注入" class="headerlink" title="3. 数据注入"></a>3. 数据注入</h5><p>再次进入 Clonezilla 界面，选择镜像导出到分区，由于一次性选择超过一个分区无法制定目标盘，因此一次选择一个分区注入到目标位置即可。</p>
+<h5 id="4-修改-fstab"><a href="#4-修改-fstab" class="headerlink" title="4. 修改 fstab"></a>4. 修改 fstab</h5><p>查看分区 uuid</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ sudo blkid</span><br></pre></td></tr></table></figure>
 <p>新分区的 uuid 与原分区不同，修改 <code>/etc/fstab</code> 中的条目，将对于的 uuid 替换为实际 uuid 即可。</p>
-<h5 id="修复引导">5. 修复引导</h5>
-<p>原系统与新系统的 grub 引导会冲突，导致两个系统都无法进入。我的做法是将原系统删除，然后使用 <code>boot-tools</code>自动修复 grub。</p>
-<h4 id="三其他问题">三、其他问题</h4>
-<p>这里主要是我自身的原因。迁移之前我将系统原 nvidia-535 驱动换为了 nvidia-545，导致一个内核崩溃，其余旧版内核可以正常运行。迁移后问题逐渐显现出来，与 gnome 有所冲突，部分包无法显现出来。</p>
+<h5 id="5-修复引导"><a href="#5-修复引导" class="headerlink" title="5. 修复引导"></a>5. 修复引导</h5><p>原系统与新系统的 grub 引导会冲突，导致两个系统都无法进入。我的做法是将原系统删除，然后使用 <code>boot-tools</code>自动修复 grub。</p>
+<h4 id="三、其他问题"><a href="#三、其他问题" class="headerlink" title="三、其他问题"></a>三、其他问题</h4><p>这里主要是我自身的原因。迁移之前我将系统原 nvidia-535 驱动换为了 nvidia-545，导致一个内核崩溃，其余旧版内核可以正常运行。迁移后问题逐渐显现出来，与 gnome 有所冲突，部分包无法显现出来。</p>
 <p>解决办法是在图形界面中打开<code>附加驱动</code>，更换回推荐驱动，并删除有问题的内核，重新进行安装。关于 gnome 相关问题，比如桌面图标消失、设置栏消失等小问题就慢慢修复吧。</p>
 
     </div>
@@ -364,7 +356,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">1. 镜像制作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%96%B0%E5%BB%BA%E7%9B%AE%E6%A0%87%E5%88%86%E5%8C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">2. 新建目标分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%95%B0%E6%8D%AE%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">3. 数据注入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E6%94%B9-fstab"><span class="nav-number">2.4.</span> <span class="nav-text">4. 修改 fstab</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BF%AE%E5%A4%8D%E5%BC%95%E5%AF%BC"><span class="nav-number">2.5.</span> <span class="nav-text">5. 修复引导</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">三、其他问题</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%80%E3%80%81%E5%89%8D%E8%A8%80"><span class="nav-number">1.</span> <span class="nav-text">一、前言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E3%80%81%E6%B5%81%E7%A8%8B"><span class="nav-number">2.</span> <span class="nav-text">二、流程</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-%E9%95%9C%E5%83%8F%E5%88%B6%E4%BD%9C"><span class="nav-number">2.1.</span> <span class="nav-text">1. 镜像制作</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-%E6%96%B0%E5%BB%BA%E7%9B%AE%E6%A0%87%E5%88%86%E5%8C%BA"><span class="nav-number">2.2.</span> <span class="nav-text">2. 新建目标分区</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-%E6%95%B0%E6%8D%AE%E6%B3%A8%E5%85%A5"><span class="nav-number">2.3.</span> <span class="nav-text">3. 数据注入</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-%E4%BF%AE%E6%94%B9-fstab"><span class="nav-number">2.4.</span> <span class="nav-text">4. 修改 fstab</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-%E4%BF%AE%E5%A4%8D%E5%BC%95%E5%AF%BC"><span class="nav-number">2.5.</span> <span class="nav-text">5. 修复引导</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E3%80%81%E5%85%B6%E4%BB%96%E9%97%AE%E9%A2%98"><span class="nav-number">3.</span> <span class="nav-text">三、其他问题</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -380,7 +372,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>

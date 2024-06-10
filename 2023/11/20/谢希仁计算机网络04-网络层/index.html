@@ -22,12 +22,12 @@
     var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"manual","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
   </script>
 
-  <meta name="description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承诺，">
+  <meta name="description" content="4.1 网络层提供的两种服务​    电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​    但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质">
 <meta property="og:type" content="article">
 <meta property="og:title" content="谢希仁计算机网络04-网络层">
 <meta property="og:url" content="https://example.com/2023/11/20/%E8%B0%A2%E5%B8%8C%E4%BB%81%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C04-%E7%BD%91%E7%BB%9C%E5%B1%82/index.html">
 <meta property="og:site_name" content="mlger">
-<meta property="og:description" content="4.1 网络层提供的两种服务 ​ 电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质量的承诺，">
+<meta property="og:description" content="4.1 网络层提供的两种服务​    电信网采用面向连接的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立虚电路进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。 ​    但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务。网络层不提供服务质">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png">
@@ -293,132 +293,98 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h4 id="网络层提供的两种服务">4.1 网络层提供的两种服务</h4>
-<p>​ 电信网采用<strong>面向连接</strong>的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立<strong>虚电路</strong>进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。</p>
-<p>​ 但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：<strong>网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务</strong>。<strong>网络层不提供服务质量的承诺</strong>，可靠传输由网络主机中的运输层保障。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png" alt="" /><figcaption>image-20231118144200510</figcaption>
-</figure>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png" alt="" /><figcaption>image-20231118163954841</figcaption>
-</figure>
-<h4 id="网际协议-ip">4.2 网际协议 IP</h4>
-<p>​ 与 IP 协议配套的三个协议：</p>
+        <h4 id="4-1-网络层提供的两种服务"><a href="#4-1-网络层提供的两种服务" class="headerlink" title="4.1 网络层提供的两种服务"></a>4.1 网络层提供的两种服务</h4><p>​    电信网采用<strong>面向连接</strong>的通信方式，并在此基础上使用可靠传输协议，当有通信需求时，双方建立<strong>虚电路</strong>进行实时通讯，通讯结束后释放通讯资源。由于终端电话机结构简单，无处理差错能力，因此此方案对电话业务来说是十分合适的。</p>
+<p>​    但计算机网络的终端具有很强的处理差错能力，因此网络层的设计思路为：<strong>网络层向上只提供简单灵活的、无连接、尽最大努力的数据报服务</strong>。<strong>网络层不提供服务质量的承诺</strong>，可靠传输由网络主机中的运输层保障。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118144200510.png" alt="image-20231118144200510"></p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118163954841.png" alt="image-20231118163954841"></p>
+<h4 id="4-2-网际协议-IP"><a href="#4-2-网际协议-IP" class="headerlink" title="4.2 网际协议 IP"></a>4.2 网际协议 IP</h4><p>​    与 IP 协议配套的三个协议：</p>
 <ul>
 <li><strong>地址解析协议 ARP (Address Resolution Protocol)</strong></li>
 <li><strong>网际控制报文协议 ICMP (Internet Control Message Protocol)</strong></li>
 <li><strong>网际组管理协议 IGMP (Internet Group Management Protocol)</strong></li>
 </ul>
-<p>​ 三协议关系如下：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118164422575.png" alt="" /><figcaption>image-20231118164422575</figcaption>
-</figure>
-<p>​ TCP/IP 协议中的网络层常常被称为<strong>网际层</strong>或 <strong>IP 层</strong>。</p>
-<h5 id="虚拟互联网络">4.2.1 虚拟互联网络</h5>
-<p>​ <strong>没有一种单一的网络能够适应所有用户的需求</strong>。将网络连接起来需要一些不同的中间设备，一般有如下四种：</p>
+<p>​    三协议关系如下：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118164422575.png" alt="image-20231118164422575"></p>
+<p>​    TCP/IP 协议中的网络层常常被称为<strong>网际层</strong>或 <strong>IP 层</strong>。</p>
+<h5 id="4-2-1-虚拟互联网络"><a href="#4-2-1-虚拟互联网络" class="headerlink" title="4.2.1 虚拟互联网络"></a>4.2.1 虚拟互联网络</h5><p>​    <strong>没有一种单一的网络能够适应所有用户的需求</strong>。将网络连接起来需要一些不同的中间设备，一般有如下四种：</p>
 <ul>
 <li>物理层：<strong>转发器 (repeater)</strong></li>
 <li>数据链路层：<strong>网桥</strong>或<strong>桥接器 (bridge)</strong></li>
 <li>网络层：<strong>路由器</strong></li>
 <li>网络层以上：<strong>网关 (gateway)</strong></li>
 </ul>
-<p>​ 由于历史原因，许多 TCP/IP 的文献曾把网络层使用的路由器称为网关。</p>
-<p>​ 参与互连的计算机网络都是用相同的网际协议 IP，因此可以看作一个大的虚拟互连网络。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118170200174.png" alt="" /><figcaption>image-20231118170200174</figcaption>
-</figure>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181737412.png" alt="" /><figcaption>image-20231118181737412</figcaption>
-</figure>
-<h5 id="分类的-ip-地址">4.2.2 分类的 IP 地址</h5>
-<p><span class="math display">\[
-IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
-\]</span></p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181859665.png" alt="" /><figcaption>image-20231118181859665</figcaption>
-</figure>
-<p>​ 其中 D 类地址用于<strong>多播</strong>。</p>
-<p>​ <strong>点分十进制表示法</strong>：32 位 IPv4 地址，八位一段点分隔，每段十进制表示。</p>
-<p>​ 常用的三种类别 IP 地址</p>
+<p>​    由于历史原因，许多 TCP/IP 的文献曾把网络层使用的路由器称为网关。</p>
+<p>​    参与互连的计算机网络都是用相同的网际协议 IP，因此可以看作一个大的虚拟互连网络。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118170200174.png" alt="image-20231118170200174"></p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181737412.png" alt="image-20231118181737412"></p>
+<h5 id="4-2-2-分类的-IP-地址"><a href="#4-2-2-分类的-IP-地址" class="headerlink" title="4.2.2 分类的 IP 地址"></a>4.2.2 分类的 IP 地址</h5><script type="math/tex; mode=display">
+IP地址 ::=\{<网络号>,<主机号>\}</script><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118181859665.png" alt="image-20231118181859665"></p>
+<p>​    其中 D 类地址用于<strong>多播</strong>。</p>
+<p>​    <strong>点分十进制表示法</strong>：32 位 IPv4 地址，八位一段点分隔，每段十进制表示。</p>
+<p>​    常用的三种类别 IP 地址</p>
 <ul>
-<li>A 类地址：
+<li><p>A 类地址：</p>
 <ul>
-<li>网络号占一个字节，第一位固定为 0，共 126 (<span class="math inline">\(2^7-2\)</span>) 个可分配，全 0 表示 "this"，意为“本网络”， 127 (01111111) 保留作为本地软件<strong>环回测试</strong>本主机进程之间通信之用。</li>
-<li>主机号占三个字节，因此一个 A 类网络号最大主机数为 <span class="math inline">\(2^{24}-2\)</span> 。全 0 表示本主机连接到的单个网络地址，全 1 表示该网络上的所有主机。</li>
-</ul></li>
-<li>B 类地址：
-<ul>
-<li>网络号占两个字节，前两位固定为 10，共 <span class="math inline">\(2^{14}-1\)</span> 个可分配，128.0.0.0不指派。最大主机数 65534，扣除全 0 和全 1。</li>
-</ul></li>
-<li>C类地址：
-<ul>
-<li>网络号占三个字节，前三位固定 110，192.0.0.0 不指派，因此 <span class="math inline">\(2^{21}-1\)</span> 个网络号。每个 C 类地址最大主机数 254。</li>
-</ul></li>
+<li>网络号占一个字节，第一位固定为 0，共 126 ($2^7-2$) 个可分配，全 0 表示 “this”，意为“本网络”， 127 (01111111) 保留作为本地软件<strong>环回测试</strong>本主机进程之间通信之用。</li>
+<li>主机号占三个字节，因此一个 A 类网络号最大主机数为 $2^{24}-2$ 。全 0 表示本主机连接到的单个网络地址，全 1 表示该网络上的所有主机。</li>
 </ul>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118183641070.png" alt="" /><figcaption>image-20231118183641070</figcaption>
-</figure>
-<p>​ 两个路由器相连，在连线两端的接口处可分配也可不分配 IP 地址。节省资源则不分配，常称为 <strong>无编号网络</strong>或<strong>无名网络</strong>。</p>
-<h5 id="ip-地址与硬件地址">4.2.3 IP 地址与硬件地址</h5>
-<p>​ <strong>物理地址是数据链路层和物理层使用的地址，</strong>而 <strong>IP 地址是网络层和以上各层使用的地址，是一种逻辑地址。</strong></p>
-<p>​ 在通讯过程，数据从高层下到低层，层层封装，然后才到链路上传输。设备在收到 MAC 帧时，根据首部硬件地址决定收下或丢弃。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118184141275.png" alt="" /><figcaption>image-20231118184141275</figcaption>
-</figure>
-<p>​ <strong>IP 层抽象的互联网上只能看到 IP 数据报</strong>。</p>
-<p>​ <strong>虽然 IP 数据报有源地址，但路由器只根据目的站 IP 地址的网络号进行路由选择</strong>。</p>
-<h5 id="地址解析协议-arp">4.2.4 地址解析协议 ARP</h5>
-<p>​ 知道 IP 地址，找出其相应的硬件地址。ARP 在主机 ARP 高速缓存 (<strong>APR cache</strong>) 中存放一个有<strong>本局域网</strong>上的各主机和路由器 IP 到硬件地址的映射表，并且映射表经常动态更新。</p>
-<p>​ 当 A 向 B 发送 IP 数据报时，先在其 ARP cache 中查找，若查不到，则 ARP 进程广播 ARP 请求分组，除 B 外的主机不响应，B 则响应并向 A 发送 ARP 响应分组（单播），且 B 也将 A 的物理地址写入 cache 中。</p>
-<p>​ ARP 解决的是<strong>同一个局域网</strong>上的映射问题。</p>
-<h5 id="ip-数据报的格式">4.2.5 IP 数据报的格式</h5>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118200817531.png" alt="" /><figcaption>image-20231118200817531</figcaption>
-</figure>
+</li>
+<li><p>B 类地址：</p>
+<ul>
+<li>网络号占两个字节，前两位固定为 10，共 $2^{14}-1$ 个可分配，128.0.0.0不指派。最大主机数 65534，扣除全 0 和全 1。</li>
+</ul>
+</li>
+<li>C类地址：<ul>
+<li>网络号占三个字节，前三位固定 110，192.0.0.0 不指派，因此 $2^{21}-1$ 个网络号。每个 C 类地址最大主机数 254。</li>
+</ul>
+</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118183641070.png" alt="image-20231118183641070"></p>
+<p>​    两个路由器相连，在连线两端的接口处可分配也可不分配 IP 地址。节省资源则不分配，常称为 <strong>无编号网络</strong>或<strong>无名网络</strong>。</p>
+<h5 id="4-2-3-IP-地址与硬件地址"><a href="#4-2-3-IP-地址与硬件地址" class="headerlink" title="4.2.3 IP 地址与硬件地址"></a>4.2.3 IP 地址与硬件地址</h5><p>​    <strong>物理地址是数据链路层和物理层使用的地址，</strong>而 <strong>IP 地址是网络层和以上各层使用的地址，是一种逻辑地址。</strong></p>
+<p>​    在通讯过程，数据从高层下到低层，层层封装，然后才到链路上传输。设备在收到 MAC 帧时，根据首部硬件地址决定收下或丢弃。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118184141275.png" alt="image-20231118184141275"></p>
+<p>​    <strong>IP 层抽象的互联网上只能看到 IP 数据报</strong>。</p>
+<p>​    <strong>虽然 IP 数据报有源地址，但路由器只根据目的站 IP 地址的网络号进行路由选择</strong>。</p>
+<h5 id="4-2-4-地址解析协议-ARP"><a href="#4-2-4-地址解析协议-ARP" class="headerlink" title="4.2.4 地址解析协议 ARP"></a>4.2.4 地址解析协议 ARP</h5><p>​    知道 IP 地址，找出其相应的硬件地址。ARP 在主机 ARP 高速缓存 (<strong>APR cache</strong>) 中存放一个有<strong>本局域网</strong>上的各主机和路由器 IP 到硬件地址的映射表，并且映射表经常动态更新。</p>
+<p>​    当 A 向 B 发送 IP 数据报时，先在其 ARP cache 中查找，若查不到，则 ARP 进程广播 ARP 请求分组，除 B 外的主机不响应，B 则响应并向 A 发送 ARP 响应分组（单播），且 B 也将 A 的物理地址写入 cache 中。</p>
+<p>​    ARP 解决的是<strong>同一个局域网</strong>上的映射问题。</p>
+<h5 id="4-2-5-IP-数据报的格式"><a href="#4-2-5-IP-数据报的格式" class="headerlink" title="4.2.5 IP 数据报的格式"></a>4.2.5 IP 数据报的格式</h5><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118200817531.png" alt="image-20231118200817531"></p>
 <ul>
 <li><strong>版本</strong>：4 位，指版本号，实际使用的只有 IPv4 和 IPv6。</li>
 <li><strong>首部长度</strong>：4 位，单位是 32 位字（即 4 字节）</li>
 <li><strong>区分服务</strong>：8 位，一般情况不使用</li>
 <li><strong>总长度</strong>：首部和数据之和的长度，16 位，因此数据报最大长度为 65535 字节。数据链路层中还有<strong>最大传送单元 MTU (Maximum Transfer Unit)</strong>。</li>
 <li><strong>标识</strong>：16 位，每产生一个数据报，计数器 +1，并赋值给标识。</li>
-<li><strong>标志</strong>：3 位，但目前只有两位有意义
-<ul>
+<li><strong>标志</strong>：3 位，但目前只有两位有意义<ul>
 <li>低位 <strong>MF</strong>。 MF = 1 表示后面“<strong>还有分片</strong>”的数据表， MF = 0 则表示当前已是最后一片。</li>
 <li>中间为 <strong>DF</strong>。当前仅当 DF = 0 时允许分片。</li>
-</ul></li>
+</ul>
+</li>
 <li><strong>片偏移</strong>：13 位，顾名思义，该片从何处开始。</li>
 <li><strong>生存时间</strong>：8 位，没经过一个路由， TTL 减去 1，减为 0 时，就丢弃数据报。</li>
 <li><strong>协议</strong>：8 位，指出使用的协议</li>
 <li><strong>首部检验和</strong>：16 位，，只检验数据报首部，但不包括数据部分。发送方，检验和置位剩余 16 位字的反码之和。接收方将检验和在内的所有 16 位字相加，若首部未变化，其和必为 0。</li>
 </ul>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202056828.png" alt="" /><figcaption>image-20231118202056828</figcaption>
-</figure>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202056828.png" alt="image-20231118202056828"></p>
 <ul>
 <li><strong>源地址</strong>：32 位</li>
 <li><strong>目的地址</strong>：32 位</li>
 </ul>
-<h5 id="ip-层转发分组的流程">4.2.6 IP 层转发分组的流程</h5>
-<p>​ 路由表信息： <span class="math display">\[
-(目的网络地址, 下一跳地址)
-\]</span> <img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202909343.png" alt="image-20231118202909343" /></p>
-<p>​ 存在<strong>特定主机路由</strong>，对特定的主机指明一个路由，以便管理人员控制网络和测试网络。</p>
-<p>​ 存在<strong>默认路由</strong>，减小路由表所占的空间和搜索路由表所用的时间。</p>
+<h5 id="4-2-6-IP-层转发分组的流程"><a href="#4-2-6-IP-层转发分组的流程" class="headerlink" title="4.2.6 IP 层转发分组的流程"></a>4.2.6 IP 层转发分组的流程</h5><p>​    路由表信息：</p>
+<script type="math/tex; mode=display">
+(目的网络地址, 下一跳地址)</script><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118202909343.png" alt="image-20231118202909343"></p>
+<p>​    存在<strong>特定主机路由</strong>，对特定的主机指明一个路由，以便管理人员控制网络和测试网络。</p>
+<p>​    存在<strong>默认路由</strong>，减小路由表所占的空间和搜索路由表所用的时间。</p>
 <blockquote>
-<p>默认路由（Default Route）是网络中的一种路由设置，用于指定当路由表中没有匹配的路由项时，数据包应该被发送到的下一个跃点或下一跳。默认路由通常用于简化路由表，特别是在大型网络中。</p>
-</blockquote>
-<blockquote>
+<p> 默认路由（Default Route）是网络中的一种路由设置，用于指定当路由表中没有匹配的路由项时，数据包应该被发送到的下一个跃点或下一跳。默认路由通常用于简化路由表，特别是在大型网络中。</p>
 <p>在IPv4网络中，默认路由通常使用0.0.0.0/0表示，这表示所有目标地址。当路由表中没有与目标地址匹配的具体路由项时，数据包将被发送到默认路由指定的下一个跃点。这有助于简化路由表，特别是在较大的网络中，减少路由表的大小和复杂性。</p>
-</blockquote>
-<blockquote>
 <p>在IPv6网络中，类似的概念是使用::/0来表示所有IPv6地址。当没有与目标IPv6地址匹配的具体路由项时，数据包将被发送到默认路由指定的下一个跃点。</p>
 </blockquote>
-<p>​</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118203422006.png" alt="" /><figcaption>image-20231118203422006</figcaption>
-</figure>
-<p>​ <strong>分组转发算法的流程</strong>：</p>
-<ol type="1">
+<p>​    </p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231118203422006.png" alt="image-20231118203422006"></p>
+<p>​    <strong>分组转发算法的流程</strong>：</p>
+<ol>
 <li>从数据报首部提取目的主机 IP 地址 D，得出网络地址 N。</li>
 <li>若 N 就是与此路由连接的某个网络，则 <strong>直接交付</strong>；否则执行 3。</li>
 <li>若路由表有目的地址为 D 的特定主机路由，则交给其指明的下一跳；否则 4。</li>
@@ -426,27 +392,22 @@ IP地址 ::=\{&lt;网络号&gt;,&lt;主机号&gt;\}
 <li>默认路由，否则 6。</li>
 <li>报错</li>
 </ol>
-<h4 id="划分子网与构造超网">4.3 划分子网与构造超网</h4>
-<h5 id="划分子网">4.3.1 划分子网</h5>
-<p>​ IP 地址设计不合理之处：</p>
+<h4 id="4-3-划分子网与构造超网"><a href="#4-3-划分子网与构造超网" class="headerlink" title="4.3 划分子网与构造超网"></a>4.3 划分子网与构造超网</h4><h5 id="4-3-1-划分子网"><a href="#4-3-1-划分子网" class="headerlink" title="4.3.1 划分子网"></a>4.3.1 划分子网</h5><p>​    IP 地址设计不合理之处：</p>
 <ul>
 <li>IP 地址空间利用率有时很低，一个网络号所连接的主机可能并不多。</li>
 <li>每个物理网络分配一个网络号会使得路由表太大而使网络性能变坏。</li>
 <li>两级 IP 不够灵活，有时需要开辟一个新的网络，此时只能申请一个新的网络号。</li>
 </ul>
-<p>​ 划分子网的方法： <span class="math display">\[
-IP地址:=\{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;\}
-\]</span> ​ 从 IP 数据报首部<strong>无法看出</strong>源主机或目的主机所连接的网络是否进行了子网划分，<strong>子网掩码</strong>正是用于解决这个问题的。</p>
-<p>​ 子网掩码一般由一串连续的 1 和一串连续的 0 构成，且 1 的长度等于网络号与子网号位数之和，因此与 IP 地址进行<strong>与</strong>操作即可得出子网地址。 如果一个网络不划分子网，则使用默认子网掩码，显然，</p>
-<p>​ A 类地址默认掩码为 255.0.0.0，或 0xFF000000。</p>
-<p>​ B 类地址默认掩码为 255.255.0.0，或 0xFFFF0000。</p>
-<p>​ C 类地址默认掩码为 255.255.255.0，或 0xFFFFFF00。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119102550234.png" alt="" /><figcaption>image-20231119102550234</figcaption>
-</figure>
-<h5 id="使用子网时的分组转发算法">4.3.2 使用子网时的分组转发算法</h5>
-<p>​ 路由表包含：<strong>目的网络地址、子网掩码</strong>和<strong>下一跳地址</strong>。</p>
-<ol type="1">
+<p>​    划分子网的方法：</p>
+<script type="math/tex; mode=display">
+IP地址:=\{<网络号>,<子网号>,<主机号>\}</script><p>​    从 IP 数据报首部<strong>无法看出</strong>源主机或目的主机所连接的网络是否进行了子网划分，<strong>子网掩码</strong>正是用于解决这个问题的。</p>
+<p>​    子网掩码一般由一串连续的 1 和一串连续的 0 构成，且 1 的长度等于网络号与子网号位数之和，因此与 IP 地址进行<strong>与</strong>操作即可得出子网地址。 如果一个网络不划分子网，则使用默认子网掩码，显然，</p>
+<p>​    A 类地址默认掩码为 255.0.0.0，或 0xFF000000。</p>
+<p>​    B 类地址默认掩码为 255.255.0.0，或 0xFFFF0000。</p>
+<p>​    C 类地址默认掩码为 255.255.255.0，或 0xFFFFFF00。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119102550234.png" alt="image-20231119102550234"></p>
+<h5 id="4-3-2-使用子网时的分组转发算法"><a href="#4-3-2-使用子网时的分组转发算法" class="headerlink" title="4.3.2 使用子网时的分组转发算法"></a>4.3.2 使用子网时的分组转发算法</h5><p>​    路由表包含：<strong>目的网络地址、子网掩码</strong>和<strong>下一跳地址</strong>。</p>
+<ol>
 <li>从收到的数据报提取 IP 地址 D。</li>
 <li>各网络子网掩码与 D 相与，看看是否匹配，若匹配则直接交付，否则 3。</li>
 <li>若路由表中有目的地址为 D 的特定主机路由，则交付之，否则 4。</li>
@@ -454,44 +415,31 @@ IP地址:=\{&lt;网络号&gt;,&lt;子网号&gt;,&lt;主机号&gt;\}
 <li>默认路由，否则 6。</li>
 <li>报错。</li>
 </ol>
-<h5 id="无分类编址-cidr-超网">4.3.3 无分类编址 CIDR （超网）</h5>
-<p><span class="math display">\[
-IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
-\]</span></p>
-<p>​ 网络前缀相同的连续 IP 地址组成一个 ”CIDR 地址块”。</p>
-<p>​ CIDR 使用斜线激发，即 IP 地址后加上斜线 “/”，后写上前缀位数。</p>
-<p>​ CIDR 还使用 32 位的地址掩码，其中前一串 1 就代表前缀。</p>
-<p>​ 路由表中用 CIDR 地址块来查找目的网络，称为<strong>路由聚合</strong>或<strong>构造超网</strong>。</p>
-<p>​ 在查找下一跳时，可能有多个 CIDR 地址块都能够与目的地址匹配，此时则根据<strong>最长前缀匹配</strong>原则确定下一跳。</p>
-<p>​ 由于要进行最长前缀匹配，故最方便的方法即是在构造路由表时采用<strong>二叉线索</strong>，即 01-Trie，然后查询时即可迅速进行前缀匹配。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119105513490.png" alt="" /><figcaption>image-20231119105513490</figcaption>
-</figure>
-<p>​ 为了提高效率，还可采用各式<strong>压缩技术</strong>。</p>
-<h4 id="网际控制报文协议-icmp">4.4 网际控制报文协议 ICMP</h4>
-<p>​ ICMP 报文分为 <strong>ICMP 差错报告报文</strong>和 <strong>ICMP 询问报文</strong>。</p>
-<p>​ ICMP 报文前 4 个字节是统一的格式，三个字段：类型、代码和检验和。接着 4 个字节与 ICMP 类型有关。最后面是数据字段，长度取决于 ICMP 类型。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150429359.png" alt="" /><figcaption>image-20231119150429359</figcaption>
-</figure>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150446519.png" alt="" /><figcaption>image-20231119150446519</figcaption>
-</figure>
-<p>​ <strong>改变路由（重定向）：</strong> 路由器把改变路由报文发送给主机，让主机知道下次该将数据报发送给另外的路由器（可通过更好的路由）。</p>
-<p>​ 不应发送 ICMP 差错报告的情况：</p>
+<h5 id="4-3-3-无分类编址-CIDR-（超网）"><a href="#4-3-3-无分类编址-CIDR-（超网）" class="headerlink" title="4.3.3 无分类编址 CIDR （超网）"></a>4.3.3 无分类编址 CIDR （超网）</h5><script type="math/tex; mode=display">
+IP 地址:=\{<网络前缀>,<主机号>\}</script><p>​    网络前缀相同的连续 IP 地址组成一个 ”CIDR 地址块”。</p>
+<p>​    CIDR 使用斜线激发，即 IP 地址后加上斜线 “/”，后写上前缀位数。</p>
+<p>​    CIDR 还使用 32 位的地址掩码，其中前一串 1 就代表前缀。</p>
+<p>​    路由表中用 CIDR 地址块来查找目的网络，称为<strong>路由聚合</strong>或<strong>构造超网</strong>。</p>
+<p>​    在查找下一跳时，可能有多个 CIDR 地址块都能够与目的地址匹配，此时则根据<strong>最长前缀匹配</strong>原则确定下一跳。</p>
+<p>​    由于要进行最长前缀匹配，故最方便的方法即是在构造路由表时采用<strong>二叉线索</strong>，即 01-Trie，然后查询时即可迅速进行前缀匹配。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119105513490.png" alt="image-20231119105513490"></p>
+<p>​    为了提高效率，还可采用各式<strong>压缩技术</strong>。</p>
+<h4 id="4-4-网际控制报文协议-ICMP"><a href="#4-4-网际控制报文协议-ICMP" class="headerlink" title="4.4 网际控制报文协议 ICMP"></a>4.4 网际控制报文协议 ICMP</h4><p>​    ICMP 报文分为 <strong>ICMP 差错报告报文</strong>和 <strong>ICMP 询问报文</strong>。</p>
+<p>​    ICMP 报文前 4 个字节是统一的格式，三个字段：类型、代码和检验和。接着 4 个字节与 ICMP 类型有关。最后面是数据字段，长度取决于 ICMP 类型。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150429359.png" alt="image-20231119150429359"></p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119150446519.png" alt="image-20231119150446519"></p>
+<p>​    <strong>改变路由（重定向）：</strong> 路由器把改变路由报文发送给主机，让主机知道下次该将数据报发送给另外的路由器（可通过更好的路由）。</p>
+<p>​    不应发送 ICMP 差错报告的情况：</p>
 <ul>
 <li>对 ICMP 差错报文，不再发送 ICMP 差错报文</li>
 <li>对第一个分片的数据报片的所有后续数据报片，都不发送 ICMP 报文。</li>
 <li>对具有多播地址的数据报，都不发送。</li>
 <li>对具有特殊地址（如 127.0.0.0 或 0.0.0.0）的数据报，不发送 ICMP 报文。</li>
 </ul>
-<p>​ ICMP 的一个重要应用就是<strong>分组网间探测 PING (Packet InterNet Groper)</strong>，是应用层直接使用网络层 ICMP 的一个例子。</p>
-<p>​ 另一个重要应用是 traceroute (UNIX) / tracert (windows)，用于跟踪一个分组源点到终点的路径。下介绍其原理：</p>
-<p>​ 主要采用数据报中的生存时间 TTL，先发送 TTL 为 1，收到<strong>时间超过</strong>差错报文则 TTL + 1 重新发送，否则收到<strong>终点不可达</strong>报文，且长度即 TTL。</p>
-<h4 id="互联网的路由选择协议">4.5 互联网的路由选择协议</h4>
-<h5 id="几个基本概念">4.5.1 几个基本概念</h5>
-<h6 id="理想路由算法">4.5.1.1 理想路由算法</h6>
-<p>​ <strong>理想路由算法</strong>几个特点：</p>
+<p>​    ICMP 的一个重要应用就是<strong>分组网间探测 PING (Packet InterNet Groper)</strong>，是应用层直接使用网络层 ICMP 的一个例子。</p>
+<p>​    另一个重要应用是 traceroute (UNIX) / tracert (windows)，用于跟踪一个分组源点到终点的路径。下介绍其原理：</p>
+<p>​    主要采用数据报中的生存时间 TTL，先发送 TTL 为 1，收到<strong>时间超过</strong>差错报文则 TTL +  1 重新发送，否则收到<strong>终点不可达</strong>报文，且长度即 TTL。</p>
+<h4 id="4-5-互联网的路由选择协议"><a href="#4-5-互联网的路由选择协议" class="headerlink" title="4.5 互联网的路由选择协议"></a>4.5 互联网的路由选择协议</h4><h5 id="4-5-1-几个基本概念"><a href="#4-5-1-几个基本概念" class="headerlink" title="4.5.1 几个基本概念"></a>4.5.1 几个基本概念</h5><h6 id="4-5-1-1-理想路由算法"><a href="#4-5-1-1-理想路由算法" class="headerlink" title="4.5.1.1 理想路由算法"></a>4.5.1.1 理想路由算法</h6><p>​    <strong>理想路由算法</strong>几个特点：</p>
 <ul>
 <li>必须是正确的和完整的。</li>
 <li>计算上应简单。</li>
@@ -499,212 +447,159 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 <li>应具有稳定性，通信量和网络拓扑相对稳定的情况下，应该收敛于一个可接受的解。</li>
 <li>算法应该是最佳的。</li>
 </ul>
-<h6 id="分层次的路由选择">4.5.1.2 分层次的路由选择</h6>
-<p>​ 互联网采用<strong>分层次的路由选择</strong>，原因：</p>
+<h6 id="4-5-1-2-分层次的路由选择"><a href="#4-5-1-2-分层次的路由选择" class="headerlink" title="4.5.1.2 分层次的路由选择"></a>4.5.1.2 分层次的路由选择</h6><p>​    互联网采用<strong>分层次的路由选择</strong>，原因：</p>
 <ul>
 <li>互联网规模非常大。</li>
 <li>许多单位不愿外界了解自己内部网络的细节。</li>
 </ul>
-<p>​ 为此，把互联网划分为许多小的<strong>自治系统 AS (autonomous system)</strong>。一个 AS 对其他的 AS 表现出的是<strong>一个单一的和一致的路由选择策略</strong>。</p>
-<p>​ 故此，路由选择协议可以划分为两类：<strong>内部网关协议 IGP (Interior Gateway Protocol)</strong> 和<strong>外部网关协议 EGP (External Gateway Protocol)</strong>。常用的 IGP 有 RIP 和 OSPF 协议，常用的 EGP 有 BGP-4。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119160651490.png" alt="" /><figcaption>image-20231119160651490</figcaption>
-</figure>
-<p>​ 此外，路由选择协议还可依照路由表更新方分为<strong>静态路由协议</strong>和<strong>动态路由协议</strong>，常见的动态路由协议有 RIP、OSPF、BGP 等。</p>
-<h5 id="rip">4.5.2 RIP</h5>
-<p>​ RIP 是一种<strong>基于距离向量的路由选择协议</strong>，最大优点是简单。其中的“距离”是指“<strong>跳数</strong>” (hop count)。但 RIP 一条路径最多只能包含 15 个路由器，因此 RIP 只适用于小型互联网。</p>
-<h6 id="rip-特点">4.5.2.1 RIP 特点</h6>
-<p>​ RIP 特点：</p>
+<p>​    为此，把互联网划分为许多小的<strong>自治系统 AS (autonomous system)</strong>。一个 AS 对其他的 AS 表现出的是<strong>一个单一的和一致的路由选择策略</strong>。</p>
+<p>​    故此，路由选择协议可以划分为两类：<strong>内部网关协议 IGP (Interior Gateway Protocol)</strong> 和<strong>外部网关协议 EGP (External Gateway Protocol)</strong>。常用的 IGP 有 RIP 和 OSPF 协议，常用的 EGP 有 BGP-4。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119160651490.png" alt="image-20231119160651490"></p>
+<p>​    此外，路由选择协议还可依照路由表更新方分为<strong>静态路由协议</strong>和<strong>动态路由协议</strong>，常见的动态路由协议有 RIP、OSPF、BGP 等。</p>
+<h5 id="4-5-2-RIP"><a href="#4-5-2-RIP" class="headerlink" title="4.5.2 RIP"></a>4.5.2 RIP</h5><p>​    RIP 是一种<strong>基于距离向量的路由选择协议</strong>，最大优点是简单。其中的“距离”是指“<strong>跳数</strong>” (hop count)。但 RIP 一条路径最多只能包含 15 个路由器，因此 RIP 只适用于小型互联网。</p>
+<h6 id="4-5-2-1-RIP-特点"><a href="#4-5-2-1-RIP-特点" class="headerlink" title="4.5.2.1 RIP 特点"></a>4.5.2.1 RIP 特点</h6><p>​    RIP 特点：</p>
 <ul>
 <li>仅和相邻路由器交换信息。</li>
 <li>路由器交换的信息是当前本路由器的路由表。</li>
 <li>按照固定的时间间隔交换路由信息，如 30 秒。</li>
 </ul>
-<p>路由表信息为： <span class="math display">\[
-(路由表,距离,下一跳)
-\]</span></p>
-<p>​ 下介绍路由更新算法：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161304200.png" alt="" /><figcaption>image-20231119161304200</figcaption>
-</figure>
-<p>​ 其实就是 Bellman-Fold 算法，不断遍历，能松弛即松弛。</p>
-<p>​ 对于解释 3，书中的解释是无论距离是增大减小亦或不变，都要更新为最新的信息。</p>
-<h6 id="rip-报文格式">4.5.2.2 RIP 报文格式</h6>
-<p>​ RIP 报文格式：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161732197.png" alt="" /><figcaption>image-20231119161732197</figcaption>
-</figure>
+<p>路由表信息为：</p>
+<script type="math/tex; mode=display">
+(路由表,距离,下一跳)</script><p>​    下介绍路由更新算法：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161304200.png" alt="image-20231119161304200"></p>
+<p>​    其实就是 Bellman-Fold 算法，不断遍历，能松弛即松弛。</p>
+<p>​    对于解释 3，书中的解释是无论距离是增大减小亦或不变，都要更新为最新的信息。</p>
+<h6 id="4-5-2-2-RIP-报文格式"><a href="#4-5-2-2-RIP-报文格式" class="headerlink" title="4.5.2.2 RIP 报文格式"></a>4.5.2.2 RIP 报文格式</h6><p>​    RIP 报文格式：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119161732197.png" alt="image-20231119161732197"></p>
 <ul>
-<li><p>首部 4 字节，命令字段指出报文意义。</p></li>
+<li><p>首部 4 字节，命令字段指出报文意义。</p>
+</li>
 <li><p>路由部分由若干路由信息组成，每个路由信息 20 字节。</p>
 <ul>
 <li><strong>地址标识符</strong> 标志所用地址协议。 <strong>路由标记</strong>填入自治系统号 ASN。</li>
 <li>网络地址、子网掩码、下一跳路由地址、距离。</li>
 </ul>
-<p>一个 RIP 报文最多 25 个路由，故而最大长度 <span class="math inline">\(4+20\times 25=504\)</span> 字节。</p></li>
+<p>一个 RIP 报文最多 25 个路由，故而最大长度 $4+20\times 25=504$ 字节。</p>
+</li>
 </ul>
 <p>RIP 存在的问题：<strong>当网络出现故障，需要经过比较长的时间才能将此信息传送到所有的路由器</strong>。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119163624180.png" alt="" /><figcaption>image-20231119163624180</figcaption>
-</figure>
-<p>​ RIP 特点总结：<strong>实现简单开销小，距离有限，坏消息传播慢</strong>。</p>
-<h5 id="内部网关协议-ospf">4.5.3 内部网关协议 OSPF</h5>
-<p>​ <strong>OSPF 开放最短路径优先</strong> 使用了 Dijkstra 提出的<strong>最短路径算法 SPF</strong>。OSPF 三个要点如下：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119163624180.png" alt="image-20231119163624180"></p>
+<p>​    RIP 特点总结：<strong>实现简单开销小，距离有限，坏消息传播慢</strong>。</p>
+<h5 id="4-5-3-内部网关协议-OSPF"><a href="#4-5-3-内部网关协议-OSPF" class="headerlink" title="4.5.3 内部网关协议 OSPF"></a>4.5.3 内部网关协议 OSPF</h5><p>​    <strong>OSPF 开放最短路径优先</strong> 使用了 Dijkstra 提出的<strong>最短路径算法 SPF</strong>。OSPF 三个要点如下：</p>
 <ul>
 <li>洪泛法：向本自治系统<strong>所有</strong>路由器发送信息。</li>
 <li>发送的信息是与本路由器相邻所有路由器的链路状态。</li>
 <li>当且仅当链路发生变化，才使用洪泛。</li>
 </ul>
-<p>​ 由此，每个路由器都能够得到本网完整的网络拓扑，采用 djikstra 算法即可得出最短路径从而构造路由表。</p>
-<p>​ 而且 OSPF 将一个自治系统再划分为若干个小的范围，称为<strong>区域 (area)</strong>。连接不同区域的路由器叫<strong>区域边界路由器</strong>。主干区域的路由器称<strong>主干路由器</strong>。OSPF 不用 UDP 而是<strong>直接用 IP 数据报传送</strong>。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119170556159.png" alt="" /><figcaption>image-20231119170556159</figcaption>
-</figure>
-<p>​ OSPF 其它特点：</p>
+<p>​    由此，每个路由器都能够得到本网完整的网络拓扑，采用 djikstra 算法即可得出最短路径从而构造路由表。</p>
+<p>​    而且 OSPF 将一个自治系统再划分为若干个小的范围，称为<strong>区域 (area)</strong>。连接不同区域的路由器叫<strong>区域边界路由器</strong>。主干区域的路由器称<strong>主干路由器</strong>。OSPF 不用 UDP 而是<strong>直接用 IP 数据报传送</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/image-20231119170556159.png" alt="image-20231119170556159"></p>
+<p>​    OSPF 其它特点：</p>
 <ul>
 <li>允许管理员指派不同代价，代价占 16 位，十分灵活。</li>
 <li>若一个目的网络有多条相同代价路径，则可以分配通信量，达到<strong>负载平衡 (load balancing)</strong>。</li>
 <li>支持可变长子网划分与 CIDR。</li>
 <li>链路可能经常变变化，每条链路带上一个序号，序号越大链路越新。</li>
 </ul>
-<p>​ OSPF 五种分组类型：</p>
+<p>​    OSPF 五种分组类型：</p>
 <ul>
-<li><p><strong>类型1 问候 (hello) </strong>分组，用于发现维持邻站可达性。</p></li>
-<li><p><strong>类型2 数据库描述 (Database Description) </strong>分组，向邻站给出自己库中所有链路状态项目的摘要。</p></li>
-<li><p><strong>类型3 链路状态请求 (Link State Request)</strong> 顾名思义</p></li>
-<li><p><strong>类型4 链路状态更新 (Link State Update)</strong> 洪泛</p></li>
-<li><p><strong>类型5 链路状态确认 (Link State Acknowledgement)</strong> 对更新分组的确认</p></li>
+<li><strong>类型1 问候 (hello) </strong>分组，用于发现维持邻站可达性。</li>
+<li><p><strong>类型2 数据库描述 (Database Description) </strong>分组，向邻站给出自己库中所有链路状态项目的摘要。</p>
+</li>
+<li><p><strong>类型3 链路状态请求 (Link State Request)</strong> 顾名思义</p>
+</li>
+<li><strong>类型4 链路状态更新 (Link State Update)</strong> 洪泛</li>
+<li><strong>类型5 链路状态确认 (Link State Acknowledgement)</strong> 对更新分组的确认</li>
 </ul>
-<h5 id="外部网关协议-bgp">4.5.4 外部网关协议 BGP</h5>
-<p>​ <strong>边界网关协议 BGP</strong>。不同自治系统之间使用 BGP 的缘由：</p>
+<h5 id="4-5-4-外部网关协议-BGP"><a href="#4-5-4-外部网关协议-BGP" class="headerlink" title="4.5.4 外部网关协议 BGP"></a>4.5.4 外部网关协议 BGP</h5><p>​    <strong>边界网关协议 BGP</strong>。不同自治系统之间使用 BGP 的缘由：</p>
 <ul>
 <li>互联网<strong>规模太大</strong>，使得自治系统 AS 之间路由选择非常困难。</li>
 <li>自治系统 AS 之间的路由选择必须考虑有关策略。</li>
 </ul>
-<p>​ BGP 的目的寻找一条能够到达目的且网络条件比较好的路由而非最佳路由，采用<strong>路径向量 (path vector) 路由选择协议</strong>。每个自治系统至少选定一 <strong>BGP 发言人</strong>，往往选定<strong>边界路由器</strong>。发言人之间采用 BGP 协议。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main//newPath/image-20231120080108690.png" alt="" /><figcaption>image-20231120080108690</figcaption>
-</figure>
-<p>​ 在 RFC 4271 中规定了 BGP-4 的四种报文：</p>
+<p>​    BGP 的目的寻找一条能够到达目的且网络条件比较好的路由而非最佳路由，采用<strong>路径向量 (path vector) 路由选择协议</strong>。每个自治系统至少选定一 <strong>BGP 发言人</strong>，往往选定<strong>边界路由器</strong>。发言人之间采用 BGP 协议。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main//newPath/image-20231120080108690.png" alt="image-20231120080108690"></p>
+<p>​    在 RFC 4271 中规定了 BGP-4 的四种报文：</p>
 <ul>
 <li>OPEN 报文，用来与相邻 BGP 发言人建立关系，使其初始化。</li>
 <li>UPDATE 报文，通告某一路由信息，以及列出要撤销的多路由。</li>
 <li>KEEPALIVE 报文，周期性证实邻站连通信。</li>
 <li>NOTIFICATION 报文，发送检测到的差错。</li>
 </ul>
-<p>​ BGP 报文格式：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120080845868.png" alt="" /><figcaption>image-20231120080845868</figcaption>
-</figure>
-<p>​ 标记 (marker) 段 16 字节长，用于鉴别，不需鉴别是置全 1。</p>
-<p>​ 长度字段指出包括首部在内整个 BGP 报文<strong>字节</strong>为单位的长度，最小 19，最大 4096。（查了下，是根据 TCP 协议的滑动窗口决定的 <a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/428983149?bd_page_type=0&amp;pu=&amp;init=middle">这里</a>)</p>
-<p>​ UPDATE 和 OPEN 报文的格式暂时不赘述。</p>
-<h5 id="路由器的构成">4.5.5 路由器的构成</h5>
-<p>​ 路由器结构划分为两大部分：<strong>路由选择部分</strong>和<strong>分组转发部分</strong>。</p>
-<p>​ 路由选择部分也称为<strong>控制部分</strong>，核心构建为选择处理机，任务是根据协议构造出路由表，同时不断更新维护路由表。</p>
-<p>​ 分组转发部分有三部分组成：<strong>交换结构</strong>、一组<strong>输入端口</strong>和一组<strong>输出端口</strong>。</p>
-<p>​ 交换结构 (switching fabric) 又称<strong>交换组织</strong>，作用是根据转发表处理分组，把输入的分组从魔偶个端口输出出去。</p>
-<p>​ 为了使交换功能分散化，往往把复制到转发表放在每个输入端口中，称为<strong>"影子副本"</strong>。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083022304.png" alt="" /><figcaption>image-20231120083022304</figcaption>
-</figure>
-<p>​ 最早使用的路由器是普通的计算机，采用 CPU 作为路由选择处理机，利用中断机制启动处理。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083350315.png" alt="" /><figcaption>image-20231120083350315</figcaption>
-</figure>
-<h4 id="ipv6">4.6 IPv6</h4>
-<p>​ 变化：</p>
+<p>​    BGP 报文格式：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120080845868.png" alt="image-20231120080845868"></p>
+<p>​    标记 (marker) 段 16 字节长，用于鉴别，不需鉴别是置全 1。</p>
+<p>​    长度字段指出包括首部在内整个 BGP 报文<strong>字节</strong>为单位的长度，最小 19，最大 4096。（查了下，是根据 TCP 协议的滑动窗口决定的 <a target="_blank" rel="noopener" href="https://zhidao.baidu.com/question/428983149?bd_page_type=0&amp;pu=&amp;init=middle">这里</a>)</p>
+<p>​    UPDATE 和 OPEN 报文的格式暂时不赘述。</p>
+<h5 id="4-5-5-路由器的构成"><a href="#4-5-5-路由器的构成" class="headerlink" title="4.5.5 路由器的构成"></a>4.5.5 路由器的构成</h5><p>​    路由器结构划分为两大部分：<strong>路由选择部分</strong>和<strong>分组转发部分</strong>。</p>
+<p>​    路由选择部分也称为<strong>控制部分</strong>，核心构建为选择处理机，任务是根据协议构造出路由表，同时不断更新维护路由表。</p>
+<p>​    分组转发部分有三部分组成：<strong>交换结构</strong>、一组<strong>输入端口</strong>和一组<strong>输出端口</strong>。</p>
+<p>​    交换结构 (switching fabric) 又称<strong>交换组织</strong>，作用是根据转发表处理分组，把输入的分组从魔偶个端口输出出去。</p>
+<p>​    为了使交换功能分散化，往往把复制到转发表放在每个输入端口中，称为<strong>“影子副本”</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083022304.png" alt="image-20231120083022304"></p>
+<p>​    最早使用的路由器是普通的计算机，采用 CPU 作为路由选择处理机，利用中断机制启动处理。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083350315.png" alt="image-20231120083350315"></p>
+<h4 id="4-6-IPv6"><a href="#4-6-IPv6" class="headerlink" title="4.6 IPv6"></a>4.6 IPv6</h4><p>​    变化：</p>
 <ul>
 <li><strong>允许协议继续扩充</strong>。</li>
 <li>灵活的首部格式</li>
 <li>扩展的地址层次结构</li>
 </ul>
-<p>​ IPv6 数据报有 <strong>基本首部</strong>和<strong>有效载荷</strong>两部分组成，有效载荷也成为<strong>净载荷</strong>。有效载荷允许零个或多个<strong>扩展首部</strong>。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083649979.png" alt="" /><figcaption>image-20231120083649979</figcaption>
-</figure>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083714488.png" alt="" /><figcaption>image-20231120083714488</figcaption>
-</figure>
+<p>​    IPv6 数据报有 <strong>基本首部</strong>和<strong>有效载荷</strong>两部分组成，有效载荷也成为<strong>净载荷</strong>。有效载荷允许零个或多个<strong>扩展首部</strong>。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083649979.png" alt="image-20231120083649979"></p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120083714488.png" alt="image-20231120083714488"></p>
 <ul>
 <li><strong>通信量类：</strong> 8 位，区分不同 IPv6 数据报类别或优先级。</li>
 <li>流标号 (traffic class)：20 位。</li>
 <li>有效载荷长度：除基本首部外的字节数。</li>
 </ul>
-<p>​ 扩展首部在传输中不进行处理，交给两端计算机处理，大大提高路由器处理效率。</p>
-<p>​ IPv6 增加了任播 (anycast) 地址，终点是一组计算机，但数据报只交付其中一个，通常是最接近一个。</p>
-<p>​ IPv6 采用<strong>冒号十六进制记法</strong>，如 <span class="math display">\[
-68E6:8C64:FFFF:FFFF:0:1180:960A:FFFF
-\]</span></p>
-<ul>
+<p>​    扩展首部在传输中不进行处理，交给两端计算机处理，大大提高路由器处理效率。</p>
+<p>​    IPv6 增加了任播 (anycast) 地址，终点是一组计算机，但数据报只交付其中一个，通常是最接近一个。</p>
+<p>​    IPv6 采用<strong>冒号十六进制记法</strong>，如</p>
+<script type="math/tex; mode=display">
+68E6:8C64:FFFF:FFFF:0:1180:960A:FFFF</script><ul>
 <li>允许省略前导 0。</li>
 <li>可以将一串连续的 0 用一对冒号取代。</li>
 <li>仅允许一次零压缩。</li>
 <li>仍可采用 CDR 斜线表示法。</li>
 </ul>
-<p>​ 地址分类：</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120084419498.png" alt="" /><figcaption>image-20231120084419498</figcaption>
-</figure>
-<h5 id="ipv4-向-ipv6-过渡">4.6.3 IPv4 向 IPv6 过渡</h5>
-<p>​ 策略一：<strong>双协议栈</strong>。装有双协议栈的主机或路由器既能与 IPv4 主机通信，又能与 IPv6 主机通信。根据域名系统 DNS 返回的地址类型确定主机使用的地址类型。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120103834796.png" alt="" /><figcaption>image-20231120103834796</figcaption>
-</figure>
-<p>​ 策略二：<strong>隧道技术</strong>。IPv6 数据报进入 IPv4 网络时，把 IPv6 数据报封装成 IPv4 数据报。要使得双协议栈主机知道 IPv4 数据报内封装的时 IPv6 数据报，则需要将 IPv4 首部的协议字段值设置为 41。</p>
-<h5 id="icmpv6">4.6.4 ICMPv6</h5>
-<p>​ IPv6 也不保证数据可靠交付，因此采用 ICMP 来反馈差错。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120104137961.png" alt="" /><figcaption>image-20231120104137961</figcaption>
-</figure>
-<h4 id="ip-多播">4.7 IP 多播</h4>
-<p>​ 与单播相比，一对多的网络通信中，多播可大大节约网络资源。</p>
-<p>​ 多播组的标识符是 IP 地址中的 D 类地址，范围是 224.0.0.0 到 239.255.255.255。多播地址只能用于目的地址而不能用于源地址。一个 D 类地址表示一个多播组。</p>
-<h5 id="网际组管理协-igmp-和-多播路由选择协议">4.7.3 网际组管理协 IGMP 和 多播路由选择协议</h5>
-<p>​ IGMP (Internet Group Management Protocol) 网际组管理协议：是让连接在本地局域网上的多播路由器知道本局域网上<strong>是否</strong>有主机参加或退出了某个多播组。</p>
-<p>​ 多播路由选择协议：多播转发必须动态适应多播组成员的变化，在转发数据报时，不能仅仅根据数据报中的目的地址，而是考虑从什么地方来到什么地方去。</p>
-<p>​ IGMP 属于整个网际协议 IP 的一个组成部分。</p>
-<p>​ 多播路由选择协议：洪泛与剪除、隧道技术、基于核心的发现技术。</p>
-<h4 id="虚拟专用网-vpn-和网络地址转换-nat">4.8 虚拟专用网 VPN 和网络地址转换 NAT</h4>
-<h5 id="vpn">4.8.1 VPN</h5>
-<p>​ RFC 1918 指明了一些<strong>专用地址</strong>，只用于机构内部通信，互联网中所有路由器对目的地址为专用地址的数据报一律不予转发。</p>
-<p>​ VPN 的作用是对内部数据报进行加密，然后在公网上传输，使得效果跟内网通信一样。</p>
-<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142854286.png" /></p>
-<h5 id="nat">4.8.2 NAT</h5>
-<p>​ 已经分配到本地 IP 地址，又想进行全球通信，则可使用 NAT。NAT 将每台计算机映射到 NAT 路由器的一个端口（每个端口具有一个全球 IP 地址），由此便可进行互联网通讯，此时目的主机只能知道 NAT 路由器端口的地址而不知发送端的地址。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142901992.png" alt="" /><figcaption>image-20231120142901992</figcaption>
-</figure>
-<h4 id="mlps">4.9 MLPS</h4>
-<p>​ MLPS 作为一种 IP 增强技术，广泛应用在互联网中。特点如下：</p>
+<p>​    地址分类：</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120084419498.png" alt="image-20231120084419498"></p>
+<h5 id="4-6-3-IPv4-向-IPv6-过渡"><a href="#4-6-3-IPv4-向-IPv6-过渡" class="headerlink" title="4.6.3 IPv4 向 IPv6 过渡"></a>4.6.3 IPv4 向 IPv6 过渡</h5><p>​    策略一：<strong>双协议栈</strong>。装有双协议栈的主机或路由器既能与 IPv4 主机通信，又能与 IPv6 主机通信。根据域名系统 DNS 返回的地址类型确定主机使用的地址类型。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120103834796.png" alt="image-20231120103834796"></p>
+<p>​    策略二：<strong>隧道技术</strong>。IPv6 数据报进入 IPv4 网络时，把 IPv6 数据报封装成 IPv4 数据报。要使得双协议栈主机知道 IPv4 数据报内封装的时 IPv6 数据报，则需要将 IPv4 首部的协议字段值设置为 41。</p>
+<h5 id="4-6-4-ICMPv6"><a href="#4-6-4-ICMPv6" class="headerlink" title="4.6.4 ICMPv6"></a>4.6.4 ICMPv6</h5><p>​    IPv6 也不保证数据可靠交付，因此采用 ICMP 来反馈差错。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120104137961.png" alt="image-20231120104137961"></p>
+<h4 id="4-7-IP-多播"><a href="#4-7-IP-多播" class="headerlink" title="4.7 IP 多播"></a>4.7 IP 多播</h4><p>​    与单播相比，一对多的网络通信中，多播可大大节约网络资源。</p>
+<p>​    多播组的标识符是 IP 地址中的 D 类地址，范围是 224.0.0.0 到 239.255.255.255。多播地址只能用于目的地址而不能用于源地址。一个 D 类地址表示一个多播组。</p>
+<h5 id="4-7-3-网际组管理协-IGMP-和-多播路由选择协议"><a href="#4-7-3-网际组管理协-IGMP-和-多播路由选择协议" class="headerlink" title="4.7.3 网际组管理协 IGMP 和 多播路由选择协议"></a>4.7.3 网际组管理协 IGMP 和 多播路由选择协议</h5><p>​    IGMP (Internet Group Management Protocol) 网际组管理协议：是让连接在本地局域网上的多播路由器知道本局域网上<strong>是否</strong>有主机参加或退出了某个多播组。</p>
+<p>​    多播路由选择协议：多播转发必须动态适应多播组成员的变化，在转发数据报时，不能仅仅根据数据报中的目的地址，而是考虑从什么地方来到什么地方去。</p>
+<p>​    IGMP 属于整个网际协议 IP 的一个组成部分。</p>
+<p>​    多播路由选择协议：洪泛与剪除、隧道技术、基于核心的发现技术。</p>
+<h4 id="4-8-虚拟专用网-VPN-和网络地址转换-NAT"><a href="#4-8-虚拟专用网-VPN-和网络地址转换-NAT" class="headerlink" title="4.8 虚拟专用网 VPN 和网络地址转换 NAT"></a>4.8 虚拟专用网 VPN 和网络地址转换 NAT</h4><h5 id="4-8-1-VPN"><a href="#4-8-1-VPN" class="headerlink" title="4.8.1 VPN"></a>4.8.1 VPN</h5><p>​    RFC 1918 指明了一些<strong>专用地址</strong>，只用于机构内部通信，互联网中所有路由器对目的地址为专用地址的数据报一律不予转发。</p>
+<p>​    VPN 的作用是对内部数据报进行加密，然后在公网上传输，使得效果跟内网通信一样。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142854286.png" alt="    "></p>
+<h5 id="4-8-2-NAT"><a href="#4-8-2-NAT" class="headerlink" title="4.8.2 NAT"></a>4.8.2 NAT</h5><p>​    已经分配到本地 IP 地址，又想进行全球通信，则可使用 NAT。NAT 将每台计算机映射到 NAT 路由器的一个端口（每个端口具有一个全球 IP 地址），由此便可进行互联网通讯，此时目的主机只能知道 NAT 路由器端口的地址而不知发送端的地址。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120142901992.png" alt="image-20231120142901992"></p>
+<h4 id="4-9-MLPS"><a href="#4-9-MLPS" class="headerlink" title="4.9 MLPS"></a>4.9 MLPS</h4><p>​    MLPS 作为一种 IP 增强技术，广泛应用在互联网中。特点如下：</p>
 <ul>
 <li>支持面向连接的服务质量。</li>
 <li>支持流量工程，平衡网络负载。</li>
 <li>有效地支持 VPN。</li>
 </ul>
-<h5 id="工作原理">4.9.1 工作原理</h5>
-<p>​ 在 MPLS 域入口处打上固定长的 MPLS 标记，然后对打上标记的 IP 数据报用硬件转发，只经过第二层，称为<strong>标记交换</strong>。</p>
-<p>​ MPLS 域是指该域中有许多彼此相邻路由器，且均为支持 MPLS 技术的<strong>标记路由器 LSR</strong>。一个标记仅在两个 LSR 间才有意义。</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120143602027.png" alt="" /><figcaption>image-20231120143602027</figcaption>
-</figure>
-<p>​ 如入接口 0 收到一个标记为 3 的 IP 数据报，路由器就知道应从出接口 1 转发且打上标记 1。</p>
-<h5 id="转发等价类-fec">4.9.2 转发等价类 FEC</h5>
-<p>​ IP 数据报的集合，对路由器来说具有相同的性质，如下一跳，相同服务类别，同样丢弃优先级等。</p>
-<p>​ 例子：</p>
+<h5 id="4-9-1-工作原理"><a href="#4-9-1-工作原理" class="headerlink" title="4.9.1 工作原理"></a>4.9.1 工作原理</h5><p>​    在 MPLS 域入口处打上固定长的 MPLS 标记，然后对打上标记的 IP 数据报用硬件转发，只经过第二层，称为<strong>标记交换</strong>。</p>
+<p>​    MPLS 域是指该域中有许多彼此相邻路由器，且均为支持 MPLS 技术的<strong>标记路由器 LSR</strong>。一个标记仅在两个 LSR 间才有意义。</p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120143602027.png" alt="image-20231120143602027"></p>
+<p>​    如入接口 0 收到一个标记为 3 的 IP 数据报，路由器就知道应从出接口 1 转发且打上标记 1。</p>
+<h5 id="4-9-2-转发等价类-FEC"><a href="#4-9-2-转发等价类-FEC" class="headerlink" title="4.9.2 转发等价类 FEC"></a>4.9.2 转发等价类 FEC</h5><p>​    IP 数据报的集合，对路由器来说具有相同的性质，如下一跳，相同服务类别，同样丢弃优先级等。</p>
+<p>​    例子：</p>
 <ul>
 <li>目的 IP 与某一特定 IP 地址前缀匹配的 IP 数据报</li>
 <li>所有源地址与目的地址相同的数据报</li>
 <li>具有某种服务质量需求的数据报</li>
 </ul>
-<h5 id="mpls-首部的格式">4.9.3 MPLS 首部的格式</h5>
-<p>​</p>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144102987.png" alt="" /><figcaption>image-20231120144102987</figcaption>
-</figure>
-<figure>
-<img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144109443.png" alt="" /><figcaption>image-20231120144109443</figcaption>
-</figure>
+<h5 id="4-9-3-MPLS-首部的格式"><a href="#4-9-3-MPLS-首部的格式" class="headerlink" title="4.9.3 MPLS 首部的格式"></a>4.9.3 MPLS 首部的格式</h5><p>​    </p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144102987.png" alt="image-20231120144102987"></p>
+<p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20231120144109443.png" alt="image-20231120144109443"></p>
 
     </div>
 
@@ -794,7 +689,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">4.1 网络层提供的两种服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE-ip"><span class="nav-number">2.</span> <span class="nav-text">4.2 网际协议 IP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E4%BA%92%E8%81%94%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.</span> <span class="nav-text">4.2.1 虚拟互联网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%86%E7%B1%BB%E7%9A%84-ip-%E5%9C%B0%E5%9D%80"><span class="nav-number">2.2.</span> <span class="nav-text">4.2.2 分类的 IP 地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ip-%E5%9C%B0%E5%9D%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%9C%B0%E5%9D%80"><span class="nav-number">2.3.</span> <span class="nav-text">4.2.3 IP 地址与硬件地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE-arp"><span class="nav-number">2.4.</span> <span class="nav-text">4.2.4 地址解析协议 ARP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ip-%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.5.</span> <span class="nav-text">4.2.5 IP 数据报的格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#ip-%E5%B1%82%E8%BD%AC%E5%8F%91%E5%88%86%E7%BB%84%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.6.</span> <span class="nav-text">4.2.6 IP 层转发分组的流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E4%B8%8E%E6%9E%84%E9%80%A0%E8%B6%85%E7%BD%91"><span class="nav-number">3.</span> <span class="nav-text">4.3 划分子网与构造超网</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91"><span class="nav-number">3.1.</span> <span class="nav-text">4.3.1 划分子网</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8%E5%AD%90%E7%BD%91%E6%97%B6%E7%9A%84%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">4.3.2 使用子网时的分组转发算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80-cidr-%E8%B6%85%E7%BD%91"><span class="nav-number">3.3.</span> <span class="nav-text">4.3.3 无分类编址 CIDR （超网）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%BD%91%E9%99%85%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE-icmp"><span class="nav-number">4.</span> <span class="nav-text">4.4 网际控制报文协议 ICMP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">4.5 互联网的路由选择协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">4.5.1 几个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#%E7%90%86%E6%83%B3%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.1.</span> <span class="nav-text">4.5.1.1 理想路由算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#%E5%88%86%E5%B1%82%E6%AC%A1%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9"><span class="nav-number">5.1.2.</span> <span class="nav-text">4.5.1.2 分层次的路由选择</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#rip"><span class="nav-number">5.2.</span> <span class="nav-text">4.5.2 RIP</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#rip-%E7%89%B9%E7%82%B9"><span class="nav-number">5.2.1.</span> <span class="nav-text">4.5.2.1 RIP 特点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#rip-%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.2.</span> <span class="nav-text">4.5.2.2 RIP 报文格式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-ospf"><span class="nav-number">5.3.</span> <span class="nav-text">4.5.3 内部网关协议 OSPF</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-bgp"><span class="nav-number">5.4.</span> <span class="nav-text">4.5.4 外部网关协议 BGP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">5.5.</span> <span class="nav-text">4.5.5 路由器的构成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ipv6"><span class="nav-number">6.</span> <span class="nav-text">4.6 IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#ipv4-%E5%90%91-ipv6-%E8%BF%87%E6%B8%A1"><span class="nav-number">6.1.</span> <span class="nav-text">4.6.3 IPv4 向 IPv6 过渡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#icmpv6"><span class="nav-number">6.2.</span> <span class="nav-text">4.6.4 ICMPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#ip-%E5%A4%9A%E6%92%AD"><span class="nav-number">7.</span> <span class="nav-text">4.7 IP 多播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%BD%91%E9%99%85%E7%BB%84%E7%AE%A1%E7%90%86%E5%8D%8F-igmp-%E5%92%8C-%E5%A4%9A%E6%92%AD%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">7.1.</span> <span class="nav-text">4.7.3 网际组管理协 IGMP 和 多播路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91-vpn-%E5%92%8C%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2-nat"><span class="nav-number">8.</span> <span class="nav-text">4.8 虚拟专用网 VPN 和网络地址转换 NAT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#vpn"><span class="nav-number">8.1.</span> <span class="nav-text">4.8.1 VPN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#nat"><span class="nav-number">8.2.</span> <span class="nav-text">4.8.2 NAT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#mlps"><span class="nav-number">9.</span> <span class="nav-text">4.9 MLPS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">9.1.</span> <span class="nav-text">4.9.1 工作原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%BD%AC%E5%8F%91%E7%AD%89%E4%BB%B7%E7%B1%BB-fec"><span class="nav-number">9.2.</span> <span class="nav-text">4.9.2 转发等价类 FEC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#mpls-%E9%A6%96%E9%83%A8%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">9.3.</span> <span class="nav-text">4.9.3 MPLS 首部的格式</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-%E7%BD%91%E7%BB%9C%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E4%B8%A4%E7%A7%8D%E6%9C%8D%E5%8A%A1"><span class="nav-number">1.</span> <span class="nav-text">4.1 网络层提供的两种服务</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-%E7%BD%91%E9%99%85%E5%8D%8F%E8%AE%AE-IP"><span class="nav-number">2.</span> <span class="nav-text">4.2 网际协议 IP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-1-%E8%99%9A%E6%8B%9F%E4%BA%92%E8%81%94%E7%BD%91%E7%BB%9C"><span class="nav-number">2.1.</span> <span class="nav-text">4.2.1 虚拟互联网络</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-2-%E5%88%86%E7%B1%BB%E7%9A%84-IP-%E5%9C%B0%E5%9D%80"><span class="nav-number">2.2.</span> <span class="nav-text">4.2.2 分类的 IP 地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-3-IP-%E5%9C%B0%E5%9D%80%E4%B8%8E%E7%A1%AC%E4%BB%B6%E5%9C%B0%E5%9D%80"><span class="nav-number">2.3.</span> <span class="nav-text">4.2.3 IP 地址与硬件地址</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-4-%E5%9C%B0%E5%9D%80%E8%A7%A3%E6%9E%90%E5%8D%8F%E8%AE%AE-ARP"><span class="nav-number">2.4.</span> <span class="nav-text">4.2.4 地址解析协议 ARP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-5-IP-%E6%95%B0%E6%8D%AE%E6%8A%A5%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">2.5.</span> <span class="nav-text">4.2.5 IP 数据报的格式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-6-IP-%E5%B1%82%E8%BD%AC%E5%8F%91%E5%88%86%E7%BB%84%E7%9A%84%E6%B5%81%E7%A8%8B"><span class="nav-number">2.6.</span> <span class="nav-text">4.2.6 IP 层转发分组的流程</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91%E4%B8%8E%E6%9E%84%E9%80%A0%E8%B6%85%E7%BD%91"><span class="nav-number">3.</span> <span class="nav-text">4.3 划分子网与构造超网</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-1-%E5%88%92%E5%88%86%E5%AD%90%E7%BD%91"><span class="nav-number">3.1.</span> <span class="nav-text">4.3.1 划分子网</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-2-%E4%BD%BF%E7%94%A8%E5%AD%90%E7%BD%91%E6%97%B6%E7%9A%84%E5%88%86%E7%BB%84%E8%BD%AC%E5%8F%91%E7%AE%97%E6%B3%95"><span class="nav-number">3.2.</span> <span class="nav-text">4.3.2 使用子网时的分组转发算法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-3-%E6%97%A0%E5%88%86%E7%B1%BB%E7%BC%96%E5%9D%80-CIDR-%EF%BC%88%E8%B6%85%E7%BD%91%EF%BC%89"><span class="nav-number">3.3.</span> <span class="nav-text">4.3.3 无分类编址 CIDR （超网）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-4-%E7%BD%91%E9%99%85%E6%8E%A7%E5%88%B6%E6%8A%A5%E6%96%87%E5%8D%8F%E8%AE%AE-ICMP"><span class="nav-number">4.</span> <span class="nav-text">4.4 网际控制报文协议 ICMP</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-5-%E4%BA%92%E8%81%94%E7%BD%91%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">5.</span> <span class="nav-text">4.5 互联网的路由选择协议</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-1-%E5%87%A0%E4%B8%AA%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="nav-number">5.1.</span> <span class="nav-text">4.5.1 几个基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-5-1-1-%E7%90%86%E6%83%B3%E8%B7%AF%E7%94%B1%E7%AE%97%E6%B3%95"><span class="nav-number">5.1.1.</span> <span class="nav-text">4.5.1.1 理想路由算法</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-5-1-2-%E5%88%86%E5%B1%82%E6%AC%A1%E7%9A%84%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9"><span class="nav-number">5.1.2.</span> <span class="nav-text">4.5.1.2 分层次的路由选择</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-2-RIP"><span class="nav-number">5.2.</span> <span class="nav-text">4.5.2 RIP</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#4-5-2-1-RIP-%E7%89%B9%E7%82%B9"><span class="nav-number">5.2.1.</span> <span class="nav-text">4.5.2.1 RIP 特点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#4-5-2-2-RIP-%E6%8A%A5%E6%96%87%E6%A0%BC%E5%BC%8F"><span class="nav-number">5.2.2.</span> <span class="nav-text">4.5.2.2 RIP 报文格式</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-3-%E5%86%85%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-OSPF"><span class="nav-number">5.3.</span> <span class="nav-text">4.5.3 内部网关协议 OSPF</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-4-%E5%A4%96%E9%83%A8%E7%BD%91%E5%85%B3%E5%8D%8F%E8%AE%AE-BGP"><span class="nav-number">5.4.</span> <span class="nav-text">4.5.4 外部网关协议 BGP</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-5-5-%E8%B7%AF%E7%94%B1%E5%99%A8%E7%9A%84%E6%9E%84%E6%88%90"><span class="nav-number">5.5.</span> <span class="nav-text">4.5.5 路由器的构成</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-6-IPv6"><span class="nav-number">6.</span> <span class="nav-text">4.6 IPv6</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-3-IPv4-%E5%90%91-IPv6-%E8%BF%87%E6%B8%A1"><span class="nav-number">6.1.</span> <span class="nav-text">4.6.3 IPv4 向 IPv6 过渡</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-6-4-ICMPv6"><span class="nav-number">6.2.</span> <span class="nav-text">4.6.4 ICMPv6</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-7-IP-%E5%A4%9A%E6%92%AD"><span class="nav-number">7.</span> <span class="nav-text">4.7 IP 多播</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-7-3-%E7%BD%91%E9%99%85%E7%BB%84%E7%AE%A1%E7%90%86%E5%8D%8F-IGMP-%E5%92%8C-%E5%A4%9A%E6%92%AD%E8%B7%AF%E7%94%B1%E9%80%89%E6%8B%A9%E5%8D%8F%E8%AE%AE"><span class="nav-number">7.1.</span> <span class="nav-text">4.7.3 网际组管理协 IGMP 和 多播路由选择协议</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-8-%E8%99%9A%E6%8B%9F%E4%B8%93%E7%94%A8%E7%BD%91-VPN-%E5%92%8C%E7%BD%91%E7%BB%9C%E5%9C%B0%E5%9D%80%E8%BD%AC%E6%8D%A2-NAT"><span class="nav-number">8.</span> <span class="nav-text">4.8 虚拟专用网 VPN 和网络地址转换 NAT</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-1-VPN"><span class="nav-number">8.1.</span> <span class="nav-text">4.8.1 VPN</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-8-2-NAT"><span class="nav-number">8.2.</span> <span class="nav-text">4.8.2 NAT</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-9-MLPS"><span class="nav-number">9.</span> <span class="nav-text">4.9 MLPS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-1-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86"><span class="nav-number">9.1.</span> <span class="nav-text">4.9.1 工作原理</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-2-%E8%BD%AC%E5%8F%91%E7%AD%89%E4%BB%B7%E7%B1%BB-FEC"><span class="nav-number">9.2.</span> <span class="nav-text">4.9.2 转发等价类 FEC</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-9-3-MPLS-%E9%A6%96%E9%83%A8%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="nav-number">9.3.</span> <span class="nav-text">4.9.3 MPLS 首部的格式</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -810,7 +705,7 @@ IP 地址:=\{&lt;网络前缀&gt;,&lt;主机号&gt;\}
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">39</span>
+          <span class="site-state-item-count">40</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
