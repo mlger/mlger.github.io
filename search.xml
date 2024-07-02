@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>Ubuntu CH341串口配置问题</title>
+      <link href="/2024/07/02/Ubuntu%20CH341%E4%B8%B2%E5%8F%A3%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/"/>
+      <url>/2024/07/02/Ubuntu%20CH341%E4%B8%B2%E5%8F%A3%E9%85%8D%E7%BD%AE%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h4 id="一、前言"><a href="#一、前言" class="headerlink" title="一、前言"></a>一、前言</h4><p>初次接触飞腾开发板，我的 ubuntu 系统无法正常使用 USB 串口线连接开发板，问题集中在 CH341 的驱动上面。</p><h4 id="二、问题及解决办法"><a href="#二、问题及解决办法" class="headerlink" title="二、问题及解决办法"></a>二、问题及解决办法</h4><h5 id="1-驱动冲突"><a href="#1-驱动冲突" class="headerlink" title="1. 驱动冲突"></a>1. 驱动冲突</h5><p>物理线路正确连接后，查询 ttyUSB 设备信息，连接后立即 disconnected。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">lg@ubuntu:~$ sudo dmesg | grep ttyUSB</span><br><span class="line">[12946.029195] usb 1-2.1: ch341-uart converter now attached to ttyUSB0</span><br><span class="line">[12946.576807] ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0</span><br></pre></td></tr></table></figure><p>多次尝试后又得到如下报错信息：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">lg@ubuntu:~$ sudo dmesg | grep ch341</span><br><span class="line">[   38.193329] usbcore: registered new interface driver ch341</span><br><span class="line">[   38.193360] usbserial: USB Serial support registered for ch341-uart</span><br><span class="line">[   38.193393] ch341 1-2.1:1.0: ch341-uart converter detected</span><br><span class="line">[   38.206613] usb 1-2.1: ch341-uart converter now attached to ttyUSB0</span><br><span class="line">[   38.758581] usb 1-2.1: usbfs: interface 0 claimed by ch341 while &#x27;brltty&#x27; sets config #1</span><br><span class="line">[   38.761742] ch341-uart ttyUSB0: ch341-uart converter now disconnected from ttyUSB0</span><br><span class="line">[   38.761800] ch341 1-2.1:1.0: device disconnected</span><br></pre></td></tr></table></figure><p>发现是 <code>brltty</code> 服务占用了设备接口。</p><p>卸载 <code>brltty</code> 即可：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt remove brltty</span><br></pre></td></tr></table></figure><h5 id="2-驱动不适配"><a href="#2-驱动不适配" class="headerlink" title="2. 驱动不适配"></a>2. 驱动不适配</h5><p><code>brltty</code> 的冲突解决后，<code>ls /dev</code> 即可（应该?）看见 <code>ttyCH341USB0</code> 设备，但无法成功连接/连接不稳定，甚至无法识别。</p><p>原因是驱动与内核版本不适配。先卸载 ch341 驱动。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo rmmod ch341</span><br></pre></td></tr></table></figure><p>然后按该帖步骤正确安装驱动：</p><p><a href="https://blog.csdn.net/lue_app/article/details/134365993">Ubuntu系统上ttyUSB<em>被挂载为ttyCH341USB</em>_ubuntu ch341-CSDN博客</a></p><p>如遇到签名无效则参考下帖：</p><p><a href="https://blog.csdn.net/qq_28680277/article/details/129162559">https://blog.csdn.net/qq_28680277/article/details/129162559</a></p><p>然后重新接入开发板，即可识别。</p><p><img src="https://raw.githubusercontent.com/mlger/Pict/main/newPath/image-20240702195622618.png" alt="image-20240702195622618"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> ubuntu </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 系统 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>ChatGPT 简介</title>
       <link href="/2024/06/10/ChatGPT%20%E5%8E%9F%E7%90%86%E7%AE%80%E4%BB%8B/"/>
       <url>/2024/06/10/ChatGPT%20%E5%8E%9F%E7%90%86%E7%AE%80%E4%BB%8B/</url>
